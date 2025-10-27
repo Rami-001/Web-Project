@@ -1,55 +1,69 @@
-(function () {
-    const trigger = document.querySelector('.dropdown');
-    const menu = document.querySelector('.dropdown-content');
-    if (!trigger || !menu) return;
-    let hideTimer = null;
+// Improved dropdown for Services with better timing
+document.addEventListener('DOMContentLoaded', function() {
+    const servicesLink = document.querySelector('.dropdown a');
+    const dropdownMenu = document.querySelector('.dropdown-content');
+    
+    if (!servicesLink || !dropdownMenu) return;
+    
+    let hideTimeout;
     let isMobile = window.innerWidth <= 768;
+    
     // Update isMobile on resize
-    window.addEventListener('resize', () => {
+    window.addEventListener('resize', function() {
         isMobile = window.innerWidth <= 768;
     });
-    // Show on mouse enter (desktop only)
-    trigger.addEventListener('mouseenter', () => {
+    
+    // Show dropdown when hovering Services (desktop only)
+    servicesLink.addEventListener('mouseenter', function() {
         if (!isMobile) {
-            clearTimeout(hideTimer);
-            menu.classList.add('visible');
+            clearTimeout(hideTimeout);
+            dropdownMenu.classList.add('visible');
         }
     });
-    // Hide shortly after leaving the trigger (desktop only)
-    trigger.addEventListener('mouseleave', () => {
+    
+    // Hide dropdown when leaving Services (desktop only) - SLOWER
+    servicesLink.addEventListener('mouseleave', function() {
         if (!isMobile) {
-            hideTimer = setTimeout(() => menu.classList.remove('visible'), 150);
+            hideTimeout = setTimeout(() => {
+                dropdownMenu.classList.remove('visible');
+            }, 500); // Increased from 300ms to 500ms
         }
     });
-    // Keep shown when hovering menu (desktop only)
-    menu.addEventListener('mouseenter', () => {
+    
+    // Keep dropdown open when hovering over it (desktop only)
+    dropdownMenu.addEventListener('mouseenter', function() {
         if (!isMobile) {
-            clearTimeout(hideTimer);
-            menu.classList.add('visible');
+            clearTimeout(hideTimeout);
+            dropdownMenu.classList.add('visible');
         }
     });
-    // Hide when leaving menu (desktop only)
-    menu.addEventListener('mouseleave', () => {
+    
+    // Hide dropdown when leaving it (desktop only) - SLOWER
+    dropdownMenu.addEventListener('mouseleave', function() {
         if (!isMobile) {
-            menu.classList.remove('visible');
+            hideTimeout = setTimeout(() => {
+                dropdownMenu.classList.remove('visible');
+            }, 500); // Increased from 300ms to 500ms
         }
     });
-    // Toggle on click (mobile and desktop)
-    const triggerLink = trigger.querySelector('a');
-    if (triggerLink) {
-        triggerLink.addEventListener('click', function (e) {
-            e.preventDefault();
-            menu.classList.toggle('visible');
-        });
-    }
-    // Close on ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') menu.classList.remove('visible');
+    
+    // Toggle dropdown on click (mobile and desktop)
+    servicesLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        dropdownMenu.classList.toggle('visible');
     });
+    
     // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!trigger.contains(e.target) && !menu.contains(e.target)) {
-            menu.classList.remove('visible');
+    document.addEventListener('click', function(e) {
+        if (!servicesLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.remove('visible');
         }
     });
-})();
+    
+    // Close dropdown on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            dropdownMenu.classList.remove('visible');
+        }
+    });
+});
