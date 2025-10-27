@@ -10,6 +10,7 @@
   top: 0;
   z-index: 100;
   background: white;
+  margin-bottom: 20px;
 }
 .nav-bar {
   display: flex;
@@ -40,34 +41,48 @@
   list-style: none;
   flex-wrap: wrap;
 }
-#nav-links a {
+ a {
   text-decoration: none;
   color: black;
   font-weight: 500;
 }
 #nav-links a:hover{
     text-decoration: underline;
-}
-.dropdown {
-  position: relative;
+    font-weight: bold;
 }
 .dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  box-shadow: 0 2px 4px;
-  min-width: 600px;
-  background: white;
-  z-index: 999;
-}
-.dropdown:hover .dropdown-content {
   display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  max-height: 0;
+  visibility: hidden;
+  opacity: 0;
+  padding: 0;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 100%; 
+  transition:
+    max-height 0.45s ease,
+    opacity 0.35s ease,
+    visibility 0s 0.45s,
+    padding 0.25s ease;
+}
+.dropdown-content.visible {
+  max-height: 600px;        
+  visibility: visible;
+  opacity: 1;
+  padding: 20px;
+  transition:
+    max-height 0.45s ease,
+    opacity 0.35s ease,
+    visibility 0s,
+    padding 0.25s ease;
 }
 .Service-column {
   display: flex;
   flex-direction: column;
   flex: 1;
+  min-width: 150px; /* Minimum width for each column */
   padding: 10px;
 }
 .Service-column a {
@@ -75,6 +90,9 @@
 }
 .Service-column a:hover {
   text-decoration: underline;
+}
+.login-signup{
+  display: flex;
 }
 .info{
     display: flex;
@@ -89,18 +107,23 @@
 }
 .info a:hover{
     text-decoration: underline;
+    font-weight: bold;
 }
 footer{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row-reverse;
     gap: 40px;
     position: sticky;
     bottom: 0;
+    margin: 20px;
 }
 .info{
     display: flex;
     gap: 30px;
 }
-
+.section-1{
+  display: flex;
+  margin: 20px;
+}
