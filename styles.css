@@ -1,17 +1,36 @@
 * {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
-   font-family: sans-serif;
+  font-family: sans-serif;
+}
+:root {
+  --primary-blue: #2563eb;
+  --accent-teal: #06b6d4;
+  --accent-purple: #8b5cf6;
+  --dark-text: #1e293b;
+  --medium-text: #475569;
+  --background: #1a8ae0;
+  --surface: #fff;
+  --hover-bg: #f1f5f9;
+}
+body {
+  background-image:url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-4.0.3&w=1200'); ;
+  /*url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&w=1200')*/
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
 }
 .main-header {
-  width: 100%;
-  box-shadow: 0 2px 4px;
-  position: sticky;
-  top: 0;
+  width: 95%;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
   z-index: 100;
-  background: white;
-  margin-bottom: 20px;
+  background: var(--surface);
+  margin: 20px;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .nav-bar {
   display: flex;
@@ -28,7 +47,7 @@
 .logo-text {
   font-size: 20px;
   font-weight: bold;
-  color: black;
+  color: var(--primary-blue);
 }
 #nav-logo {
   width: 70px;
@@ -42,13 +61,14 @@
   list-style: none;
   flex-wrap: wrap;
 }
- a {
+a {
   text-decoration: none;
-  color: black;
-  font-weight: 500; 
+  color: var(--medium-text);
+  font-weight: 500;
 }
-#nav-links a:hover{
-    font-weight: bold;
+#nav-links a:hover {
+  color: var(--primary-blue);
+  font-weight: bold;
 }
 .dropdown-content {
   display: flex;
@@ -58,104 +78,276 @@
   visibility: hidden;
   opacity: 0;
   padding: 0;
-  background: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  width: 100%; 
-  transition:
-    max-height 0.45s ease,
-    opacity 0.35s ease,
-    visibility 0s 0.45s,
-    padding 0.25s ease;
+  background: var(--surface);
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  width: 100%;
+  transition: max-height .45s ease, opacity .35s ease, visibility 0s .45s, padding .25s ease;
 }
 .dropdown-content.visible {
-  max-height: 600px;        
+  max-height: 600px;
   visibility: visible;
   opacity: 1;
   padding: 20px;
-  transition:
-    max-height 0.45s ease,
-    opacity 0.35s ease,
-    visibility 0s,
-    padding 0.25s ease;
+  transition: max-height .45s ease, opacity .35s ease, visibility 0s, padding .25s ease;
 }
 .Service-column {
   display: flex;
   flex-direction: column;
   flex: 1;
-  min-width: 150px; 
+  min-width: 150px;
   padding: 10px;
 }
 .Service-column a {
   margin-top: 8px;
+  color: var(--medium-text);
 }
 .Service-column a:hover {
+  color: var(--primary-blue);
   text-decoration: underline;
 }
-.login-signup{
+.Service-column h4 {
+  color: var(--primary-blue);
+  margin-bottom: 10px;
+}
+.info {
   display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px;
 }
-.info{
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin: 20px;
-    
+.info a {
+  text-decoration: none;
+  color: var(--medium-text);
 }
-.info a{
-    text-decoration: none;
-    color: black;
+.info a:hover {
+  color: var(--primary-blue);
+  font-weight: bold;
 }
-.info a:hover{
-    font-weight: bold;
+footer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 40px;
+  width: 80%;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  border-radius: 30px;
+  background: var(--surface);
+  padding: 30px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
 }
-footer{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row-reverse;
-    gap: 40px;
-    position: sticky;
-    bottom: 0;
-    margin: 20px;
-}
-.info{
-    display: flex;
-    gap: 30px;
-}
-.section-1{
+.section-1 {
   display: flex;
   margin: 20px;
+}
+.section-1 h1 {
+  color: var(--dark-text);
+  font-size: 2.5rem;
+  text-align: center;
+  width: 100%;
 }
 .Login-Signup {
   display: flex;
   gap: 15px;
 }
-.login, .Signup{
+.login, .Signup {
   padding: 10px 25px;
   border: none;
   border-radius: 25px;
   font-weight: bold;
   font-size: 14px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all .3s ease;
   font-family: sans-serif;
 }
 .login {
   background: transparent;
-  color: #06b6d4;
-  border: 2px solid #06b6d4;
+  color: var(--accent-teal);
+  border: 2px solid var(--accent-teal);
 }
 .login:hover {
-  background: #06b6d4;
-  color: white;
+  background: var(--accent-teal);
+  color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+  box-shadow: 0 4px 15px rgba(6,182,212,.3);
 }
 .Signup {
-  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-purple) 100%);
+  color: #fff;
 }
 .Signup:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+  box-shadow: 0 6px 20px rgba(6,182,212,.4);
 }
+@media (max-width: 768px) {
+  .main-header {
+    width: 90%;
+    margin: 10px auto;
+  }
+  .nav-bar {
+    padding: 10px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  #nav-links {
+    gap: 20px;
+    justify-content: center;
+  }
+  .dropdown-content {
+    flex-direction: column;
+  }
+  .Service-column {
+    min-width: 100%;
+    text-align: center;
+  }
+  footer {
+    width: 95%;
+    padding: 15px;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  .section-1 h1 {
+    font-size: 1.8rem;
+  }
+  .Login-Signup {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .info {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media (max-width: 480px) {
+  .logo-text {
+    font-size: 18px;
+  }
+  #nav-logo {
+    width: 60px;
+  }
+  #nav-links {
+    gap: 15px;
+    flex-direction: column;
+  }
+  .section-1 {
+    margin: 15px;
+  }
+  .section-1 h1 {
+    font-size: 1.5rem;
+  }
+  .info {
+    gap: 20px;
+    flex-direction: column;
+  }
+  footer {
+    padding: 15px;
+  }
+}
+.Bigbox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.Box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  box-shadow:  0 6px 20px ;
+  border-radius: 20px;
+  width: 300px;
+  height: 200px;
+  margin: 20px;
+  padding: 20px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 2px solid transparent;
+  flex-wrap: wrap;
+}
+.Box:hover {
+   transform: translateY(-8px) scale(1.02);
+  border: 2px solid #FF1493;
+  box-shadow: 0 15px 30px rgba(255, 20, 147, 0.3);
+  background-color: #FFF5F2;
+}
+.group1{
+  display:flex;
+  justify-content: center;
+  gap: 200px;
+  width: 1000px;
+  margin: 20px;
+  flex-wrap: wrap;
+}
+.group2{
+  display:flex;
+  justify-content: flex-end;
+  gap: 150px;
+  width: 1000px;
+  margin: 20px;
+  flex-wrap: wrap;
+}
+section.Bigbox li{
+  list-style: circle;
+
+}
+section.Bigbox h2{
+  margin-bottom: 15px;
+  color: var(--primary-blue);
+}
+ul#num li{
+  list-style:decimal;
+}
+.Explore{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 500px;
+  border-radius: 20px;
+  background-color: #fff;
+  margin: 20px;
+  padding: 20px;
+}
+.explore-btn {
+  position: relative;
+  padding: 20px 50px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(45deg, #FF0066, #FF3366, #FF0066);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 
+    0 10px 30px rgba(255, 0, 102, 0.4),
+    0 0 0 0 rgba(255, 0, 102, 0.5),
+    inset 0 2px 10px rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.explore-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 
+    0 15px 40px rgba(255, 0, 102, 0.6),
+    0 0 0 15px rgba(255, 0, 102, 0.1),
+    inset 0 2px 15px rgba(255, 255, 255, 0.4);
+  background: linear-gradient(45deg, #FF3366, #FF0066, #FF3366);
+}
+.explore-btn:active {
+  transform: translateY(-2px) scale(1.02);
+  transition: all 0.1s ease;
+}
+/*
+-change the styles of the text in the body.
+-make the body responsive.
+-make an animation for the footer when hover.
+-check the design of the boxes and make them bigger.
+*/
