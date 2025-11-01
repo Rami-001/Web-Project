@@ -99,3 +99,36 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+// Helpers to open/close the services dropdown and lock body scroll
+function openServices() {
+  dropdownMenu.classList.add('visible');
+  document.body.classList.add('dropdown-open');
+}
+function closeServices() {
+  dropdownMenu.classList.remove('visible');
+  document.body.classList.remove('dropdown-open');
+}
+
+// Toggle on click
+servicesLink.addEventListener('click', function(e) {
+  e.preventDefault();
+  if (dropdownMenu.classList.contains('visible')) {
+    closeServices();
+  } else {
+    openServices();
+  }
+});
+
+// Close when clicking outside
+document.addEventListener('click', function(e) {
+  if (!servicesLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
+    closeServices();
+  }
+});
+
+// Close on ESC
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeServices();
+});
+
+// Keep existing hover handlers for desktop as you like
