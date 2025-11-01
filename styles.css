@@ -522,92 +522,67 @@ footer:hover, .main-header:hover{
   }
 }
 
-/* 481px–768px — Small tablets */
-@media (min-width: 481px) and (max-width: 768px) {
-  .nav-bar {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  #nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .dropdown-content {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .Service-column {
-    width: 45%;
-  }
-
-  .Box, .Explore {
-    width: 80%;
-  }
-
-  .group1, .group2 {
-    justify-content: center;
-  }
-
-  footer {
-    flex-wrap: wrap;
-    justify-content: center;
+@media (max-width: 1080px) {
+  .contact-grid {
+    grid-template-columns: 1fr; /* stack form and map */
   }
 }
 
-/* 769px–1024px — Medium screens (laptops) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .dropdown-content {
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+@media (max-width: 960px) {
+  .contact-info {
+    grid-template-columns: 1fr; /* stack info cards */
   }
-
-  .Service-column {
-    flex: 1 1 40%;
+  .field-row {
+    grid-template-columns: 1fr; /* inputs full width */
   }
-
-  .group1, .group2 {
-    gap: 60px;
-  }
-
-  .Box, .Explore {
-    width: 45%;
-  }
-
-  .background-content cite {
-    font-size: 2.8rem;
+  .contact-map iframe {
+    height: 360px;
   }
 }
 
-/* 1025px–1399px — Large desktops */
-@media (min-width: 1025px) and (max-width: 1399px) {
-  .dropdown-content {
-    justify-content: space-evenly;
+@media (max-width: 560px) {
+  .contact-hero {
+    padding-top: 36px;
+  }
+  .contact-map iframe {
+    height: 300px;
+  }
+}
+/* Mobile dropdown: fill screen and scroll */
+@media (max-width: 960px) {
+  .dropdown-content,
+  .dropdown-content.visible {
+    position: fixed;
+    top: var(--header-h, 64px);
+    left: 0;
+    right: 0;
+    height: calc(100vh - var(--header-h, 64px));
+    max-height: none !important;
+    overflow-y: auto !important; /* <-- enables scrolling */
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding: 20px 16px 60px;
+    border-radius: 0;
+    z-index: 1200;
+    background: linear-gradient(180deg, #0e1a31, #0b162a);
   }
 
-  .group1, .group2 {
-    gap: 100px;
+  /* Optional: nicer scrollbar */
+  .dropdown-content::-webkit-scrollbar {
+    width: 10px;
   }
-
-  .background-content cite {
-    font-size: 3.2rem;
+  .dropdown-content::-webkit-scrollbar-thumb {
+    background: rgba(56, 189, 248, 0.45);
+    border-radius: 8px;
+  }
+  .dropdown-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 189, 248, 0.65);
   }
 }
 
-/* ≥ 1400px — Ultra-wide screens */
-@media (min-width: 1400px) {
-  .dropdown-content {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .group1, .group2 {
-    gap: 200px;
-  }
-
-  .background-content cite {
-    font-size: 4rem;
-  }
+/* Lock page scroll when dropdown is open (optional but recommended) */
+body.dropdown-open {
+  height: 100vh;
+  overflow: hidden;
 }
