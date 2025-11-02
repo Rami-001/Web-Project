@@ -128,3 +128,30 @@ if (logoutLink) {
     }
   });
 }
+
+
+
+onAuthStateChanged(auth, (user) => {
+  const loginSignup     = document.querySelector(".Login-Signup");
+  const profileDropdown = document.querySelector(".profile-dropdown");
+  const welcomeUser     = document.getElementById("welcome-user");
+  const userNameSpan    = document.getElementById("user-name");
+  const navAvatar       = document.getElementById("nav-avatar"); // NEW
+
+  if (user) {
+    const name = user.displayName || (user.email ? user.email.split("@")[0] : "User");
+    if (loginSignup)     loginSignup.style.display = "none";
+    if (profileDropdown) profileDropdown.style.display = "flex";
+    if (welcomeUser && userNameSpan) {
+      userNameSpan.textContent = name;
+      welcomeUser.style.display = "flex";
+    }
+    if (navAvatar && user.photoURL) navAvatar.src = user.photoURL; // NEW
+  } else {
+    if (loginSignup)     loginSignup.style.display = "flex";
+    if (profileDropdown) profileDropdown.style.display = "none";
+    if (welcomeUser)     welcomeUser.style.display = "none";
+    if (navAvatar)       navAvatar.src = "imgs/profile.svg"; // NEW
+  }
+});
+

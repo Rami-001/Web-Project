@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Global Compass | Essential Travel Directory</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <!-- ===== NAVBAR ===== -->
+  <!-- =========================
+       HEADER / NAVBAR
+  ========================== -->
   <header class="main-header">
     <nav class="nav-bar">
-      <!-- Left: Brand -->
+      <!-- Brand (left) -->
       <div class="logo-container">
-        <!-- Use lowercase + forward slashes so it works on all hosts -->
         <img id="nav-logo" src="imgs/logo.png" alt="Logo" />
         <span class="logo-text">Global Compass</span>
       </div>
 
-      <!-- Middle: Primary links (icons are inline SVG to avoid 404s) -->
+      <!-- Primary links (center) -->
       <ul id="nav-links">
         <li>
           <a href="index.html">
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path fill="currentColor" d="M10.2 3.4c.99-.8 2.61-.8 3.6 0l6 4.84c.76.61 1.2 1.52 1.2 2.48V19a2 2 0 0 1-2 2h-3.5a.5.5 0 0 1-.5-.5v-5a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v5a.5.5 0 0 1-.5.5H4a2 2 0 0 1-2-2v-8.28c0-.96.44-1.87 1.2-2.48l7-5.24Z"/>
-            </svg> Home
+            </svg>
+            Home
           </a>
         </li>
 
@@ -37,7 +42,8 @@
               <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
               <circle cx="12" cy="8" r="1.4" fill="currentColor"/>
               <rect x="11" y="11" width="2" height="7" rx="1" fill="currentColor"/>
-            </svg> About
+            </svg>
+            About
           </a>
         </li>
 
@@ -48,7 +54,8 @@
               <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor" opacity=".85"/>
               <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor" opacity=".7"/>
               <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor" opacity=".55"/>
-            </svg> Services
+            </svg>
+            Services
           </a>
         </li>
 
@@ -57,7 +64,8 @@
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v.5l-9 6-9-6V6Z" fill="currentColor" />
               <path d="M21 8.8V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8.8l8.43 5.62a2 2 0 0 0 2.14 0L21 8.8Z" fill="currentColor" opacity=".6"/>
-            </svg> Contact Us
+            </svg>
+            Contact Us
           </a>
         </li>
 
@@ -65,43 +73,49 @@
           <a href="#subscriptions">
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z" fill="currentColor"/>
-            </svg> Subscriptions
+            </svg>
+            Subscriptions
           </a>
         </li>
       </ul>
 
-      <!-- Right: Auth / welcome -->
+      <!-- Right rail -->
       <div class="right-rail">
-        <!-- Visible only when logged out -->
+        <!-- When logged out -->
         <div class="Login-Signup">
           <a class="login" href="login.html">Login</a>
           <a class="Signup" href="signup.html">Signup</a>
         </div>
 
-        <!-- Greeting (appears when logged in) -->
+        <!-- When logged in -->
         <div id="welcome-user" class="welcome-inline" style="display:none;">
           Welcome, <span id="user-name"></span>!
         </div>
 
-        <!-- Profile menu (appears when logged in) -->
         <div class="profile-dropdown" style="display:none;">
           <img src="imgs/profile.svg" alt="profile icon" />
           <div class="profile-menu">
-            <a href="#"><img class="profile-icon" src="imgs/Myaccount.svg" alt="Account icon"> My Account</a>
-            <a href="#"><img class="profile-icon" src="imgs/setting.svg" alt="Settings icon"> Settings</a>
-            <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt="Logout icon"> Logout</a>
+            <a href="#"><img class="profile-icon" src="imgs/Myaccount.svg" alt="Account icon" /> My Account</a>
+            <a href="settings.html"><img class="profile-icon" src="imgs/setting.svg" alt="Settings icon" /> Settings</a>
+            <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt="Logout icon" /> Logout</a>
           </div>
         </div>
+<!-- Region clock -->
+<div id="nav-clock" class="nav-clock" aria-live="polite" title="Local time"></div>
 
         <!-- Mobile toggle -->
         <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </button>
       </div>
     </nav>
   </header>
 
-  <!-- ===== DROPDOWN CONTENT ===== -->
+  <!-- =========================
+       SERVICES DROPDOWN
+  ========================== -->
   <div class="dropdown-content">
     <div class="Service-column">
       <h4>Health &amp; Safety</h4>
@@ -109,12 +123,14 @@
       <a href="#">Pharmacy</a>
       <a href="#">Police Station</a>
     </div>
+
     <div class="Service-column">
       <h4>Finance</h4>
       <a href="#">Bank</a>
       <a href="#">ATM</a>
       <a href="#">Money Exchanger</a>
     </div>
+
     <div class="Service-column">
       <h4>Sustenance &amp; Lodging</h4>
       <a href="#">Restaurant</a>
@@ -123,14 +139,18 @@
     </div>
   </div>
 
-  <!-- ===== HERO ===== -->
+  <!-- =========================
+       HERO
+  ========================== -->
   <div class="background">
     <div class="background-content">
       <cite>Your essential guide to reliable services in any destination.</cite>
     </div>
   </div>
 
-  <!-- ===== MAIN CONTENT ===== -->
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
   <section class="Bigbox">
     <div class="group1">
       <div class="Box">
@@ -141,6 +161,7 @@
           <li>24/7 Updated Information</li>
         </ul>
       </div>
+
       <div class="Box">
         <h2>Essential Service Categories</h2>
         <ul>
@@ -160,6 +181,7 @@
           <li>Universal: 112 works globally</li>
         </ul>
       </div>
+
       <div class="Box">
         <h2>How It Works?</h2>
         <ul id="num">
@@ -176,45 +198,53 @@
     </section>
   </section>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- =========================
+       FOOTER
+  ========================== -->
   <div class="footer-background">
     <footer>
-      <!-- Left: Brand -->
+      <!-- Brand -->
       <div class="footer-left">
         <img id="footer-logo" src="imgs/logo.png" alt="Logo" />
         <span class="footer-brand">Global Compass</span>
       </div>
 
-      <!-- Middle: Footer links (icons inline SVG to avoid 404s) -->
+      <!-- Footer links -->
       <div class="footer-links">
         <a href="#">
           <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 2l7 3v6c0 5.25-3.5 10.1-7 11-3.5-.9-7-5.75-7-11V5l7-3Z" fill="currentColor" opacity=".12"/>
-            <path d="M12 2l7 3v6c0 5.25-3.5 10.1-7 11-3.5-.9-7-5.75-7-11V5l7-3Z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M12 2l7 3v6c0 5.25-3.5 10.1-7 11-3.5-.9-7-5.75-7-11V5l7-3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
             <path d="M9.5 12.2l2 2 3.5-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg> Privacy Policy
+          </svg>
+          Privacy Policy
         </a>
+
         <a href="#">
           <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
             <rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.6" fill="none"/>
             <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          </svg> Terms of Service
+          </svg>
+          Terms of Service
         </a>
+
         <a href="#subscriptions">
           <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z" fill="currentColor"/>
-          </svg> Subscriptions
+          </svg>
+          Subscriptions
         </a>
       </div>
 
-      <!-- Right: Copyright -->
+      <!-- Copyright -->
       <div id="copy-right">
         &copy; 2025 Global Compass. All rights reserved.
       </div>
     </footer>
   </div>
-
-  <!-- ===== SCRIPTS ===== -->
+  <!-- =========================
+       SCRIPTS
+  ========================== -->
   <script src="script.js"></script>
   <script type="module" src="auth.js"></script>
 </body>

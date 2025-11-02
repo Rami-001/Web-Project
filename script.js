@@ -132,3 +132,7 @@ document.addEventListener('keydown', function(e) {
 });
 
 // Keep existing hover handlers for desktop as you like
+
+
+
+
