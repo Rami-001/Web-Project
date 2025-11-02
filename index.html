@@ -14,11 +14,11 @@
           <span class="logo-text">Global Compass</span>
         </div>
         <ul id="nav-links">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="">Home</a></li>
           <li><a href="">About us</a></li>
           <li class="dropdown"><a href="">Services</a></li>
           <li><a href="">Contact us</a></li>
-          <li><a href="Sub.html">Subscriptions</a></li>
+          <li><a href="">Subscriptions</a></li>
           <li class="Login-Signup">
             <button class="login">Login</button>
             <button class="Signup">Signup</button>
@@ -59,7 +59,6 @@
                 class="search-select"
               />
               <datalist id="countries">
-                <option value="Lebanon"></option>
                 <option value="United States"></option>
                 <option value="Canada"></option>
                 <option value="United Kingdom"></option>
@@ -74,16 +73,11 @@
             </div>
           </li>
           <li>
-            <div class="theme-buttons">
-              <button  class="theme-btn light-btn active"  data-theme="light"  title="Light Mode">
-                <span class="theme-icon">☀️</span>
-                <span class="theme-label">Light</span>
-              </button>
-              <button  class="theme-btn dark-btn"  data-theme="dark"  title="Dark Mode">
-                <span class="theme-icon">🌙</span>
-                <span class="theme-label">Dark</span>
-              </button>
-            </div>
+            <!-- Optional: Manual theme toggle button -->
+            <button  class="theme-toggle-btn"  onclick="window.themeManager.toggleTheme()">
+              <span class="theme-icon light-icon">🌙</span>
+              <span class="theme-icon dark-icon">☀️</span>
+            </button>
           </li>
         </ul>
       </nav>
@@ -157,7 +151,7 @@
         <button class="explore-btn">View All Services</button>
       </section>
     </section>
-
+    <div class="footer-background">
       <footer>
         <div class="info">
           <a href="">Privacy Policy</a>
@@ -169,7 +163,7 @@
           &copy; 2025 Global-Compass. All Rights Reserved.
         </div>
       </footer>
-
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
