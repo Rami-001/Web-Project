@@ -14,11 +14,11 @@
           <span class="logo-text">Global Compass</span>
         </div>
         <ul id="nav-links">
-          <li><a href="">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="">About us</a></li>
           <li class="dropdown"><a href="">Services</a></li>
           <li><a href="">Contact us</a></li>
-          <li><a href="">Subscriptions</a></li>
+          <li><a href="Sub.html">Subscriptions</a></li>
           <li class="Login-Signup">
             <button class="login">Login</button>
             <button class="Signup">Signup</button>
@@ -26,10 +26,64 @@
           <li class="profile-dropdown">
             <img src="imgs\profile-icon.png" alt="profile icon" />
             <div class="profile-menu">
-            <a href=""><img class="profile-icon" src="imgs\account-icon.png" alt="Settings icon">Profile</a>
-            <a href=""><img class="profile-icon" src="imgs\setting-icon.png" alt="Settings icon">Setting</a>
-            <a href=""><img class="profile-icon" src="imgs\logout-icon.png" alt="Settings icon">Logout</a>
-          </div>
+              <a href=""
+                ><img
+                  class="profile-icon"
+                  src="imgs\account-icon.png"
+                  alt="Settings icon"
+                />Profile</a
+              >
+              <a href=""
+                ><img
+                  class="profile-icon"
+                  src="imgs\setting-icon.png"
+                  alt="Settings icon"
+                />Setting</a
+              >
+              <a href=""
+                ><img
+                  class="profile-icon"
+                  src="imgs\logout-icon.png"
+                  alt="Settings icon"
+                />Logout</a
+              >
+            </div>
+          </li>
+          <li>
+            <div id="Country">
+              <input
+                list="countries"
+                id="country-search"
+                name="country-search"
+                placeholder="Search countries..."
+                class="search-select"
+              />
+              <datalist id="countries">
+                <option value="Lebanon"></option>
+                <option value="United States"></option>
+                <option value="Canada"></option>
+                <option value="United Kingdom"></option>
+                <option value="Australia"></option>
+                <option value="Germany"></option>
+                <option value="France"></option>
+                <option value="Japan"></option>
+                <option value="Brazil"></option>
+                <option value="India"></option>
+                <option value="China"></option>
+              </datalist>
+            </div>
+          </li>
+          <li>
+            <div class="theme-buttons">
+              <button  class="theme-btn light-btn active"  data-theme="light"  title="Light Mode">
+                <span class="theme-icon">☀️</span>
+                <span class="theme-label">Light</span>
+              </button>
+              <button  class="theme-btn dark-btn"  data-theme="dark"  title="Dark Mode">
+                <span class="theme-icon">🌙</span>
+                <span class="theme-label">Dark</span>
+              </button>
+            </div>
           </li>
         </ul>
       </nav>
@@ -56,7 +110,9 @@
     </div>
     <div class="background">
       <div class="background-content">
-        <cite>Your essential guide to reliable services in any destination.</cite>
+        <cite
+          >Your essential guide to reliable services in any destination.</cite
+        >
       </div>
     </div>
     <section class="Bigbox">
@@ -101,7 +157,7 @@
         <button class="explore-btn">View All Services</button>
       </section>
     </section>
-    <div class="footer-background">
+
       <footer>
         <div class="info">
           <a href="">Privacy Policy</a>
@@ -113,7 +169,7 @@
           &copy; 2025 Global-Compass. All Rights Reserved.
         </div>
       </footer>
-    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
