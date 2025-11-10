@@ -8,7 +8,6 @@ img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 
 /* ---------- App Layout ---------- */
-html, body { height: 100%; }
 body{
   --header-h: 64px;
   min-height: 100vh;
@@ -1064,24 +1063,117 @@ footer{
     background: #0f172a;
     color: #60a5fa;
 }
-
 .cta-btn.primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(15, 23, 42, 0.4);
 }
-
 .cta-btn.secondary {
     background: transparent;
     color: #0f172a;
     border: 2px solid #0f172a;
 }
-
 .cta-btn.secondary:hover {
     background: #0f172a;
     color: #60a5fa;
     transform: translateY(-3px);
 }
-
+/* =========================================================
+   Service paage
+   ========================================================= */
+#searchInput{
+    width: 50%;
+    padding: 12px 16px;
+    display: block;
+    border: 1px solid #2a3a5d;
+    border-radius: 12px;
+    background-color: #0c172b;
+    color: #eaf2ff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+#sortSelect{
+    width: 30%;
+    padding: 12px 16px;
+    display: block;
+    border: 1px solid #2a3a5d;
+    border-radius: 12px;
+    background-color: #0c172b;
+    color: #eaf2ff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.service-filters{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    gap: 30px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color:#0c172b;
+    border-radius: 20px;
+    flex-wrap: wrap;
+}
+.servicecontainer{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+.service-card {
+    display: flex;
+    background-color: #0c172b;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    gap: 15px;
+    position: relative;
+    flex-wrap: wrap;
+}
+.service-card img {
+    width: 500px;       
+    height: auto;       
+    border-radius: 8px;
+    object-fit: cover
+}
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 1;
+    position: relative; 
+    flex-wrap: wrap;
+}
+.card-content h2 {
+    color: white;
+    font-size: 2rem;
+}
+.card-content p {
+    margin: 5px 0;
+    color: #cbd5e1;
+    line-height: 1.4;
+}
+.favbtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #b91010;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+.favbtn:hover {
+    background-color: #74120f;
+}
 /* =========================================================
    RESPONSIVE DESIGN
    ========================================================= */

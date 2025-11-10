@@ -4,7 +4,6 @@ class SubscriptionPage {
         this.planButtons = document.querySelectorAll('.plan-btn');
         this.init();
     }
-
     init() {
         // Billing toggle functionality
         if (this.billingToggle) {
@@ -12,24 +11,19 @@ class SubscriptionPage {
                 this.handleBillingToggle(e.target.checked);
             });
         }
-
         // Plan button click handlers
         this.planButtons.forEach(button => {
             button.addEventListener('click', (e) => {
                 this.handlePlanSelection(e.target);
             });
         });
-
         // Smooth scrolling for anchor links
         this.initSmoothScrolling();
-
         console.log('Subscription page initialized');
     }
-
     handleBillingToggle(isYearly) {
         const monthlyPrices = document.querySelectorAll('.amount.monthly');
         const yearlyPrices = document.querySelectorAll('.amount.yearly');
-        
         if (isYearly) {
             monthlyPrices.forEach(price => price.style.display = 'none');
             yearlyPrices.forEach(price => price.style.display = 'inline');
@@ -37,7 +31,6 @@ class SubscriptionPage {
             monthlyPrices.forEach(price => price.style.display = 'inline');
             yearlyPrices.forEach(price => price.style.display = 'none');
         }
-
         // Add animation effect
         document.querySelectorAll('.price').forEach(price => {
             price.style.transform = 'scale(1.1)';
@@ -46,26 +39,21 @@ class SubscriptionPage {
             }, 300);
         });
     }
-
     handlePlanSelection(button) {
         const plan = button.getAttribute('data-plan');
         const isYearly = this.billingToggle?.checked || false;
-        
         console.log(`Selected plan: ${plan}, Yearly: ${isYearly}`);
-        
         // Add visual feedback
         button.style.transform = 'scale(0.95)';
         setTimeout(() => {
             button.style.transform = 'scale(1)';
         }, 150);
-
         // Here you would typically:
         // 1. Show a loading state
         // 2. Make API call to start subscription
         // 3. Redirect to payment page
         this.showPlanModal(plan, isYearly);
     }
-
     showPlanModal(plan, isYearly) {
         // Create a simple modal for plan selection
         const modal = document.createElement('div');
@@ -82,7 +70,6 @@ class SubscriptionPage {
             justify-content: center;
             z-index: 10000;
         `;
-
         const modalContent = document.createElement('div');
         modalContent.className = 'modal-content';
         modalContent.style.cssText = `
@@ -94,7 +81,6 @@ class SubscriptionPage {
             width: 90%;
             box-shadow: var(--shadow-2);
         `;
-
         modalContent.innerHTML = `
             <h3>Great Choice! 🎉</h3>
             <p>You've selected the <strong>${this.getPlanName(plan)}</strong> plan</p>
@@ -108,20 +94,16 @@ class SubscriptionPage {
                 </button>
             </div>
         `;
-
         modal.appendChild(modalContent);
         document.body.appendChild(modal);
-
         // Add event listeners
         modalContent.querySelector('.confirm-btn').addEventListener('click', () => {
             this.processPayment(plan, isYearly);
             modal.remove();
         });
-
         modalContent.querySelector('.cancel-btn').addEventListener('click', () => {
             modal.remove();
         });
-
         // Close modal when clicking outside
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
@@ -129,7 +111,6 @@ class SubscriptionPage {
             }
         });
     }
-
     getPlanName(plan) {
         const planNames = {
             'basic': 'Explorer',
@@ -138,11 +119,9 @@ class SubscriptionPage {
         };
         return planNames[plan] || plan;
     }
-
     processPayment(plan, isYearly) {
         // Simulate payment processing
         console.log('Processing payment for:', plan, isYearly);
-        
         // Show loading state
         const loading = document.createElement('div');
         loading.textContent = 'Processing...';
@@ -158,7 +137,6 @@ class SubscriptionPage {
             z-index: 10001;
         `;
         document.body.appendChild(loading);
-
         // Simulate API call
         setTimeout(() => {
             loading.remove();
@@ -166,7 +144,6 @@ class SubscriptionPage {
             // In real app, you would redirect to dashboard or success page
         }, 2000);
     }
-
     initSmoothScrolling() {
         // Add smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -183,12 +160,10 @@ class SubscriptionPage {
         });
     }
 }
-
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new SubscriptionPage();
 });
-
 // Export for module usage
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = SubscriptionPage;

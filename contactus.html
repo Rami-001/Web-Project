@@ -1,220 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact • Global Compass</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact • Global Compass</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ===== HEADER (Consistent across all pages) ===== -->
+    <header class="main-header">
+      <nav class="nav-bar">
+        <!-- Brand logo and name -->
+        <div class="logo-container">
+          <img id="nav-logo" src="imgs/logo.png" alt="Global Compass Logo" />
+          <span class="logo-text">Global Compass</span>
+        </div>
 
-  <!-- ===== HEADER (Consistent across all pages) ===== -->
-  <header class="main-header">
-    <nav class="nav-bar">
-      <!-- Brand logo and name -->
-      <div class="logo-container">
-        <img id="nav-logo" src="imgs/logo.png" alt="Global Compass Logo" />
-        <span class="logo-text">Global Compass</span>
+        <!-- Main navigation menu -->
+        <ul id="nav-links">
+          <li>
+            <a href="index.html">
+              <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M10.2 3.4c.99-.8 2.61-.8 3.6 0l6 4.84c.76.61 1.2 1.52 1.2 2.48V19a2 2 0 0 1-2 2h-3.5a.5.5 0 0 1-.5-.5v-5a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v5a.5.5 0 0 1-.5.5H4a2 2 0 0 1-2-2v-8.28c0-.96.44-1.87 1.2-2.48l7-5.24Z"
+                />
+              </svg>
+              Home</a
+            >
+          </li>
+          <li>
+            <a href="aboutus.html">
+              <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="9"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <circle cx="12" cy="8" r="1.4" fill="currentColor" />
+                <rect
+                  x="11"
+                  y="11"
+                  width="2"
+                  height="7"
+                  rx="1"
+                  fill="currentColor"
+                />
+              </svg>
+              About Us</a
+            >
+          </li>
+          <li class="dropdown">
+            <a href="#">
+              <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect
+                  x="3"
+                  y="3"
+                  width="7"
+                  height="7"
+                  rx="1.5"
+                  fill="currentColor"
+                />
+                <rect
+                  x="14"
+                  y="3"
+                  width="7"
+                  height="7"
+                  rx="1.5"
+                  fill="currentColor"
+                  opacity=".85"
+                />
+                <rect
+                  x="3"
+                  y="14"
+                  width="7"
+                  height="7"
+                  rx="1.5"
+                  fill="currentColor"
+                  opacity=".7"
+                />
+                <rect
+                  x="14"
+                  y="14"
+                  width="7"
+                  height="7"
+                  rx="1.5"
+                  fill="currentColor"
+                  opacity=".55"
+                />
+              </svg>
+              Services</a
+            >
+          </li>
+          <li>
+            <a href="contactus.html">
+              <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v.5l-9 6-9-6V6Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M21 8.8V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8.8l8.43 5.62a2 2 0 0 0 2.14 0L21 8.8Z"
+                  fill="currentColor"
+                  opacity=".6"
+                />
+              </svg>
+              Contact Us</a
+            >
+          </li>
+          <li>
+            <a href="Subscribtion.html">
+              <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z"
+                  fill="currentColor"
+                />
+              </svg>
+              Plans</a
+            >
+          </li>
+        </ul>
+
+        <!-- User authentication section -->
+        <div class="right-rail">
+          <div class="Login-Signup">
+            <a class="login" href="login.html">Login</a>
+            <a class="Signup" href="signup.html">Signup</a>
+          </div>
+          <div id="welcome-user" class="welcome-inline" style="display: none">
+            Welcome, <span id="user-name"></span>!
+          </div>
+          <div class="profile-dropdown" style="display: none">
+            <img src="imgs/profile.svg" alt="Profile icon" />
+            <div class="profile-menu">
+              <a href="#"
+                ><img
+                  class="profile-icon"
+                  src="imgs/Myaccount.svg"
+                  alt="Account settings"
+                />
+                My Account</a
+              >
+              <a href="settings.html"
+                ><img
+                  class="profile-icon"
+                  src="imgs/setting.svg"
+                  alt="Settings"
+                />
+                Settings</a
+              >
+              <a href="#" id="logout-link"
+                ><img class="profile-icon" src="imgs/logout.svg" alt="Logout" />
+                Logout</a
+              >
+            </div>
+          </div>
+
+          <!-- Mobile navigation toggle -->
+          <button
+            class="nav-toggle"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+          >
+            <span class="bar"></span><span class="bar"></span
+            ><span class="bar"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+<!-- =========================
+SERVICES DROPDOWN CONTENT
+Displayed when Services menu is hovered/clicked
+========================== -->
+    <div class="dropdown-content">
+      <div class="Service-column">
+        <h4>Health &amp; Safety</h4>
+        <a href="#">Hospital</a>
+        <a href="#">Pharmacy</a>
+        <a href="#">Police Station</a>
       </div>
-
-      <!-- Main navigation menu -->
-      <ul id="nav-links">
-        <li><a href="index.html">
-          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor" d="M10.2 3.4c.99-.8 2.61-.8 3.6 0l6 4.84c.76.61 1.2 1.52 1.2 2.48V19a2 2 0 0 1-2 2h-3.5a.5.5 0 0 1-.5-.5v-5a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v5a.5.5 0 0 1-.5.5H4a2 2 0 0 1-2-2v-8.28c0-.96.44-1.87 1.2-2.48l7-5.24Z"/>
-          </svg>
-          Home</a></li>
-        <li><a href="aboutus.html">
-          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
-            <circle cx="12" cy="8" r="1.4" fill="currentColor"/>
-            <rect x="11" y="11" width="2" height="7" rx="1" fill="currentColor"/>
-          </svg>
-          About</a></li>
-        <li class="dropdown"><a href="#">
-          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
-            <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor" opacity=".85"/>
-            <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor" opacity=".7"/>
-            <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor" opacity=".55"/>
-          </svg>
-          Services</a></li>
-        <li><a href="contactus.html">
-          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v.5l-9 6-9-6V6Z" fill="currentColor" />
-            <path d="M21 8.8V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8.8l8.43 5.62a2 2 0 0 0 2.14 0L21 8.8Z" fill="currentColor" opacity=".6"/>
-          </svg>
-          Contact Us</a></li>
-        <li><a href="Subscribtion.html">
-          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z" fill="currentColor"/>
-          </svg>
-          Plans</a></li>
-      </ul>
-
-      <!-- User authentication section -->
-      <div class="right-rail">
-        <div class="Login-Signup">
-          <a class="login" href="login.html">Login</a>
-          <a class="Signup" href="signup.html">Signup</a>
-        </div>
-        <div id="welcome-user" class="welcome-inline" style="display:none;">
-          Welcome, <span id="user-name"></span>!
-        </div>
-        <div class="profile-dropdown" style="display:none;">
-          <img src="imgs/profile.svg" alt="Profile icon" />
-          <div class="profile-menu">
-            <a href="#"><img class="profile-icon" src="imgs/Myaccount.svg" alt="Account settings"> My Account</a>
-            <a href="settings.html"><img class="profile-icon" src="imgs/setting.svg" alt="Settings"> Settings</a>
-            <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt="Logout"> Logout</a>
-          </div>
-        </div>
-        
-        <!-- Mobile navigation toggle -->
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-        </button>
+      <div class="Service-column">
+        <h4>Finance</h4>
+        <a href="#">Bank</a>
+        <a href="#">ATM</a>
+        <a href="#">Money Exchanger</a>
       </div>
-    </nav>
-  </header>
-
-  <!-- ===== CONTACT PAGE CONTENT ===== -->
-  <main class="contact-page">
-    <!-- Hero section -->
-    <section class="contact-hero">
-      <h1>Contact Us</h1>
-      <p>Questions, feedback, or partnership ideas? We'd love to hear from you.</p>
-    </section>
-
-    <!-- Contact information and form section -->
-    <section class="contact-grid">
-      <!-- Contact information cards -->
-      <div class="contact-info">
-        <div class="info-card">
-          <div class="info-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M21 8v10a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V8l9 5 9-5Z"/>
-              <path fill="currentColor" opacity=".55" d="M6 3h12a3 3 0 0 1 3 3v2l-9 5-9-5V6a3 3 0 0 1 3-3Z"/>
-            </svg>
-          </div>
-          <div>
-            <h3>Email</h3>
-            <a href="mailto:support@globalcompass.example">support@globalcompass.example</a>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <div class="info-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M6.6 3h10.8A1.6 1.6 0 0 1 19 4.6v14.8A1.6 1.6 0 0 1 17.4 21H6.6A1.6 1.6 0 0 1 5 19.4V4.6A1.6 1.6 0 0 1 6.6 3Zm.9 2a.5.5 0 0 0-.5.5V18a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V5.5a.5.5 0 0 0-.5-.5h-9Z"/>
-            </svg>
-          </div>
-          <div>
-            <h3>Phone</h3>
-            <a href="tel:+10000000000">+1 (000) 000-0000</a>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <div class="info-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8Zm0 10.25A2.25 2.25 0 1 1 12 7.5a2.25 2.25 0 0 1 0 4.5Z"/>
-            </svg>
-          </div>
-          <div>
-            <h3>Address</h3>
-            <p>123 Anywhere St, City, Country</p>
-          </div>
-        </div>
+      <div class="Service-column">
+        <h4>Sustenance &amp; Lodging</h4>
+        <a href="#">Restaurant</a>
+        <a href="#">Coffee Shop</a>
+        <a href="#">Hotel</a>
       </div>
+    </div>
+    <!-- ===== CONTACT PAGE CONTENT ===== -->
+    <main class="contact-page">
+      <!-- Hero section -->
+      <section class="contact-hero">
+        <h1>Contact Us</h1>
+        <p>
+          Questions, feedback, or partnership ideas? We'd love to hear from you.
+        </p>
+      </section>
 
-      <!-- Contact form -->
-      <form id="contact-form" class="contact-form" novalidate>
-        <h2>Send us a message</h2>
+      <!-- Contact information and form section -->
+      <section class="contact-grid">
+        <!-- Contact information cards -->
+        <div class="contact-info">
+          <div class="info-card">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M21 8v10a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V8l9 5 9-5Z"
+                />
+                <path
+                  fill="currentColor"
+                  opacity=".55"
+                  d="M6 3h12a3 3 0 0 1 3 3v2l-9 5-9-5V6a3 3 0 0 1 3-3Z"
+                />
+              </svg>
+            </div>
+            <div>
+              <h3>Email</h3>
+              <a href="mailto:support@globalcompass.example"
+                >support@globalcompass.example</a
+              >
+            </div>
+          </div>
 
-        <div class="field-row">
+          <div class="info-card">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M6.6 3h10.8A1.6 1.6 0 0 1 19 4.6v14.8A1.6 1.6 0 0 1 17.4 21H6.6A1.6 1.6 0 0 1 5 19.4V4.6A1.6 1.6 0 0 1 6.6 3Zm.9 2a.5.5 0 0 0-.5.5V18a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V5.5a.5.5 0 0 0-.5-.5h-9Z"
+                />
+              </svg>
+            </div>
+            <div>
+              <h3>Phone</h3>
+              <a href="tel:+10000000000">+1 (000) 000-0000</a>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8Zm0 10.25A2.25 2.25 0 1 1 12 7.5a2.25 2.25 0 0 1 0 4.5Z"
+                />
+              </svg>
+            </div>
+            <div>
+              <h3>Address</h3>
+              <p>123 Anywhere St, City, Country</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact form -->
+        <form id="contact-form" class="contact-form" novalidate>
+          <h2>Send us a message</h2>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="c-name">Full name</label>
+              <input id="c-name" type="text" placeholder="Jane Doe" required />
+            </div>
+            <div class="field">
+              <label for="c-email">Email</label>
+              <input
+                id="c-email"
+                type="email"
+                placeholder="jane@example.com"
+                required
+              />
+            </div>
+          </div>
+
           <div class="field">
-            <label for="c-name">Full name</label>
-            <input id="c-name" type="text" placeholder="Jane Doe" required />
+            <label for="c-subject">Subject</label>
+            <input
+              id="c-subject"
+              type="text"
+              placeholder="How can we help?"
+              required
+            />
           </div>
+
           <div class="field">
-            <label for="c-email">Email</label>
-            <input id="c-email" type="email" placeholder="jane@example.com" required />
+            <label for="c-message">Message</label>
+            <textarea
+              id="c-message"
+              rows="6"
+              placeholder="Write your message..."
+              required
+            ></textarea>
           </div>
+
+          <button class="contact-btn" type="submit">Send message</button>
+          <p
+            id="contact-msg"
+            class="contact-msg"
+            role="alert"
+            aria-live="polite"
+          ></p>
+
+          <!-- Fallback email link for when form submission fails -->
+          <a
+            id="mailto-fallback"
+            class="mailto-link"
+            href="#"
+            style="display: none"
+            >Open email app instead</a
+          >
+        </form>
+
+        <!-- Office location map -->
+        <div class="contact-map">
+          <iframe
+            title="Global Compass Office Location"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509369!2d144.95373631531698!3d-37.81627974202117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDQ5JzAwLjYiUyAxNDTCsDU3JzEzLjQiRQ!5e0!3m2!1sen!2s!4v1700000000000"
+          >
+          </iframe>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer-background">
+      <footer>
+        <div class="footer-left">
+          <img id="footer-logo" src="imgs/logo.png" alt="Global Compass Logo" />
+          <span class="footer-brand">Global Compass</span>
         </div>
 
-        <div class="field">
-          <label for="c-subject">Subject</label>
-          <input id="c-subject" type="text" placeholder="How can we help?" required />
+        <div class="footer-links">
+          <a href="#">
+            <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2l7 3v6c0 5.25-3.5 10.1-7 11-3.5-.9-7-5.75-7-11V5l7-3Z"
+                fill="currentColor"
+                opacity=".12"
+              />
+              <path
+                d="M12 2l7 3v6c0 5.25-3.5 10.1-7 11-3.5-.9-7-5.75-7-11V5l7-3Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path
+                d="M9.5 12.2l2 2 3.5-4"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Privacy Policy
+          </a>
+          <a href="#">
+            <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect
+                x="4"
+                y="3"
+                width="16"
+                height="18"
+                rx="2"
+                stroke="currentColor"
+                stroke-width="1.6"
+                fill="none"
+              />
+              <path
+                d="M8 8h8M8 12h8M8 16h5"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              />
+            </svg>
+            Terms of Service
+          </a>
+          <a href="index.html#subscriptions">
+            <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z"
+                fill="currentColor"
+              />
+            </svg>
+            Plans
+          </a>
         </div>
 
-        <div class="field">
-          <label for="c-message">Message</label>
-          <textarea id="c-message" rows="6" placeholder="Write your message..." required></textarea>
+        <div id="copy-right">
+          &copy; 2025 Global Compass. All rights reserved.
         </div>
+      </footer>
+    </div>
 
-        <button class="contact-btn" type="submit">Send message</button>
-        <p id="contact-msg" class="contact-msg" role="alert" aria-live="polite"></p>
-
-        <!-- Fallback email link for when form submission fails -->
-        <a id="mailto-fallback" class="mailto-link" href="#" style="display:none;">Open email app instead</a>
-      </form>
-
-      <!-- Office location map -->
-      <div class="contact-map">
-        <iframe
-          title="Global Compass Office Location"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509369!2d144.95373631531698!3d-37.81627974202117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDQ5JzAwLjYiUyAxNDTCsDU3JzEzLjQiRQ!5e0!3m2!1sen!2s!4v1700000000000">
-        </iframe>
-      </div>
-    </section>
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <div class="footer-background">
-    <footer>
-      <div class="footer-left">
-        <img id="footer-logo" src="imgs/logo.png" alt="Global Compass Logo" />
-        <span class="footer-brand">Global Compass</span>
-      </div>
-
-      <div class="footer-links">
-        <a href="#">
-          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 2l7 3v6c0 5.25-3.5 10.1-7 11-3.5-.9-7-5.75-7-11V5l7-3Z" fill="currentColor" opacity=".12"/>
-            <path d="M12 2l7 3v6c0 5.25-3.5 10.1-7 11-3.5-.9-7-5.75-7-11V5l7-3Z" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M9.5 12.2l2 2 3.5-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Privacy Policy
-        </a>
-        <a href="#">
-          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.6" fill="none"/>
-            <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-          Terms of Service
-        </a>
-        <a href="index.html#subscriptions">
-          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z" fill="currentColor"/>
-          </svg>
-          Subscriptions
-        </a>
-      </div>
-
-      <div id="copy-right">
-        &copy; 2025 Global Compass. All rights reserved.
-      </div>
-    </footer>
-  </div>
-
-  <!-- ===== SCRIPTS ===== -->
-  <script src="script.js"></script>
-  <script type="module" src="auth.js"></script>
-  <script src="contact.js"></script>
-</body>
+    <!-- ===== SCRIPTS ===== -->
+    <script src="script.js"></script>
+    <script type="module" src="auth.js"></script>
+    <script src="contact.js"></script>
+  </body>
 </html>
