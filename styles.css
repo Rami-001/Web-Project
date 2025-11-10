@@ -277,7 +277,7 @@ footer{
 @media (max-width:768px){ .footer-links .nav-icon{ display:inline-block; } }
 
 /* =========================================================
-   AUTH
+   AUTH PAGES (Login & Signup)
    ========================================================= */
 .auth-page{
   min-height:70vh; display:flex; align-items:center; justify-content:center; padding:40px 14px;
@@ -318,7 +318,7 @@ footer{
 .auth-switch a:hover::after{ transform:scaleX(1); }
 
 /* =========================================================
-   CONTACT PAGE — refined
+   CONTACT PAGE
    ========================================================= */
 .contact-page{ display:flex; flex-direction:column; gap:14px; }
 
@@ -394,72 +394,190 @@ footer{
 .contact-map iframe{ width:100%; height:440px; border:0; border-radius:12px; }
 
 /* =========================================================
-   RESPONSIVE — navigation, dropdown, layout
+   SETTINGS PAGE
    ========================================================= */
-@media (max-width:960px){
-  .nav-bar{ grid-template-columns:auto auto auto; }
-  .nav-toggle{ display:block; }
-
-  /* Collapsible nav links */
-  #nav-links{
-    position:fixed; inset: var(--header-h) 0 auto 0;
-    background:#0d1a31; border-top:1px solid var(--gc-line);
-    padding:14px; display:flex; flex-direction:column; gap:10px;
-    transform: translateY(-120%); opacity:0; visibility:hidden;
-    transition: transform .24s, opacity .18s, visibility 0s linear .24s; z-index:1200;
-  }
-  .nav-bar.nav-open #nav-links{ transform: translateY(0); opacity:1; visibility:visible; }
-
-  /* Mobile dropdown: full screen with scroll */
-  .dropdown-content,
-  .dropdown-content.visible{
-    position:fixed; top:var(--header-h, 64px); left:0; right:0;
-    height: calc(100vh - var(--header-h, 64px));
-    max-height:none !important;
-    overflow-y:auto !important; overflow-x:hidden;
-    -webkit-overflow-scrolling:touch; overscroll-behavior:contain;
-    padding:20px 16px 60px; border-radius:0; z-index:1200;
-    background: linear-gradient(180deg, #0e1a31, #0b162a);
-  }
-
-  .Login-Signup, .welcome-inline, .profile-dropdown{ display:none !important; }
-  footer{ flex-direction:column; text-align:center; gap:10px; }
-
-  .contact-info{ grid-template-columns:1fr; }
-  .field-row{ grid-template-columns:1fr; }
-  .contact-map iframe{ height:360px; }
-}
-@media (max-width:1080px){
-  .contact-grid{ grid-template-columns:1fr; } /* stack form and map */
-}
-@media (max-width:560px){
-  .background-content{ padding-top:90px; }
-  .Explore{ width:92%; }
-  .contact-hero{ padding-top:36px; }
-  .contact-map iframe{ height:300px; }
+.settings-grid { 
+  width: min(920px, 96%); 
+  margin: 30px auto; 
+  display: grid; 
+  gap: 24px;
 }
 
-/* Optional: nicer mobile scrollbar inside dropdown */
-@media (max-width:960px){
-  .dropdown-content::-webkit-scrollbar{ width:10px; }
-  .dropdown-content::-webkit-scrollbar-thumb{ background:rgba(56,189,248,.45); border-radius:8px; }
-  .dropdown-content::-webkit-scrollbar-thumb:hover{ background:rgba(56,189,248,.65); }
+.settings-card { 
+  background: var(--gc-card); 
+  border: 1px solid var(--gc-line); 
+  border-radius: 18px; 
+  padding: 24px; 
+  box-shadow: var(--gc-shadow-2); 
+  margin-bottom: 8px;
 }
 
-/* Lock page scroll when dropdown is open */
-body.dropdown-open{ height:100vh; overflow:hidden; }
-
-/* Keep disabled inputs visually consistent */
-.input:disabled {
-  opacity: 1;
-  color: #eaf2ff;
-  background: #0c172b;
-  border-color: #2a3a5d;
-  cursor: not-allowed;
+.settings-card h2 { 
+  font-size: 1.3rem; 
+  font-weight: 900; 
+  color: #fff; 
+  margin-bottom: 16px;
 }
-  
+
+.settings-card.danger-zone {
+  padding: 28px;
+  border: 2px solid #ff4d4d;
+  background: linear-gradient(135deg, var(--gc-card), #1a0f23);
+  transform: scale(1.02);
+  margin: 12px 0;
+}
+
+.settings-card.danger-zone h2 {
+  color: #ff7b7b;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.settings-row { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.settings-row:last-child {
+  margin-bottom: 0;
+}
+
+.settings-grow { 
+  flex: 1 1 260px; 
+  margin-bottom: 8px;
+}
+
+.settings-label { 
+  font-weight: 800; 
+  color: #cfe2ff; 
+  display: block; 
+  margin-bottom: 10px;
+}
+
+.settings-input, .settings-select { 
+  width: 100%; 
+  padding: 14px 16px;
+  border: 1px solid #2a3a5d; 
+  border-radius: 12px; 
+  background: #0c172b; 
+  color: #eaf2ff; 
+  margin-bottom: 8px;
+}
+
+.settings-input:focus, .settings-select:focus { 
+  border-color: #69c8ff; 
+  box-shadow: 0 0 0 4px var(--gc-ring); 
+  outline: none; 
+}
+
+.settings-btn { 
+  padding: 10px 18px;
+  border: none; 
+  border-radius: 999px; 
+  font-weight: 900; 
+  cursor: pointer; 
+  color: #061224; 
+  background: linear-gradient(90deg, var(--gc-sky), var(--gc-berry)); 
+  box-shadow: var(--gc-glow); 
+  margin: 6px 6px 6px 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 0.9rem;
+  min-height: 40px;
+  min-width: 100px;
+}
+
+.settings-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.settings-btn.alt { 
+  background: linear-gradient(90deg, #fbbf24, #2dd4bf); 
+}
+
+.settings-btn.danger { 
+  background: linear-gradient(90deg, #ff8181, #ff4d4d); 
+  color: #1b0b0b; 
+  font-size: 0.95rem;
+  padding: 12px 20px;
+  margin-top: 16px;
+  min-height: 44px;
+  min-width: 120px;
+}
+
+.settings-btn[disabled] { 
+  opacity: .6; 
+  cursor: not-allowed; 
+  transform: none !important;
+}
+
+.settings-msg { 
+  font-weight: 800; 
+  min-height: 1.2em; 
+  margin: 12px 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.settings-msg.success { 
+  color: #37e88f; 
+  background: rgba(55, 232, 143, 0.1);
+}
+
+.settings-msg.error { 
+  color: #ff7b7b; 
+  background: rgba(255, 123, 123, 0.1);
+}
+
+.settings-hint { 
+  color: #9db3d7; 
+  font-weight: 700; 
+  font-size: .9rem; 
+  margin-top: 8px;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.settings-card.subscription {
+  padding: 26px;
+}
+
+.settings-input:disabled { 
+  opacity: 1; 
+  color: #eaf2ff; 
+  background: #0c172b; 
+  border-color: #2a3a5d; 
+  cursor: not-allowed; 
+}
+
+.settings-section {
+  margin: 32px 0 24px 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--gc-line);
+}
+
+.plan-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 16px;
+  background: rgba(12, 23, 43, 0.6);
+  border-radius: 12px;
+}
+
+.mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 16px 0;
+}
+
 /* =========================================================
-   SUBSCRIPTION PAGE STYLES
+   SUBSCRIPTION PAGE
    ========================================================= */
 .subscription-page {
     padding: 40px 0;
@@ -903,42 +1021,85 @@ body.dropdown-open{ height:100vh; overflow:hidden; }
     transform: translateY(-3px);
 }
 
-/* Responsive Design */
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+@media (max-width:960px){
+  .nav-bar{ grid-template-columns:auto auto auto; }
+  .nav-toggle{ display:block; }
+
+  /* Collapsible nav links */
+  #nav-links{
+    position:fixed; inset: var(--header-h) 0 auto 0;
+    background:#0d1a31; border-top:1px solid var(--gc-line);
+    padding:14px; display:flex; flex-direction:column; gap:10px;
+    transform: translateY(-120%); opacity:0; visibility:hidden;
+    transition: transform .24s, opacity .18s, visibility 0s linear .24s; z-index:1200;
+  }
+  .nav-bar.nav-open #nav-links{ transform: translateY(0); opacity:1; visibility:visible; }
+  /* Mobile dropdown: full screen with scroll */
+  .dropdown-content,
+  .dropdown-content.visible{
+    position:fixed; top:var(--header-h, 64px); left:0; right:0;
+    height: calc(100vh - var(--header-h, 64px));
+    max-height:none !important;
+    overflow-y:auto !important; overflow-x:hidden;
+    -webkit-overflow-scrolling:touch; overscroll-behavior:contain;
+    padding:20px 16px 60px; border-radius:0; z-index:1200;
+    background: linear-gradient(180deg, #0e1a31, #0b162a);
+  }
+  .Login-Signup, .welcome-inline, .profile-dropdown{ display:none !important; }
+  footer{ flex-direction:column; text-align:center; gap:10px; }
+  .contact-info{ grid-template-columns:1fr; }
+  .field-row{ grid-template-columns:1fr; }
+  .contact-map iframe{ height:360px; }
+}
+@media (max-width:1080px){
+  .contact-grid{ grid-template-columns:1fr; } /* stack form and map */
+}
+@media (max-width:560px){
+  .background-content{ padding-top:90px; }
+  .Explore{ width:92%; }
+  .contact-hero{ padding-top:36px; }
+  .contact-map iframe{ height:300px; }
+}
+/* Responsive for Subscription Page */
 @media (max-width: 768px) {
     .pricing-plans {
         grid-template-columns: 1fr;
     }
-    
     .plan-card.popular {
         transform: none;
     }
-    
     .plan-card.popular:hover {
         transform: translateY(-10px);
     }
-    
     .comparison-header,
     .comparison-row {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 10px;
     }
-    
     .feature-column,
     .plan-column {
         padding: 10px 0;
     }
-    
     .hero-stats {
         gap: 20px;
     }
-    
     .cta-buttons {
         flex-direction: column;
         align-items: center;
     }
-    
     .cta-btn {
         width: 200px;
     }
 }
+/* Optional: nicer mobile scrollbar inside dropdown */
+@media (max-width:960px){
+  .dropdown-content::-webkit-scrollbar{ width:10px; }
+  .dropdown-content::-webkit-scrollbar-thumb{ background:rgba(56,189,248,.45); border-radius:8px; }
+  .dropdown-content::-webkit-scrollbar-thumb:hover{ background:rgba(56,189,248,.65); }
+}
+/* Lock page scroll when dropdown is open */
+body.dropdown-open{ height:100vh; overflow:hidden; }

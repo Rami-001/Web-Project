@@ -5,57 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Settings • Global Compass</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    .settings-grid { width:min(920px,96%); margin:30px auto; display:grid; gap:18px; }
-    .card { background:var(--gc-card); border:1px solid var(--gc-line); border-radius:18px; padding:18px; box-shadow:var(--gc-shadow-2); }
-    .card h2 { font-size:1.2rem; font-weight:900; color:#fff; margin-bottom:10px; }
-    .row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
-    .grow { flex: 1 1 260px; }
-    .label { font-weight:800; color:#cfe2ff; display:block; margin-bottom:6px; }
-    .input, .select { width:100%; padding:12px 14px; border:1px solid #2a3a5d; border-radius:12px; background:#0c172b; color:#eaf2ff; }
-    .input:focus, .select:focus { border-color:#69c8ff; box-shadow:0 0 0 4px var(--gc-ring); outline:none; }
-    .btn { padding:10px 16px; border:none; border-radius:999px; font-weight:900; cursor:pointer; color:#061224; background:linear-gradient(90deg,var(--gc-sky),var(--gc-berry)); box-shadow:var(--gc-glow); }
-    .btn.alt { background:linear-gradient(90deg,#fbbf24,#2dd4bf); }
-    .btn.danger { background:linear-gradient(90deg,#ff8181,#ff4d4d); color:#1b0b0b; }
-    .btn[disabled]{ opacity:.6; cursor:not-allowed; }
-    .msg { font-weight:800; min-height:1.2em; }
-    .msg.success { color:#37e88f; }
-    .msg.error { color:#ff7b7b; }
-    .hint { color:#9db3d7; font-weight:700; font-size:.9rem; }
-    /* keep disabled inputs nicely styled */
-    .input:disabled { opacity:1; color:#eaf2ff; background:#0c172b; border-color:#2a3a5d; cursor:not-allowed; }
-  </style>
 </head>
 <body>
+  <!-- ===== HEADER ===== -->
   <header class="main-header">
     <nav class="nav-bar">
       <div class="logo-container">
-        <img id="nav-logo" src="imgs/logo.png" alt="Logo" />
+        <img id="nav-logo" src="imgs/logo.png" alt="Global Compass Logo" />
         <span class="logo-text">Global Compass</span>
       </div>
+      
       <ul id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="index.html#about">About</a></li>
         <li class="dropdown"><a href="#">Services</a></li>
         <li><a href="contactus.html">Contact Us</a></li>
-        <li><a href="index.html#subscriptions">Subscriptions</a></li>
+        <li><a href="index.html#subscriptions">Plans</a></li>
       </ul>
+      
       <div class="right-rail">
         <div class="Login-Signup">
           <a class="login" href="login.html">Login</a>
           <a class="Signup" href="signup.html">Signup</a>
         </div>
+        
         <div id="welcome-user" class="welcome-inline" style="display:none;">
           Welcome, <span id="user-name"></span>!
         </div>
+        
         <div class="profile-dropdown" style="display:none;">
-          <img id="nav-avatar" src="imgs/profile.svg" alt="profile icon" />
+          <img id="nav-avatar" src="imgs/profile.svg" alt="Profile icon" />
           <div class="profile-menu">
-            <a href="#"><img class="profile-icon" src="imgs/Myaccount.svg" alt=""> My Account</a>
-            <a href="settings.html"><img class="profile-icon" src="imgs/setting.svg" alt=""> Settings</a>
-            <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt=""> Logout</a>
+            <a href="#"><img class="profile-icon" src="imgs/Myaccount.svg" alt="Account"> My Account</a>
+            <a href="settings.html"><img class="profile-icon" src="imgs/setting.svg" alt="Settings"> Settings</a>
+            <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt="Logout"> Logout</a>
           </div>
         </div>
+        
         <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
           <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </button>
@@ -63,110 +49,127 @@
     </nav>
   </header>
 
+  <!-- ===== SETTINGS CONTENT ===== -->
   <main class="settings-grid">
-    <!-- Profile & Region -->
-    <section class="card">
+    <!-- Profile & Region Settings -->
+    <section class="settings-card">
       <h2>Profile</h2>
-      <div class="row">
-        <div class="grow">
-          <label class="label">Email</label>
-          <input id="set-email" class="input" type="email" disabled />
+      
+      <div class="settings-row">
+        <div class="settings-grow">
+          <label class="settings-label">Email</label>
+          <input id="set-email" class="settings-input" type="email" disabled />
         </div>
-        <div class="grow">
-          <label class="label">Display name</label>
-          <input id="set-name" class="input" type="text" placeholder="Your name" />
+        <div class="settings-grow">
+          <label class="settings-label">Display name</label>
+          <input id="set-name" class="settings-input" type="text" placeholder="Your name" />
         </div>
       </div>
 
-      <div class="row" style="margin-top:12px;">
-        <div class="grow">
-          <label class="label">Region</label>
-          <select id="region-select" class="select">
-            <!-- values are ISO country codes -->
+      <div class="settings-row settings-margin-top">
+        <div class="settings-grow">
+          <label class="settings-label">Region</label>
+          <select id="region-select" class="settings-select">
+            <!-- ISO country codes for region selection -->
             <option value="LB">🇱🇧 Lebanon</option>
             <option value="US">🇺🇸 United States</option>
             <option value="GB">🇬🇧 United Kingdom</option>
             <option value="FR">🇫🇷 France</option>
             <option value="TR">🇹🇷 Turkey</option>
           </select>
-          <p class="hint" style="margin-top:6px;">Choose where you are so we can tailor results to your region.</p>
+          <p class="settings-hint">
+            Choose where you are so we can tailor results to your region.
+          </p>
         </div>
       </div>
 
-      <div class="row" style="margin-top:10px;">
-        <button id="btn-save-profile" class="btn">Save settings</button>
-        <span id="settings-msg" class="msg"></span>
+      <!-- Save profile settings -->
+      <div class="settings-row settings-margin-top">
+        <button id="btn-save-profile" class="settings-btn">Save settings</button>
+        <span id="settings-msg" class="settings-msg"></span>
       </div>
+      
       <!-- Theme toggle -->
-<div class="row" style="margin-top:15px;">
-  <button id="theme-toggle" class="btn alt">Switch to Light Mode</button>
-  <span id="theme-msg" class="msg"></span>
-</div>
-
+      <div class="settings-row settings-margin-top">
+        <button id="theme-toggle" class="settings-btn alt">Switch to Light Mode</button>
+        <span id="theme-msg" class="settings-msg"></span>
+      </div>
     </section>
 
-    <!-- Subscription -->
-    <section class="card">
+    <!-- Subscription Management -->
+    <section class="settings-card">
       <h2>Subscription</h2>
-      <div class="row">
-        <div class="grow">
-          <label class="label">Current plan</label>
-          <input id="sub-current" class="input" type="text" readonly />
+      
+      <div class="settings-row">
+        <div class="settings-grow">
+          <label class="settings-label">Current plan</label>
+          <input id="sub-current" class="settings-input" type="text" readonly />
         </div>
-        <div class="grow">
-          <label class="label">Change plan</label>
-          <select id="sub-select" class="select">
+        <div class="settings-grow">
+          <label class="settings-label">Change plan</label>
+          <select id="sub-select" class="settings-select">
             <option value="free">Free</option>
             <option value="standard">Standard</option>
             <option value="pro">Pro</option>
           </select>
         </div>
       </div>
-      <div class="row" style="margin-top:10px;">
-        <button id="btn-change-plan" class="btn alt">Change plan</button>
-        <button id="btn-cancel-plan" class="btn danger" title="You're on Free—there's no paid subscription to cancel.">Cancel subscription</button>
-        <span id="sub-msg" class="msg"></span>
+      
+      <div class="settings-row settings-margin-top">
+        <button id="btn-change-plan" class="settings-btn alt">Change plan</button>
+        <button id="btn-cancel-plan" class="settings-btn danger" 
+                title="You're on Free—there's no paid subscription to cancel.">
+          Cancel subscription
+        </button>
+        <span id="sub-msg" class="settings-msg"></span>
       </div>
-      <p class="hint" style="margin-top:8px;">
+      
+      <p class="settings-hint">
         Heads up: this page is a demo. Your selection is saved to your device only.
-        When you're ready for real billing (Stripe), we’ll hook it up.
+        When you're ready for real billing (Stripe), we'll hook it up.
       </p>
     </section>
 
-    <!-- Security -->
-    <section class="card">
+    <!-- Security Settings -->
+    <section class="settings-card">
       <h2>Security</h2>
-      <div class="row">
-        <button id="btn-reset-pass" class="btn">Send password reset email</button>
-        <span id="reset-msg" class="msg"></span>
+      <div class="settings-row">
+        <button id="btn-reset-pass" class="settings-btn">Send password reset email</button>
+        <span id="reset-msg" class="settings-msg"></span>
       </div>
     </section>
 
-    <!-- Danger zone -->
-    <section class="card">
-      <h2 style="color:#ff9797;">Danger zone</h2>
-      <div class="row">
-        <button id="btn-delete" class="btn danger">Delete account</button>
-        <span id="delete-msg" class="msg"></span>
+    <!-- Danger Zone (Destructive actions) -->
+    <section class="settings-card">
+      <h2 class="danger-heading">Danger zone</h2>
+      <div class="settings-row">
+        <button id="btn-delete" class="settings-btn danger">Delete account</button>
+        <span id="delete-msg" class="settings-msg"></span>
       </div>
     </section>
   </main>
 
+  <!-- ===== FOOTER ===== -->
   <div class="footer-background">
     <footer>
       <div class="footer-left">
-        <img id="footer-logo" src="imgs/logo.png" alt="Logo" />
+        <img id="footer-logo" src="imgs/logo.png" alt="Global Compass Logo" />
         <span class="footer-brand">Global Compass</span>
       </div>
+      
       <div class="footer-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
         <a href="index.html#subscriptions">Subscriptions</a>
       </div>
-      <div id="copy-right">&copy; 2025 Global Compass. All rights reserved.</div>
+      
+      <div id="copy-right">
+        &copy; 2025 Global Compass. All rights reserved.
+      </div>
     </footer>
   </div>
 
+  <!-- ===== SCRIPTS ===== -->
   <script type="module" src="auth.js"></script>
   <script type="module" src="settings.js"></script>
   <script src="script.js"></script>

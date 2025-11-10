@@ -4,12 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Global Compass | Essential Travel Directory</title>
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -19,13 +15,12 @@
   ========================== -->
   <header class="main-header">
     <nav class="nav-bar">
-      <!-- Brand (left) -->
+      <!-- Brand logo and company name -->
       <div class="logo-container">
         <img id="nav-logo" src="imgs/logo.png" alt="Logo" />
         <span class="logo-text">Global Compass</span>
       </div>
-
-      <!-- Primary links (center) -->
+      <!-- Main navigation links with SVG icons -->
       <ul id="nav-links">
         <li>
           <a href="index.html">
@@ -35,7 +30,6 @@
             Home
           </a>
         </li>
-
         <li>
           <a href="aboutus.html">
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -46,7 +40,7 @@
             About
           </a>
         </li>
-
+        <!-- Services dropdown trigger -->
         <li class="dropdown">
           <a href="#">
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -58,7 +52,6 @@
             Services
           </a>
         </li>
-
         <li>
           <a href="contactus.html">
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -68,30 +61,27 @@
             Contact Us
           </a>
         </li>
-
         <li>
           <a href="Subscribtion.html">
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z" fill="currentColor"/>
             </svg>
-            Subscriptions
+            Plans
           </a>
         </li>
       </ul>
-
-      <!-- Right rail -->
+      <!-- Right side navigation elements -->
       <div class="right-rail">
-        <!-- When logged out -->
+        <!-- Login/Signup buttons - shown when user is logged out -->
         <div class="Login-Signup">
           <a class="login" href="login.html">Login</a>
           <a class="Signup" href="signup.html">Signup</a>
         </div>
-
-        <!-- When logged in -->
+        <!-- Welcome message - shown when user is logged in -->
         <div id="welcome-user" class="welcome-inline" style="display:none;">
           Welcome, <span id="user-name"></span>!
         </div>
-
+        <!-- User profile dropdown - shown when user is logged in -->
         <div class="profile-dropdown" style="display:none;">
           <img src="imgs/profile.svg" alt="profile icon" />
           <div class="profile-menu">
@@ -100,10 +90,7 @@
             <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt="Logout icon" /> Logout</a>
           </div>
         </div>
-<!-- Region clock -->
-<div id="nav-clock" class="nav-clock" aria-live="polite" title="Local time"></div>
-
-        <!-- Mobile toggle -->
+        <!-- Mobile navigation toggle button -->
         <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -112,9 +99,9 @@
       </div>
     </nav>
   </header>
-
   <!-- =========================
-       SERVICES DROPDOWN
+       SERVICES DROPDOWN CONTENT
+       Displayed when Services menu is hovered/clicked
   ========================== -->
   <div class="dropdown-content">
     <div class="Service-column">
@@ -123,14 +110,12 @@
       <a href="#">Pharmacy</a>
       <a href="#">Police Station</a>
     </div>
-
     <div class="Service-column">
       <h4>Finance</h4>
       <a href="#">Bank</a>
       <a href="#">ATM</a>
       <a href="#">Money Exchanger</a>
     </div>
-
     <div class="Service-column">
       <h4>Sustenance &amp; Lodging</h4>
       <a href="#">Restaurant</a>
@@ -138,20 +123,21 @@
       <a href="#">Hotel</a>
     </div>
   </div>
-
   <!-- =========================
-       HERO
+       HERO SECTION
+       Main banner with brand tagline
   ========================== -->
   <div class="background">
     <div class="background-content">
       <cite>Your essential guide to reliable services in any destination.</cite>
     </div>
   </div>
-
   <!-- =========================
        MAIN CONTENT
+       Feature boxes showcasing service benefits
   ========================== -->
   <section class="Bigbox">
+    <!-- First row of feature boxes -->
     <div class="group1">
       <div class="Box">
         <h2>Trusted Worldwide</h2>
@@ -161,7 +147,6 @@
           <li>24/7 Updated Information</li>
         </ul>
       </div>
-
       <div class="Box">
         <h2>Essential Service Categories</h2>
         <ul>
@@ -171,7 +156,7 @@
         </ul>
       </div>
     </div>
-
+    <!-- Second row of feature boxes -->
     <div class="group2">
       <div class="Box">
         <h2>Emergency Quick Guide</h2>
@@ -181,7 +166,6 @@
           <li>Universal: 112 works globally</li>
         </ul>
       </div>
-
       <div class="Box">
         <h2>How It Works?</h2>
         <ul id="num">
@@ -191,25 +175,24 @@
         </ul>
       </div>
     </div>
-
+    <!-- Call-to-action section -->
     <section class="Explore">
       <h2>Ready to Explore?</h2>
       <button class="explore-btn">View All Services</button>
     </section>
   </section>
-
   <!-- =========================
        FOOTER
+       Legal links and copyright information
   ========================== -->
   <div class="footer-background">
     <footer>
-      <!-- Brand -->
+      <!-- Footer branding -->
       <div class="footer-left">
         <img id="footer-logo" src="imgs/logo.png" alt="Logo" />
         <span class="footer-brand">Global Compass</span>
       </div>
-
-      <!-- Footer links -->
+      <!-- Legal and policy links -->
       <div class="footer-links">
         <a href="#">
           <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -219,7 +202,6 @@
           </svg>
           Privacy Policy
         </a>
-
         <a href="#">
           <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
             <rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.6" fill="none"/>
@@ -227,24 +209,18 @@
           </svg>
           Terms of Service
         </a>
-
-        <a href="#subscriptions">
+        <a href="Subscribtion.html">
           <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z" fill="currentColor"/>
           </svg>
-          Subscriptions
+          Plans
         </a>
       </div>
-
-      <!-- Copyright -->
       <div id="copy-right">
         &copy; 2025 Global Compass. All rights reserved.
       </div>
     </footer>
   </div>
-  <!-- =========================
-       SCRIPTS
-  ========================== -->
   <script src="script.js"></script>
   <script type="module" src="auth.js"></script>
 </body>
