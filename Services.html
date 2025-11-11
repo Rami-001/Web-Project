@@ -7,15 +7,11 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css" />
   </head>
-
   <body>
     <!-- =========================
        HEADER / NAVBAR
@@ -137,6 +133,7 @@
       <input  type="search"  name=""  id="searchInput"  placeholder="Search for Services....."/>
       <select id="sortSelect">
         <option value="" selected disabled>Sort by....</option>
+        <option value="reset">Reset</option>
         <option value="name-asc">Name (A-Z)</option>
         <option value="name-desc">Name (Z-A)</option>
       </select>
@@ -144,7 +141,12 @@
         <input type="checkbox" id="onlyFavorites" /> Show Only Favorites
       </label>
     </div>
-    <div class="servicecontainer" id="service-container"></div>
+    <div>
+      <h2>Health & Safety</h2>
+      <h3>Hospital</h3>
+      <div class="servicecontainer" id="service-container"></div>
+    </div>
+    
     <!-- =========================
        FOOTER
   ========================== -->
