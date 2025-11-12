@@ -127,26 +127,35 @@
       </div>
     </div>
     <!-- =========================
-       SERVICES PAGE CONTENT
-  ========================== -->
-    <div class="service-filters">
-      <input  type="search"  name=""  id="searchInput"  placeholder="Search for Services....."/>
-      <select id="sortSelect">
-        <option value="" selected disabled>Sort by....</option>
-        <option value="reset">Reset</option>
-        <option value="name-asc">Name (A-Z)</option>
-        <option value="name-desc">Name (Z-A)</option>
-      </select>
-      <label>
-        <input type="checkbox" id="onlyFavorites" /> Show Only Favorites
-      </label>
-    </div>
-    <div>
-      <h2>Health & Safety</h2>
-      <h3>Hospital</h3>
-      <div class="servicecontainer" id="service-container"></div>
-    </div>
-    
+        SERVICES PAGE CONTENT
+    ========================== -->
+<div class="service-filters">
+  <input type="search" id="searchInput" placeholder="Search services..." />
+
+  <select id="filter-category">
+    <option value="All" selected>All Categories</option>
+    <option value="Health & Safety">Health & Safety</option>
+    <option value="Finance">Finance</option>
+    <option value="Sustenance & Lodging">Sustenance & Lodging</option>
+  </select>
+
+  <select id="filter-city">
+    <option value="All" selected>All Cities</option>
+    <option value="Beirut">Beirut</option>
+    <option value="Saida">Saida</option>
+    <option value="Tripoli">Tripoli</option>
+  </select>
+
+  <select id="sortSelect">
+    <option value="" selected disabled>Sort by . . .</option>
+    <option value="name-asc">A–Z</option>
+    <option value="name-desc">Z–A</option>
+  </select>
+
+  <button class="clear-filters">Clear All</button>
+</div>
+
+    <div id="services-by-category"></div>
     <!-- =========================
        FOOTER
   ========================== -->
