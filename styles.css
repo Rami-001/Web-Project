@@ -1702,8 +1702,9 @@ footer {
   border-color: #38e0ff;
 }
 .service-card img {
-  width: 350px;
-  height: 240px;
+  width: 400px;
+  height: 250px;
+  margin: auto;
   border-radius: 16px;
   object-fit: cover;
   box-shadow: 0 0 10px rgba(25, 188, 220, 0.3);
@@ -1734,23 +1735,18 @@ footer {
   font-size: 0.95rem;
   margin: 3px 0;
 }
-.favbtn {
+.heart-icon {
+  cursor: pointer;
   position: absolute;
   top: 15px;
   right: 15px;
-  background: linear-gradient(145deg, #b91010, #74120f);
-  color: white;
-  border: none;
-  border-radius: 30px;
-  padding: 8px 18px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 600;
   transition: all 0.3s ease;
 }
-.favbtn:hover {
-  background: linear-gradient(145deg, #e11b1b, #9c1713);
-  box-shadow: 0 0 12px rgba(185, 16, 16, 0.5);
+.heart-icon:hover {
+  transform: scale(1.1);
+}
+.heart-icon:hover svg {
+  stroke: #ff6b6b;
 }
 .favorite-card {
   border: 2px solid #ff5f5f;
@@ -1793,7 +1789,6 @@ footer {
   box-shadow: 0 6px 15px rgba(25, 188, 220, 0.5);
   transform: translateY(-2px);
 } 
-
 /* Responsive */
 @media (max-width: 900px) {
   .service-card {
