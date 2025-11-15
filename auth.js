@@ -45,7 +45,7 @@ function setMsg(el, type, text) {
 }
 
 /* ============================================
-   jQuery login & signup handlers
+   Login & signup handlers
    ============================================ */
 $(function () {
   // ---------- LOGIN ----------
@@ -114,52 +114,47 @@ $(function () {
 });
 
 /* ============================================
-   Auth state → update navbar UI (all pages)
+   Auth state listener (updates navbar on all pages)
    ============================================ */
 onAuthStateChanged(auth, (user) => {
-  let loginSignup = document.querySelector(".Login-Signup");
-  let profileDropdown = document.querySelector(".profile-dropdown");
-  let welcomeUser = document.getElementById("welcome-user");
-  let userNameSpan = document.getElementById("user-name");
-  let navAvatar = document.getElementById("nav-avatar");
+  const loginSignup = document.querySelector(".Login-Signup");
+  const profileDropdown = document.querySelector(".profile-dropdown");
+  const welcomeUser = document.getElementById("welcome-user");
+  const userNameSpan = document.getElementById("user-name");
+  const navAvatar = document.getElementById("nav-avatar");
+
   if (user) {
-    let name =
-      user.displayName || (user.email ? user.email.split("@")[0] : "User");
+    const name = user.displayName || (user.email ? user.email.split("@")[0] : "User");
 
     if (loginSignup) loginSignup.style.display = "none";
     if (profileDropdown) profileDropdown.style.display = "flex";
-
-    if (welcomeUser && userNameSpan) {
-      userNameSpan.textContent = name;
+    if (welcomeUser) {
       welcomeUser.style.display = "flex";
+      if (userNameSpan) userNameSpan.textContent = name;
     }
-
-    if (navAvatar && user.photoURL) {
-      navAvatar.src = user.photoURL;
-    }
+    if (navAvatar && user.photoURL) navAvatar.src = user.photoURL;
   } else {
     if (loginSignup) loginSignup.style.display = "flex";
     if (profileDropdown) profileDropdown.style.display = "none";
     if (welcomeUser) welcomeUser.style.display = "none";
-
     if (navAvatar) navAvatar.src = "imgs/profile.svg";
   }
 });
 
 /* ============================================
-   Logout handler (all pages)
+   Logout handler
    ============================================ */
-let logoutLink = document.getElementById("logout-link");
-
-if (logoutLink) {
-  logoutLink.addEventListener("click", async (e) => {
-    e.preventDefault();
-    try {
-      await signOut(auth);
-      window.location.href = "login.html";
-    } catch (err) {
-      console.error("Logout error:", err);
-      alert("Failed to log out. Please try again.");
-    }
-  });
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutLink = document.getElementById("logout-link");
+  if (logoutLink) {
+    logoutLink.addEventListener("click", async (e) => {
+      e.preventDefault();
+      try {
+        await signOut(auth);
+        window.location.href = "index.html";
+      } catch (err) {
+        console.error("Logout error:", err);
+      }
+    });
+  }
+});

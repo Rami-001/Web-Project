@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Global Compass | Essential Travel Directory</title>
+  <title>About Us • Global Compass</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,9 +12,8 @@
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-<!-- =========================
+  <!-- =========================
        HEADER / NAVBAR
   ========================== -->
   <header class="main-header">
@@ -30,7 +29,8 @@
         <li>
           <a href="index.html">
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M10.2 3.4c.99-.8 2.61-.8 3.6 0l6 4.84c.76.61 1.2 1.52 1.2 2.48V19a2 2 0 0 1-2 2h-3.5a.5.5 0 0 1-.5-.5v-5a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v5a.5.5 0 0 1-.5.5H4a2 2 0 0 1-2-2v-8.28c0-.96.44-1.87 1.2-2.48l7-5.24Z"/>
+              <path fill="currentColor"
+                d="M10.2 3.4c.99-.8 2.61-.8 3.6 0l6 4.84c.76.61 1.2 1.52 1.2 2.48V19a2 2 0 0 1-2 2h-3.5a.5.5 0 0 1-.5-.5v-5a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v5a.5.5 0 0 1-.5.5H4a2 2 0 0 1-2-2v-8.28c0-.96.44-1.87 1.2-2.48l7-5.24Z" />
             </svg>
             Home
           </a>
@@ -39,21 +39,21 @@
         <li>
           <a href="aboutus.html">
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
-              <circle cx="12" cy="8" r="1.4" fill="currentColor"/>
-              <rect x="11" y="11" width="2" height="7" rx="1" fill="currentColor"/>
+              <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+              <circle cx="12" cy="8" r="1.4" fill="currentColor" />
+              <rect x="11" y="11" width="2" height="7" rx="1" fill="currentColor" />
             </svg>
-            About Us 
+            About Us
           </a>
         </li>
 
         <li class="dropdown">
           <a href="#">
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
-              <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor" opacity=".85"/>
-              <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor" opacity=".7"/>
-              <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor" opacity=".55"/>
+              <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor" />
+              <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor" opacity=".85" />
+              <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor" opacity=".7" />
+              <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor" opacity=".55" />
             </svg>
             Services
           </a>
@@ -63,7 +63,8 @@
           <a href="contactus.html">
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v.5l-9 6-9-6V6Z" fill="currentColor" />
-              <path d="M21 8.8V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8.8l8.43 5.62a2 2 0 0 0 2.14 0L21 8.8Z" fill="currentColor" opacity=".6"/>
+              <path d="M21 8.8V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8.8l8.43 5.62a2 2 0 0 0 2.14 0L21 8.8Z"
+                fill="currentColor" opacity=".6" />
             </svg>
             Contact Us
           </a>
@@ -72,36 +73,40 @@
         <li>
           <a href="Subscribtion.html">
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z" fill="currentColor"/>
+              <path d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z"
+                fill="currentColor" />
             </svg>
             Plans
           </a>
         </li>
       </ul>
 
-      <!-- Right rail -->
+      <!-- Right rail (this MUST match index.html) -->
       <div class="right-rail">
-        <!-- When logged out -->
+        <!-- Logged out -->
         <div class="Login-Signup">
           <a class="login" href="login.html">Login</a>
           <a class="Signup" href="signup.html">Signup</a>
         </div>
 
-        <!-- When logged in -->
-        <div id="welcome-user" class="welcome-inline" style="display:none;">
+        <!-- Logged in -->
+        <div id="welcome-user" class="welcome-inline">
           Welcome, <span id="user-name"></span>!
         </div>
 
-        <div class="profile-dropdown" style="display:none;">
-          <img src="imgs/profile.svg" alt="profile icon" />
+        <div class="profile-dropdown">
+          <img id="nav-avatar" src="imgs/profile.svg" alt="Profile icon" />
           <div class="profile-menu">
-            <a href="#"><img class="profile-icon" src="imgs/Myaccount.svg" alt="Account icon" /> My Account</a>
-            <a href="settings.html"><img class="profile-icon" src="imgs/setting.svg" alt="Settings icon" /> Settings</a>
-            <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt="Logout icon" /> Logout</a>
+            <a href="settings.html">
+              <img class="profile-icon" src="imgs/setting.svg" alt="Settings icon" />
+              Settings
+            </a>
+            <a href="#" id="logout-link">
+              <img class="profile-icon" src="imgs/logout.svg" alt="Logout icon" />
+              Logout
+            </a>
           </div>
         </div>
-<!-- Region clock -->
-<div id="nav-clock" class="nav-clock" aria-live="polite" title="Local time"></div>
 
         <!-- Mobile toggle -->
         <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -138,55 +143,160 @@
       <a href="#">Hotel</a>
     </div>
   </div>
-  
+
+  <!-- =========================
+       ABOUT PAGE CONTENT
+  ========================== -->
+  <main class="about-main">
+    <!-- Simple hero -->
+    <section class="about-hero">
+      <div class="container">
+        <p class="about-kicker">About Global Compass</p>
+        <h1>Your essential guide to critical services abroad.</h1>
+        <p class="about-lead">
+          Global Compass helps you quickly find hospitals, banks, police stations,
+          pharmacies, and other must-have services so you can focus on the trip,
+          not the logistics.
+        </p>
+      </div>
+    </section>
+
+    <!-- What we do / What makes us different -->
+    <section class="about-section">
+      <div class="container about-two-col">
+        <article class="about-card">
+          <h2>What we do</h2>
+          <ul class="about-list">
+            <li>Keep the directory focused on essential, high-stakes services.</li>
+            <li>Organize everything into clear categories you recognize while traveling.</li>
+            <li>Highlight details that matter abroad: type, area, and how to reach it.</li>
+            <li>Make it easy to scan on a phone when you’re on the move.</li>
+          </ul>
+        </article>
+
+        <article class="about-card">
+          <h2>What makes us different</h2>
+          <ul class="about-list">
+            <li>No endless map of pins or generic tourist listings.</li>
+            <li>Safety-critical places are never buried under ads or noise.</li>
+            <li>Language-light, icon-friendly layout for international use.</li>
+            <li>Designed to grow into shared tools for trips and teams.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- How it fits into a trip -->
+    <section class="about-section">
+      <div class="container">
+        <h2 class="about-heading">How Global Compass fits into your trip</h2>
+        <ol class="about-steps">
+          <li>
+            <strong>Before you go:</strong> Check the availability of hospitals,
+            banks, and police stations near where you plan to stay.
+          </li>
+          <li>
+            <strong>On arrival:</strong> Pick a category and see the most relevant
+            options in seconds.
+          </li>
+          <li>
+            <strong>During the trip:</strong> Keep key services in mind for changes
+            of plan or emergencies.
+          </li>
+          <li>
+            <strong>Afterward:</strong> Reuse your knowledge for future trips or
+            share it with people traveling to the same city.
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="about-section">
+      <div class="container about-two-col">
+        <article class="about-card">
+          <h2>What’s next</h2>
+          <ul class="about-list">
+            <li>Deeper coverage for more cities and neighborhoods.</li>
+            <li>Richer context around each service, tailored to travelers.</li>
+            <li>Saved “trusted places” you can carry across trips.</li>
+          </ul>
+        </article>
+
+        <article class="about-card">
+          <h2>Future direction</h2>
+          <ul class="about-list">
+            <li>Shared views for families, friends, and teams on the same route.</li>
+            <li>Smarter suggestions based on region, time of day, and need.</li>
+            <li>Offline-friendly experiences for weak or unstable connections.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="about-section">
+      <div class="container about-cta">
+        <div>
+          <h2>Explore the service directory</h2>
+          <p>
+            Browse categories and see how Global Compass can support your next destination.
+          </p>
+        </div>
+        <a class="about-cta-btn" href="Services.html">Open services catalog</a>
+      </div>
+    </section>
+  </main>
+
   <!-- =========================
        FOOTER
   ========================== -->
   <div class="footer-background">
     <footer>
-      <!-- Brand -->
       <div class="footer-left">
         <img id="footer-logo" src="imgs/logo.png" alt="Logo" />
         <span class="footer-brand">Global Compass</span>
       </div>
 
-      <!-- Footer links -->
       <div class="footer-links">
         <a href="#">
           <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 2l7 3v6c0 5.25-3.5 10.1-7 11-3.5-.9-7-5.75-7-11V5l7-3Z" fill="currentColor" opacity=".12"/>
-            <path d="M12 2l7 3v6c0 5.25-3.5 10.1-7 11-3.5-.9-7-5.75-7-11V5l7-3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <path d="M9.5 12.2l2 2 3.5-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 2l7 3v6c0 5.25-3.5 10.1-7 11-3.5-.9-7-5.75-7-11V5l7-3Z" fill="currentColor" opacity=".12" />
+            <path d="M12 2l7 3v6c0 5.25-3.5 10.1-7 11-3.5-.9-7-5.75-7-11V5l7-3Z" stroke="currentColor"
+              stroke-width="1.5" fill="none" />
+            <path d="M9.5 12.2l2 2 3.5-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" />
           </svg>
           Privacy Policy
         </a>
 
         <a href="#">
           <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.6" fill="none"/>
-            <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.6" fill="none" />
+            <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
           </svg>
           Terms of Service
         </a>
 
-        <a href="#subscriptions">
+        <a href="Subscribtion.html">
           <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z" fill="currentColor"/>
+            <path d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z"
+              fill="currentColor" />
           </svg>
           Plans
         </a>
       </div>
 
-      <!-- Copyright -->
       <div id="copy-right">
         &copy; 2025 Global Compass. All rights reserved.
       </div>
     </footer>
   </div>
+
   <!-- =========================
        SCRIPTS
   ========================== -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="script.js"></script>
   <script type="module" src="auth.js"></script>
 </body>
