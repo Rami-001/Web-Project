@@ -16,8 +16,7 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
-/* ---------- App Layout ---------- */
+/* ---------- Layout ---------- */
 body {
   --header-h: 64px;
   min-height: 100vh;
@@ -26,9 +25,8 @@ body {
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial,
     sans-serif;
   color: var(--gc-text);
-  background: #0a1324; /* fallback while image loads */
+  background: #0a1324; 
 }
-
 /* Full-page background image (covers entire site) */
 body::before {
   content: "";
@@ -68,7 +66,6 @@ body::after {
     );
   pointer-events: none;
 }
-
 /* Fill space between header & footer */
 main,
 section,
@@ -76,7 +73,6 @@ section,
 .Bigbox {
   flex: 1 0 auto;
 }
-
 /* =========================================================
    THEME TOKENS
    ========================================================= */
@@ -86,24 +82,20 @@ section,
   --gc-mint: #2dd4bf;
   --gc-sand: #fbbf24;
   --gc-berry: #8b5cf6;
-
   --gc-text: #e6f0ff;
   --gc-muted: #9db3d7;
   --gc-card: #0f1b31d9;
   --gc-line: #1d2a44;
-
   --gc-ring: rgba(56, 189, 248, 0.32);
   --gc-glow: 0 18px 52px rgba(34, 211, 238, 0.28);
   --gc-shadow-1: 0 12px 32px rgba(0, 0, 0, 0.35);
   --gc-shadow-2: 0 30px 70px rgba(0, 0, 0, 0.55);
-
   --wrap: 1200px;
 }
 .container {
   width: min(var(--wrap), 94%);
   margin-inline: auto;
 }
-
 /* =========================================================
    HEADER / NAV
    ========================================================= */
@@ -305,7 +297,6 @@ section,
   width: 22px;
   height: 22px;
 }
-
 /* Mobile toggle button */
 .nav-toggle {
   display: none;
@@ -322,7 +313,6 @@ section,
   background: #d7e6ff;
   margin: 4px 0;
 }
-
 /* =========================================================
    MEGA DROPDOWN (wraps desktop, stacks mobile)
    ========================================================= */
@@ -377,7 +367,6 @@ section,
   color: #fff;
   text-decoration: underline;
 }
-
 /* =========================================================
    HERO (text; background handled by body::before)
    ========================================================= */
@@ -409,7 +398,6 @@ section,
   line-height: 1.1;
   margin-bottom: 150px;
 }
-
 /* =========================================================
    CONTENT / CARDS
    ========================================================= */
@@ -432,7 +420,7 @@ section,
   max-width: 480px;
   background: var(--gc-card);
   backdrop-filter: blur(10px);
-  border: 1px solid transparent;
+  border: 1px solid #19bcdc;
   border-radius: 20px;
   padding: 26px;
   text-align: center;
@@ -462,7 +450,8 @@ section,
 }
 .Box:hover {
   transform: translateY(-6px);
-  box-shadow: var(--gc-shadow-2);
+  box-shadow: 0 12px 25px rgba(25, 188, 220, 0.25);
+  border-color: #38e0ff;
 }
 .Box h2 {
   font-size: 1.24rem;
@@ -513,8 +502,8 @@ section,
   transform: translateX(8px);
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.08),
-    rgba(255, 255, 255, 0.05)
+    rgba(49, 248, 255, 0.08),
+    rgba(49, 248, 255, 0.08)
   );
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.09);
   border-left: 4px solid var(--accent-teal);
@@ -537,7 +526,6 @@ section,
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.09);
   border-left: 4px solid #ffa502;
 }
-
 /* CTA */
 .Explore {
   width: min(560px, 92%);
@@ -553,9 +541,12 @@ section,
   justify-content: space-between;
   gap: 20px;
   color: #eaf2ff;
+  border: 1px solid #19bcdc;
 }
 .Explore:hover {
-  box-shadow: var(--gc-shadow-2);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(25, 188, 220, 0.25);
+  border-color: #38e0ff;
 }
 .explore-btn {
   padding: 12px 20px;
@@ -568,12 +559,12 @@ section,
   background: linear-gradient(90deg, var(--gc-sand), var(--gc-mint));
   box-shadow: 0 14px 36px rgba(251, 191, 36, 0.34);
   transition: transform 0.18s, box-shadow 0.18s;
+  padding: 20px;
 }
 .explore-btn:hover {
   transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 20px 48px rgba(251, 191, 36, 0.46);
+  box-shadow: 0 20px 48px rgba(255, 183, 0, 0.46);
 }
-
 /* =========================================================
    FOOTER
    ========================================================= */
@@ -1751,6 +1742,13 @@ footer {
 .favorite-card {
   border: 2px solid #ff5f5f;
   box-shadow: 0 0 15px rgba(255, 95, 95, 0.3);
+}
+.more-info-link{
+  color: rgb(0, 238, 255);
+}
+.more-info-link:hover{
+  text-decoration: underline;
+  color: rgb(8, 64, 185);
 }
 .no-results {
   text-align: center;

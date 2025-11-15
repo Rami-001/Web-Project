@@ -1,116 +1,115 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const header = document.querySelector('.nav-bar');
-  const toggle = document.querySelector('.nav-toggle');
-  const linksPanel = document.querySelector('#nav-links');
-
-  if (!toggle || !header || !linksPanel) return;
-
-  const closeMenu = () => {
-    header.classList.remove('nav-open');
-    document.body.style.overflow = '';
-    toggle.setAttribute('aria-expanded', 'false');
-  };
-
-  const openMenu = () => {
-    header.classList.add('nav-open');
-    document.body.style.overflow = 'hidden';
-    toggle.setAttribute('aria-expanded', 'true');
-  };
-
-  // Toggle menu on click
-  toggle.addEventListener('click', () => {
-    if (header.classList.contains('nav-open')) closeMenu();
-    else openMenu();
-  });
-
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && header.classList.contains('nav-open')) {
-      closeMenu();
+$(document).ready(function () {
+    // =========================
+    // NAVBAR TOGGLE
+    // =========================
+    let $header = $('.nav-bar');
+    let $toggle = $('.nav-toggle');
+    let $linksPanel = $('#nav-links');
+    if ($toggle.length && $header.length && $linksPanel.length) {
+        let closeMenu = () => {
+            $header.removeClass('nav-open');
+            $('body').css('overflow', '');
+            $toggle.attr('aria-expanded', 'false');
+        };
+        let openMenu = () => {
+            $header.addClass('nav-open');
+            $('body').css('overflow', 'hidden');
+            $toggle.attr('aria-expanded', 'true');
+        };
+        // Toggle on click
+        $toggle.on('click', function () {
+            $header.hasClass('nav-open') ? closeMenu() : openMenu();
+        });
+        // ESC closes menu
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape' && $header.hasClass('nav-open')) {
+                closeMenu();
+            }
+        });
+        // Click outside closes menu
+        $(document).on('click', function (e) {
+            if ($header.hasClass('nav-open') && !$header.has(e.target).length && !$toggle.is(e.target)) {
+                closeMenu();
+            }
+        });
+        // Auto-close when resizing to desktop
+        let mq = window.matchMedia('(min-width: 961px)');
+        mq.addEventListener('change', ev => {
+            if (ev.matches) closeMenu();
+        });
     }
-  });
+    // =========================
+    // DROPDOWN
+    // =========================
+    let $servicesLink = $('.dropdown a');
+    let $dropdownMenu = $('.dropdown-content');
 
-  // Close when clicking outside the menu
-  document.addEventListener('click', (e) => {
-    if (!header.classList.contains('nav-open')) return;
-    const isInside = header.contains(e.target);
-    if (!isInside) closeMenu();
-  });
+    if ($servicesLink.length && $dropdownMenu.length) {
+        let hideTimeout;
+        let isMobile = $(window).width() <= 960;
+        // Detect screen size changes
+        $(window).on('resize', function () {
+            isMobile = $(this).width() <= 960;
+        });
+        // Desktop hover show
+        $servicesLink.on('mouseenter', function () {
+            if (!isMobile) {
+                clearTimeout(hideTimeout);
+                $dropdownMenu.addClass('visible');
+            }
+        });
+        // Desktop hover hide
+        $servicesLink.on('mouseleave', function () {
+            if (!isMobile) {
+                hideTimeout = setTimeout(() => {
+                    $dropdownMenu.removeClass('visible');
+                }, 500);
+            }
+        });
+        // Keep open while hovering dropdown
+        $dropdownMenu.on('mouseenter', function () {
+            if (!isMobile) {
+                clearTimeout(hideTimeout);
+                $dropdownMenu.addClass('visible');
+            }
+        });
+        $dropdownMenu.on('mouseleave', function () {
+            if (!isMobile) {
+                hideTimeout = setTimeout(() => {
+                    $dropdownMenu.removeClass('visible');
+                }, 500);
+            }
+        });
+        // Mobile click logic
+        let dropdownOpenedOnce = false;
+        $servicesLink.on('click', function (e) {
+            if (!$dropdownMenu.hasClass('visible')) {
+                e.preventDefault();
+                $dropdownMenu.addClass('visible');
+                dropdownOpenedOnce = true;
+                return;
+            }
 
-  // Close automatically when resizing to desktop
-  const mq = window.matchMedia('(min-width: 961px)');
-  mq.addEventListener('change', (ev) => {
-    if (ev.matches) closeMenu();
-  });
+            if (dropdownOpenedOnce) {
+                window.location.href = 'services.html'; // change if needed
+            }
+        });
+        // Click outside closes dropdown
+        $(document).on('click', function (e) {
+            if (!$servicesLink.is(e.target) && !$dropdownMenu.has(e.target).length) {
+                $dropdownMenu.removeClass('visible');
+                dropdownOpenedOnce = false;
+            }
+        });
+        // ESC closes dropdown
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape') {
+                $dropdownMenu.removeClass('visible');
+                dropdownOpenedOnce = false;
+            }
+        });
+    }
 });
 
-//=========================
-//       HEADER / NAVBAR
-//==========================
-document.addEventListener('DOMContentLoaded', function() {
-  const servicesLink = document.querySelector('.dropdown a');
-  const dropdownMenu = document.querySelector('.dropdown-content');
-  if (!servicesLink || !dropdownMenu) return;
-  let hideTimeout;
-  let isMobile = window.innerWidth <= 960;
-  // Detect screen size changes
-  window.addEventListener('resize', () => {
-    isMobile = window.innerWidth <= 960;
-  });
-  // Hover to show (desktop)
-  servicesLink.addEventListener('mouseenter', () => {
-    if (!isMobile) {
-      clearTimeout(hideTimeout);
-      dropdownMenu.classList.add('visible');
-    }
-  });
-  // Hover out to hide (desktop)
-  servicesLink.addEventListener('mouseleave', () => {
-    if (!isMobile) {
-      hideTimeout = setTimeout(() => dropdownMenu.classList.remove('visible'), 500);
-    }
-  });
 
-  // Keep open while hovering dropdown (desktop)
-  dropdownMenu.addEventListener('mouseenter', () => {
-    if (!isMobile) {
-      clearTimeout(hideTimeout);
-      dropdownMenu.classList.add('visible');
-    }
-  });
-  // Hide when leaving dropdown (desktop)
-  dropdownMenu.addEventListener('mouseleave', () => {
-    if (!isMobile) {
-      hideTimeout = setTimeout(() => dropdownMenu.classList.remove('visible'), 500);
-    }
-  });
-  // Toggle dropdown on click (mobile) and go to page on second click
-  let dropdownOpenedOnce = false;
-  servicesLink.addEventListener('click', (e) => {
-    // If dropdown not visible → show it
-    if (!dropdownMenu.classList.contains('visible')) {
-      e.preventDefault();
-      dropdownMenu.classList.add('visible');
-      dropdownOpenedOnce = true;
-      return;
-    }
-    // If dropdown already visible → navigate
-    if (dropdownOpenedOnce) {
-      window.location.href = 'services.html'; // <-- Change this to your real Services page
-    }
-  });
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!servicesLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
-      dropdownMenu.classList.remove('visible');
-      dropdownOpenedOnce = false;
-    }
-  });
-  // Close dropdown with Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      dropdownMenu.classList.remove('visible');
-      dropdownOpenedOnce = false;
-    }
-  });
-});
+
