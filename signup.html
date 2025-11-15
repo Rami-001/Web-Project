@@ -38,7 +38,7 @@
           Welcome, <span id="user-name"></span>!
         </div>
         <div class="profile-dropdown" style="display:none;">
-          <img src="imgs/profile.svg" alt="Profile icon" />
+          <img id="nav-avatar" src="imgs/profile.svg" alt="Profile icon" />
           <div class="profile-menu">
             <a href="#"><img class="profile-icon" src="imgs/Myaccount.svg" alt="Account"> My Account</a>
             <a href="settings.html"><img class="profile-icon" src="imgs/setting.svg" alt="Settings"> Settings</a>
@@ -63,12 +63,24 @@
       <input id="signup-email" class="auth-input" type="email" placeholder="Email" required />
       
       <!-- Password input -->
-      <input id="signup-password" class="auth-input" type="password" 
-             placeholder="Password (min 6 chars)" required minlength="6" />
+      <input
+        id="signup-password"
+        class="auth-input"
+        type="password"
+        placeholder="Password (min 6 chars)"
+        required
+        minlength="6"
+      />
       
       <!-- Password confirmation -->
-      <input id="signup-confirm" class="auth-input" type="password" 
-             placeholder="Confirm password" required minlength="6" />
+      <input
+        id="signup-confirm"
+        class="auth-input"
+        type="password"
+        placeholder="Confirm password"
+        required
+        minlength="6"
+      />
       
       <!-- Submit button -->
       <button type="submit" class="auth-btn">Create account</button>
@@ -82,6 +94,7 @@
   </main>
 
   <!-- ===== SCRIPTS ===== -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script type="module" src="auth.js"></script>
   <script src="script.js"></script>
 </body>
