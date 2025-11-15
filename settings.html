@@ -166,81 +166,64 @@
   <script type="module" src="auth.js"></script>
   <script>
     // Theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
+    const $themeToggle = $("#theme-toggle");
+    const $body = $("body");
 
     // Check saved theme preference
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    if (savedTheme === 'light') {
-      body.classList.add('light-mode');
-      themeToggle.checked = true;
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    if (savedTheme === "light") {
+      $body.addClass("light-mode");
+      $themeToggle.prop("checked", true);
     }
 
-    themeToggle.addEventListener('change', () => {
-      if (themeToggle.checked) {
-        body.classList.add('light-mode');
-        localStorage.setItem('theme', 'light');
+    $themeToggle.on("change", function() {
+      if ($(this).is(":checked")) {
+        $body.addClass("light-mode");
+        localStorage.setItem("theme", "light");
       } else {
-        body.classList.remove('light-mode');
-        localStorage.setItem('theme', 'dark');
+        $body.removeClass("light-mode");
+        localStorage.setItem("theme", "dark");
       }
     });
 
     // Plan management
     function updatePlanDisplay() {
-      const currentPlan = localStorage.getItem('userPlan') || 'free';
-      document.getElementById('current-plan').textContent = currentPlan.charAt(0).toUpperCase() + currentPlan.slice(1);
-      document.getElementById('plan-status').textContent = currentPlan === 'free' ? 'Active' : 'Active';
+      const currentPlan = localStorage.getItem("userPlan") || "free";
+      $("#current-plan").text(currentPlan.charAt(0).toUpperCase() + currentPlan.slice(1));
+      $("#plan-status").text(currentPlan === "free" ? "Active" : "Active");
     }
 
-    function upgradePlan() {
-      window.location.href = 'Subscription.html';
-    }
+    window.upgradePlan = function() {
+      window.location.href = "Subscription.html";
+    };
 
-    function cancelPlan() {
-      if (confirm('Are you sure you want to cancel your subscription?')) {
-        localStorage.setItem('userPlan', 'free');
-        const msg = document.getElementById('subscription-msg');
-        msg.textContent = 'Subscription cancelled.';
-        msg.classList.remove('success');
-        msg.classList.add('error');
-        msg.style.display = 'block';
+    window.cancelPlan = function() {
+      if (confirm("Are you sure you want to cancel your subscription?")) {
+        localStorage.setItem("userPlan", "free");
+        const $msg = $("#subscription-msg");
+        $msg.text("Subscription cancelled.").removeClass("success").addClass("error").show();
         updatePlanDisplay();
-        setTimeout(() => msg.style.display = 'none', 3000);
+        setTimeout(() => $msg.hide(), 3000);
       }
-    }
+    };
 
-    function saveNotifications() {
-      const emailNotif = document.getElementById('email-notifications').checked;
-      localStorage.setItem('emailNotifications', emailNotif);
-      const msg = document.getElementById('notification-msg');
-      msg.textContent = 'Notification preferences saved!';
-      msg.classList.remove('error');
-      msg.classList.add('success');
-      msg.style.display = 'block';
-      setTimeout(() => msg.style.display = 'none', 3000);
-    }
+    window.saveNotifications = function() {
+      const emailNotif = $("#email-notifications").is(":checked");
+      localStorage.setItem("emailNotifications", emailNotif);
+      const $msg = $("#notification-msg");
+      $msg.text("Notification preferences saved!").removeClass("error").addClass("success").show();
+      setTimeout(() => $msg.hide(), 3000);
+    };
 
-    function changePassword() {
-      alert('Redirecting to password change page...');
-    }
+    window.changePassword = function() {
+      alert("Redirecting to password change page...");
+    };
 
-    function deleteAccount() {
-      if (confirm('This action cannot be undone. Are you sure?')) {
-        alert('Account deletion requested. Please contact support to confirm.');
+    window.deleteAccount = function() {
+      if (confirm("This action cannot be undone. Are you sure?")) {
+        alert("Account deletion requested. Please contact support to confirm.");
       }
-    }
-
-    function saveDisplayName() {
-      const displayName = document.getElementById('set-name').value;
-      localStorage.setItem('displayName', displayName);
-      const msg = document.getElementById('name-msg');
-      msg.textContent = 'Display name updated!';
-      msg.classList.remove('error');
-      msg.classList.add('success');
-      msg.style.display = 'block';
-      setTimeout(() => msg.style.display = 'none', 3000);
-    }
+    };
 
     // Initialize
     updatePlanDisplay();
