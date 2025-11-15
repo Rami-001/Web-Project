@@ -7,15 +7,11 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css" />
   </head>
-
   <body>
     <!-- =========================
        HEADER / NAVBAR
@@ -68,7 +64,7 @@
             </a>
           </li>
           <li>
-            <a href="Subscribtion.html">
+            <a href="Subscription.html">
               <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z" fill="currentColor"/>
               </svg>
@@ -106,7 +102,6 @@
         </div>
       </nav>
     </header>
-
     <!-- =========================
        SERVICES DROPDOWN
   ========================== -->
@@ -131,20 +126,30 @@
       </div>
     </div>
     <!-- =========================
-       SERVICES PAGE CONTENT
-  ========================== -->
-    <div class="service-filters">
-      <input  type="search"  name=""  id="searchInput"  placeholder="Search for Services....."/>
-      <select id="sortSelect">
-        <option value="" selected disabled>Sort by....</option>
-        <option value="name-asc">Name (A-Z)</option>
-        <option value="name-desc">Name (Z-A)</option>
-      </select>
-      <label>
-        <input type="checkbox" id="onlyFavorites" /> Show Only Favorites
-      </label>
-    </div>
-    <div class="servicecontainer" id="service-container"></div>
+        SERVICES PAGE CONTENT
+    ========================== -->
+<div class="service-filters">
+  <input type="search" id="searchInput" placeholder="Search services..." />
+  <select id="filter-category">
+    <option value="All" selected>All Categories</option>
+    <option value="Health & Safety">Health & Safety</option>
+    <option value="Finance">Finance</option>
+    <option value="Sustenance & Lodging">Sustenance & Lodging</option>
+  </select>
+  <select id="filter-city">
+    <option value="All" selected>All Cities</option>
+    <option value="Beirut">Beirut</option>
+    <option value="Saida">Saida</option>
+    <option value="Tripoli">Tripoli</option>
+  </select>
+  <select id="sortSelect">
+    <option value="" selected disabled>Sort by . . .</option>
+    <option value="name-asc">A–Z</option>
+    <option value="name-desc">Z–A</option>
+  </select>
+  <button class="clear-filters">Clear All</button>
+</div>
+    <div id="services-by-category"></div>
     <!-- =========================
        FOOTER
   ========================== -->
@@ -172,7 +177,7 @@
             </svg>
             Terms of Service
           </a>
-          <a href="#subscriptions">
+          <a href="Subscription.html">
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z" fill="currentColor"/>
             </svg>
