@@ -6,6 +6,7 @@ import {
   signOut,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  updateProfile,
 } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
 
 const firebaseConfig = {
@@ -69,7 +70,7 @@ $(function () {
       setMsg(msg, "success", "Signing you in…");
 
       try {
-        await signInWithEmailAndPassword(auth, email, password);
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
         setMsg(msg, "success", "Login successful! Redirecting…");
         setTimeout(() => (window.location.href = "index.html"), 700);
       } catch (err) {
@@ -103,7 +104,7 @@ $(function () {
       setMsg(msg, "success", "Creating your account…");
 
       try {
-        await createUserWithEmailAndPassword(auth, email, password);
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         setMsg(msg, "success", "Account created! Redirecting…");
         setTimeout(() => (window.location.href = "index.html"), 700);
       } catch (err) {
@@ -122,6 +123,8 @@ onAuthStateChanged(auth, (user) => {
   const welcomeUser = document.getElementById("welcome-user");
   const userNameSpan = document.getElementById("user-name");
   const navAvatar = document.getElementById("nav-avatar");
+  const setEmail = document.getElementById("set-email");
+  const setName = document.getElementById("set-name");
 
   if (user) {
     const name = user.displayName || (user.email ? user.email.split("@")[0] : "User");
@@ -133,6 +136,10 @@ onAuthStateChanged(auth, (user) => {
       if (userNameSpan) userNameSpan.textContent = name;
     }
     if (navAvatar && user.photoURL) navAvatar.src = user.photoURL;
+    
+    // Populate settings page if on settings.html
+    if (setEmail) setEmail.value = user.email || "";
+    if (setName) setName.value = user.displayName || "";
   } else {
     if (loginSignup) loginSignup.style.display = "flex";
     if (profileDropdown) profileDropdown.style.display = "none";
@@ -140,6 +147,42 @@ onAuthStateChanged(auth, (user) => {
     if (navAvatar) navAvatar.src = "imgs/profile.svg";
   }
 });
+
+// Add save display name function
+window.saveDisplayName = async function() {
+  const nameInput = document.getElementById("set-name");
+  const msg = document.getElementById("name-msg");
+  const newName = nameInput.value.trim();
+  
+  if (!newName) {
+    msg.textContent = "Please enter a name.";
+    msg.classList.remove("success");
+    msg.classList.add("error");
+    msg.style.display = "block";
+    return;
+  }
+  
+  try {
+    await updateProfile(auth.currentUser, {
+      displayName: newName
+    });
+    msg.textContent = "Display name saved!";
+    msg.classList.remove("error");
+    msg.classList.add("success");
+    msg.style.display = "block";
+    
+    // Update navbar
+    const userNameSpan = document.getElementById("user-name");
+    if (userNameSpan) userNameSpan.textContent = newName;
+    
+    setTimeout(() => msg.style.display = "none", 3000);
+  } catch (err) {
+    msg.textContent = "Error saving name. Try again.";
+    msg.classList.remove("success");
+    msg.classList.add("error");
+    msg.style.display = "block";
+  }
+}
 
 /* ============================================
    Logout handler

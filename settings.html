@@ -82,6 +82,8 @@
             <input id="set-name" class="settings-input" type="text" placeholder="Your name" />
           </div>
         </div>
+        <button class="settings-btn" style="margin-top:8px;" onclick="saveDisplayName()">Save Name</button>
+        <div id="name-msg" class="settings-msg" style="display:none; margin-top:8px;"></div>
       </section>
 
       <!-- Theme Settings -->
@@ -227,6 +229,17 @@
       if (confirm('This action cannot be undone. Are you sure?')) {
         alert('Account deletion requested. Please contact support to confirm.');
       }
+    }
+
+    function saveDisplayName() {
+      const displayName = document.getElementById('set-name').value;
+      localStorage.setItem('displayName', displayName);
+      const msg = document.getElementById('name-msg');
+      msg.textContent = 'Display name updated!';
+      msg.classList.remove('error');
+      msg.classList.add('success');
+      msg.style.display = 'block';
+      setTimeout(() => msg.style.display = 'none', 3000);
     }
 
     // Initialize
