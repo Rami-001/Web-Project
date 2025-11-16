@@ -4,11 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Global Compass | Essential Travel Directory</title>
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -135,14 +133,42 @@
     <option value="Finance">Finance</option>
     <option value="Sustenance & Lodging">Sustenance & Lodging</option>
   </select>
-  <select id="filter-city">
-    <option value="All" selected>All Cities</option>
-    <option value="Beirut">Beirut</option>
-    <option value="Saida">Saida</option>
-    <option value="Tripoli">Tripoli</option>
-  </select>
+  <input list="cities" id="filter-city" placeholder="Type to search cities..." class="city-search">
+<datalist id="cities">
+    <option value="Beirut">
+    <option value="Jounieh">
+    <option value="Byblos">
+    <option value="Tripoli">
+    <option value="Saida">
+    <option value="Tyre">
+    <option value="Zahle">
+    <option value="Baalbek">
+    <option value="Nabatieh">
+    <option value="Aley">
+    <option value="Batroun">
+    <option value="Bcharre">
+    <option value="Chouf">
+    <option value="Damour">
+    <option value="Dbayeh">
+    <option value="Deir el Qamar">
+    <option value="Hamra">
+    <option value="Hazmieh">
+    <option value="Jbeil">
+    <option value="Jdeideh">
+    <option value="Jezzine">
+    <option value="Kfarhabou">
+    <option value="Marjayoun">
+    <option value="Mechref">
+    <option value="Metn">
+    <option value="Mkalles">
+    <option value="Ras Beirut">
+    <option value="Rashaya">
+    <option value="Sour">
+    <option value="Zgharta">
+    <option value="Zouk Mosbeh">
+</datalist>
   <select id="sortSelect">
-    <option value="" selected disabled>Sort by . . .</option>
+    <option value="" selected disabled>Sort by</option>
     <option value="name-asc">A–Z</option>
     <option value="name-desc">Z–A</option>
   </select>
@@ -161,7 +187,7 @@
         </div>
         <!-- Footer links -->
         <div class="footer-links">
-          <a href="#">
+          <a href="Privacypolicy.html">
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 2l7 3v6c0 5.25-3.5 10.1-7 11-3.5-.9-7-5.75-7-11V5l7-3Z" fill="currentColor" opacity=".12"/>
               <path d="M12 2l7 3v6c0 5.25-3.5 10.1-7 11-3.5-.9-7-5.75-7-11V5l7-3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
@@ -169,7 +195,7 @@
             </svg>
             Privacy Policy
           </a>
-          <a href="#">
+          <a href="termsofservices.html">
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
               <rect  x="4"  y="3"  width="16"  height="18"  rx="2"  stroke="currentColor"  stroke-width="1.6"  fill="none"/>
               <path  d="M8 8h8M8 12h8M8 16h5"  stroke="currentColor"  stroke-width="1.6"  stroke-linecap="round"/>
