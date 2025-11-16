@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Global Compass • Find Essential Services Abroad</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- HEADER / NAVBAR -->
+  <header class="main-header">
+    <nav class="nav-bar">
+      <div class="logo-container">
+        <img id="nav-logo" src="imgs/logo.png" alt="Global Compass Logo" />
+        <span class="logo-text">Global Compass</span>
+      </div>
+
+      <ul id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li class="dropdown"><a href="Services.html">Services</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+        <li><a href="Subscription.html">Plans</a></li>
+      </ul>
+
+      <div class="right-rail">
+        <div class="Login-Signup">
+          <a class="login" href="login.html">Login</a>
+          <a class="Signup" href="signup.html">Sign up</a>
+        </div>
+
+        <div id="welcome-user" class="welcome-inline">
+          Welcome, <span id="user-name"></span>!
+        </div>
+
+        <div class="profile-dropdown">
+          <img id="nav-avatar" src="imgs/profile.svg" alt="Profile" />
+          <div class="profile-menu">
+            <a href="settings.html"><img class="profile-icon" src="imgs/setting.svg" alt="Settings" />Settings</a>
+            <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt="Logout" />Logout</a>
+          </div>
+        </div>
+
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- SERVICES DROPDOWN -->
+  <div class="dropdown-content">
+    <div class="Service-column">
+      <h4>Health &amp; Safety</h4>
+      <a href="Services.html?category=hospital">Hospital</a>
+      <a href="Services.html?category=pharmacy">Pharmacy</a>
+      <a href="Services.html?category=police">Police Station</a>
+    </div>
+    <div class="Service-column">
+      <h4>Finance</h4>
+      <a href="Services.html?category=bank">Bank</a>
+      <a href="Services.html?category=atm">ATM</a>
+      <a href="Services.html?category=exchange">Money Exchanger</a>
+    </div>
+    <div class="Service-column">
+      <h4>Sustenance &amp; Lodging</h4>
+      <a href="Services.html?category=restaurant">Restaurant</a>
+      <a href="Services.html?category=coffee">Coffee Shop</a>
+      <a href="Services.html?category=hotel">Hotel</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="background">
+    <div class="background-content">
+      <cite>Your trusted guide to essential services worldwide</cite>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="Bigbox">
+    <div class="group1">
+      <article class="Box">
+        <h2>Find Hospitals &amp; Medical Care</h2>
+        <ul>
+          <li>Emergency rooms 24/7</li>
+          <li>Pharmacies &amp; clinics</li>
+          <li>Dental &amp; specialists</li>
+        </ul>
+      </article>
+
+      <article class="Box">
+        <h2>Banking &amp; Finance</h2>
+        <ul>
+          <li>ATMs &amp; banks</li>
+          <li>Currency exchange</li>
+          <li>Wire transfers</li>
+        </ul>
+      </article>
+
+      <article class="Box">
+        <h2>Accommodation</h2>
+        <ul>
+          <li>Hotels &amp; hostels</li>
+          <li>Guesthouses</li>
+          <li>Vacation rentals</li>
+        </ul>
+      </article>
+    </div>
+
+    <section class="home-cta-section">
+      <div class="home-cta-content">
+        <h2>Explore Services in 50+ Cities</h2>
+        <p>Access verified, up-to-date information about hospitals, banks, restaurants, and more across the globe. Save time, stay safe, focus on your journey.</p>
+        <div class="home-cta-stats">
+          <div class="stat-item">
+            <span class="stat-num">50+</span>
+            <span class="stat-label">Cities</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">1000+</span>
+            <span class="stat-label">Services</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">24/7</span>
+            <span class="stat-label">Support</span>
+          </div>
+        </div>
+        <a class="explore-btn" href="Services.html">Browse Services</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <div class="footer-background">
+    <footer>
+      <div class="footer-left">
+        <img id="footer-logo" src="imgs/logo.png" alt="Logo" />
+        <span class="footer-brand">Global Compass</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="Subscription.html">Plans</a>
+      </div>
+
+      <div id="copy-right">
+        &copy; 2025 Global Compass. All rights reserved.
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+  <script type="module" src="auth.js"></script>
+</body>
+</html>
