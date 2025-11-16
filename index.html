@@ -3,94 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Global Compass | Essential Travel Directory</title>
+  <title>Global Compass • Find Essential Services Abroad</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <!-- =========================
-       HEADER / NAVBAR
-  ========================== -->
+  <!-- HEADER / NAVBAR -->
   <header class="main-header">
     <nav class="nav-bar">
-      <!-- Brand logo and company name -->
       <div class="logo-container">
-        <img id="nav-logo" src="imgs/logo.png" alt="Logo" />
+        <img id="nav-logo" src="imgs/logo.png" alt="Global Compass Logo" />
         <span class="logo-text">Global Compass</span>
       </div>
-      <!-- Main navigation links with SVG icons -->
+
       <ul id="nav-links">
-        <li>
-          <a href="index.html">
-            <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M10.2 3.4c.99-.8 2.61-.8 3.6 0l6 4.84c.76.61 1.2 1.52 1.2 2.48V19a2 2 0 0 1-2 2h-3.5a.5.5 0 0 1-.5-.5v-5a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v5a.5.5 0 0 1-.5.5H4a2 2 0 0 1-2-2v-8.28c0-.96.44-1.87 1.2-2.48l7-5.24Z"/>
-            </svg>
-            Home
-          </a>
-        </li>
-        <li>
-          <a href="aboutus.html">
-            <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
-              <circle cx="12" cy="8" r="1.4" fill="currentColor"/>
-              <rect x="11" y="11" width="2" height="7" rx="1" fill="currentColor"/>
-            </svg>
-            About Us
-          </a>
-        </li>
-        <!-- Services dropdown trigger -->
-        <li class="dropdown">
-          <a href="Services.html">
-            <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
-              <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor" opacity=".85"/>
-              <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor" opacity=".7"/>
-              <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor" opacity=".55"/>
-            </svg>
-            Services
-          </a>
-        </li>
-        <li>
-          <a href="contactus.html">
-            <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v.5l-9 6-9-6V6Z" fill="currentColor" />
-              <path d="M21 8.8V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8.8l8.43 5.62a2 2 0 0 0 2.14 0L21 8.8Z" fill="currentColor" opacity=".6"/>
-            </svg>
-            Contact Us
-          </a>
-        </li>
-        <li>
-          <a href="Subscription.html">
-            <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z" fill="currentColor"/>
-            </svg>
-            Plans
-          </a>
-        </li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li class="dropdown"><a href="#">Services</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+        <li><a href="Subscription.html">Plans</a></li>
       </ul>
-      <!-- Right side navigation elements -->
+
       <div class="right-rail">
-        <!-- Login/Signup buttons - shown when user is logged out -->
         <div class="Login-Signup">
           <a class="login" href="login.html">Login</a>
-          <a class="Signup" href="signup.html">Signup</a>
+          <a class="Signup" href="signup.html">Sign up</a>
         </div>
-        <!-- Welcome message - shown when user is logged in -->
-        <div id="welcome-user" class="welcome-inline" style="display:none;">
+
+        <div id="welcome-user" class="welcome-inline">
           Welcome, <span id="user-name"></span>!
         </div>
-        <!-- User profile dropdown - shown when user is logged in -->
-        <div class="profile-dropdown" style="display:none;">
-          <img src="imgs/profile.svg" alt="profile icon" />
+
+        <div class="profile-dropdown">
+          <img id="nav-avatar" src="imgs/profile.svg" alt="Profile" />
           <div class="profile-menu">
-            <a href="#"><img class="profile-icon" src="imgs/Myaccount.svg" alt="Account icon" /> My Account</a>
-            <a href="settings.html"><img class="profile-icon" src="imgs/setting.svg" alt="Settings icon" /> Settings</a>
-            <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt="Logout icon" /> Logout</a>
+            <a href="settings.html"><img class="profile-icon" src="imgs/setting.svg" alt="Settings" />Settings</a>
+            <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt="Logout" />Logout</a>
           </div>
         </div>
-        <!-- Mobile navigation toggle button -->
+
         <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -99,38 +51,35 @@
       </div>
     </nav>
   </header>
-  <!-- =========================
-       SERVICES DROPDOWN CONTENT
-       Displayed when Services menu is hovered/clicked
-  ========================== -->
+
+  <!-- SERVICES DROPDOWN -->
   <div class="dropdown-content">
     <div class="Service-column">
       <h4>Health &amp; Safety</h4>
-      <a href="#">Hospital</a>
-      <a href="#">Pharmacy</a>
-      <a href="#">Police Station</a>
+      <a href="Services.html?category=hospital">Hospital</a>
+      <a href="Services.html?category=pharmacy">Pharmacy</a>
+      <a href="Services.html?category=police">Police Station</a>
     </div>
     <div class="Service-column">
       <h4>Finance</h4>
-      <a href="#">Bank</a>
-      <a href="#">ATM</a>
-      <a href="#">Money Exchanger</a>
+      <a href="Services.html?category=bank">Bank</a>
+      <a href="Services.html?category=atm">ATM</a>
+      <a href="Services.html?category=exchange">Money Exchanger</a>
     </div>
     <div class="Service-column">
       <h4>Sustenance &amp; Lodging</h4>
-      <a href="#">Restaurant</a>
-      <a href="#">Coffee Shop</a>
-      <a href="#">Hotel</a>
+      <a href="Services.html?category=restaurant">Restaurant</a>
+      <a href="Services.html?category=coffee">Coffee Shop</a>
+      <a href="Services.html?category=hotel">Hotel</a>
     </div>
   </div>
-  <!-- =========================
-       HERO SECTION
-       Main banner with brand tagline
-  ========================== -->
-  <div class="background">
+
+  <!-- HERO -->
+  <section class="background">
     <div class="background-content">
-      <cite>Your essential guide to reliable services in any destination.</cite>
+      <cite>Your trusted guide to essential services worldwide</cite>
     </div>
+<<<<<<< HEAD
   </div>
   <!-- =========================
        MAIN CONTENT
@@ -180,50 +129,86 @@
       <h2>Ready to Explore?</h2>
       <button class="explore-btn" onclick="location.href='Services.html'">View All Services</button>
     </section>
+=======
+>>>>>>> e8c9d72933279c70afcf6b50e423e956ad6ddc2e
   </section>
-  <!-- =========================
-       FOOTER
-       Legal links and copyright information
-  ========================== -->
+
+  <!-- MAIN CONTENT -->
+  <main class="Bigbox">
+    <div class="group1">
+      <article class="Box">
+        <h2>Find Hospitals &amp; Medical Care</h2>
+        <ul>
+          <li>Emergency rooms 24/7</li>
+          <li>Pharmacies &amp; clinics</li>
+          <li>Dental &amp; specialists</li>
+        </ul>
+      </article>
+
+      <article class="Box">
+        <h2>Banking &amp; Finance</h2>
+        <ul>
+          <li>ATMs &amp; banks</li>
+          <li>Currency exchange</li>
+          <li>Wire transfers</li>
+        </ul>
+      </article>
+
+      <article class="Box">
+        <h2>Accommodation</h2>
+        <ul>
+          <li>Hotels &amp; hostels</li>
+          <li>Guesthouses</li>
+          <li>Vacation rentals</li>
+        </ul>
+      </article>
+    </div>
+
+    <section class="home-cta-section">
+      <div class="home-cta-content">
+        <h2>Explore Services in 50+ Cities</h2>
+        <p>Access verified, up-to-date information about hospitals, banks, restaurants, and more across the globe. Save time, stay safe, focus on your journey.</p>
+        <div class="home-cta-stats">
+          <div class="stat-item">
+            <span class="stat-num">50+</span>
+            <span class="stat-label">Cities</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">1000+</span>
+            <span class="stat-label">Services</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">24/7</span>
+            <span class="stat-label">Support</span>
+          </div>
+        </div>
+        <a class="explore-btn" href="Services.html">Browse Services</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
   <div class="footer-background">
     <footer>
-      <!-- Footer branding -->
       <div class="footer-left">
         <img id="footer-logo" src="imgs/logo.png" alt="Logo" />
         <span class="footer-brand">Global Compass</span>
       </div>
-      <!-- Legal and policy links -->
+
       <div class="footer-links">
-        <a href="#">
-          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 2l7 3v6c0 5.25-3.5 10.1-7 11-3.5-.9-7-5.75-7-11V5l7-3Z" fill="currentColor" opacity=".12"/>
-            <path d="M12 2l7 3v6c0 5.25-3.5 10.1-7 11-3.5-.9-7-5.75-7-11V5l7-3Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <path d="M9.5 12.2l2 2 3.5-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Privacy Policy
-        </a>
-        <a href="#">
-          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.6" fill="none"/>
-            <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-          Terms of Service
-        </a>
-        <a href="Subscription.html">
-          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z" fill="currentColor"/>
-          </svg>
-          Plans
-        </a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="Subscription.html">Plans</a>
       </div>
+
       <div id="copy-right">
         &copy; 2025 Global Compass. All rights reserved.
       </div>
     </footer>
   </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="script.js"></script>
   <script type="module" src="auth.js"></script>
-  <script src="Services.js"></script>
 </body>
 </html>

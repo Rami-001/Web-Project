@@ -2,100 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign up • Global Compass</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Up • Global Compass</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- ===== HEADER ===== -->
+  <!-- HEADER -->
   <header class="main-header">
     <nav class="nav-bar">
-      <!-- Brand logo -->
       <div class="logo-container">
-        <img id="nav-logo" src="imgs/Logo.png" alt="Global Compass Logo" />
+        <img id="nav-logo" src="imgs/logo.png" alt="Logo" />
         <span class="logo-text">Global Compass</span>
       </div>
-
-      <!-- Navigation menu -->
       <ul id="nav-links">
-        <li><a href="index.html"><img class="nav-icon" src="imgs/home.svg" alt="Home" /> Home</a></li>
-        <li><a href="aboutus.html"><img class="nav-icon" src="imgs/info.svg" alt="About" /> About Us</a></li>
-        <li class="dropdown"><a href="Services.html"><img class="nav-icon" src="imgs/services.svg" alt="Services" /> Services</a></li>
-        <li><a href="contactus.html"><img class="nav-icon" src="imgs/contact.svg" alt="Contact" /> Contact Us</a></li>
-        <li><a href="Subscription.html"><img class="nav-icon" src="imgs/subscriptions.svg" alt="Subscriptions" /> Plans</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li class="dropdown"><a href="#">Services</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+        <li><a href="Subscription.html">Plans</a></li>
       </ul>
-
-      <!-- User authentication section -->
       <div class="right-rail">
-        <!-- Login/Signup shown when logged out -->
         <div class="Login-Signup">
           <a class="login" href="login.html">Login</a>
-          <a class="Signup" href="signup.html">Signup</a>
+          <a class="Signup" href="signup.html">Sign up</a>
         </div>
-
-        <!-- User info shown when logged in -->
-        <div id="welcome-user" class="welcome-inline" style="display:none;">
-          Welcome, <span id="user-name"></span>!
-        </div>
-        <div class="profile-dropdown" style="display:none;">
-          <img id="nav-avatar" src="imgs/profile.svg" alt="Profile icon" />
+        <div id="welcome-user" class="welcome-inline">Welcome, <span id="user-name"></span>!</div>
+        <div class="profile-dropdown">
+          <img id="nav-avatar" src="imgs/profile.svg" alt="Profile" />
           <div class="profile-menu">
-            <a href="#"><img class="profile-icon" src="imgs/Myaccount.svg" alt="Account"> My Account</a>
-            <a href="settings.html"><img class="profile-icon" src="imgs/setting.svg" alt="Settings"> Settings</a>
-            <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt="Logout"> Logout</a>
+            <a href="settings.html"><img class="profile-icon" src="imgs/setting.svg" alt="Settings" />Settings</a>
+            <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt="Logout" />Logout</a>
           </div>
         </div>
-
-        <!-- Mobile navigation toggle -->
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-        </button>
+        <button class="nav-toggle" aria-label="Toggle navigation"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
       </div>
     </nav>
   </header>
 
-  <!-- ===== SIGNUP FORM ===== -->
+  <!-- AUTH PAGE -->
   <main class="auth-page">
-    <form id="signup-form" class="auth-form" novalidate>
+    <form class="auth-form" id="signup-form">
       <h1 class="auth-title">Create Account</h1>
-      
-      <!-- Email input -->
-      <input id="signup-email" class="auth-input" type="email" placeholder="Email" required />
-      
-      <!-- Password input -->
-      <input
-        id="signup-password"
-        class="auth-input"
-        type="password"
-        placeholder="Password (min 6 chars)"
-        required
-        minlength="6"
-      />
-      
-      <!-- Password confirmation -->
-      <input
-        id="signup-confirm"
-        class="auth-input"
-        type="password"
-        placeholder="Confirm password"
-        required
-        minlength="6"
-      />
-      
-      <!-- Submit button -->
-      <button type="submit" class="auth-btn">Create account</button>
-      
-      <!-- Status message -->
-      <p id="signup-msg" class="auth-msg" role="alert" aria-live="polite"></p>
-      
-      <!-- Link to login page -->
-      <p class="auth-switch">Already have an account? <a href="login.html">Login</a></p>
+      <input type="email" id="signup-email" class="auth-input" placeholder="Email address" required />
+      <input type="password" id="signup-password" class="auth-input" placeholder="Password (min. 6 chars)" required />
+      <input type="password" id="signup-confirm" class="auth-input" placeholder="Confirm password" required />
+      <button type="submit" class="auth-btn">Create Account</button>
+      <div id="signup-msg" class="auth-msg"></div>
+      <div class="auth-switch">
+        Already have an account? <a href="login.html">Sign in</a>
+      </div>
     </form>
   </main>
 
-  <!-- ===== SCRIPTS ===== -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script type="module" src="auth.js"></script>
+  <!-- FOOTER -->
+  <div class="footer-background">
+    <footer>
+      <div class="footer-left">
+        <img id="footer-logo" src="imgs/logo.png" alt="Logo" />
+        <span class="footer-brand">Global Compass</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="Subscription.html">Plans</a>
+      </div>
+      <div id="copy-right">&copy; 2025 Global Compass. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="script.js"></script>
+  <script type="module" src="auth.js"></script>
 </body>
 </html>
