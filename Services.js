@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const servicesLink = document.querySelector(".dropdown a");
-  const dropdownMenu = document.querySelector(".dropdown-content");
+  let servicesLink = document.querySelector(".dropdown a");
+  let dropdownMenu = document.querySelector(".dropdown-content");
   if (!servicesLink || !dropdownMenu) return;
   let hideTimeout;
   let isMobile = window.innerWidth <= 960;
@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-
 // Sample services data
 let services = [
   {
@@ -81,7 +80,7 @@ let services = [
     "country": "Lebanon",
     "city": "Beirut",
     "Schedule": "24/7 Emergency",
-    "contact_information": "Phone: +961-1-830000 | Emergency: 125 | Address: Bir Hassan, Beirut",
+    "contact_information": "Phone: <a href='tel:+9611830000'>+961-1-830000</a> | Emergency: 125 | Address: Bir Hassan, Beirut",
     "more_info_on": "https://www.moph.gov.lb/en/HealthFacilities/view/0/42273/69896/rafik-hariri-university-hospital"
   },
   {
@@ -92,7 +91,7 @@ let services = [
     "country": "Lebanon",
     "city": "Beirut",
     "Schedule": "24/7 Emergency",
-    "contact_information": "Phone: +961-1-350000 | Emergency: +961-1-350350 | Address: Bliss Street, Beirut",
+    "contact_information": "Phone: <a href='tel:+9611350000'>+961-1-350000</a> | Emergency: <a href='tel:+9611350350'>+961-1-350350</a> | Address: Bliss Street, Beirut",
     "more_info_on": "https://aubmc.org.lb/pages/home.aspx"
   },
   {
@@ -103,7 +102,7 @@ let services = [
     "country": "Lebanon",
     "city": "Beirut,Jounieh",
     "Schedule": "24/7 Emergency",
-    "contact_information": "Beirut: +961-1-373737 | Jounieh: +961-9-636363 | Emergency: +961-1-373750",
+    "contact_information": "Beirut: <a href='tel:+9611373737'>+961-1-373737</a> | Jounieh: <a href='tel:+9619636363'>+961-9-636363</a> | Emergency: <a href='tel:+9611373750'>+961-1-373750</a>",
     "more_info_on": "https://www.cmc.com.lb"
   },
   {
@@ -118,7 +117,7 @@ let services = [
       "Friday": "8:30 AM - 1:30 PM",
       "Saturday-Sunday": "Closed"
     },
-    "contact_information": "Head Office: +961-1-340340 | Customer Service: 1260 | Branches nationwide",
+    "contact_information": "Head Office: <a href='tel:+9611340340'>+961-1-340340</a> | Customer Service: 1260 | Branches nationwide",
     "more_info_on": "https://www.bankmed.com.lb"
   },
   {
@@ -133,7 +132,7 @@ let services = [
       "Friday": "8:30 AM - 1:00 PM",
       "Saturday-Sunday": "Closed"
     },
-    "contact_information": "Head Office: +961-1-977200 | Customer Service: 1262 | 85+ branches nationwide",
+    "contact_information": "Head Office: <a href='tel:+9611977200'>+961-1-977200</a> | Customer Service: 1262 | 85+ branches nationwide",
     "more_info_on": "https://www.bankaudi.com.lb"
   },
   {
@@ -148,7 +147,7 @@ let services = [
       "Friday": "8:30 AM - 1:30 PM",
       "Saturday-Sunday": "Closed"
     },
-    "contact_information": "Head Office: +961-1-738738 | Customer Service: 1261 | 90+ branches nationwide",
+    "contact_information": "Head Office: <a href='tel:+9611738738'>+961-1-738738</a> | Customer Service: 1261 | 90+ branches nationwide",
     "more_info_on": "https://www.blombank.com/english/home"
   },
   {
@@ -163,7 +162,7 @@ let services = [
       "Friday": "8:30 AM - 12:30 PM",
       "Saturday-Sunday": "Closed"
     },
-    "contact_information": "Head Office: +961-1-333111 | Customer Service: 1265 | 80+ branches nationwide",
+    "contact_information": "Head Office: <a href='tel:+9611333111'>+961-1-333111</a> | Customer Service: 1265 | 80+ branches nationwide",
     "more_info_on": "https://www.fransabank.com"
   },
   {
@@ -178,7 +177,7 @@ let services = [
       "Saturday": "9:00 AM - 2:00 PM",
       "Sunday": "Closed"
     },
-    "contact_information": "Beirut: +961-1-740000 | Jounieh: +961-9-636000 | Saida: +961-7-720000 | Tripoli: +961-6-411111"
+    "contact_information": "Beirut: <a href='tel:+9611740000'>+961-1-740000</a> | Jounieh: <a href='tel:+9619636000'>+961-9-636000</a> | Saida: <a href='tel:+9617720000'>+961-7-720000</a> | Tripoli: <a href='tel:+9616411111'>+961-6-411111</a>"
   },
   {
     "category": "Sustenance & Lodging",
@@ -191,7 +190,7 @@ let services = [
       "Monday-Saturday": "10:00 AM - 2:00 AM",
       "Sunday": "11:00 AM - 1:00 AM"
     },
-    "contact_information": "Beirut: +961-1-740111 | Jounieh: +961-9-636111 | Delivery: +961-71-444555",
+    "contact_information": "Beirut: <a href='tel:+9611740111'>+961-1-740111</a> | Jounieh: <a href='tel:+9619636111'>+961-9-636111</a> | Delivery: <a href='tel:+96171444555'>+961-71-444555</a>",
     "more_info_on": "https://www.instagram.com/malakaltawouk"
   },
   {
@@ -205,7 +204,7 @@ let services = [
       "Sunday-Thursday": "7:00 AM - 2:00 AM",
       "Friday-Saturday": "24 Hours"
     },
-    "contact_information": "Delivery: 1700 | Beirut: +961-1-739999 | Jounieh: +961-9-636999",
+    "contact_information": "Delivery: <a href='tel:1700'>1700</a> | Beirut: <a href='tel:+9611739999'>+961-1-739999</a> | Jounieh: <a href='tel:+9619636999'>+961-9-636999</a>",
     "more_info_on": "https://www.instagram.com/roadsterdiner"
   },
   {
@@ -216,7 +215,7 @@ let services = [
     "country": "Lebanon",
     "city": "Beirut,Jounieh,Zahle",
     "Schedule": "24/7 Reception",
-    "contact_information": "Beirut: +961-1-791111 | Jounieh: +961-9-636363 | Zahle: +961-8-800800 | Reservations: +961-1-791000",
+    "contact_information": "Beirut: <a href='tel:+9611791111'>+961-1-791111</a> | Jounieh: <a href='tel:+9619636363'>+961-9-636363</a> | Zahle: <a href='tel:+9618800800'>+961-8-800800</a> | Reservations: <a href='tel:+9611791000'>+961-1-791000</a>",
     "more_info_on": "https://www.leroyal.com"
   },
   {
@@ -227,36 +226,36 @@ let services = [
     "country": "Lebanon",
     "city": "Beirut,Jounieh",
     "Schedule": "24/7 Reception",
-    "contact_information": "Beirut: +961-1-869666 | Jounieh: +961-9-636666 | Reservations: +961-1-869667",
+    "contact_information": "Beirut: <a href='tel:+9611869666'>+961-1-869666</a> | Jounieh: <a href='tel:+9619636666'>+961-9-636666</a> | Reservations: <a href='tel:+9611869667'>+961-1-869667</a>",
     "more_info_on": "https://movenpick.accor.com"
   },
   {
-  "category": "Sustenance & Lodging",
-  "image": "https://cafeyounes.com/cdn/shop/files/CY-Badaro-1.jpg?v=1652082942&width=1067",
-  "name": "Café Younes",
-  "description": "Historic Lebanese coffee roaster and café chain serving premium Arabic coffee, espresso, and traditional pastries since 1935.",
-  "country": "Lebanon",
-  "city": "Beirut,Jounieh,Saida",
-  "Schedule": {
-    "Monday-Sunday": "7:00 AM - 12:00 AM"
+    "category": "Sustenance & Lodging",
+    "image": "https://cafeyounes.com/cdn/shop/files/CY-Badaro-1.jpg?v=1652082942&width=1067",
+    "name": "Café Younes",
+    "description": "Historic Lebanese coffee roaster and café chain serving premium Arabic coffee, espresso, and traditional pastries since 1935.",
+    "country": "Lebanon",
+    "city": "Beirut,Jounieh,Saida",
+    "Schedule": {
+      "Monday-Sunday": "7:00 AM - 12:00 AM"
+    },
+    "contact_information": "Beirut: <a href='tel:+9611738888'>+961-1-738888</a> | Jounieh: <a href='tel:+9619636888'>+961-9-636888</a> | Saida: <a href='tel:+9617725888'>+961-7-725888</a> | Online Orders: <a href='tel:+96171888999'>+961-71-888999</a>",
+    "more_info_on": "https://www.instagram.com/cafeyounes"
   },
-  "contact_information": "Beirut: +961-1-738888 | Jounieh: +961-9-636888 | Saida: +961-7-725888 | Online Orders: +961-71-888999",
-  "more_info_on": "https://www.instagram.com/cafeyounes"
-},
   {
-  "category": "Sustenance & Lodging",
-  "image": "https://www.tasteandflavors.com/wp-content/uploads/2021/11/Cheese-on-Top-3-scaled.jpg",
-  "name": "Cheese on Top",
-  "description": "Popular restaurant chain specializing in delicious cheese-based dishes, fondue, and Lebanese-Western fusion cuisine.",
-  "country": "Lebanon",
-  "city": "Beirut,Jounieh,Zahle",
-  "Schedule": {
-    "Monday-Saturday": "11:00 AM - 11:00 PM",
-    "Sunday": "11:00 AM - 10:00 PM"
+    "category": "Sustenance & Lodging",
+    "image": "https://www.tasteandflavors.com/wp-content/uploads/2021/11/Cheese-on-Top-3-scaled.jpg",
+    "name": "Cheese on Top",
+    "description": "Popular restaurant chain specializing in delicious cheese-based dishes, fondue, and Lebanese-Western fusion cuisine.",
+    "country": "Lebanon",
+    "city": "Beirut,Jounieh,Zahle",
+    "Schedule": {
+      "Monday-Saturday": "11:00 AM - 11:00 PM",
+      "Sunday": "11:00 AM - 10:00 PM"
+    },
+    "contact_information": "Beirut: <a href='tel:+9611745555'>+961-1-745555</a> | Jounieh: <a href='tel:+9619634444'>+961-9-634444</a> | Zahle: <a href='tel:+9618801111'>+961-8-801111</a>",
+    "more_info_on": "https://www.instagram.com/cheeseontop.lb/?hl=en"
   },
-  "contact_information": "Beirut: +961-1-745555 | Jounieh: +961-9-634444 | Zahle: +961-8-801111",
-  "more_info_on": "https://www.instagram.com/cheeseontop.lb/?hl=en"
-},
   {
     "category": "Health & Safety",
     "image": "https://www.globalgiftfoundation.org/wp-content/uploads/2022/01/croix-rouge-libanaise-logo.png",
@@ -265,7 +264,7 @@ let services = [
     "country": "Lebanon",
     "city": "Beirut,Jounieh,Saida,Tripoli,Zahle,Byblos,Nabatieh,Tyre,Baalbek",
     "Schedule": "24/7 Emergency",
-    "contact_information": "Emergency: 140 | Headquarters: +961-1-372802 | All regions covered",
+    "contact_information": "Emergency: <a href='tel:140'>140</a> | Headquarters: <a href='tel:+9611372802'>+961-1-372802</a> | All regions covered",
     "more_info_on": "https://www.instagram.com/lebaneseredcross"
   },
   {
@@ -279,7 +278,7 @@ let services = [
       "Monday-Saturday": "8:00 AM - 6:00 PM",
       "Sunday": "9:00 AM - 2:00 PM"
     },
-    "contact_information": "Customer Service: 1215 | Beirut: +961-1-999999 | Branches in all major cities",
+    "contact_information": "Customer Service: <a href='tel:1215'>1215</a> | Beirut: <a href='tel:+9611999999'>+961-1-999999</a> | Branches in all major cities",
     "more_info_on": "https://www.omt.com.lb/en"
   },
   {
@@ -290,10 +289,10 @@ let services = [
     "country": "Lebanon",
     "city": "Beirut,Jounieh",
     "Schedule": "24/7 Reception",
-    "contact_information": "Beirut: +961-1-737777 | Jounieh: +961-9-636777 | Reservations: +961-1-737778",
+    "contact_information": "Beirut: <a href='tel:+9611737777'>+961-1-737777</a> | Jounieh: <a href='tel:+9619636777'>+961-9-636777</a> | Reservations: <a href='tel:+9611737778'>+961-1-737778</a>",
     "more_info_on": "https://www.rotana.com/rotanarewards/offers/2482?awsa_c=Bpn-ohrotana-25&awsa_k=SearchEng"
   }
-];
+];  
 // ================================
 // Utility Functions
 // ================================
