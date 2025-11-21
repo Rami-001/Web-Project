@@ -71,8 +71,20 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 // Sample services data
+// id:1 ==> hospital
+// id:2 ==> Pharmacy
+// id:3 ==> Police Station
+// id:4 ==> Bank
+// id:5 ==> ATM
+// id:6 ==> Money Exchanger
+// id:7 ==> Resturant
+// id:8 ==> Coffe Shop
+// id:9 ==> Hotel
+// id:10 ==>Money Transfer
+// id:11 ==> Medical Volunteers
 let services = [
   {
+    "id":1,
     "category": "Health & Safety",
     "image": "https://mzv.gov.cz/public/51/c7/97/5046259_3040778_Rafic_Hariri_Hospital.jpg",
     "name": "Rafic Hariri University Hospital",
@@ -84,6 +96,7 @@ let services = [
     "more_info_on": "https://www.moph.gov.lb/en/HealthFacilities/view/0/42273/69896/rafik-hariri-university-hospital"
   },
   {
+    "id":1,
     "category": "Health & Safety",
     "image": "https://executive-bulletin.com/wp-content/uploads/2024/04/AUBMC.jpg",
     "name": "American University of Beirut Medical Center (AUBMC)",
@@ -95,6 +108,7 @@ let services = [
     "more_info_on": "https://aubmc.org.lb/pages/home.aspx"
   },
   {
+    "id":1,
     "category": "Health & Safety",
     "image": "https://upload.wikimedia.org/wikipedia/commons/f/ff/CMC_Building_Photo_by_K%26A-JPEG.jpg",
     "name": "Clemenceau Medical Center ",
@@ -106,6 +120,7 @@ let services = [
     "more_info_on": "https://www.cmc.com.lb"
   },
   {
+    "id":4,
     "category": "Finance",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEcgQ12nZpU9JK0S4X3_-n5GFKUTegqXvM5Q&s",
     "name": "BankMed",
@@ -121,6 +136,7 @@ let services = [
     "more_info_on": "https://www.bankmed.com.lb"
   },
   {
+    "id":4,
     "category": "Finance",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToF2qERD7L_HYtAekpIzaQHvPLV1rr4i5tyg&s",
     "name": "Bank Audi",
@@ -136,6 +152,7 @@ let services = [
     "more_info_on": "https://www.bankaudi.com.lb"
   },
   {
+    "id":4,
     "category": "Finance",
     "image": "https://i0.wp.com/bourjhamoud.com/wp-content/uploads/2017/08/Blom-bank.jpg?fit=800%2C800&ssl=1",
     "name": "BLOM Bank",
@@ -151,6 +168,7 @@ let services = [
     "more_info_on": "https://www.blombank.com/english/home"
   },
   {
+    "id":4,
     "category": "Finance",
     "image": "https://pbs.twimg.com/media/ETYtuAOWsAIB9HG.jpg",
     "name": "Fransabank",
@@ -166,6 +184,7 @@ let services = [
     "more_info_on": "https://www.fransabank.com"
   },
   {
+    "id":6,
     "category": "Finance",
     "image": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzuJpQEL6IKp9ETwts1Z4BC-cDt74MTTsmf84HXmHM9SuuY1oP-O1WOKlnOAsHhuiah89mIwRH4k2EjWv3y5GMhWV4udVjw27rNJv7jdvjB4Ub2XRD4d4cvxzo8KYd3vBG09Mc=s680-w680-h510-rw",
     "name": "Halabi Exchange & Transfer",
@@ -180,6 +199,7 @@ let services = [
     "contact_information": "Beirut: <a href='tel:+9611740000'>+961-1-740000</a> | Jounieh: <a href='tel:+9619636000'>+961-9-636000</a> | Saida: <a href='tel:+9617720000'>+961-7-720000</a> | Tripoli: <a href='tel:+9616411111'>+961-6-411111</a>"
   },
   {
+    "id":7,
     "category": "Sustenance & Lodging",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS827y_R2jhZ8GJzrUp7sbwZ3QENpmFAUOJLA&s",
     "name": "Malak al Tawouk",
@@ -194,6 +214,7 @@ let services = [
     "more_info_on": "https://www.instagram.com/malakaltawouk"
   },
   {
+    "id":7,
     "category": "Sustenance & Lodging",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKLI0G1hgFglirnNwnVeYRTNgfmJXxlEuK6Q&s",
     "name": "Roadster Diner",
@@ -208,6 +229,7 @@ let services = [
     "more_info_on": "https://www.instagram.com/roadsterdiner"
   },
   {
+    "id":9,
     "category": "Sustenance & Lodging",
     "image": "https://lh3.googleusercontent.com/p/AF1QipOgPrqjAwNPUyiBUb3Pg3VA-J91ZQnRyYhvLwOB=s680-w680-h510-rw",
     "name": "Le Royal Hotels & Resorts",
@@ -219,6 +241,7 @@ let services = [
     "more_info_on": "https://www.leroyal.com"
   },
   {
+    "id":9,
     "category": "Sustenance & Lodging",
     "image": "https://www.ahstatic.com/photos/b8w7_ho_00_p_1024x768.jpg",
     "name": "Mövenpick Hotel & Resorts",
@@ -230,6 +253,7 @@ let services = [
     "more_info_on": "https://movenpick.accor.com"
   },
   {
+    "id":8,
     "category": "Sustenance & Lodging",
     "image": "https://cafeyounes.com/cdn/shop/files/CY-Badaro-1.jpg?v=1652082942&width=1067",
     "name": "Café Younes",
@@ -242,7 +266,7 @@ let services = [
     "contact_information": "Beirut: <a href='tel:+9611738888'>+961-1-738888</a> | Jounieh: <a href='tel:+9619636888'>+961-9-636888</a> | Saida: <a href='tel:+9617725888'>+961-7-725888</a> | Online Orders: <a href='tel:+96171888999'>+961-71-888999</a>",
     "more_info_on": "https://www.instagram.com/cafeyounes"
   },
-  {
+  {"id":7,
     "category": "Sustenance & Lodging",
     "image": "https://www.tasteandflavors.com/wp-content/uploads/2021/11/Cheese-on-Top-3-scaled.jpg",
     "name": "Cheese on Top",
@@ -257,6 +281,7 @@ let services = [
     "more_info_on": "https://www.instagram.com/cheeseontop.lb/?hl=en"
   },
   {
+    "id":11,
     "category": "Health & Safety",
     "image": "https://www.globalgiftfoundation.org/wp-content/uploads/2022/01/croix-rouge-libanaise-logo.png",
     "name": "Lebanese Red Cross",
@@ -268,6 +293,7 @@ let services = [
     "more_info_on": "https://www.instagram.com/lebaneseredcross"
   },
   {
+    "id":10,
     "category": "Finance",
     "image": "https://ir-omt-s3-media.s3.eu-west-1.amazonaws.com/informative/news/NZttgw4IalM0gCvCGhMbxJtQS.jpg",
     "name": "OMT Money Transfer",
@@ -282,6 +308,7 @@ let services = [
     "more_info_on": "https://www.omt.com.lb/en"
   },
   {
+    "id":9,
     "category": "Sustenance & Lodging",
     "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/32/d5/e3/exterior.jpg?w=900&h=500&s=1",
     "name": "Rotana Hotels",
@@ -406,3 +433,28 @@ if(clearbtn){
   });
 }
 render();
+// ================================
+//    Render filtered services
+// ================================
+document.addEventListener("DOMContentLoaded", function () {
+    // Get URL parameters
+    let urlParams = new URLSearchParams(window.location.search);
+    let urlID = urlParams.get("id") ? parseInt(urlParams.get("id")) : null;
+    let urlCategory = urlParams.get("category");
+    // Set category filter if provided in URL
+    if (urlCategory) {
+        let select = document.getElementById("filter-category");
+        if (select) select.value = urlCategory;
+    }
+    // Setup dropdown links
+    document.querySelectorAll(".dropdown-content a").forEach(link => {
+        link.addEventListener("click", () => {
+            let id = parseInt(link.dataset.id);
+            if (id) {
+                window.location.href = `services.html?id=${id}`;
+            }
+        });
+    });
+    // Render services
+    render(urlID ? services.filter(s => s.id === urlID) : services);
+});

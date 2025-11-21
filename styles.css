@@ -209,6 +209,43 @@ font-weight: 900;
 /* =========================================================
     CONTENT / CARDS (HOME PAGE)
     ========================================================= */
+.image-slider {
+    width: 90%; 
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+}
+.images {
+    display: flex;
+    width: calc(1500px * 8 + 50px * 7); 
+    animation: slide 35s infinite;
+	gap: 50px; 
+}
+.images .image img {
+    width: 1500px; 
+    height: 800px; 
+}
+.image h2{
+	text-align: center;
+    font-size: 2.8rem;
+    font-weight: 800;
+    background: linear-gradient(30deg, #0ebde9, #0044ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    letter-spacing: 2px;
+}
+@keyframes slide {
+    0% { transform: translateX(0); }
+    12.5% { transform: translateX(-2050px); } 
+    25% { transform: translateX(-4100px); }
+    37.5% { transform: translateX(-6150px); }
+    50% { transform: translateX(-8200px); }
+    62.5% { transform: translateX(-10250px); }
+    75% { transform: translateX(-10800px); }
+
+}
+/*
 .Bigbox {
 	background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent);
 	padding: 72px 0;
@@ -334,6 +371,7 @@ font-weight: 900;
 	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.09);
 	border-left: 4px solid #ffa502;
 }
+	*/
 .home-cta-section {
 	margin: 48px 0 0 0;
 	padding: 56px 20px;
@@ -351,7 +389,6 @@ font-weight: 900;
 	color: #ffffff;
 	margin-bottom: 16px;
 }
-
 .home-cta-content p {
 	font-size: 1rem;
 	color: #8fa3c0;
@@ -361,7 +398,6 @@ font-weight: 900;
 	margin-left: auto;
 	margin-right: auto;
 }
-
 .home-cta-stats {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -371,27 +407,23 @@ font-weight: 900;
 	margin-left: auto;
 	margin-right: auto;
 }
-
 .stat-item {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 6px;
 }
-
 .stat-num {
 	font-size: 2.2rem;
 	font-weight: 700;
 	color: #3b9dd9;
 	letter-spacing: -0.5px;
 }
-
 .stat-label {
 	font-size: 0.85rem;
 	color: #8fa3c0;
 	font-weight: 600;
 }
-
 .home-cta-content .explore-btn {
 	display: inline-block;
 	padding: 12px 28px;
@@ -408,7 +440,6 @@ font-weight: 900;
 	position: relative;
 	overflow: hidden;
 }
-
 .home-cta-content .explore-btn::before {
 	content: '';
 	position: absolute;
@@ -419,28 +450,43 @@ font-weight: 900;
 	background: rgba(255, 255, 255, 0.2);
 	transition: left 0.3s ease;
 }
-
 .home-cta-content .explore-btn:hover::before {
 	left: 100%;
 }
-
 .home-cta-content .explore-btn:hover {
 	transform: translateY(-2px);
 	box-shadow: 0 12px 28px rgba(59,157,217,.35);
 }
-
 /* CTA */
 .Explore{
-	width:min(500px, 92%); margin:12px auto 0;
-	background:var(--gc-card); backdrop-filter:blur(6px);
-	border:1px solid rgba(26,37,74,.5); border-radius:14px; padding:20px 22px; box-shadow:0 4px 14px rgba(0,0,0,.2);
-	display:flex; align-items:center; justify-content:space-between; gap:14px; color:#d4e4f7;
+	width:min(500px, 92%);
+	margin:12px auto 0;
+	background:var(--gc-card);
+	backdrop-filter:blur(6px);
+	border:1px solid rgba(26,37,74,.5); 
+	border-radius:14px; 
+	padding:20px 22px; 
+	box-shadow:0 4px 14px rgba(0,0,0,.2);
+	display:flex; 
+	align-items:center; 
+	justify-content:space-between; 
+	gap:14px; 
+	color:#d4e4f7;
 	flex-wrap: wrap;
 }
-.Explore:hover{ box-shadow:0 6px 18px rgba(0,0,0,.25); border-color: rgba(56,189,248,.25); }
+.Explore:hover{ 
+	box-shadow:0 6px 18px rgba(0,0,0,.25); 
+	border-color: rgba(56,189,248,.25); 
+}
 .explore-btn{
-	padding:9px 16px; border:none; border-radius:6px; cursor:pointer; font-weight:700; color:#0a1324;
-	background:#3b9dd9; box-shadow:0 6px 16px rgba(59,157,217,.2);
+	padding:9px 16px;
+	border:none; 
+	border-radius:6px;
+	cursor:pointer; 
+	font-weight:700;
+	color:#0a1324;
+	background:#3b9dd9;
+	box-shadow:0 6px 16px rgba(59,157,217,.2);
 	transition: transform .12s, box-shadow .12s, background .12s;
 	font-size: .85rem;
 	position: relative;
@@ -459,8 +505,11 @@ font-weight: 900;
 .explore-btn:hover::before {
 	left: 100%;
 }
-.explore-btn:hover{ transform:translateY(-2px); background:#2e7fa8; box-shadow:0 8px 20px rgba(59,157,217,.28); }
-
+.explore-btn:hover{
+	transform:translateY(-2px);
+	background:#2e7fa8;
+	box-shadow:0 8px 20px rgba(59,157,217,.28); 
+	}
 /* =========================================================
     FOOTER
     ========================================================= */
@@ -2322,4 +2371,3 @@ body.light-mode .cta-btn.secondary {
 body.light-mode .cta-btn.secondary:hover {
 	background: rgba(10, 19, 36, 0.08);
 }
-
