@@ -4,154 +4,147 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Settings • Global Compass</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    .settings-grid { width:min(920px,96%); margin:30px auto; display:grid; gap:18px; }
-    .card { background:var(--gc-card); border:1px solid var(--gc-line); border-radius:18px; padding:18px; box-shadow:var(--gc-shadow-2); }
-    .card h2 { font-size:1.2rem; font-weight:900; color:#fff; margin-bottom:10px; }
-    .row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
-    .grow { flex: 1 1 260px; }
-    .label { font-weight:800; color:#cfe2ff; display:block; margin-bottom:6px; }
-    .input, .select { width:100%; padding:12px 14px; border:1px solid #2a3a5d; border-radius:12px; background:#0c172b; color:#eaf2ff; }
-    .input:focus, .select:focus { border-color:#69c8ff; box-shadow:0 0 0 4px var(--gc-ring); outline:none; }
-    .btn { padding:10px 16px; border:none; border-radius:999px; font-weight:900; cursor:pointer; color:#061224; background:linear-gradient(90deg,var(--gc-sky),var(--gc-berry)); box-shadow:var(--gc-glow); }
-    .btn.alt { background:linear-gradient(90deg,#fbbf24,#2dd4bf); }
-    .btn.danger { background:linear-gradient(90deg,#ff8181,#ff4d4d); color:#1b0b0b; }
-    .btn[disabled]{ opacity:.6; cursor:not-allowed; }
-    .msg { font-weight:800; min-height:1.2em; }
-    .msg.success { color:#37e88f; }
-    .msg.error { color:#ff7b7b; }
-    .hint { color:#9db3d7; font-weight:700; font-size:.9rem; }
-    /* keep disabled inputs nicely styled */
-    .input:disabled { opacity:1; color:#eaf2ff; background:#0c172b; border-color:#2a3a5d; cursor:not-allowed; }
-  </style>
 </head>
 <body>
+  <!-- HEADER -->
   <header class="main-header">
     <nav class="nav-bar">
       <div class="logo-container">
         <img id="nav-logo" src="imgs/logo.png" alt="Logo" />
         <span class="logo-text">Global Compass</span>
       </div>
+
       <ul id="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li class="dropdown"><a href="#">Services</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li class="dropdown"><a href="Services.html">Services</a></li>
         <li><a href="contactus.html">Contact Us</a></li>
-        <li><a href="index.html#subscriptions">Subscriptions</a></li>
+        <li><a href="Subscription.html">Plans</a></li>
       </ul>
       <div class="right-rail">
         <div class="Login-Signup">
           <a class="login" href="login.html">Login</a>
-          <a class="Signup" href="signup.html">Signup</a>
+          <a class="Signup" href="signup.html">Sign up</a>
         </div>
-        <div id="welcome-user" class="welcome-inline" style="display:none;">
-          Welcome, <span id="user-name"></span>!
-        </div>
-        <div class="profile-dropdown" style="display:none;">
-          <img id="nav-avatar" src="imgs/profile.svg" alt="profile icon" />
+        <div id="welcome-user" class="welcome-inline">Welcome, <span id="user-name"></span>!</div>
+        <div class="profile-dropdown">
+          <img id="nav-avatar" src="imgs/profile.svg" alt="Profile" />
           <div class="profile-menu">
-            <a href="#"><img class="profile-icon" src="imgs/Myaccount.svg" alt=""> My Account</a>
-            <a href="settings.html"><img class="profile-icon" src="imgs/setting.svg" alt=""> Settings</a>
-            <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt=""> Logout</a>
+            <a href="settings.html"><img class="profile-icon" src="imgs/setting.svg" alt="Settings" />Settings</a>
+            <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt="Logout" />Logout</a>
           </div>
         </div>
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-        </button>
+        <button class="nav-toggle" aria-label="Toggle navigation"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
       </div>
     </nav>
   </header>
 
-  <main class="settings-grid">
-    <!-- Profile & Region -->
-    <section class="card">
-      <h2>Profile</h2>
-      <div class="row">
-        <div class="grow">
-          <label class="label">Email</label>
-          <input id="set-email" class="input" type="email" disabled />
+  <!-- DROPDOWN -->
+  <div class="dropdown-content">
+    <div class="Service-column">
+      <h4>Health &amp; Safety</h4>
+      <a href="Services.html?category=hospital">Hospital</a>
+      <a href="Services.html?category=pharmacy">Pharmacy</a>
+      <a href="Services.html?category=police">Police Station</a>
+    </div>
+    <div class="Service-column">
+      <h4>Finance</h4>
+      <a href="Services.html?category=bank">Bank</a>
+      <a href="Services.html?category=atm">ATM</a>
+      <a href="Services.html?category=exchange">Money Exchanger</a>
+    </div>
+    <div class="Service-column">
+      <h4>Sustenance &amp; Lodging</h4>
+      <a href="Services.html?category=restaurant">Restaurant</a>
+      <a href="Services.html?category=coffee">Coffee Shop</a>
+      <a href="Services.html?category=hotel">Hotel</a>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main style="padding: 40px 14px; flex: 1;">
+    <div class="settings-grid">
+      <!-- Profile & Region Settings -->
+      <section class="settings-card">
+        <h2>Profile</h2>
+        
+        <div class="settings-row">
+          <div class="settings-grow">
+            <label class="settings-label">Email</label>
+            <input id="set-email" class="settings-input" type="email" disabled />
+          </div>
+          <div class="settings-grow">
+            <label class="settings-label">Display name</label>
+            <input id="set-name" class="settings-input" type="text" placeholder="Your name" />
+          </div>
         </div>
-        <div class="grow">
-          <label class="label">Display name</label>
-          <input id="set-name" class="input" type="text" placeholder="Your name" />
+        <button class="settings-btn" style="margin-top:8px;" onclick="saveDisplayName()">Save Name</button>
+        <div id="name-msg" class="settings-msg" style="display:none; margin-top:8px;"></div>
+      </section>
+
+      <!-- Theme Settings -->
+      <section class="settings-card">
+        <h2>Appearance</h2>
+        <div class="settings-row">
+          <label style="display:flex; align-items:center; gap:12px; cursor:pointer; flex: 1;">
+            <input type="checkbox" id="theme-toggle" style="width:18px; height:18px; cursor:pointer;">
+            <div>
+              <span style="color: var(--text-main); font-weight:700; display:block;">🌙 Dark Mode</span>
+              <span style="color: var(--text-muted); font-size:0.85rem;">Toggle between dark and light theme</span>
+            </div>
+          </label>
         </div>
-      </div>
+      </section>
 
-      <div class="row" style="margin-top:12px;">
-        <div class="grow">
-          <label class="label">Region</label>
-          <select id="region-select" class="select">
-            <!-- values are ISO country codes -->
-            <option value="LB">🇱🇧 Lebanon</option>
-            <option value="US">🇺🇸 United States</option>
-            <option value="GB">🇬🇧 United Kingdom</option>
-            <option value="FR">🇫🇷 France</option>
-            <option value="TR">🇹🇷 Turkey</option>
-          </select>
-          <p class="hint" style="margin-top:6px;">Choose where you are so we can tailor results to your region.</p>
+      <!-- Subscription Settings -->
+      <section class="settings-card subscription">
+        <h2>Subscription</h2>
+        <div class="plan-info">
+          <div>
+            <span style="color: var(--text-muted); font-size:0.85rem;">Current Plan</span>
+            <div id="current-plan" style="color: #fff; font-weight:700; font-size:1.1rem;">Free</div>
+          </div>
+          <div>
+            <span style="color: var(--text-muted); font-size:0.85rem;">Status</span>
+            <div id="plan-status" style="color: #4ade80; font-weight:700;">Active</div>
+          </div>
         </div>
-      </div>
-
-      <div class="row" style="margin-top:10px;">
-        <button id="btn-save-profile" class="btn">Save settings</button>
-        <span id="settings-msg" class="msg"></span>
-      </div>
-      <!-- Theme toggle -->
-<div class="row" style="margin-top:15px;">
-  <button id="theme-toggle" class="btn alt">Switch to Light Mode</button>
-  <span id="theme-msg" class="msg"></span>
-</div>
-
-    </section>
-
-    <!-- Subscription -->
-    <section class="card">
-      <h2>Subscription</h2>
-      <div class="row">
-        <div class="grow">
-          <label class="label">Current plan</label>
-          <input id="sub-current" class="input" type="text" readonly />
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:16px;">
+          <button class="settings-btn" onclick="upgradePlan()">Upgrade Plan</button>
+          <button class="settings-btn danger" onclick="cancelPlan()">Cancel</button>
         </div>
-        <div class="grow">
-          <label class="label">Change plan</label>
-          <select id="sub-select" class="select">
-            <option value="free">Free</option>
-            <option value="standard">Standard</option>
-            <option value="pro">Pro</option>
-          </select>
+        <div id="subscription-msg" class="settings-msg" style="display:none;"></div>
+      </section>
+
+      <!-- Notification Settings -->
+      <section class="settings-card">
+        <h2>Notifications</h2>
+        <div class="settings-row">
+          <label style="display:flex; align-items:center; gap:12px; cursor:pointer; flex: 1;">
+            <input type="checkbox" id="email-notifications" checked style="width:18px; height:18px; cursor:pointer;">
+            <span style="color: var(--text-main); font-weight:600;">Email me about important updates</span>
+          </label>
         </div>
-      </div>
-      <div class="row" style="margin-top:10px;">
-        <button id="btn-change-plan" class="btn alt">Change plan</button>
-        <button id="btn-cancel-plan" class="btn danger" title="You're on Free—there's no paid subscription to cancel.">Cancel subscription</button>
-        <span id="sub-msg" class="msg"></span>
-      </div>
-      <p class="hint" style="margin-top:8px;">
-        Heads up: this page is a demo. Your selection is saved to your device only.
-        When you're ready for real billing (Stripe), we’ll hook it up.
-      </p>
-    </section>
+        <button class="settings-btn" style="margin-top:12px;" onclick="saveNotifications()">Save Preferences</button>
+        <div id="notification-msg" class="settings-msg" style="display:none; margin-top:12px;"></div>
+      </section>
 
-    <!-- Security -->
-    <section class="card">
-      <h2>Security</h2>
-      <div class="row">
-        <button id="btn-reset-pass" class="btn">Send password reset email</button>
-        <span id="reset-msg" class="msg"></span>
-      </div>
-    </section>
-
-    <!-- Danger zone -->
-    <section class="card">
-      <h2 style="color:#ff9797;">Danger zone</h2>
-      <div class="row">
-        <button id="btn-delete" class="btn danger">Delete account</button>
-        <span id="delete-msg" class="msg"></span>
-      </div>
-    </section>
+      <!-- Account Settings -->
+      <section class="settings-card danger-zone">
+        <h2>Account &amp; Privacy</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:16px;">
+          <button class="settings-btn" onclick="changePassword()">Change Password</button>
+          <button class="settings-btn danger" onclick="deleteAccount()">Delete Account</button>
+        </div>
+        <div id="account-msg" class="settings-msg" style="display:none; margin-top:12px;"></div>
+      </section>
+    </div>
   </main>
 
+  <!-- FOOTER -->
   <div class="footer-background">
     <footer>
       <div class="footer-left">
@@ -159,16 +152,80 @@
         <span class="footer-brand">Global Compass</span>
       </div>
       <div class="footer-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="index.html#subscriptions">Subscriptions</a>
+        <a href="Privacypolicy.html">Privacy Policy</a>
+        <a href="termsofservices.html">Terms of Service</a>
+        <a href="Subscription.html">Plans</a>
       </div>
       <div id="copy-right">&copy; 2025 Global Compass. All rights reserved.</div>
     </footer>
   </div>
 
-  <script type="module" src="auth.js"></script>
-  <script type="module" src="settings.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="script.js"></script>
+  <script type="module" src="auth.js"></script>
+  <script>
+    // Theme toggle
+    const $themeToggle = $("#theme-toggle");
+    const $body = $("body");
+
+    // Check saved theme preference
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    if (savedTheme === "light") {
+      $body.addClass("light-mode");
+      $themeToggle.prop("checked", true);
+    }
+
+    $themeToggle.on("change", function() {
+      if ($(this).is(":checked")) {
+        $body.addClass("light-mode");
+        localStorage.setItem("theme", "light");
+      } else {
+        $body.removeClass("light-mode");
+        localStorage.setItem("theme", "dark");
+      }
+    });
+
+    // Plan management
+    function updatePlanDisplay() {
+      const currentPlan = localStorage.getItem("userPlan") || "free";
+      $("#current-plan").text(currentPlan.charAt(0).toUpperCase() + currentPlan.slice(1));
+      $("#plan-status").text(currentPlan === "free" ? "Active" : "Active");
+    }
+
+    window.upgradePlan = function() {
+      window.location.href = "Subscription.html";
+    };
+
+    window.cancelPlan = function() {
+      if (confirm("Are you sure you want to cancel your subscription?")) {
+        localStorage.setItem("userPlan", "free");
+        const $msg = $("#subscription-msg");
+        $msg.text("Subscription cancelled.").removeClass("success").addClass("error").show();
+        updatePlanDisplay();
+        setTimeout(() => $msg.hide(), 3000);
+      }
+    };
+
+    window.saveNotifications = function() {
+      const emailNotif = $("#email-notifications").is(":checked");
+      localStorage.setItem("emailNotifications", emailNotif);
+      const $msg = $("#notification-msg");
+      $msg.text("Notification preferences saved!").removeClass("error").addClass("success").show();
+      setTimeout(() => $msg.hide(), 3000);
+    };
+
+    window.changePassword = function() {
+      alert("Redirecting to password change page...");
+    };
+
+    window.deleteAccount = function() {
+      if (confirm("This action cannot be undone. Are you sure?")) {
+        alert("Account deletion requested. Please contact support to confirm.");
+      }
+    };
+
+    // Initialize
+    updatePlanDisplay();
+  </script>
 </body>
 </html>

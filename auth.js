@@ -1,4 +1,4 @@
-// Firebase via CDN (no build tools needed)
+// auth.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
 import {
   getAuth,
@@ -6,9 +6,9 @@ import {
   signOut,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  updateProfile,
 } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
 
-/* ---- Your Firebase Config ---- */
 const firebaseConfig = {
   apiKey: "AIzaSyBUDn94RBQsMLL3tHcp-WYQLXuYmGPpoKs",
   authDomain: "global-express-612e1.firebaseapp.com",
@@ -19,10 +19,10 @@ const firebaseConfig = {
   measurementId: "G-MT9LM1BM9F",
 };
 
-const app  = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
-/* ---- Helpers ---- */
+ 
+// Map Firebase error codes to user-friendly text
 function friendlyAuthMessage(code) {
   switch (code) {
     case "auth/invalid-email":          return "Please enter a valid email address.";
@@ -37,121 +37,167 @@ function friendlyAuthMessage(code) {
     default:                            return "Something went wrong. Please try again.";
   }
 }
+
 function setMsg(el, type, text) {
   if (!el) return;
-  el.classList.remove("success","error");
+  el.classList.remove("success", "error");
   el.classList.add(type);
   el.textContent = text;
 }
 
-/* ---- Login ---- */
-const loginForm = document.getElementById("login-form");
-if (loginForm) {
-  loginForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const email = document.getElementById("login-email").value.trim();
-    const password = document.getElementById("login-password").value;
-    const msg = document.getElementById("login-msg");
+/* ============================================
+   Login & signup handlers
+   ============================================ */
+$(function () {
+  // ---------- LOGIN ----------
+  let loginForm = $("#login-form");
 
-    if (!email)    return setMsg(msg, "error", "Please enter your email.");
-    if (!password) return setMsg(msg, "error", "Please enter your password.");
+  if (loginForm.length) {
+    loginForm.on("submit", async function (e) {
+      e.preventDefault();
 
-    setMsg(msg, "success", "Signing you in…");
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      setMsg(msg, "success", "Login successful! Redirecting…");
-      setTimeout(() => (window.location.href = "index.html"), 700);
-    } catch (err) {
-      setMsg(msg, "error", friendlyAuthMessage(err.code));
-    }
-  });
-}
+      let email = $("#login-email").val().trim();
+      let password = $("#login-password").val();
+      let msg = document.getElementById("login-msg");
 
-/* ---- Signup ---- */
-const signupForm = document.getElementById("signup-form");
-if (signupForm) {
-  signupForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const email = document.getElementById("signup-email").value.trim();
-    const password = document.getElementById("signup-password").value;
-    const confirm = document.getElementById("signup-confirm").value;
-    const msg = document.getElementById("signup-msg");
+      if (!email) {
+        return setMsg(msg, "error", "Please enter your email.");
+      }
+      if (!password) {
+        return setMsg(msg, "error", "Please enter your password.");
+      }
 
-    if (!email)    return setMsg(msg, "error", "Please enter your email.");
-    if (!password) return setMsg(msg, "error", "Please enter a password.");
-    if (password !== confirm) return setMsg(msg, "error", "Passwords do not match.");
+      setMsg(msg, "success", "Signing you in…");
 
-    setMsg(msg, "success", "Creating your account…");
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      setMsg(msg, "success", "Account created! Redirecting…");
-      setTimeout(() => (window.location.href = "index.html"), 700);
-    } catch (err) {
-      setMsg(msg, "error", friendlyAuthMessage(err.code));
-    }
-  });
-}
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        setMsg(msg, "success", "Login successful! Redirecting…");
+        setTimeout(() => (window.location.href = "index.html"), 700);
+      } catch (err) {
+        setMsg(msg, "error", friendlyAuthMessage(err.code));
+      }
+    });
+  }
 
-/* ---- Navbar greeting + visibility + Logout ---- */
-onAuthStateChanged(auth, (user) => {
-  const loginSignup     = document.querySelector(".Login-Signup");
-  const profileDropdown = document.querySelector(".profile-dropdown");
-  const welcomeUser     = document.getElementById("welcome-user");
-  const userNameSpan    = document.getElementById("user-name");
+  // ---------- SIGNUP ----------
+  let signupForm = $("#signup-form");
 
-  if (user) {
-    const name = user.displayName || (user.email ? user.email.split("@")[0] : "User");
-    if (loginSignup)     loginSignup.style.display = "none";
-    if (profileDropdown) profileDropdown.style.display = "flex";
-    if (welcomeUser && userNameSpan) {
-      userNameSpan.textContent = name;
-      welcomeUser.style.display = "flex";
-    }
-  } else {
-    if (loginSignup)     loginSignup.style.display = "flex";
-    if (profileDropdown) profileDropdown.style.display = "none";
-    if (welcomeUser)     welcomeUser.style.display = "none";
+  if (signupForm.length) {
+    signupForm.on("submit", async function (e) {
+      e.preventDefault();
+
+      let email = $("#signup-email").val().trim();
+      let password = $("#signup-password").val();
+      let confirm = $("#signup-confirm").val();
+      let msg = document.getElementById("signup-msg");
+
+      if (!email) {
+        return setMsg(msg, "error", "Please enter your email.");
+      }
+      if (!password) {
+        return setMsg(msg, "error", "Please enter a password.");
+      }
+      if (password !== confirm) {
+        return setMsg(msg, "error", "Passwords do not match.");
+      }
+
+      setMsg(msg, "success", "Creating your account…");
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        setMsg(msg, "success", "Account created! Redirecting…");
+        setTimeout(() => (window.location.href = "index.html"), 700);
+      } catch (err) {
+        setMsg(msg, "error", friendlyAuthMessage(err.code));
+      }
+    });
   }
 });
 
-// Logout
-const logoutLink = document.getElementById("logout-link");
-if (logoutLink) {
-  logoutLink.addEventListener("click", async (e) => {
-    e.preventDefault();
-    try {
-      await signOut(auth);
-      window.location.href = "login.html";
-    } catch (err) {
-      console.error("Logout error:", err);
-      alert("Failed to log out. Please try again.");
-    }
-  });
-}
-
-
-
+/* ============================================
+   Auth state listener (updates navbar on all pages)
+   ============================================ */
 onAuthStateChanged(auth, (user) => {
-  const loginSignup     = document.querySelector(".Login-Signup");
+  const loginSignup = document.querySelector(".Login-Signup");
   const profileDropdown = document.querySelector(".profile-dropdown");
-  const welcomeUser     = document.getElementById("welcome-user");
-  const userNameSpan    = document.getElementById("user-name");
-  const navAvatar       = document.getElementById("nav-avatar"); // NEW
+  const welcomeUser = document.getElementById("welcome-user");
+  const userNameSpan = document.getElementById("user-name");
+  const navAvatar = document.getElementById("nav-avatar");
+  const setEmail = document.getElementById("set-email");
+  const setName = document.getElementById("set-name");
 
   if (user) {
     const name = user.displayName || (user.email ? user.email.split("@")[0] : "User");
-    if (loginSignup)     loginSignup.style.display = "none";
+
+    if (loginSignup) loginSignup.style.display = "none";
     if (profileDropdown) profileDropdown.style.display = "flex";
-    if (welcomeUser && userNameSpan) {
-      userNameSpan.textContent = name;
+    if (welcomeUser) {
       welcomeUser.style.display = "flex";
+      if (userNameSpan) userNameSpan.textContent = name;
     }
-    if (navAvatar && user.photoURL) navAvatar.src = user.photoURL; // NEW
+    if (navAvatar && user.photoURL) navAvatar.src = user.photoURL;
+    
+    // Populate settings page if on settings.html
+    if (setEmail) setEmail.value = user.email || "";
+    if (setName) setName.value = user.displayName || "";
   } else {
-    if (loginSignup)     loginSignup.style.display = "flex";
+    if (loginSignup) loginSignup.style.display = "flex";
     if (profileDropdown) profileDropdown.style.display = "none";
-    if (welcomeUser)     welcomeUser.style.display = "none";
-    if (navAvatar)       navAvatar.src = "imgs/profile.svg"; // NEW
+    if (welcomeUser) welcomeUser.style.display = "none";
+    if (navAvatar) navAvatar.src = "imgs/profile.svg";
   }
 });
 
+// Add save display name function
+window.saveDisplayName = async function() {
+  const nameInput = document.getElementById("set-name");
+  const msg = document.getElementById("name-msg");
+  const newName = nameInput.value.trim();
+  
+  if (!newName) {
+    msg.textContent = "Please enter a name.";
+    msg.classList.remove("success");
+    msg.classList.add("error");
+    msg.style.display = "block";
+    return;
+  }
+  
+  try {
+    await updateProfile(auth.currentUser, {
+      displayName: newName
+    });
+    msg.textContent = "Display name saved!";
+    msg.classList.remove("error");
+    msg.classList.add("success");
+    msg.style.display = "block";
+    
+    // Update navbar
+    const userNameSpan = document.getElementById("user-name");
+    if (userNameSpan) userNameSpan.textContent = newName;
+    
+    setTimeout(() => msg.style.display = "none", 3000);
+  } catch (err) {
+    msg.textContent = "Error saving name. Try again.";
+    msg.classList.remove("success");
+    msg.classList.add("error");
+    msg.style.display = "block";
+  }
+}
+
+/* ============================================
+   Logout handler
+   ============================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutLink = document.getElementById("logout-link");
+  if (logoutLink) {
+    logoutLink.addEventListener("click", async (e) => {
+      e.preventDefault();
+      try {
+        await signOut(auth);
+        window.location.href = "index.html";
+      } catch (err) {
+        console.error("Logout error:", err);
+      }
+    });
+  }
+});

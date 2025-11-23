@@ -1,138 +1,115 @@
-// Improved dropdown for Services with better timing
-document.addEventListener('DOMContentLoaded', function() {
-  const servicesLink = document.querySelector('.dropdown a');
-  const dropdownMenu = document.querySelector('.dropdown-content');
-
-  // Mobile nav
-  const header = document.querySelector('.nav-bar');
-  const toggle = document.querySelector('.nav-toggle');
-  const linksPanel = document.querySelector('#nav-links');
-
-  if (toggle && header && linksPanel) {
-    const closeMenu = () => {
-      header.classList.remove('nav-open');
-      document.body.style.overflow = '';
-      toggle.setAttribute('aria-expanded', 'false');
-    };
-    const openMenu = () => {
-      header.classList.add('nav-open');
-      document.body.style.overflow = 'hidden';
-      toggle.setAttribute('aria-expanded', 'true');
-    };
-    toggle.addEventListener('click', () => {
-      if (header.classList.contains('nav-open')) closeMenu();
-      else openMenu();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && header.classList.contains('nav-open')) closeMenu();
-    });
-    document.addEventListener('click', (e) => {
-      if (!header.classList.contains('nav-open')) return;
-      const isInside = header.contains(e.target);
-      if (!isInside) closeMenu();
-    });
-    const mq = window.matchMedia('(min-width: 961px)');
-    mq.addEventListener('change', (ev) => { if (ev.matches) closeMenu(); });
-  }
-
-  if (!servicesLink || !dropdownMenu) return;
-
-  let hideTimeout;
-  let isMobile = window.innerWidth <= 960;
-
-  // Update isMobile on resize
-  window.addEventListener('resize', function() {
-    isMobile = window.innerWidth <= 960;
-  });
-
-  // Show dropdown when hovering Services (desktop only)
-  servicesLink.addEventListener('mouseenter', function() {
-    if (!isMobile) {
-      clearTimeout(hideTimeout);
-      dropdownMenu.classList.add('visible');
+$(document).ready(function () {
+    // =========================
+    // NAVBAR TOGGLE
+    // =========================
+    let $header = $('.nav-bar');
+    let $toggle = $('.nav-toggle');
+    let $linksPanel = $('#nav-links');
+    if ($toggle.length && $header.length && $linksPanel.length) {
+        let closeMenu = () => {
+            $header.removeClass('nav-open');
+            $('body').css('overflow', '');
+            $toggle.attr('aria-expanded', 'false');
+        };
+        let openMenu = () => {
+            $header.addClass('nav-open');
+            $('body').css('overflow', 'hidden');
+            $toggle.attr('aria-expanded', 'true');
+        };
+        // Toggle on click
+        $toggle.on('click', function () {
+            $header.hasClass('nav-open') ? closeMenu() : openMenu();
+        });
+        // ESC closes menu
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape' && $header.hasClass('nav-open')) {
+                closeMenu();
+            }
+        });
+        // Click outside closes menu
+        $(document).on('click', function (e) {
+            if ($header.hasClass('nav-open') && !$header.has(e.target).length && !$toggle.is(e.target)) {
+                closeMenu();
+            }
+        });
+        // Auto-close when resizing to desktop
+        let mq = window.matchMedia('(min-width: 961px)');
+        mq.addEventListener('change', ev => {
+            if (ev.matches) closeMenu();
+        });
     }
-  });
+    // =========================
+    // DROPDOWN
+    // =========================
+    let $servicesLink = $('.dropdown a');
+    let $dropdownMenu = $('.dropdown-content');
 
-  // Hide dropdown when leaving Services (desktop only)
-  servicesLink.addEventListener('mouseleave', function() {
-    if (!isMobile) {
-      hideTimeout = setTimeout(() => {
-        dropdownMenu.classList.remove('visible');
-      }, 500);
+    if ($servicesLink.length && $dropdownMenu.length) {
+        let hideTimeout;
+        let isMobile = $(window).width() <= 960;
+        // Detect screen size changes
+        $(window).on('resize', function () {
+            isMobile = $(this).width() <= 960;
+        });
+        // Desktop hover show
+        $servicesLink.on('mouseenter', function () {
+            if (!isMobile) {
+                clearTimeout(hideTimeout);
+                $dropdownMenu.addClass('visible');
+            }
+        });
+        // Desktop hover hide
+        $servicesLink.on('mouseleave', function () {
+            if (!isMobile) {
+                hideTimeout = setTimeout(() => {
+                    $dropdownMenu.removeClass('visible');
+                }, 500);
+            }
+        });
+        // Keep open while hovering dropdown
+        $dropdownMenu.on('mouseenter', function () {
+            if (!isMobile) {
+                clearTimeout(hideTimeout);
+                $dropdownMenu.addClass('visible');
+            }
+        });
+        $dropdownMenu.on('mouseleave', function () {
+            if (!isMobile) {
+                hideTimeout = setTimeout(() => {
+                    $dropdownMenu.removeClass('visible');
+                }, 500);
+            }
+        });
+        // Mobile click logic
+        let dropdownOpenedOnce = false;
+        $servicesLink.on('click', function (e) {
+            if (!$dropdownMenu.hasClass('visible')) {
+                e.preventDefault();
+                $dropdownMenu.addClass('visible');
+                dropdownOpenedOnce = true;
+                return;
+            }
+
+            if (dropdownOpenedOnce) {
+                window.location.href = 'services.html'; // change if needed
+            }
+        });
+        // Click outside closes dropdown
+        $(document).on('click', function (e) {
+            if (!$servicesLink.is(e.target) && !$dropdownMenu.has(e.target).length) {
+                $dropdownMenu.removeClass('visible');
+                dropdownOpenedOnce = false;
+            }
+        });
+        // ESC closes dropdown
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape') {
+                $dropdownMenu.removeClass('visible');
+                dropdownOpenedOnce = false;
+            }
+        });
     }
-  });
-
-  // Keep dropdown open when hovering over it (desktop only)
-  dropdownMenu.addEventListener('mouseenter', function() {
-    if (!isMobile) {
-      clearTimeout(hideTimeout);
-      dropdownMenu.classList.add('visible');
-    }
-  });
-
-  // Hide dropdown when leaving it (desktop only)
-  dropdownMenu.addEventListener('mouseleave', function() {
-    if (!isMobile) {
-      hideTimeout = setTimeout(() => {
-        dropdownMenu.classList.remove('visible');
-      }, 500);
-    }
-  });
-
-  // Toggle dropdown on click (mobile and desktop)
-  servicesLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    dropdownMenu.classList.toggle('visible');
-  });
-
-  // Close dropdown when clicking outside
-  document.addEventListener('click', function(e) {
-    if (!servicesLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
-      dropdownMenu.classList.remove('visible');
-    }
-  });
-
-  // Close dropdown on escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      dropdownMenu.classList.remove('visible');
-    }
-  });
 });
-// Helpers to open/close the services dropdown and lock body scroll
-function openServices() {
-  dropdownMenu.classList.add('visible');
-  document.body.classList.add('dropdown-open');
-}
-function closeServices() {
-  dropdownMenu.classList.remove('visible');
-  document.body.classList.remove('dropdown-open');
-}
-
-// Toggle on click
-servicesLink.addEventListener('click', function(e) {
-  e.preventDefault();
-  if (dropdownMenu.classList.contains('visible')) {
-    closeServices();
-  } else {
-    openServices();
-  }
-});
-
-// Close when clicking outside
-document.addEventListener('click', function(e) {
-  if (!servicesLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
-    closeServices();
-  }
-});
-
-// Close on ESC
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeServices();
-});
-
-// Keep existing hover handlers for desktop as you like
-
 
 
 
