@@ -229,7 +229,7 @@ font-weight: 900;
 	text-align: center;
     font-size: 2.8rem;
     font-weight: 800;
-    background: linear-gradient(30deg, #0ebde9, #0044ff);
+     background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 4px 8px rgba(0,0,0,0.1);
