@@ -16,7 +16,6 @@
         <img id="nav-logo" src="imgs/logo.png" alt="Global Compass Logo" />
         <span class="logo-text">Global Compass</span>
       </div>
-
       <ul id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="aboutus.html">About Us</a></li>
@@ -24,17 +23,13 @@
         <li><a href="contactus.html">Contact Us</a></li>
         <li><a href="Subscription.html">Plans</a></li>
       </ul>
-
       <div class="right-rail">
         <div class="Login-Signup">
           <a class="login" href="login.html">Login</a>
           <a class="Signup" href="signup.html">Sign up</a>
         </div>
-
-        <div id="welcome-user" class="welcome-inline">
-          Welcome, <span id="user-name"></span>!
+        <div id="welcome-user" class="welcome-inline">Welcome, <span id="user-name"></span>!
         </div>
-
         <div class="profile-dropdown">
           <img id="nav-avatar" src="imgs/profile.svg" alt="Profile" />
           <div class="profile-menu">
@@ -42,7 +37,6 @@
             <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt="Logout" />Logout</a>
           </div>
         </div>
-
         <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -51,37 +45,75 @@
       </div>
     </nav>
   </header>
-
-  <!-- SERVICES DROPDOWN -->
+  <!-- =========================
+       SERVICES DROPDOWN
+  ========================== -->
   <div class="dropdown-content">
     <div class="Service-column">
       <h4>Health &amp; Safety</h4>
-      <a href="Services.html?category=hospital">Hospital</a>
-      <a href="Services.html?category=pharmacy">Pharmacy</a>
-      <a href="Services.html?category=police">Police Station</a>
+      <a data-id="1" href="Services.html?id=1">Hospital</a>
+      <a data-id="2" href="Services.html?id=2">Pharmacy</a>
+      <a data-id="3" href="Services.html?id=3">Police Station</a>
+      <a data-id="11" href="Services.html?id=11">Medical Volunteers</a>
     </div>
     <div class="Service-column">
       <h4>Finance</h4>
-      <a href="Services.html?category=bank">Bank</a>
-      <a href="Services.html?category=atm">ATM</a>
-      <a href="Services.html?category=exchange">Money Exchanger</a>
+      <a data-id="4" href="Services.html?id=4">Bank</a>
+      <a data-id="5" href="Services.html?id=5">ATM</a>
+      <a data-id="6" href="Services.html?id=6">Money Exchanger</a>
+      <a data-id="10" href="Services.html?id=10">Money Transfer</a>
     </div>
     <div class="Service-column">
       <h4>Sustenance &amp; Lodging</h4>
-      <a href="Services.html?category=restaurant">Restaurant</a>
-      <a href="Services.html?category=coffee">Coffee Shop</a>
-      <a href="Services.html?category=hotel">Hotel</a>
+      <a data-id="7" href="Services.html?id=7">Restaurant</a>
+      <a data-id="8" href="Services.html?id=8">Coffee Shop</a>
+      <a data-id="9" href="Services.html?id=9">Hotel</a>
     </div>
   </div>
-
   <!-- HERO -->
   <section class="background">
     <div class="background-content">
       <cite>Your trusted guide to essential services worldwide</cite>
     </div>
   </section>
-
   <!-- MAIN CONTENT -->
+  <div class="image-slider">
+    <div class="images">
+      <div class="image">
+        <img src="https://i0.wp.com/girlswanderlust.com/wp-content/uploads/2024/01/piotr-chrobot-KqEYj1VHA_o-unsplash.jpg?ssl=1" alt="Lebanon">
+      <h2>Lebanon</h2>
+      </div>
+      <div class="image">
+        <img src="https://lp-cms-production.imgix.net/2024-12/shutterstock2171476409.jpg?auto=compress&format=auto&fit=crop&q=50&w=1200&h=800" alt="Turkey">
+      <h2>Turkey</h2>
+      </div>
+      <div class="image">
+        <img src="https://cdn.dxbproperties.ae/media/blog/content/Qatar_1.webp" alt="Dubai">
+      <h2>Dubai</h2>
+      </div>
+      <div class="image">
+        <img src="https://media.timeout.com/images/105483066/750/562/image.jpg" alt="USA">
+      <h2>USA</h2>
+      </div>
+      <div class="image">
+        <img src="https://chachataxi.com/wp-content/uploads/2023/11/best-places-to-visit-in-Saudi-Arabia-scaled.webp" alt="Saudi Arabia">
+      <h2>Saudi Arabia</h2>
+      </div>
+      <div class="image">
+        <img src="https://e1.pxfuel.com/desktop-wallpaper/186/271/desktop-wallpaper-beautiful-country-germany-top-best-for-germany-places.jpg" alt="Germany">
+      <h2>Germany</h2>
+      </div>
+      <div class="image">
+        <img src="https://www.theintrepidguide.com/wp-content/uploads/2021/03/Italy-Facts-Vatican-City-and-Tiber-River.jpg" alt="Italy">
+      <h2>Italy</h2>
+      </div>
+      <div class="image">
+        <img src="https://media.audleytravel.com/-/media/images/home/south-america/brazil/country-guides/best-of-brazil-tips-for-the-first-time-visitor/copacabana_beach_shutterstock_1620688570_3000x1000.jpg?q=79&w=1920&h=685" alt="Brazil">
+      <h2>Brazil</h2>
+      </div>
+  </div>
+  </div>
+  <!--
   <main class="Bigbox">
     <div class="group1">
       <article class="Box">
@@ -92,7 +124,6 @@
           <li>Dental &amp; specialists</li>
         </ul>
       </article>
-
       <article class="Box">
         <h2>Banking &amp; Finance</h2>
         <ul>
@@ -101,7 +132,6 @@
           <li>Wire transfers</li>
         </ul>
       </article>
-
       <article class="Box">
         <h2>Accommodation</h2>
         <ul>
@@ -111,7 +141,7 @@
         </ul>
       </article>
     </div>
-
+    -->
     <section class="home-cta-section">
       <div class="home-cta-content">
         <h2>Explore Services in 50+ Cities</h2>
@@ -134,7 +164,7 @@
       </div>
     </section>
   </main>
-
+  
   <!-- FOOTER -->
   <div class="footer-background">
     <footer>
@@ -142,19 +172,16 @@
         <img id="footer-logo" src="imgs/logo.png" alt="Logo" />
         <span class="footer-brand">Global Compass</span>
       </div>
-
       <div class="footer-links">
         <a href="Privacypolicy.html">Privacy Policy</a>
         <a href="termsofservices.html">Terms of Service</a>
         <a href="Subscription.html">Plans</a>
       </div>
-
       <div id="copy-right">
         &copy; 2025 Global Compass. All rights reserved.
       </div>
     </footer>
   </div>
-
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="script.js"></script>
   <script type="module" src="auth.js"></script>

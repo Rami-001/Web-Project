@@ -42,26 +42,30 @@
       </div>
     </nav>
   </header>
-
-  <!-- DROPDOWN -->
+<!-- =========================
+       SERVICES DROPDOWN
+  ========================== -->
   <div class="dropdown-content">
     <div class="Service-column">
       <h4>Health &amp; Safety</h4>
-      <a href="Services.html?category=hospital">Hospital</a>
-      <a href="Services.html?category=pharmacy">Pharmacy</a>
-      <a href="Services.html?category=police">Police Station</a>
+      <a data-id="1" href="Services.html?id=1">Hospital</a>
+      <a data-id="2" href="Services.html?id=2">Pharmacy</a>
+      <a data-id="3" href="Services.html?id=3">Police Station</a>
+      <a data-id="11" href="Services.html?id=11">Medical Volunteers</a>
     </div>
     <div class="Service-column">
       <h4>Finance</h4>
-      <a href="Services.html?category=bank">Bank</a>
-      <a href="Services.html?category=atm">ATM</a>
-      <a href="Services.html?category=exchange">Money Exchanger</a>
+      <a data-id="4" href="Services.html?id=4">Bank</a>
+      <a data-id="5" href="Services.html?id=5">ATM</a>
+      <a data-id="6" href="Services.html?id=6">Money Exchanger</a>
+      <a data-id="10" href="Services.html?id=10">Money Transfer</a>
     </div>
+  
     <div class="Service-column">
       <h4>Sustenance &amp; Lodging</h4>
-      <a href="Services.html?category=restaurant">Restaurant</a>
-      <a href="Services.html?category=coffee">Coffee Shop</a>
-      <a href="Services.html?category=hotel">Hotel</a>
+      <a data-id="7" href="Services.html?id=7">Restaurant</a>
+      <a data-id="8" href="Services.html?id=8">Coffee Shop</a>
+      <a data-id="9" href="Services.html?id=9">Hotel</a>
     </div>
   </div>
 
@@ -177,44 +181,6 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="script.js"></script>
   <script type="module" src="auth.js"></script>
-  <script>
-    function selectPlan(planType) {
-      const userPlan = localStorage.getItem('userPlan') || 'free';
-      localStorage.setItem('userPlan', planType);
-      alert(`Successfully upgraded to ${planType} plan!`);
-      updatePlanDisplay();
-    }
-
-    function managePlan() {
-      const currentPlan = localStorage.getItem('userPlan') || 'free';
-      alert(`You are currently on: ${currentPlan.toUpperCase()} plan`);
-    }
-
-    function cancelPlan() {
-      if (confirm('Are you sure? You will lose access to premium features.')) {
-        localStorage.setItem('userPlan', 'free');
-        alert('Subscription cancelled. Reverting to free plan.');
-        updatePlanDisplay();
-      }
-    }
-
-    function updatePlanDisplay() {
-      const currentPlan = localStorage.getItem('userPlan') || 'free';
-      document.querySelectorAll('.plan-status').forEach(el => el.textContent = '');
-      
-      if (currentPlan !== 'free') {
-        document.querySelectorAll('.plan-card').forEach(card => {
-          const planName = card.querySelector('h3').textContent.toLowerCase();
-          if (planName === currentPlan) {
-            const status = card.querySelector('.plan-status');
-            if (status) status.textContent = '✓ Current Plan';
-            card.style.borderColor = '#10b981';
-          }
-        });
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', updatePlanDisplay);
-  </script>
+  <script src="Subscription.js"></script>
 </body>
 </html>

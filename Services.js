@@ -70,48 +70,82 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+// ================================
+// Cities Data
+// ================================
+let citiesData = {
+    "Lebanon": ["Beirut", "Jounieh", "Byblos", "Tripoli", "Saida", "Tyre", "Zahle", "Baalbek", "Nabatieh", "Aley", "Batroun", "Bcharre", "Chouf", "Damour", "Dbayeh", "Deir el Qamar", "Hamra", "Hazmieh", "Jbeil", "Jdeideh", "Jezzine", "Kfarhabou", "Marjayoun", "Mechref", "Metn", "Mkalles", "Ras Beirut", "Rashaya", "Sour", "Zgharta", "Zouk Mosbeh"],
+    "France": ["Paris", "Marseille", "Lyon", "Toulouse", "Nice", "Nantes", "Strasbourg", "Montpellier", "Bordeaux", "Lille"],
+    "Italy": ["Rome", "Milan", "Naples", "Turin", "Palermo", "Genoa", "Bologna", "Florence", "Venice", "Verona"],
+    "Spain": ["Madrid", "Barcelona", "Valencia", "Seville", "Zaragoza", "Malaga", "Murcia", "Palma", "Las Palmas", "Bilbao"],
+    "United States": ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose"],
+    "United Kingdom": ["London", "Birmingham", "Manchester", "Liverpool", "Portsmouth", "Southampton", "Nottingham", "Bristol", "Leicester", "Coventry"],
+    "Germany": ["Berlin", "Hamburg", "Munich", "Cologne", "Frankfurt", "Stuttgart", "Düsseldorf", "Dortmund", "Essen", "Leipzig"],
+    "Japan": ["Tokyo", "Yokohama", "Osaka", "Nagoya", "Sapporo", "Fukuoka", "Kobe", "Kyoto", "Kawasaki", "Saitama"],
+    "Canada": ["Toronto", "Montreal", "Vancouver", "Calgary", "Edmonton", "Ottawa", "Winnipeg", "Quebec City", "Hamilton", "Kitchener"],
+    "Australia": ["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide", "Gold Coast", "Newcastle", "Canberra", "Wollongong", "Hobart"],
+    "Saudi Arabia": ["Riyadh", "Jeddah", "Mecca", "Madinah", "Dammam", "Khobar", "Dhahran", "Taif", "Tabuk", "Abha", "Jazan", "Hail", "Buraidah", "Najran", "Al Jubail", "Yanbu", "Al Kharj", "Qassim", "Al Bahah", "Arar", "Sakaka", "Jizan", "Al Qunfudhah", "Al Lith", "Al Wajh", "Duba", "Qurayyat", "Rafha", "Turaif", "Al Ula"
+]
+};
+// ================================
 // Sample services data
+// ================================
+// id:1 ==> hospital
+// id:2 ==> Pharmacy
+// id:3 ==> Police Station
+// id:4 ==> Bank
+// id:5 ==> ATM
+// id:6 ==> Money Exchanger
+// id:7 ==> Resturant
+// id:8 ==> Coffe Shop
+// id:9 ==> Hotel
+// id:10 ==>Money Transfer
+// id:11 ==> Medical Volunteers
 let services = [
   {
+    "id": 1,
     "category": "Health & Safety",
     "image": "https://mzv.gov.cz/public/51/c7/97/5046259_3040778_Rafic_Hariri_Hospital.jpg",
     "name": "Rafic Hariri University Hospital",
     "description": "Lebanon's largest public hospital and COVID-19 referral center with emergency services, ICU, and specialized medical departments.",
     "country": "Lebanon",
-    "city": "Beirut",
+    "city": ["Beirut"],
     "Schedule": "24/7 Emergency",
     "contact_information": "Phone: <a href='tel:+9611830000'>+961-1-830000</a> | Emergency: 125 | Address: Bir Hassan, Beirut",
     "more_info_on": "https://www.moph.gov.lb/en/HealthFacilities/view/0/42273/69896/rafik-hariri-university-hospital"
   },
   {
+    "id": 1,
     "category": "Health & Safety",
     "image": "https://executive-bulletin.com/wp-content/uploads/2024/04/AUBMC.jpg",
-    "name": "American University of Beirut Medical Center (AUBMC)",
+    "name": "American University of Beirut Medical Center (AUBMC) Hospital",
     "description": "Leading academic medical center with advanced emergency care, specialized surgeries, and international patient services.",
     "country": "Lebanon",
-    "city": "Beirut",
+    "city": ["Beirut"],
     "Schedule": "24/7 Emergency",
     "contact_information": "Phone: <a href='tel:+9611350000'>+961-1-350000</a> | Emergency: <a href='tel:+9611350350'>+961-1-350350</a> | Address: Bliss Street, Beirut",
     "more_info_on": "https://aubmc.org.lb/pages/home.aspx"
   },
   {
+    "id": 1,
     "category": "Health & Safety",
     "image": "https://upload.wikimedia.org/wikipedia/commons/f/ff/CMC_Building_Photo_by_K%26A-JPEG.jpg",
-    "name": "Clemenceau Medical Center ",
+    "name": "Clemenceau Medical Center Hospital",
     "description": "Advanced medical facilities affiliated with Johns Hopkins Medicine offering specialized treatments across multiple cities.",
     "country": "Lebanon",
-    "city": "Beirut,Jounieh",
+    "city": ["Beirut", "Jounieh"],
     "Schedule": "24/7 Emergency",
     "contact_information": "Beirut: <a href='tel:+9611373737'>+961-1-373737</a> | Jounieh: <a href='tel:+9619636363'>+961-9-636363</a> | Emergency: <a href='tel:+9611373750'>+961-1-373750</a>",
     "more_info_on": "https://www.cmc.com.lb"
   },
   {
+    "id": 4,
     "category": "Finance",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEcgQ12nZpU9JK0S4X3_-n5GFKUTegqXvM5Q&s",
     "name": "BankMed",
     "description": "Full-service banking with foreign currency exchange, international transfers, and extensive branch network across Lebanon.",
     "country": "Lebanon",
-    "city": "Beirut,Jounieh,Saida,Tripoli,Zahle",
+    "city": ["Beirut", "Jounieh", "Saida", "Tripoli", "Zahle"],
     "Schedule": {
       "Monday-Thursday": "8:30 AM - 2:30 PM",
       "Friday": "8:30 AM - 1:30 PM",
@@ -121,12 +155,13 @@ let services = [
     "more_info_on": "https://www.bankmed.com.lb"
   },
   {
+    "id": 4,
     "category": "Finance",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToF2qERD7L_HYtAekpIzaQHvPLV1rr4i5tyg&s",
     "name": "Bank Audi",
     "description": "Major Lebanese bank offering comprehensive financial services including currency exchange, credit cards, and international banking.",
     "country": "Lebanon",
-    "city": "Beirut,Jounieh,Saida,Tripoli,Zahle,Byblos",
+    "city": ["Beirut", "Jounieh", "Saida", "Tripoli", "Zahle", "Byblos"],
     "Schedule": {
       "Monday-Thursday": "8:30 AM - 3:00 PM",
       "Friday": "8:30 AM - 1:00 PM",
@@ -136,12 +171,13 @@ let services = [
     "more_info_on": "https://www.bankaudi.com.lb"
   },
   {
+    "id": 4,
     "category": "Finance",
     "image": "https://i0.wp.com/bourjhamoud.com/wp-content/uploads/2017/08/Blom-bank.jpg?fit=800%2C800&ssl=1",
     "name": "BLOM Bank",
     "description": "Leading commercial bank with reliable currency exchange services and extensive branch network throughout Lebanon.",
     "country": "Lebanon",
-    "city": "Beirut,Jounieh,Saida,Tripoli,Zahle,Byblos,Nabatieh",
+    "city": ["Beirut", "Jounieh", "Saida", "Tripoli", "Zahle", "Byblos", "Nabatieh"],
     "Schedule": {
       "Monday-Thursday": "8:30 AM - 2:30 PM",
       "Friday": "8:30 AM - 1:30 PM",
@@ -151,12 +187,13 @@ let services = [
     "more_info_on": "https://www.blombank.com/english/home"
   },
   {
+    "id": 4,
     "category": "Finance",
     "image": "https://pbs.twimg.com/media/ETYtuAOWsAIB9HG.jpg",
     "name": "Fransabank",
     "description": "Reliable banking services with foreign currency accounts, remittances, and corporate banking solutions across Lebanon.",
     "country": "Lebanon",
-    "city": "Beirut,Jounieh,Saida,Tripoli,Zahle,Byblos,Tyre",
+    "city": ["Beirut", "Jounieh", "Saida", "Tripoli", "Zahle", "Byblos", "Tyre"],
     "Schedule": {
       "Monday-Thursday": "8:30 AM - 2:00 PM",
       "Friday": "8:30 AM - 12:30 PM",
@@ -166,12 +203,13 @@ let services = [
     "more_info_on": "https://www.fransabank.com"
   },
   {
+    "id": 6,
     "category": "Finance",
     "image": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzuJpQEL6IKp9ETwts1Z4BC-cDt74MTTsmf84HXmHM9SuuY1oP-O1WOKlnOAsHhuiah89mIwRH4k2EjWv3y5GMhWV4udVjw27rNJv7jdvjB4Ub2XRD4d4cvxzo8KYd3vBG09Mc=s680-w680-h510-rw",
     "name": "Halabi Exchange & Transfer",
     "description": "Licensed money exchange service offering competitive USD/LBP rates with international money transfer capabilities.",
     "country": "Lebanon",
-    "city": "Beirut,Jounieh,Saida,Tripoli",
+    "city": ["Beirut", "Jounieh", "Saida", "Tripoli"],
     "Schedule": {
       "Monday-Friday": "9:00 AM - 5:00 PM",
       "Saturday": "9:00 AM - 2:00 PM",
@@ -180,12 +218,13 @@ let services = [
     "contact_information": "Beirut: <a href='tel:+9611740000'>+961-1-740000</a> | Jounieh: <a href='tel:+9619636000'>+961-9-636000</a> | Saida: <a href='tel:+9617720000'>+961-7-720000</a> | Tripoli: <a href='tel:+9616411111'>+961-6-411111</a>"
   },
   {
+    "id": 7,
     "category": "Sustenance & Lodging",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS827y_R2jhZ8GJzrUp7sbwZ3QENpmFAUOJLA&s",
-    "name": "Malak al Tawouk",
+    "name": "Malak al Tawouk Restaurant",
     "description": "Popular Lebanese fast-food chain famous for shawarma, grilled chicken, and traditional Lebanese sandwiches.",
     "country": "Lebanon",
-    "city": "Beirut,Jounieh,Saida,Tripoli,Zahle,Byblos",
+    "city": ["Beirut", "Jounieh", "Saida", "Tripoli", "Zahle", "Byblos"],
     "Schedule": {
       "Monday-Saturday": "10:00 AM - 2:00 AM",
       "Sunday": "11:00 AM - 1:00 AM"
@@ -194,12 +233,13 @@ let services = [
     "more_info_on": "https://www.instagram.com/malakaltawouk"
   },
   {
+    "id": 7,
     "category": "Sustenance & Lodging",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKLI0G1hgFglirnNwnVeYRTNgfmJXxlEuK6Q&s",
-    "name": "Roadster Diner",
+    "name": "Roadster Diner Restaurant",
     "description": "American-style diner chain serving burgers, sandwiches, and milkshakes in retro atmosphere across Lebanon.",
     "country": "Lebanon",
-    "city": "Beirut,Jounieh,Saida,Tripoli,Zahle,Byblos",
+    "city": ["Beirut", "Jounieh", "Saida", "Tripoli", "Zahle", "Byblos"],
     "Schedule": {
       "Sunday-Thursday": "7:00 AM - 2:00 AM",
       "Friday-Saturday": "24 Hours"
@@ -208,34 +248,37 @@ let services = [
     "more_info_on": "https://www.instagram.com/roadsterdiner"
   },
   {
+    "id": 9,
     "category": "Sustenance & Lodging",
     "image": "https://lh3.googleusercontent.com/p/AF1QipOgPrqjAwNPUyiBUb3Pg3VA-J91ZQnRyYhvLwOB=s680-w680-h510-rw",
     "name": "Le Royal Hotels & Resorts",
     "description": "Luxury hotel chain with properties in major Lebanese cities, offering premium accommodations and services.",
     "country": "Lebanon",
-    "city": "Beirut,Jounieh,Zahle",
+    "city": ["Beirut", "Jounieh", "Zahle"],
     "Schedule": "24/7 Reception",
     "contact_information": "Beirut: <a href='tel:+9611791111'>+961-1-791111</a> | Jounieh: <a href='tel:+9619636363'>+961-9-636363</a> | Zahle: <a href='tel:+9618800800'>+961-8-800800</a> | Reservations: <a href='tel:+9611791000'>+961-1-791000</a>",
     "more_info_on": "https://www.leroyal.com"
   },
   {
+    "id": 9,
     "category": "Sustenance & Lodging",
     "image": "https://www.ahstatic.com/photos/b8w7_ho_00_p_1024x768.jpg",
     "name": "Mövenpick Hotel & Resorts",
     "description": "International hotel chain with beachfront and city-center properties offering luxury accommodations.",
     "country": "Lebanon",
-    "city": "Beirut,Jounieh",
+    "city": ["Beirut", "Jounieh"],
     "Schedule": "24/7 Reception",
     "contact_information": "Beirut: <a href='tel:+9611869666'>+961-1-869666</a> | Jounieh: <a href='tel:+9619636666'>+961-9-636666</a> | Reservations: <a href='tel:+9611869667'>+961-1-869667</a>",
     "more_info_on": "https://movenpick.accor.com"
   },
   {
+    "id": 8,
     "category": "Sustenance & Lodging",
     "image": "https://cafeyounes.com/cdn/shop/files/CY-Badaro-1.jpg?v=1652082942&width=1067",
     "name": "Café Younes",
     "description": "Historic Lebanese coffee roaster and café chain serving premium Arabic coffee, espresso, and traditional pastries since 1935.",
     "country": "Lebanon",
-    "city": "Beirut,Jounieh,Saida",
+    "city": ["Beirut", "Jounieh", "Saida"],
     "Schedule": {
       "Monday-Sunday": "7:00 AM - 12:00 AM"
     },
@@ -243,12 +286,13 @@ let services = [
     "more_info_on": "https://www.instagram.com/cafeyounes"
   },
   {
+    "id": 7,
     "category": "Sustenance & Lodging",
     "image": "https://www.tasteandflavors.com/wp-content/uploads/2021/11/Cheese-on-Top-3-scaled.jpg",
-    "name": "Cheese on Top",
+    "name": "Cheese on Top Restaurant",
     "description": "Popular restaurant chain specializing in delicious cheese-based dishes, fondue, and Lebanese-Western fusion cuisine.",
     "country": "Lebanon",
-    "city": "Beirut,Jounieh,Zahle",
+    "city": ["Beirut", "Jounieh", "Zahle"],
     "Schedule": {
       "Monday-Saturday": "11:00 AM - 11:00 PM",
       "Sunday": "11:00 AM - 10:00 PM"
@@ -257,23 +301,25 @@ let services = [
     "more_info_on": "https://www.instagram.com/cheeseontop.lb/?hl=en"
   },
   {
+    "id": 11,
     "category": "Health & Safety",
     "image": "https://www.globalgiftfoundation.org/wp-content/uploads/2022/01/croix-rouge-libanaise-logo.png",
     "name": "Lebanese Red Cross",
     "description": "Emergency medical services and ambulance network covering all Lebanese territories with 24/7 emergency response.",
     "country": "Lebanon",
-    "city": "Beirut,Jounieh,Saida,Tripoli,Zahle,Byblos,Nabatieh,Tyre,Baalbek",
+    "city": ["Beirut", "Jounieh", "Saida", "Tripoli", "Zahle", "Byblos", "Nabatieh", "Tyre", "Baalbek"],
     "Schedule": "24/7 Emergency",
     "contact_information": "Emergency: <a href='tel:140'>140</a> | Headquarters: <a href='tel:+9611372802'>+961-1-372802</a> | All regions covered",
     "more_info_on": "https://www.instagram.com/lebaneseredcross"
   },
   {
+    "id": 10,
     "category": "Finance",
     "image": "https://ir-omt-s3-media.s3.eu-west-1.amazonaws.com/informative/news/NZttgw4IalM0gCvCGhMbxJtQS.jpg",
     "name": "OMT Money Transfer",
     "description": "Leading money transfer service with branches in all major Lebanese cities for domestic and international transfers.",
     "country": "Lebanon",
-    "city": "Beirut,Jounieh,Saida,Tripoli,Zahle,Byblos,Nabatieh,Tyre,Baalbek",
+    "city": ["Beirut", "Jounieh", "Saida", "Tripoli", "Zahle", "Byblos", "Nabatieh", "Tyre", "Baalbek"],
     "Schedule": {
       "Monday-Saturday": "8:00 AM - 6:00 PM",
       "Sunday": "9:00 AM - 2:00 PM"
@@ -282,17 +328,42 @@ let services = [
     "more_info_on": "https://www.omt.com.lb/en"
   },
   {
+    "id": 9,
     "category": "Sustenance & Lodging",
     "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/32/d5/e3/exterior.jpg?w=900&h=500&s=1",
     "name": "Rotana Hotels",
     "description": "Luxury hotel chain with properties in key Lebanese cities offering international standards of hospitality.",
     "country": "Lebanon",
-    "city": "Beirut,Jounieh",
+    "city": ["Beirut", "Jounieh"],
     "Schedule": "24/7 Reception",
     "contact_information": "Beirut: <a href='tel:+9611737777'>+961-1-737777</a> | Jounieh: <a href='tel:+9619636777'>+961-9-636777</a> | Reservations: <a href='tel:+9611737778'>+961-1-737778</a>",
     "more_info_on": "https://www.rotana.com/rotanarewards/offers/2482?awsa_c=Bpn-ohrotana-25&awsa_k=SearchEng"
-  }
-];  
+  },
+  {
+    "id": 7,
+    "category": "Sustenance & Lodging",
+    "image": "https://m.eyeofriyadh.com/directory/images/2018/04/1adad7e6da9aa.jpg",
+    "name": "Albek Restaurant",
+    "description": "A highly popular Saudi Arabian fast-food chain known for its affordable broasted chicken.",
+    "country": "Saudi Arabia",
+    "city": ["Jeddah", "Madinah", "Riyadh", "Makkah"],
+    "Schedule": "24/7 Reception",
+    "contact_information": " Reservations: <a href='tel:+9668002442245'>+966-8002442245</a>",
+    "more_info_on": "https://www.albaik.com"
+  },
+  {
+  "id": 1,
+  "category": "Health & Safety",
+  "image": "https://bookingmedtravel.com/upload/hospital_gallery/University%20Hospital%20Hamburg-Eppendorf.jpg",
+  "name": "University Hospital Heidelberg",
+  "description": "One of Europe's leading medical centers and Germany's oldest university hospital, renowned for cutting-edge research, specialized treatments in oncology, cardiology, and organ transplantation.",
+  "country": "Germany",
+  "city": ["Heidelberg"],
+  "Schedule": "24/7 Emergency",
+  "contact_information": "Main: <a href='tel:+496221560'>+49 6221 56-0</a> | Emergency: <a href='tel:+4962215632000'>+49 6221 56-32000</a> | International Office: <a href='tel:+4962215636685'>+49 6221 56-36685</a> | Address: Im Neuenheimer Feld 672, 69120 Heidelberg, Germany",
+  "more_info_on": "https://www.klinikum.uni-heidelberg.de"
+}
+];
 // ================================
 // Utility Functions
 // ================================
@@ -354,29 +425,43 @@ function render(list = load()) {
 // Filtering + Sorting
 // ================================
 function filter() {
-  let allServices = load();
-  let favIds = JSON.parse(localStorage.getItem("favIds")) || [];
-  let searchValue = document.getElementById("searchInput").value.toLowerCase();
-  let sortValue = document.getElementById("sortSelect").value || "";
-  let categoryValue = document.getElementById("filter-category").value;
-  let cityValue = document.getElementById("filter-city").value;
-  let filtered = allServices.filter((s) =>
-    s.name.toLowerCase().includes(searchValue)
-  );
-  if (categoryValue && categoryValue !== "All") {
-    filtered = filtered.filter((s) => s.category === categoryValue);
-  }
-  if (cityValue && cityValue !== "All") {
-    filtered = filtered.filter((s) =>
-      s.city.toLowerCase().includes(cityValue.toLowerCase())
+    let allServices = load();
+    let searchValue = document.getElementById("searchInput").value.toLowerCase();
+    let sortValue = document.getElementById("sortSelect").value || "";
+    let categoryValue = document.getElementById("filter-category").value;
+    let cityValue = document.getElementById("filter-city").value;
+    let countryValue = document.getElementById("filter-country").value;
+    let filtered = allServices.filter((s) =>
+        s.name.toLowerCase().includes(searchValue)
     );
-  }
-  if (sortValue === "name-asc") {
-    filtered.sort((a, b) => a.name.localeCompare(b.name));
-  } else if (sortValue === "name-desc") {
-    filtered.sort((a, b) => b.name.localeCompare(a.name));
-  }
-  render(filtered);
+    if (categoryValue && categoryValue !== "All") {
+        filtered = filtered.filter((s) => s.category === categoryValue);
+    }
+    if(countryValue && countryValue !== "All") {
+        filtered = filtered.filter((s) =>
+            s.country.toLowerCase() === countryValue.toLowerCase()
+        );
+    }
+    if (cityValue && cityValue !== "All") {
+        filtered = filtered.filter((s) => {
+            // Check if service has multiple cities (array) or single city (string)
+            if (Array.isArray(s.city)) {
+                // If service has multiple cities, check if any of them match
+                return s.city.some(city => 
+                    city.toLowerCase().includes(cityValue.toLowerCase())
+                );
+            } else {
+                // If service has single city, check if it matches
+                return s.city.toLowerCase().includes(cityValue.toLowerCase());
+            }
+        });
+    }
+    if (sortValue === "name-asc") {
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortValue === "name-desc") {
+        filtered.sort((a, b) => b.name.localeCompare(a.name));
+    }
+    render(filtered);
 }
 // ================================
 // Favorites
@@ -394,6 +479,7 @@ function toggleFavorite(serviceName) {
 document.getElementById("searchInput").addEventListener("input", filter);
 document.getElementById("sortSelect").addEventListener("change", filter);
 document.getElementById("filter-category").addEventListener("change", filter);
+document.getElementById("filter-country").addEventListener("change", filter);
 document.getElementById("filter-city").addEventListener("change", filter);
 let clearbtn=document.querySelector(".clear-filters");
 if(clearbtn){
@@ -405,4 +491,91 @@ if(clearbtn){
     filter();
   });
 }
-render();
+// ================================
+// Dynamic City Filter
+// ================================
+function updateCitiesByCountry(selectedCountry) {
+    let cityInput = document.getElementById("filter-city");
+    let cityDatalist = document.getElementById("cities");
+    
+    // Clear previous cities
+    cityDatalist.innerHTML = "";
+    cityInput.value = "";
+    
+    if (!selectedCountry || selectedCountry === "") {
+        // If no country selected, show ALL cities from citiesData
+        let allCities = Object.values(citiesData).flat().sort();
+        allCities.forEach(city => {
+            let option = document.createElement("option");
+            option.value = city;
+            cityDatalist.appendChild(option);
+        });
+    } else {
+        // Show cities only from selected country using citiesData
+        let citiesInCountry = citiesData[selectedCountry] || [];
+        
+        citiesInCountry.forEach(city => {
+            let option = document.createElement("option");
+            option.value = city;
+            cityDatalist.appendChild(option);
+        });
+    }
+}
+document.addEventListener("DOMContentLoaded", function () {
+    // Get URL parameters
+    let urlParams = new URLSearchParams(window.location.search);
+    let urlID = urlParams.get("id") ? parseInt(urlParams.get("id")) : null;
+    let urlCategory = urlParams.get("category");
+    
+    // Set category filter if provided in URL
+    if (urlCategory) {
+        let select = document.getElementById("filter-category");
+        if (select) select.value = urlCategory;
+    }
+    
+    // Country filter persistence
+    let countrySearch = document.getElementById("filter-country");
+    if (countrySearch) {
+        // Load saved country
+        countrySearch.value = localStorage.getItem("selectedCountry") || "";
+        console.log("Loaded country from storage:", countrySearch.value);
+        
+        // Update cities based on saved country
+        updateCitiesByCountry(countrySearch.value);
+        
+        // Save when changed and update cities
+        countrySearch.addEventListener("change", function() {
+            let selectedCountry = this.value;
+            console.log("Country changed to:", selectedCountry);
+            localStorage.setItem("selectedCountry", selectedCountry);
+            updateCitiesByCountry(selectedCountry);
+            filter();
+        });
+        
+        // Also update on input (for typing)
+        countrySearch.addEventListener("input", function() {
+            let selectedCountry = this.value;
+            console.log("Country input:", selectedCountry);
+            updateCitiesByCountry(selectedCountry);
+        });
+    }
+    
+    // Setup dropdown links
+    document.querySelectorAll(".dropdown-content a").forEach(link => {
+        link.addEventListener("click", () => {
+            let id = parseInt(link.dataset.id);
+            if (id) {
+                window.location.href = `services.html?id=${id}`;
+            }
+        });
+    });
+    
+    // DECIDE WHAT TO RENDER:
+    if (urlID) {
+        render(services.filter(s => s.id === urlID));
+    } else if (countrySearch && countrySearch.value) {
+        filter();
+    } else {
+        render();
+    }
+});
