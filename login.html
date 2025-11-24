@@ -43,15 +43,33 @@
 
   <!-- AUTH PAGE -->
   <main class="auth-page">
-    <form class="auth-form" id="login-form">
-      <h1 class="auth-title">Welcome Back</h1>
-      <input type="email" id="login-email" class="auth-input" placeholder="Email address" required />
-      <input type="password" id="login-password" class="auth-input" placeholder="Password" required />
-      <button type="submit" class="auth-btn">Sign In</button>
-      <div id="login-msg" class="auth-msg"></div>
-      <div class="auth-switch">
-        Don't have an account? <a href="signup.html">Create one</a>
-      </div>
+    <form id="login-form" class="auth-form" novalidate>
+      <h1 class="auth-title">Login</h1>
+      
+      <input 
+        id="login-email" 
+        class="auth-input" 
+        type="email" 
+        placeholder="Email Address" 
+        required 
+      />
+      
+      <input 
+        id="login-password" 
+        class="auth-input" 
+        type="password" 
+        placeholder="Password" 
+        required 
+      />
+      
+      <button class="auth-btn" type="submit">Login</button>
+      
+      <p id="login-msg" class="auth-msg" role="alert"></p>
+      
+      <p class="auth-switch">
+        Don't have an account? 
+        <a href="signup.html">Sign up here</a>
+      </p>
     </form>
   </main>
 

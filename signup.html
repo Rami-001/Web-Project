@@ -43,16 +43,49 @@
 
   <!-- AUTH PAGE -->
   <main class="auth-page">
-    <form class="auth-form" id="signup-form">
+    <form id="signup-form" class="auth-form" novalidate>
       <h1 class="auth-title">Create Account</h1>
-      <input type="email" id="signup-email" class="auth-input" placeholder="Email address" required />
-      <input type="password" id="signup-password" class="auth-input" placeholder="Password (min. 6 chars)" required />
-      <input type="password" id="signup-confirm" class="auth-input" placeholder="Confirm password" required />
-      <button type="submit" class="auth-btn">Create Account</button>
-      <div id="signup-msg" class="auth-msg"></div>
-      <div class="auth-switch">
-        Already have an account? <a href="login.html">Sign in</a>
-      </div>
+      
+      <input 
+        id="signup-name" 
+        class="auth-input" 
+        type="text" 
+        placeholder="Full Name" 
+        required 
+      />
+      
+      <input 
+        id="signup-email" 
+        class="auth-input" 
+        type="email" 
+        placeholder="Email Address" 
+        required 
+      />
+      
+      <input 
+        id="signup-password" 
+        class="auth-input" 
+        type="password" 
+        placeholder="Password (min 6 chars)" 
+        required 
+      />
+      
+      <input 
+        id="signup-confirm" 
+        class="auth-input" 
+        type="password" 
+        placeholder="Confirm Password" 
+        required 
+      />
+      
+      <button class="auth-btn" type="submit">Create Account</button>
+      
+      <p id="signup-msg" class="auth-msg" role="alert"></p>
+      
+      <p class="auth-switch">
+        Already have an account? 
+        <a href="login.html">Login here</a>
+      </p>
     </form>
   </main>
 

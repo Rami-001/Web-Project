@@ -38,14 +38,12 @@
             <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt="Logout" />Logout</a>
           </div>
         </div>
+        <button class="nav-toggle" aria-label="Toggle navigation"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
       </div>
-      <button class="nav-toggle" aria-label="Toggle navigation"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
     </nav>
   </header>
 
- <!-- =========================
-       SERVICES DROPDOWN
-  ========================== -->
+  <!-- SERVICES DROPDOWN -->
   <div class="dropdown-content">
     <div class="Service-column">
       <h4>Health &amp; Safety</h4>
@@ -61,7 +59,6 @@
       <a data-id="6" href="Services.html?id=6">Money Exchanger</a>
       <a data-id="10" href="Services.html?id=10">Money Transfer</a>
     </div>
-  
     <div class="Service-column">
       <h4>Sustenance &amp; Lodging</h4>
       <a data-id="7" href="Services.html?id=7">Restaurant</a>
@@ -72,78 +69,192 @@
 
   <!-- MAIN CONTENT -->
   <main class="contact-page">
-  <section class="contact-hero">
-    <h1>Contact Us</h1>
-    <p>Questions, feedback, or partnership ideas? We’d love to hear from you.</p>
-  </section>
+    <section class="contact-hero">
+      <h1>Contact Us</h1>
+      <p>Questions, feedback, or partnership ideas? We'd love to hear from you.</p>
+    </section>
 
-  <section class="contact-grid">
-    <!-- Info cards -->
-    <div class="contact-info">
-      <div class="info-card">
-        <div class="info-icon">
-          <img src="imgs\info-email.svg" alt="Email icon">
+    <div class="contact-wrapper">
+      <!-- Left: Info cards -->
+      <div class="contact-info-section">
+        <h2>Get in touch</h2>
+        <p>Reach out through any channel</p>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <div class="info-card-content">
+            <h3>Email</h3>
+            <a href="mailto:support@globalcompass.example">support@globalcompass.example</a>
+          </div>
         </div>
-        <div>
-          <h3>Email</h3>
-          <a href="mailto:support@globalcompass.example">support@globalcompass.example</a>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </div>
+          <div class="info-card-content">
+            <h3>Phone</h3>
+            <a href="tel:+10000000000">+1 (000) 000-0000</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div class="info-card-content">
+            <h3>Address</h3>
+            <p>123 Anywhere St, City, Country</p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="info-card-content">
+            <h3>Hours</h3>
+            <p>Mon - Fri: 9am - 6pm<br />Sat - Sun: 10am - 4pm</p>
+          </div>
         </div>
       </div>
 
-      <div class="info-card">
-        <div class="info-icon">
-          <img src="imgs\info-phone.svg" alt="Phone icon">
-        </div>
-        <div>
-          <h3>Phone</h3>
-          <a href="tel:+10000000000">+1 (000) 000-0000</a>
-        </div>
-      </div>
+      <!-- Right: Contact form -->
+      <div class="contact-form-section">
+        <div class="contact-form">
+          <h2>Send us a message</h2>
+          <p>We'll get back to you as soon as possible</p>
 
-      <div class="info-card">
-        <div class="info-icon">
-          <img src="imgs\info-address.svg" alt="Location icon">
-        </div>
-        <div>
-          <h3>Address</h3>
-          <p>123 Anywhere St, City, Country</p>
+          <div class="field">
+            <label for="c-name">Full name</label>
+            <input id="c-name" class="field-input" type="text" placeholder="Jane Doe" required />
+          </div>
+
+          <div class="field">
+            <label for="c-email">Email</label>
+            <input id="c-email" class="field-input" type="email" placeholder="jane@example.com" required />
+          </div>
+
+          <div class="field">
+            <label for="c-subject">Subject</label>
+            <input id="c-subject" class="field-input" type="text" placeholder="How can we help?" required />
+          </div>
+
+          <div class="field">
+            <label for="c-message">Message</label>
+            <textarea id="c-message" class="field-textarea" placeholder="Write your message..." required></textarea>
+          </div>
+
+          <div class="contact-actions">
+            <button id="contact-submit-btn" class="contact-btn" type="button">Send message</button>
+          </div>
+          
+          <p id="contact-msg" class="contact-msg" role="alert" aria-live="polite"></p>
         </div>
       </div>
     </div>
+  </main>
 
-    <!-- Form -->
-    <form id="contact-form" class="contact-form" novalidate>
-      <h2>Send us a message</h2>
-
-      <div class="field-row">
-        <div class="field">
-          <label for="c-name">Full name</label>
-          <input id="c-name" type="text" placeholder="Jane Doe" required />
-        </div>
-        <div class="field">
-          <label for="c-email">Email</label>
-          <input id="c-email" type="email" placeholder="jane@example.com" required />
-        </div>
+  <!-- FOOTER -->
+  <div class="footer-background">
+    <footer>
+      <div class="footer-left">
+        <img id="footer-logo" src="imgs/logo.png" alt="Logo" />
+        <span class="footer-brand">Global Compass</span>
       </div>
-
-      <div class="field">
-        <label for="c-subject">Subject</label>
-        <input id="c-subject" type="text" placeholder="How can we help?" required />
+      <div class="footer-links">
+        <a href="Privacypolicy.html">Privacy Policy</a>
+        <a href="termsofservices.html">Terms of Service</a>
+        <a href="Subscription.html">Plans</a>
       </div>
+      <div id="copy-right">&copy; 2025 Global Compass. All rights reserved.</div>
+    </footer>
+  </div>
 
-      <div class="field">
-        <label for="c-message">Message</label>
-        <textarea id="c-message" rows="6" placeholder="Write your message..." required></textarea>
-      </div>
-
-      <button class="contact-btn" type="submit">Send message</button>
-      <p id="contact-msg" class="contact-msg" role="alert" aria-live="polite"></p>
-      <a id="mailto-fallback" class="mailto-link" href="#" style="display:none;">Open email app instead</a>
-    </form>
-  </section>
-</main>
+  <!-- SCRIPTS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="script.js"></script>
-  <script type="module" src="auth.js"></script>
-  <script src="contact.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    // Contact form handler
+    document.addEventListener('DOMContentLoaded', function() {
+      const submitBtn = document.getElementById('contact-submit-btn');
+      const nameInput = document.getElementById('c-name');
+      const emailInput = document.getElementById('c-email');
+      const subjectInput = document.getElementById('c-subject');
+      const messageInput = document.getElementById('c-message');
+      const msgEl = document.getElementById('contact-msg');
+
+      if (submitBtn) {
+        submitBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const name = nameInput.value.trim();
+          const email = emailInput.value.trim();
+          const subject = subjectInput.value.trim();
+          const message = messageInput.value.trim();
+
+          msgEl.textContent = '';
+          msgEl.className = 'contact-msg';
+
+          if (!name || !email || !subject || !message) {
+            msgEl.textContent = 'Please fill in all fields.';
+            msgEl.className = 'contact-msg err';
+            return;
+          }
+
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            msgEl.textContent = 'Please enter a valid email address.';
+            msgEl.className = 'contact-msg err';
+            return;
+          }
+
+          if (message.length < 10) {
+            msgEl.textContent = 'Message must be at least 10 characters long.';
+            msgEl.className = 'contact-msg err';
+            return;
+          }
+
+          // Store message (demo only)
+          const contactData = {
+            name: name,
+            email: email,
+            subject: subject,
+            message: message,
+            timestamp: new Date().toISOString()
+          };
+
+          let messages = JSON.parse(localStorage.getItem('gc_contact_messages') || '[]');
+          messages.push(contactData);
+          localStorage.setItem('gc_contact_messages', JSON.stringify(messages));
+
+          msgEl.textContent = 'Message sent successfully! We\'ll get back to you soon.';
+          msgEl.className = 'contact-msg ok';
+
+          nameInput.value = '';
+          emailInput.value = '';
+          subjectInput.value = '';
+          messageInput.value = '';
+
+          setTimeout(() => {
+            msgEl.textContent = '';
+          }, 3000);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
