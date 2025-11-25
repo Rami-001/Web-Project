@@ -42,8 +42,9 @@
       </div>
     </nav>
   </header>
-
-  <!-- SERVICES DROPDOWN -->
+<!-- =========================
+       SERVICES DROPDOWN
+  ========================== -->
   <div class="dropdown-content">
     <div class="Service-column">
       <h4>Health &amp; Safety</h4>
@@ -59,6 +60,7 @@
       <a data-id="6" href="Services.html?id=6">Money Exchanger</a>
       <a data-id="10" href="Services.html?id=10">Money Transfer</a>
     </div>
+  
     <div class="Service-column">
       <h4>Sustenance &amp; Lodging</h4>
       <a data-id="7" href="Services.html?id=7">Restaurant</a>
@@ -67,155 +69,97 @@
     </div>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <main class="pricing-page">
-    <!-- Hero -->
-    <section class="pricing-hero">
-      <h1>Simple, Transparent Pricing</h1>
-      <p>Choose the plan that works best for you</p>
+  <!-- MAIN -->
+  <main class="subscription-page container">
+    <section class="subscription-hero">
+      <h1>Choose Your Plan</h1>
+      <p>Get unlimited access to critical services worldwide</p>
+      
+      <div class="pricing-toggle">
+        <span class="toggle-label">Monthly</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="billing-toggle">
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label">Yearly</span>
+      </div>
     </section>
 
-    <!-- Pricing Container -->
-    <div class="pricing-container">
-      <!-- Toggle Monthly/Yearly -->
-      <div class="pricing-toggle-section">
-        <span class="pricing-toggle-label">Monthly</span>
-        <label class="pricing-toggle">
-          <input id="billing-toggle" type="checkbox" />
-          <span class="pricing-toggle-slider"></span>
-        </label>
-        <span class="pricing-toggle-label">Yearly (Save 20%)</span>
+    <section class="pricing-plans">
+      <div class="plan-card">
+        <div class="plan-header">
+          <h3>Basic</h3>
+          <div class="price">
+            <span class="currency">$</span>
+            <span class="amount monthly">4.99</span>
+            <span class="amount yearly" style="display:none">49.90</span>
+            <span class="period">/month</span>
+          </div>
+          <p class="plan-description">Perfect for casual travelers</p>
+        </div>
+        <ul class="plan-features">
+          <li>Access to 50+ cities</li>
+          <li>Basic search functionality</li>
+          <li>Standard support</li>
+        </ul>
+        <button class="plan-btn" onclick="selectPlan('basic')">Choose Plan</button>
+        <div class="plan-status"></div>
       </div>
 
-      <!-- Pricing Cards Grid -->
-      <div class="pricing-cards-grid">
-        <!-- FREE PLAN -->
-        <div class="pricing-card free-plan" data-plan="free">
-          <h3 class="pricing-plan-name">Free</h3>
-          <p class="pricing-description">Perfect for casual explorers</p>
-          <div class="pricing-price"><span class="price-amount">$0</span></div>
-          <p class="pricing-price-period">/month</p>
-          <ul class="pricing-features">
-            <li>Search services in 25 cities</li>
-            <li>Save up to 5 favorites</li>
-            <li>Basic search filters</li>
-            <li>Community support</li>
-            <li>Mobile app access</li>
-          </ul>
-          <button class="pricing-cta-btn primary free-btn" onclick="selectPlan('free')">
-            <span class="btn-text">Current Plan</span>
-          </button>
-          <p class="plan-status" id="status-free"></p>
+      <div class="plan-card popular">
+        <div class="popular-badge">POPULAR</div>
+        <div class="plan-header">
+          <h3>Pro</h3>
+          <div class="price">
+            <span class="currency">$</span>
+            <span class="amount monthly">9.99</span>
+            <span class="amount yearly" style="display:none">99.90</span>
+            <span class="period">/month</span>
+          </div>
+          <p class="plan-description">For frequent travelers</p>
         </div>
-
-        <!-- PRO PLAN -->
-        <div class="pricing-card pro-plan featured" data-plan="pro">
-          <span class="pricing-badge">MOST POPULAR</span>
-          <h3 class="pricing-plan-name">Pro</h3>
-          <p class="pricing-description">For serious travelers</p>
-          <div class="pricing-price"><span class="price-amount">$9.99</span></div>
-          <p class="pricing-price-period">/month</p>
-          <ul class="pricing-features">
-            <li>Search services in 150+ cities</li>
-            <li>Unlimited favorites</li>
-            <li>Advanced filters & sorting</li>
-            <li>Priority email support</li>
-            <li>Offline access</li>
-            <li>Service recommendations</li>
-            <li>Trip planning tools</li>
-          </ul>
-          <button class="pricing-cta-btn primary pro-btn" onclick="selectPlan('pro')">
-            <span class="btn-text">Upgrade to Pro</span>
-          </button>
-          <p class="plan-status" id="status-pro"></p>
-        </div>
-
-        <!-- ULTIMATE PLAN -->
-        <div class="pricing-card ultimate-plan" data-plan="ultimate">
-          <h3 class="pricing-plan-name">Ultimate</h3>
-          <p class="pricing-description">For power users & professionals</p>
-          <div class="pricing-price"><span class="price-amount">$24.99</span></div>
-          <p class="pricing-price-period">/month</p>
-          <ul class="pricing-features">
-            <li>Search services in all cities</li>
-            <li>Unlimited everything</li>
-            <li>Real-time notifications</li>
-            <li>24/7 priority support</li>
-            <li>Advanced analytics</li>
-            <li>Custom alerts</li>
-            <li>Export & backup features</li>
-            <li>API access</li>
-            <li>Group management</li>
-          </ul>
-          <button class="pricing-cta-btn primary ultimate-btn" onclick="selectPlan('ultimate')">
-            <span class="btn-text">Upgrade to Ultimate</span>
-          </button>
-          <p class="plan-status" id="status-ultimate"></p>
-        </div>
+        <ul class="plan-features">
+          <li>Access to 500+ locations</li>
+          <li>Advanced filters &amp; search</li>
+          <li>Saved favorites</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="plan-btn primary" onclick="selectPlan('pro')">Choose Plan</button>
+        <div class="plan-status"></div>
       </div>
 
-      <!-- FAQ Section -->
-      <section class="pricing-faq-section">
-        <div class="pricing-faq-container">
-          <h2 class="pricing-faq-title">Frequently Asked Questions</h2>
-
-          <div class="pricing-faq-item">
-            <button class="pricing-faq-question" type="button">
-              <span>Can I change plans anytime?</span>
-              <span class="pricing-faq-toggle">▼</span>
-            </button>
-            <div class="pricing-faq-answer">
-              <div class="pricing-faq-answer-content">
-                Yes! You can upgrade or downgrade your plan at any time. Changes take effect at your next billing cycle. No penalties or hidden fees.
-              </div>
-            </div>
+      <div class="plan-card">
+        <div class="plan-header">
+          <h3>Enterprise</h3>
+          <div class="price">
+            <span class="currency">$</span>
+            <span class="amount monthly">24.99</span>
+            <span class="amount yearly" style="display:none">249.90</span>
+            <span class="period">/month</span>
           </div>
-
-          <div class="pricing-faq-item">
-            <button class="pricing-faq-question" type="button">
-              <span>Do you offer refunds?</span>
-              <span class="pricing-faq-toggle">▼</span>
-            </button>
-            <div class="pricing-faq-answer">
-              <div class="pricing-faq-answer-content">
-                We offer a 7-day money-back guarantee. If you're not satisfied within the first week, we'll refund your payment in full, no questions asked.
-              </div>
-            </div>
-          </div>
-
-          <div class="pricing-faq-item">
-            <button class="pricing-faq-question" type="button">
-              <span>What payment methods do you accept?</span>
-              <span class="pricing-faq-toggle">▼</span>
-            </button>
-            <div class="pricing-faq-answer">
-              <div class="pricing-faq-answer-content">
-                We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and Apple Pay. All transactions are encrypted and secure.
-              </div>
-            </div>
-          </div>
-
-          <div class="pricing-faq-item">
-            <button class="pricing-faq-question" type="button">
-              <span>Is there a free trial?</span>
-              <span class="pricing-faq-toggle">▼</span>
-            </button>
-            <div class="pricing-faq-answer">
-              <div class="pricing-faq-answer-content">
-                Yes! Sign up for a free 14-day trial of the Professional plan. No credit card required to get started.
-              </div>
-            </div>
-          </div>
+          <p class="plan-description">For teams and organizations</p>
         </div>
-      </section>
+        <ul class="plan-features">
+          <li>Unlimited locations</li>
+          <li>Team collaboration</li>
+          <li>API access</li>
+          <li>Dedicated account manager</li>
+        </ul>
+        <button class="plan-btn" onclick="selectPlan('enterprise')">Choose Plan</button>
+        <div class="plan-status"></div>
+      </div>
+    </section>
 
-      <!-- Manage Subscription Section -->
-      <section class="pricing-manage-section">
-        <h2 class="pricing-manage-title">Already a subscriber?</h2>
-        <p class="pricing-manage-desc">Access your account to manage billing, update payment methods, and view usage</p>
-        <button class="pricing-manage-btn" onclick="goToSettings()">Manage Subscription</button>
-      </section>
-    </div>
+    <section class="subscription-cta">
+      <div class="cta-content">
+        <h2>Manage Your Subscription</h2>
+        <p>Update your plan or cancel anytime. No hidden fees.</p>
+      </div>
+      <div class="cta-buttons">
+        <button class="cta-btn primary" onclick="managePlan()">Manage Plan</button>
+        <button class="cta-btn secondary" onclick="cancelPlan()">Cancel Subscription</button>
+      </div>
+    </section>
   </main>
 
   <!-- FOOTER -->
@@ -236,7 +180,7 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="script.js"></script>
-  <script src="auth.js"></script>
+  <script type="module" src="auth.js"></script>
   <script src="Subscription.js"></script>
 </body>
 </html>

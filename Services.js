@@ -361,7 +361,7 @@ let services = [
   "city": ["Heidelberg"],
   "Schedule": "24/7 Emergency",
   "contact_information": "Main: <a href='tel:+496221560'>+49 6221 56-0</a> | Emergency: <a href='tel:+4962215632000'>+49 6221 56-32000</a> | International Office: <a href='tel:+4962215636685'>+49 6221 56-36685</a> | Address: Im Neuenheimer Feld 672, 69120 Heidelberg, Germany",
-  "more_info_on": "https://www.klinikum.uni-heidelberg.de"
+  "more_info_on": "https://www.heidelberg-university-hospital.com"
 }
 ];
 // ================================
@@ -431,6 +431,7 @@ function filter() {
     let categoryValue = document.getElementById("filter-category").value;
     let cityValue = document.getElementById("filter-city").value;
     let countryValue = document.getElementById("filter-country").value;
+    let favIds= JSON.parse(localStorage.getItem("favIds")) || [];
     let filtered = allServices.filter((s) =>
         s.name.toLowerCase().includes(searchValue)
     );
@@ -460,6 +461,9 @@ function filter() {
         filtered.sort((a, b) => a.name.localeCompare(b.name));
     } else if (sortValue === "name-desc") {
         filtered.sort((a, b) => b.name.localeCompare(a.name));
+    }
+    if (sortValue === "fav-services"){
+      filtered = filtered.filter((s) => favIds.includes(s.name));
     }
     render(filtered);
 }
@@ -497,11 +501,9 @@ if(clearbtn){
 function updateCitiesByCountry(selectedCountry) {
     let cityInput = document.getElementById("filter-city");
     let cityDatalist = document.getElementById("cities");
-    
     // Clear previous cities
     cityDatalist.innerHTML = "";
     cityInput.value = "";
-    
     if (!selectedCountry || selectedCountry === "") {
         // If no country selected, show ALL cities from citiesData
         let allCities = Object.values(citiesData).flat().sort();
@@ -513,7 +515,6 @@ function updateCitiesByCountry(selectedCountry) {
     } else {
         // Show cities only from selected country using citiesData
         let citiesInCountry = citiesData[selectedCountry] || [];
-        
         citiesInCountry.forEach(city => {
             let option = document.createElement("option");
             option.value = city;
@@ -522,60 +523,126 @@ function updateCitiesByCountry(selectedCountry) {
     }
 }
 document.addEventListener("DOMContentLoaded", function () {
-    // Get URL parameters
-    let urlParams = new URLSearchParams(window.location.search);
-    let urlID = urlParams.get("id") ? parseInt(urlParams.get("id")) : null;
-    let urlCategory = urlParams.get("category");
-    
-    // Set category filter if provided in URL
-    if (urlCategory) {
-        let select = document.getElementById("filter-category");
-        if (select) select.value = urlCategory;
+  // Get URL parameters
+  let urlParams = new URLSearchParams(window.location.search);
+  let urlID = urlParams.get("id") ? parseInt(urlParams.get("id")) : null;
+  let urlCategory = urlParams.get("category");
+  let urlCountry = urlParams.get("country"); // Add this line
+  // Set category filter if provided in URL
+  if (urlCategory) {
+    let select = document.getElementById("filter-category");
+    if (select) select.value = urlCategory;
+  }
+  // Set country filter if provided in URL
+  if (urlCountry) {
+    let countrySelect = document.getElementById("filter-country");
+    if (countrySelect) {
+      countrySelect.value = urlCountry;
+      console.log("Set country from URL:", urlCountry);
+      // Update cities based on URL country
+      updateCitiesByCountry(urlCountry);
     }
-    
-    // Country filter persistence
-    let countrySearch = document.getElementById("filter-country");
-    if (countrySearch) {
-        // Load saved country
-        countrySearch.value = localStorage.getItem("selectedCountry") || "";
-        console.log("Loaded country from storage:", countrySearch.value);
-        
-        // Update cities based on saved country
-        updateCitiesByCountry(countrySearch.value);
-        
-        // Save when changed and update cities
-        countrySearch.addEventListener("change", function() {
-            let selectedCountry = this.value;
-            console.log("Country changed to:", selectedCountry);
-            localStorage.setItem("selectedCountry", selectedCountry);
-            updateCitiesByCountry(selectedCountry);
-            filter();
-        });
-        
-        // Also update on input (for typing)
-        countrySearch.addEventListener("input", function() {
-            let selectedCountry = this.value;
-            console.log("Country input:", selectedCountry);
-            updateCitiesByCountry(selectedCountry);
-        });
-    }
-    
-    // Setup dropdown links
-    document.querySelectorAll(".dropdown-content a").forEach(link => {
-        link.addEventListener("click", () => {
-            let id = parseInt(link.dataset.id);
-            if (id) {
-                window.location.href = `services.html?id=${id}`;
-            }
-        });
+  }
+  // Country filter persistence
+  let countrySearch = document.getElementById("filter-country");
+  if (countrySearch) {
+    // Load saved country
+    countrySearch.value = localStorage.getItem("selectedCountry") || "";
+    console.log("Loaded country from storage:", countrySearch.value);
+
+    // Update cities based on saved country
+    updateCitiesByCountry(countrySearch.value);
+
+    // Save when changed and update cities
+    countrySearch.addEventListener("change", function () {
+      let selectedCountry = this.value;
+      console.log("Country changed to:", selectedCountry);
+      localStorage.setItem("selectedCountry", selectedCountry);
+      updateCitiesByCountry(selectedCountry);
+      filter();
     });
-    
+
+    // Also update on input (for typing)
+    countrySearch.addEventListener("input", function () {
+      let selectedCountry = this.value;
+      console.log("Country input:", selectedCountry);
+      updateCitiesByCountry(selectedCountry);
+    });
+  }
+  // Setup dropdown links
+  document.querySelectorAll(".dropdown-content a").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault(); // Prevent default navigation
+      let id = parseInt(link.dataset.id);
+      let selectedCountry = document.getElementById("filter-country").value;
+      if (id) {
+        let allServices = load();
+        let filteredServices;
+        // If country is selected, filter by both ID and country
+        if (
+          selectedCountry &&
+          selectedCountry !== "All" &&
+          selectedCountry.trim() !== ""
+        ) {
+          filteredServices = allServices.filter(
+            (s) =>
+              s.id === id &&
+              s.country.toLowerCase() === selectedCountry.toLowerCase()
+          );
+          console.log(
+            "Filtering by ID and country. Found:",
+            filteredServices.length,
+            "services"
+          );
+        } else {
+          // If no country selected, filter only by ID
+          filteredServices = allServices.filter((s) => s.id === id);
+          console.log(
+            "Filtering by ID only. Found:",
+            filteredServices.length,
+            "services"
+          );
+        }
+        // Close the dropdown menu
+        let dropdownMenu = document.querySelector(".dropdown-content");
+        if (dropdownMenu) {
+          dropdownMenu.classList.remove("visible");
+        }
+        // Render the filtered results
+        render(filteredServices);
+        // Update URL without reloading the page
+        let newUrl =
+          window.location.origin + window.location.pathname + `?id=${id}`;
+        if (
+          selectedCountry &&
+          selectedCountry !== "All" &&
+          selectedCountry.trim() !== ""
+        ) {
+          newUrl += `&country=${encodeURIComponent(selectedCountry)}`;
+        }
+        window.history.pushState({}, "", newUrl);
+      }
+    });
     // DECIDE WHAT TO RENDER:
     if (urlID) {
-        render(services.filter(s => s.id === urlID));
+      let allServices = load();
+      let filteredServices;
+      // If country is specified in URL, filter by both ID and country
+      if (urlCountry) {
+        filteredServices = allServices.filter(
+          (s) =>
+            s.id === urlID &&
+            s.country.toLowerCase() === urlCountry.toLowerCase()
+        );
+      } else {
+        // If no country specified, filter only by ID
+        filteredServices = allServices.filter((s) => s.id === urlID);
+      }
+      render(filteredServices);
     } else if (countrySearch && countrySearch.value) {
-        filter();
+      filter();
     } else {
-        render();
+      render();
     }
+  });
 });

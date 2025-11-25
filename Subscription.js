@@ -221,7 +221,6 @@ class SubscriptionPage {
         });
     }
 }
-
 // Init
 document.addEventListener('DOMContentLoaded', () => {
     new SubscriptionPage();
