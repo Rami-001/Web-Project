@@ -232,24 +232,20 @@ font-weight: 900;
     position: relative;
     margin: auto;
 }
-
 .images {
     display: flex;
     width: calc(1500px * 8 + 50px * 7); 
     animation: slide 45s infinite;
     gap: 50px;
 }
-
 .images .image {
 	transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-
 .images .image img {
     width: 1500px; 
     height: 800px;
 	transition: all 0.3s ease;
 }
-
 .image h2 {
 	text-align: center;
 	font-size: 2.8rem;
@@ -263,7 +259,6 @@ font-weight: 900;
 	margin-top: 10px;
 	transition: all 0.3s ease;
 }
-
 .images .image:hover h2 {
 	text-shadow: 0 6px 12px rgba(37,99,235,.25);
 	font-size: 2.95rem;
@@ -286,7 +281,6 @@ font-weight: 900;
 	border-top: 1px solid rgba(59,157,217,.15);
 	transition: all 0.3s ease;
 }
-
 .home-cta-content {
 	width: min(var(--wrap), 94%);
 	margin: 0 auto;
@@ -1765,18 +1759,20 @@ body.light-mode .auth-switch a:hover {
 	background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
 	color: #e2e8f0;
 	border-radius: 20px;
+	margin: auto;
 	margin-top: 50px;
 	margin-bottom: 50px;
+	width: 70%;
 }
 /* Hero Section */
-.subscription-hero {
+.subscription-header {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
 	gap: 30px;
 	margin: 100px;
 }
-.subscription-hero h1 {
+.subscription-header h1 {
 	font-size: clamp(2.5rem, 5vw, 4rem);
 	font-weight: 900;
 	margin-bottom: 20px;
@@ -1785,7 +1781,7 @@ body.light-mode .auth-switch a:hover {
 	background-clip: text;
 	color: transparent;
 }
-.subscription-hero p {
+.subscription-header p {
 	font-size: 1.2rem;
 	color: #94a3b8;
 	margin-bottom: 40px;
