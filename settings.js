@@ -1,273 +1,362 @@
-// settings.js
-import {
-  getAuth, onAuthStateChanged, updateProfile,
-  sendPasswordResetEmail, deleteUser
-} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
-import {
-  getApp, getApps
-} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-import {
-  getStorage, ref, uploadBytesResumable, getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js";
+// Settings page handler - client-side only, fully functional
 
-/* ---------- Bind storage to the SAME app as auth ---------- */
-const app = getApps().length ? getApp() : null; // auth.js initializes the app
-const auth = getAuth(app || undefined);
-const storage = getStorage(app || undefined);
+document.addEventListener('DOMContentLoaded', function() {
+	let currentUser = localStorage.getItem('gc_current_user');
+	
+	// Redirect if not logged in
+	if (!currentUser) {
+		window.location.href = 'login.html';
+		return;
+	}
 
-/* ---------- DOM ---------- */
-const emailEl   = document.getElementById('set-email');
-const nameEl    = document.getElementById('set-name');
-const saveBtn   = document.getElementById('btn-save-profile');
-const avatarInp = document.getElementById('avatar-file');
-const avatarImg = document.getElementById('avatar-preview');
+	let user = JSON.parse(currentUser);
+	let storedUser = JSON.parse(localStorage.getItem('gc_user_' + user.email));
 
-const resetBtn  = document.getElementById('btn-reset-pass');
-const delBtn    = document.getElementById('btn-delete');
+	if (!storedUser) {
+		window.location.href = 'login.html';
+		return;
+	}
 
-const msg       = document.getElementById('settings-msg');
-const resetMsg  = document.getElementById('reset-msg');
-const delMsg    = document.getElementById('delete-msg');
+	// Array of 100 avatar identifiers
+	let avatarList = generateAvatarList();
+	
+	// Initialize current avatar index
+	if (storedUser.avatarIndex === undefined) {
+		storedUser.avatarIndex = 0;
+		localStorage.setItem('gc_user_' + storedUser.email, JSON.stringify(storedUser));
+	}
 
-const subCurrent = document.getElementById('sub-current');
-const subSelect  = document.getElementById('sub-select');
-const subChange  = document.getElementById('btn-change-plan');
-const subCancel  = document.getElementById('btn-cancel-plan');
-const subMsg     = document.getElementById('sub-msg');
+	// Initialize plan if not exists
+	if (!storedUser.plan) {
+		storedUser.plan = 'Starter';
+		localStorage.setItem('gc_user_' + storedUser.email, JSON.stringify(storedUser));
+	}
 
-/* ---------- Helpers ---------- */
-const setMsg = (el, type, text) => {
-  if (!el) return;
-  el.classList.remove('success','error');
-  el.classList.add(type === 'ok' ? 'success' : 'error');
-  el.textContent = text;
-};
-const disable = (el, v=true) => { if (el) el.disabled = !!v; };
+	// Load profile data
+	loadProfileData(user, storedUser, avatarList);
 
-const key = (uid) => `gc_subscription_${uid}`;
-const readSub = (uid) => {
-  const raw = localStorage.getItem(key(uid));
-  return raw ? JSON.parse(raw) : { plan: 'free', status: 'active' };
-};
-const writeSub = (uid, data) => localStorage.setItem(key(uid), JSON.stringify(data));
-const label = (p) => p === 'pro' ? 'Pro' : p === 'standard' ? 'Standard' : 'Free';
+	// Setup event listeners
+	setupUpdateNameBtn(user, storedUser, avatarList);
+	setupUpdatePasswordBtn(user, storedUser);
+	setupDeleteAccountBtn(user, storedUser);
+	setupThemeToggle();
+	setupAvatarCycler(storedUser, avatarList);
 
-const reflectSub = (uid) => {
-  const s = readSub(uid);
-  subCurrent.value = label(s.plan);
-  subSelect.value  = s.plan;
-  const isFree = s.plan === 'free';
-  disable(subCancel, isFree);
-  subCancel.title = isFree ? "You're on Free—there's no paid subscription to cancel." : "";
-  return s;
-};
+	// ========== GENERATE 100 AVATARS ==========
+	function generateAvatarList() {
+		let avatars = [];
+		for (let i = 1; i <= 100; i++) {
+			avatars.push('avatar_' + i);
+		}
+		return avatars;
+	}
 
-const updateNavAvatar = (url) => {
-  const nav = document.getElementById('nav-avatar');
-  if (nav && url) nav.src = url;
-};
+	// ========== LOAD PROFILE DATA ==========
+	function loadProfileData(userSession, userStored, avatars) {
+		let profileName = document.getElementById('profile-name');
+		let profileEmail = document.getElementById('profile-email');
+		let settingsAvatar = document.getElementById('settings-avatar');
+		let settingsEmail = document.getElementById('settings-email');
+		let settingsName = document.getElementById('settings-name');
+		let navAvatar = document.getElementById('nav-avatar');
 
-/* ---------- Main ---------- */
-onAuthStateChanged(auth, (user) => {
-  if (!user) { window.location.href = "login.html"; return; }
+		if (profileName) profileName.textContent = userStored.name;
+		if (profileEmail) profileEmail.textContent = userStored.email;
+		
+		let currentAvatarId = avatars[userStored.avatarIndex];
+		if (settingsAvatar) {
+			settingsAvatar.src = 'https://robohash.org/' + encodeURIComponent(currentAvatarId) + '?size=80x80&set=set1';
+			settingsAvatar.alt = 'Avatar for ' + userStored.name;
+		}
+		
+		if (navAvatar) {
+			navAvatar.src = 'https://robohash.org/' + encodeURIComponent(currentAvatarId) + '?size=32x32&set=set1';
+			navAvatar.alt = 'Avatar for ' + userStored.name;
+		}
+		
+		if (settingsEmail) settingsEmail.value = userStored.email;
+		if (settingsName) settingsName.value = userStored.name;
+	}
 
-  // Prefill
-  if (emailEl) {
-    emailEl.value = user.email || "";
-    emailEl.setAttribute('disabled', 'disabled'); // hard-disable editing
-    emailEl.classList.add('disabled-like');       // optional style hook
-  }
-  nameEl.value  = user.displayName || (user.email ? user.email.split("@")[0] : "");
-  if (user.photoURL) avatarImg.src = user.photoURL;
+	// ========== AVATAR CYCLER ==========
+	function setupAvatarCycler(userStored, avatars) {
+		let editAvatarBtn = document.getElementById('edit-avatar-btn');
+		let settingsAvatar = document.getElementById('settings-avatar');
+		let navAvatar = document.getElementById('nav-avatar');
 
-  // Subscription
-  reflectSub(user.uid);
+		if (editAvatarBtn && settingsAvatar) {
+			editAvatarBtn.addEventListener('click', function(e) {
+				e.preventDefault();
+				
+				// Move to next avatar (cycle through 100)
+				userStored.avatarIndex = (userStored.avatarIndex + 1) % avatars.length;
+				
+				// Fade out
+				settingsAvatar.style.transition = 'opacity 0.3s ease';
+				settingsAvatar.style.opacity = '0.3';
+				
+				// Update after fade
+				setTimeout(function() {
+					let newAvatarId = avatars[userStored.avatarIndex];
+					let newAvatarUrl = 'https://robohash.org/' + encodeURIComponent(newAvatarId) + '?size=80x80&set=set1';
+					
+					// Update settings avatar
+					settingsAvatar.src = newAvatarUrl;
+					
+					// Update nav avatar too
+					if (navAvatar) {
+						navAvatar.src = 'https://robohash.org/' + encodeURIComponent(newAvatarId) + '?size=32x32&set=set1';
+					}
 
-  /* Save name */
-  saveBtn.addEventListener('click', async () => {
-    const newName = nameEl.value.trim();
-    if (!newName) return setMsg(msg, 'err', 'Display name cannot be empty.');
-    setMsg(msg, 'ok', 'Saving…');
-    disable(saveBtn, true);
-    try {
-      await updateProfile(user, { displayName: newName });
-      const span = document.getElementById('user-name');
-      if (span) span.textContent = newName;
-      setMsg(msg, 'ok', 'Profile updated.');
-    } catch (e) {
-      console.error(e);
-      setMsg(msg, 'err', 'Could not update profile. Try again.');
-    } finally {
-      disable(saveBtn, false);
-    }
-  });
+					// SYNC AVATAR GLOBALLY
+					let allAvatars = document.querySelectorAll('[data-avatar-sync="true"]');
+					allAvatars.forEach(avatar => {
+						avatar.src = 'https://robohash.org/' + encodeURIComponent(newAvatarId) + '?size=32x32&set=set1';
+					});
+					
+					// Fade in
+					settingsAvatar.style.opacity = '1';
+				}, 150);
+				
+				// Save to localStorage
+				localStorage.setItem('gc_user_' + userStored.email, JSON.stringify(userStored));
 
-  /* Avatar upload with progress + automatic fallback */
-avatarInp.addEventListener('change', () => {
-  const file = avatarInp.files?.[0];
-  if (!file) return;
+				// Broadcast to other tabs/windows
+				window.dispatchEvent(new CustomEvent('avatarChanged', { 
+					detail: { avatar: avatars[userStored.avatarIndex], email: userStored.email }
+				}));
+			});
+		}
+	}
 
-  if (!file.type.startsWith('image/')) return setMsg(msg, 'err', 'Please choose an image file.');
-  if (file.size > 5 * 1024 * 1024)    return setMsg(msg, 'err', 'Max size is 5 MB.');
+	// ========== UPDATE NAME ==========
+	function setupUpdateNameBtn(userSession, userStored, avatars) {
+		let btn = document.getElementById('update-name-btn');
+		let msgEl = document.getElementById('name-msg');
+		let nameInput = document.getElementById('settings-name');
 
-  setMsg(msg, 'ok', 'Uploading photo… 0%');
-  disable(saveBtn, true);
+		if (btn) {
+			btn.addEventListener('click', function(e) {
+				e.preventDefault();
+				
+				let newName = nameInput.value.trim();
 
-  const path = `avatars/${auth.currentUser.uid}/${Date.now()}_${file.name}`;
-  const fileRef = ref(storage, path);
-  const task = uploadBytesResumable(fileRef, file, { contentType: file.type });
+				if (!newName) {
+					msgEl.textContent = 'Name cannot be empty.';
+					msgEl.className = 'settings-msg error';
+					return;
+				}
 
-  let stalled = false;
-  const stallTimer = setTimeout(() => { stalled = true; }, 8000); // if no progress >8s, we fallback
+				if (newName === userStored.name) {
+					msgEl.textContent = 'Please enter a different name.';
+					msgEl.className = 'settings-msg error';
+					return;
+				}
 
-  task.on('state_changed',
-    (snap) => {
-      const pct = Math.round((snap.bytesTransferred / snap.totalBytes) * 100);
-      setMsg(msg, 'ok', `Uploading photo… ${pct}%`);
-      if (pct > 0) { clearTimeout(stallTimer); }  // progress started
-    },
-    async (err) => {
-      clearTimeout(stallTimer);
-      console.error('[resumable upload error]', err);
-      // If resumable failed or stalled, try a simple upload as a fallback:
-      try {
-        setMsg(msg, 'ok', 'Retrying…');
-        await uploadBytes(fileRef, file, { contentType: file.type });
-        const url = await getDownloadURL(fileRef);
-        await updateProfile(auth.currentUser, { photoURL: url });
-        const busted = `${url}${url.includes('?') ? '&' : '?'}v=${Date.now()}`;
-        avatarImg.src = busted;
-        const nav = document.getElementById('nav-avatar'); if (nav) nav.src = busted;
-        setMsg(msg, 'ok', 'Profile picture updated.');
-      } catch (e) {
-        console.error('[fallback upload error]', e);
-        setMsg(
-          msg,
-          'err',
-          'Upload failed. Check Firebase Storage is enabled and rules allow your user to write to /avatars.'
-        );
-      } finally {
-        avatarInp.value = '';
-        disable(saveBtn, false);
-      }
-    },
-    async () => {
-      // Resumable finished normally
-      clearTimeout(stallTimer);
-      try {
-        const url = await getDownloadURL(task.snapshot.ref);
-        await updateProfile(auth.currentUser, { photoURL: url });
-        const busted = `${url}${url.includes('?') ? '&' : '?'}v=${Date.now()}`;
-        avatarImg.src = busted;
-        const nav = document.getElementById('nav-avatar'); if (nav) nav.src = busted;
-        setMsg(msg, 'ok', 'Profile picture updated.');
-      } catch (e) {
-        console.error('[post-upload updateProfile error]', e);
-        setMsg(msg, 'err', 'Could not apply the new picture.');
-      } finally {
-        avatarInp.value = '';
-        disable(saveBtn, false);
-      }
-    }
-  );
+				// Update name in stored user
+				userStored.name = newName;
+				// IMPORTANT: Preserve avatarIndex and plan when updating
+				localStorage.setItem('gc_user_' + userStored.email, JSON.stringify(userStored));
 
-  // If it *never* fires progress (some environments), run the fallback after 9s
-  setTimeout(async () => {
-    if (!stalled) return; // resumable progressed or finished
-    try {
-      task.cancel();
-    } catch {}
-    try {
-      setMsg(msg, 'ok', 'Retrying…');
-      await uploadBytes(fileRef, file, { contentType: file.type });
-      const url = await getDownloadURL(fileRef);
-      await updateProfile(auth.currentUser, { photoURL: url });
-      const busted = `${url}${url.includes('?') ? '&' : '?'}v=${Date.now()}`;
-      avatarImg.src = busted;
-      const nav = document.getElementById('nav-avatar'); if (nav) nav.src = busted;
-      setMsg(msg, 'ok', 'Profile picture updated.');
-    } catch (e) {
-      console.error('[fallback (no progress) error]', e);
-      setMsg(
-        msg,
-        'err',
-        'Upload stalled. Verify Storage is enabled and rules allow authenticated writes to /avatars.'
-      );
-    } finally {
-      avatarInp.value = '';
-      disable(saveBtn, false);
-    }
-  }, 9000);
-});
+				// Update current session
+				userSession.name = newName;
+				localStorage.setItem('gc_current_user', JSON.stringify(userSession));
 
+				msgEl.textContent = 'Name updated successfully!';
+				msgEl.className = 'settings-msg success';
 
-  /* Change plan */
-  subChange.addEventListener('click', () => {
-    const plan = subSelect.value; // free|standard|pro
-    writeSub(user.uid, { plan, status: 'active', changedAt: new Date().toISOString() });
-    reflectSub(user.uid);
-    setMsg(subMsg, 'ok', `You're now on the ${label(plan)} plan.`);
-  });
+				setTimeout(() => {
+					msgEl.textContent = '';
+					location.reload();
+				}, 1500);
+			});
+		}
+	}
 
-  /* Cancel subscription (no-op on Free) */
-  subCancel.addEventListener('click', () => {
-    const cur = readSub(user.uid);
-    if (cur.plan === 'free') {
-      return setMsg(subMsg, 'err', "You're already on the Free plan—there's nothing to cancel.");
-    }
-    if (!confirm("Cancel your paid subscription? You’ll switch to the Free plan.")) return;
+	// ========== UPDATE PASSWORD ==========
+	function setupUpdatePasswordBtn(userSession, userStored) {
+		let btn = document.getElementById('update-pwd-btn');
+		let msgEl = document.getElementById('pwd-msg');
+		let oldPwd = document.getElementById('settings-old-pwd');
+		let newPwd = document.getElementById('settings-new-pwd');
+		let confirmPwd = document.getElementById('settings-confirm-pwd');
 
-    writeSub(user.uid, { plan: 'free', status: 'canceled', canceledAt: new Date().toISOString() });
-    reflectSub(user.uid);
-    setMsg(subMsg, 'ok', 'Subscription canceled. You’re on the Free plan.');
-  });
+		if (btn) {
+			btn.addEventListener('click', function(e) {
+				e.preventDefault();
+				
+				let oldPassword = oldPwd.value.trim();
+				let newPassword = newPwd.value.trim();
+				let confirmPassword = confirmPwd.value.trim();
 
-  /* Security */
-  resetBtn.addEventListener('click', async () => {
-    setMsg(resetMsg, 'ok', 'Sending email…');
-    try {
-      await sendPasswordResetEmail(auth, user.email);
-      setMsg(resetMsg, 'ok', 'Reset email sent.');
-    } catch (e) {
-      console.error(e);
-      setMsg(resetMsg, 'err', 'Failed to send reset email.');
-    }
-  });
+				msgEl.textContent = '';
+				msgEl.className = 'settings-msg';
 
-  delBtn.addEventListener('click', async () => {
-    if (!confirm("This permanently deletes your account. Continue?")) return;
-    setMsg(delMsg, 'ok', 'Deleting…');
-    try {
-      await deleteUser(user);
-      window.location.href = "signup.html";
-    } catch (e) {
-      console.error(e);
-      setMsg(delMsg, 'err', e.code === 'auth/requires-recent-login'
-        ? 'Please sign in again, then retry.'
-        : 'Could not delete account.');
-    }
-  });
-});
+				if (!oldPassword || !newPassword || !confirmPassword) {
+					msgEl.textContent = 'All password fields are required.';
+					msgEl.className = 'settings-msg error';
+					return;
+				}
 
-/* -------------------
-   LIGHT/DARK TOGGLE
-------------------- */
-const themeBtn = document.getElementById("theme-toggle");
-const themeMsg = document.getElementById("theme-msg");
+				let freshStoredUser = JSON.parse(localStorage.getItem('gc_user_' + userStored.email));
+				
+				if (freshStoredUser.password !== oldPassword) {
+					msgEl.textContent = 'Current password is incorrect.';
+					msgEl.className = 'settings-msg error';
+					return;
+				}
 
-function setTheme(mode) {
-  document.body.classList.toggle("light-mode", mode === "light");
-  localStorage.setItem("theme", mode);
-  themeBtn.textContent = mode === "light" ? "Switch to Dark Mode" : "Switch to Light Mode";
-  setMsg(themeMsg, "ok", mode === "light" ? "Light mode enabled." : "Dark mode enabled.");
-}
+				if (newPassword.length < 6) {
+					msgEl.textContent = 'New password must be at least 6 characters.';
+					msgEl.className = 'settings-msg error';
+					return;
+				}
 
-// Load user preference
-const savedTheme = localStorage.getItem("theme") || "dark";
-setTheme(savedTheme);
+				if (newPassword !== confirmPassword) {
+					msgEl.textContent = 'New passwords do not match.';
+					msgEl.className = 'settings-msg error';
+					return;
+				}
 
-// Button listener
-themeBtn.addEventListener("click", () => {
-  const current = localStorage.getItem("theme") === "light" ? "dark" : "light";
-  setTheme(current);
+				if (newPassword === oldPassword) {
+					msgEl.textContent = 'New password must be different from current password.';
+					msgEl.className = 'settings-msg error';
+					return;
+				}
+
+				freshStoredUser.password = newPassword;
+				localStorage.setItem('gc_user_' + freshStoredUser.email, JSON.stringify(freshStoredUser));
+
+				msgEl.textContent = 'Password changed successfully!';
+				msgEl.className = 'settings-msg success';
+
+				oldPwd.value = '';
+				newPwd.value = '';
+				confirmPwd.value = '';
+
+				setTimeout(() => {
+					msgEl.textContent = '';
+				}, 2000);
+			});
+		}
+	}
+
+	// ========== DELETE ACCOUNT ==========
+	function setupDeleteAccountBtn(userSession, userStored) {
+		let btn = document.getElementById('delete-account-btn');
+		let msgEl = document.getElementById('delete-msg');
+
+		if (btn) {
+			btn.addEventListener('click', function(e) {
+				e.preventDefault();
+				
+				let confirmed = window.confirm(
+					'Are you absolutely sure? This action cannot be undone.\n\nAll your data will be permanently deleted.'
+				);
+				
+				if (!confirmed) {
+					msgEl.textContent = '';
+					return;
+				}
+
+				let userConfirmation = window.prompt(
+					'Type DELETE (in uppercase) to confirm permanent account deletion:'
+				);
+				
+				if (userConfirmation !== 'DELETE') {
+					msgEl.textContent = 'Confirmation failed. Account not deleted.';
+					msgEl.className = 'settings-msg error';
+					return;
+				}
+
+				localStorage.removeItem('gc_user_' + userStored.email);
+				localStorage.removeItem('gc_current_user');
+
+				msgEl.textContent = 'Account deleted permanently. Redirecting...';
+				msgEl.className = 'settings-msg success';
+
+				setTimeout(() => {
+					window.location.href = 'index.html';
+				}, 1500);
+			});
+		}
+	}
+
+	// ========== THEME TOGGLE ==========
+	function setupThemeToggle() {
+		let darkBtn = document.getElementById('dark-mode-btn');
+		let lightBtn = document.getElementById('light-mode-btn');
+
+		if (darkBtn && lightBtn) {
+			let savedTheme = localStorage.getItem('gc_dark_mode');
+			let isDark = savedTheme !== 'false';
+			
+			updateThemeButtons(isDark);
+			applyTheme(isDark);
+
+			darkBtn.addEventListener('click', function(e) {
+				e.preventDefault();
+				localStorage.setItem('gc_dark_mode', 'true');
+				updateThemeButtons(true);
+				applyTheme(true);
+				showThemeMessage('Dark mode enabled');
+			});
+
+			lightBtn.addEventListener('click', function(e) {
+				e.preventDefault();
+				localStorage.setItem('gc_dark_mode', 'false');
+				updateThemeButtons(false);
+				applyTheme(false);
+				showThemeMessage('Light mode enabled');
+			});
+		}
+	}
+
+	function updateThemeButtons(isDark) {
+		let darkBtn = document.getElementById('dark-mode-btn');
+		let lightBtn = document.getElementById('light-mode-btn');
+
+		if (darkBtn && lightBtn) {
+			if (isDark) {
+				darkBtn.classList.add('active');
+				lightBtn.classList.remove('active');
+			} else {
+				darkBtn.classList.remove('active');
+				lightBtn.classList.add('active');
+			}
+		}
+	}
+
+	function showThemeMessage(message) {
+		let themeMsg = document.getElementById('theme-msg');
+		if (themeMsg) {
+			themeMsg.textContent = message;
+			themeMsg.className = 'settings-msg success';
+			setTimeout(() => {
+				themeMsg.textContent = '';
+			}, 2000);
+		}
+	}
+
+	function applyTheme(isDark) {
+		if (isDark) {
+			document.body.classList.remove('light-mode');
+		} else {
+			document.body.classList.add('light-mode');
+		}
+	}
+
+	// ========== LISTEN FOR AVATAR CHANGES FROM OTHER TABS ==========
+	window.addEventListener('avatarChanged', function(e) {
+		let navAvatar = document.getElementById('nav-avatar');
+		if (navAvatar && e.detail.email === user.email) {
+			navAvatar.src = 'https://robohash.org/' + encodeURIComponent(e.detail.avatar) + '?size=32x32&set=set1';
+		}
+	});
+
+	// ========== LOAD THEME ON PAGE LOAD ==========
+	let savedTheme = localStorage.getItem('gc_dark_mode');
+	let isDark = savedTheme !== 'false';
+	applyTheme(isDark);
+	updateThemeButtons(isDark);
 });

@@ -1,107 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Global Compass | Essential Travel Directory</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- =========================
-       HEADER / NAVBAR
-  ========================== -->
-    <header class="main-header">
-      <nav class="nav-bar">
-        <!-- Brand (left) -->
-        <div class="logo-container">
-          <img id="nav-logo" src="imgs/logo.png" alt="Logo" />
-          <span class="logo-text">Global Compass</span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services • Global Compass</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="main-header">
+    <nav class="nav-bar">
+      <div class="logo-container">
+        <img id="nav-logo" src="imgs/logo.png" alt="Logo" />
+        <span class="logo-text">Global Compass</span>
+      </div>
+
+      <ul id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li class="dropdown"><a href="Services.html">Services</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+        <li><a href="Subscription.html">Plans</a></li>
+      </ul>
+
+      <div class="right-rail">
+        <div class="Login-Signup">
+          <a class="login" href="login.html">Login</a>
+          <a class="Signup" href="signup.html">Sign up</a>
         </div>
-        <!-- Primary links (center) -->
-        <ul id="nav-links">
-          <li>
-            <a href="index.html">
-              <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill="currentColor" d="M10.2 3.4c.99-.8 2.61-.8 3.6 0l6 4.84c.76.61 1.2 1.52 1.2 2.48V19a2 2 0 0 1-2 2h-3.5a.5.5 0 0 1-.5-.5v-5a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v5a.5.5 0 0 1-.5.5H4a2 2 0 0 1-2-2v-8.28c0-.96.44-1.87 1.2-2.48l7-5.24Z"/>
-              </svg>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="aboutus.html">
-              <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
-                <circle cx="12" cy="8" r="1.4" fill="currentColor" />
-                <rect x="11" y="11" width="2" height="7" rx="1" fill="currentColor"/>
-              </svg>
-              About Us
-            </a>
-          </li>
-          <li class="dropdown">
-            <a href="Services.html">
-              <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="3" y="3" width="7" height="7" rx="1.5" fill="currentColor"/>
-                <rect x="14" y="3" width="7" height="7" rx="1.5" fill="currentColor" opacity=".85"/>
-                <rect x="3" y="14" width="7" height="7" rx="1.5" fill="currentColor" opacity=".7"/>
-                <rect x="14" y="14" width="7" height="7" rx="1.5" fill="currentColor" opacity=".55"/>
-              </svg>
-              Services
-            </a>
-          </li>
-          <li>
-            <a href="contactus.html">
-              <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v.5l-9 6-9-6V6Z" fill="currentColor"/>
-                <path d="M21 8.8V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8.8l8.43 5.62a2 2 0 0 0 2.14 0L21 8.8Z" fill="currentColor" opacity=".6"/>
-              </svg>
-              Contact Us
-            </a>
-          </li>
-          <li>
-            <a href="Subscription.html">
-              <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 3l2.6 5.3 5.8.84-4.2 4.09 1 5.77L12 16.9l-5.2 2.1 1-5.77-4.2-4.09 5.8-.84L12 3Z" fill="currentColor"/>
-              </svg>
-              Plans
-            </a>
-          </li>
-        </ul>
-        <!-- Right rail -->
-        <div class="right-rail">
-          <!-- When logged out -->
-          <div class="Login-Signup">
-            <a class="login" href="login.html">Login</a>
-            <a class="Signup" href="signup.html">Signup</a>
+        <div id="welcome-user" class="welcome-inline">Welcome, <span id="user-name"></span>!</div>
+        <div class="profile-dropdown">
+          <img id="nav-avatar" src="imgs/profile.svg" alt="Profile" />
+          <div class="profile-menu">
+            <a href="settings.html"><img class="profile-icon" src="imgs/setting.svg" alt="Settings" />Settings</a>
+            <a href="#" id="logout-link"><img class="profile-icon" src="imgs/logout.svg" alt="Logout" />Logout</a>
           </div>
-          <!-- When logged in -->
-          <div id="welcome-user" class="welcome-inline" style="display: none">
-            Welcome, <span id="user-name"></span>!
-          </div>
-          <div class="profile-dropdown" style="display: none">
-            <img src="imgs/profile.svg" alt="profile icon" />
-            <div class="profile-menu">
-              <a href="settings.html"><img  class="profile-icon"  src="imgs/setting.svg"  alt="Settings icon"/>Settings</a>
-              <a href="#" id="logout-link"><img  class="profile-icon"  src="imgs/logout.svg"  alt="Logout icon"/>Logout</a>
-            </div>
-          </div>
-          <!-- Region clock -->
-          <div id="nav-clock" class="nav-clock" aria-live="polite" title="Local time"></div>
-          <!-- Mobile toggle -->
-          <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </button>
         </div>
-      </nav>
-    </header>
-    <!-- =========================
-       SERVICES DROPDOWN
-  ========================== -->
+        <button class="nav-toggle" aria-label="Toggle navigation"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- SERVICES DROPDOWN -->
   <div class="dropdown-content">
     <div class="Service-column">
       <h4>Health &amp; Safety</h4>
@@ -117,7 +59,6 @@
       <a data-id="6" href="Services.html?id=6">Money Exchanger</a>
       <a data-id="10" href="Services.html?id=10">Money Transfer</a>
     </div>
-  
     <div class="Service-column">
       <h4>Sustenance &amp; Lodging</h4>
       <a data-id="7" href="Services.html?id=7">Restaurant</a>
@@ -126,7 +67,7 @@
     </div>
   </div>
 
-    <!-- =========================
+  <!-- =========================
         SERVICES PAGE CONTENT
     ========================== -->
 <div class="service-filters">
