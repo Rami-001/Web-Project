@@ -253,7 +253,7 @@
   {
     "id": 7,
     "category": "Sustenance & Lodging",
-    "image": "https://m.eyeofriyadh.com/directory/images/2018/04/1adad7e6da9aa.jpg",
+    "image": "https://www.arabnews.com/sites/default/files/styles/n_670_395/public/2017/10/04/1007341-1450603817.jpg?itok=pq63Fb1M",
     "name": "Albek Restaurant",
     "description": "A highly popular Saudi Arabian fast-food chain known for its affordable broasted chicken.",
     "country": "Saudi Arabia",
@@ -273,6 +273,18 @@
   "Schedule": "24/7 Emergency",
   "contact_information": "Main: <a href='tel:+496221560'>+49 6221 56-0</a> | Emergency: <a href='tel:+4962215632000'>+49 6221 56-32000</a> | International Office: <a href='tel:+4962215636685'>+49 6221 56-36685</a> | Address: Im Neuenheimer Feld 672, 69120 Heidelberg, Germany",
   "more_info_on": "https://www.heidelberg-university-hospital.com"
+},
+{
+  "id": 11,
+  "category": "Health & Safety",
+  "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBHeRqAZRDU9MF6hoqIv-cwnpePp7bXGlCtg&s",
+  "name": "Médecins Sans Frontières (Doctors Without Borders)",
+  "description": "International medical humanitarian organization providing emergency medical care to populations in crisis, including refugees and vulnerable communities across Lebanon.",
+  "country": "Lebanon",
+  "city": ["Beirut", "Tripoli", "Sidon", "Bekaa Valley", "Akkar", "Baalbek", "Tyre", "Mount Lebanon"],
+  "Schedule": "Monday-Friday: 8:00 AM - 5:00 PM | Emergency services available",
+  "contact_information": "Beirut Office: <a href='tel:+9611702000'>+961-1-702000</a> | General Inquiries: <a href='mailto:msf-lebanon@msf.org'>msf-lebanon@msf.org</a> | Emergency Medical Services",
+  "more_info_on": "https://www.pcrf.net/our-partners/item-1743660809.html?gad_source=1&gad_campaignid=12352748854&gclid=Cj0KCQiA0KrJBhCOARIsAGIy9wACHd41bfc0iQky2adhpK7vMNx3fDtk4k6hLjC4AAuiIwCAi-iS4hMaAlJyEALw_wcB"
 }
   ]
 }
