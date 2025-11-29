@@ -16,7 +16,6 @@
         <img id="nav-logo" src="imgs/logo.png" alt="Logo" />
         <span class="logo-text">Global Compass</span>
       </div>
-
       <ul id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="aboutus.html">About Us</a></li>
@@ -24,7 +23,6 @@
         <li><a href="contactus.html">Contact Us</a></li>
         <li><a href="Subscription.html">Plans</a></li>
       </ul>
-
       <div class="right-rail">
         <div class="Login-Signup">
           <a class="login" href="login.html">Login</a>
@@ -42,7 +40,7 @@
       </div>
     </nav>
   </header>
-<!-- =========================
+  <!-- =========================
        SERVICES DROPDOWN
   ========================== -->
   <div class="dropdown-content">
@@ -67,11 +65,11 @@
       <a data-id="9" href="Services.html?id=9">Hotel</a>
     </div>
   </div>
-<!-- =========================
+  <!-- =========================
        Page Contents
   ========================== -->
-  <main class="subscription-page ">
-    <section class="subscription-header">
+  <div class="Plan-container">
+    <div class="Plan-header">
       <h1>Choose Your Plan</h1>
       <p>Get unlimited access to critical services worldwide</p>
       <div class="pricing-toggle">
@@ -81,84 +79,72 @@
           <span class="slider"></span>
         </label>
         <span class="toggle-label">Yearly</span>
+        <span class="savings-badge">Save 17%</span>
       </div>
-    </section>
-    <section class="pricing-plans">
-      <div class="plan-card">
-        <div class="plan-header">
-          <h3>Basic</h3>
-          <div class="price">
-            <span class="currency">$</span>
-            <span class="amount monthly">Free</span>
-            <span class="amount yearly" style="display:none">49.90</span>
-            <span class="period">/month</span>
-          </div>
-          <p class="plan-description">Perfect for casual travelers</p>
+    </div>
+    <div class="Plan-cards">
+      <div class="card">
+        <div class="card-header">
+          <h2>Basic</h2>
         </div>
-        <ul class="plan-features">
-          <li>Access to 50+ cities</li>
-          <li>Basic search functionality</li>
-          <li>Standard support</li>
-        </ul>
-        <button class="plan-btn" onclick="selectPlan('basic')">Choose Plan</button>
-        <div class="plan-status"></div>
-      </div>
-      <div class="plan-card popular">
-        <div class="popular-badge">POPULAR</div>
-        <div class="plan-header">
-          <h3>Pro</h3>
-          <div class="price">
-            <span class="currency">$</span>
-            <span class="amount monthly">9.99</span>
-            <span class="amount yearly" style="display:none">99.90</span>
-            <span class="period">/month</span>
-          </div>
-          <p class="plan-description">For frequent travelers</p>
+        <div class="price">
+          <span class="currency">$</span>
+          <span class="amount monthly">4.99</span>
+          <span class="amount yearly" style="display:none">49.90</span>
+          <span class="period">/month</span>
         </div>
-        <ul class="plan-features">
-          <li>Access to 500+ locations</li>
-          <li>Advanced filters &amp; search</li>
-          <li>Saved favorites</li>
-          <li>Priority support</li>
-        </ul>
-        <button class="plan-btn primary" onclick="selectPlan('pro')">Choose Plan</button>
-        <div class="plan-status"></div>
-      </div>
-      <div class="plan-card">
-        <div class="plan-header">
-          <h3>Enterprise</h3>
-          <div class="price">
-            <span class="currency">$</span>
-            <span class="amount monthly">24.99</span>
-            <span class="amount yearly" style="display:none">249.90</span>
-            <span class="period">/month</span>
-          </div>
-          <p class="plan-description">For teams and organizations</p>
+        <p class="plan-description">Perfect for casual travelers</p>
+        <div class="card-features">
+          <ul>
+            <li>Basic service search in 50+ cities</li>
+            <li>Access to essential categories</li>
+            <li>Standard search filters</li>
+            <li>Community support</li>
+            <li>Limited results (10 per search)</li>
+          </ul>
         </div>
-        <ul class="plan-features">
-          <li>Unlimited locations</li>
-          <li>Team collaboration</li>
-          <li>API access</li>
-          <li>Dedicated account manager</li>
-        </ul>
-        <button class="plan-btn" onclick="selectPlan('enterprise')">Choose Plan</button>
-        <div class="plan-status"></div>
+        <div class="plan-btn">
+          <button class="card-btn">Choose Plan</button>
+          <div class="activated-plan"></div>
+        </div>
       </div>
-    </section>
-    <section class="subscription-cta">
-      <div class="cta-content">
-        <h2>Manage Your Subscription</h2>
-        <p>Update your plan or cancel anytime. No hidden fees.</p>
+      <div class="card popular">
+        <div class="popular-badge">MOST POPULAR</div>
+        <div class="card-header">
+          <h2>Enterprise</h2>
+        </div>
+        <div class="price">
+          <span class="currency">$</span>
+          <span class="amount monthly">24.99</span>
+          <span class="amount yearly" style="display:none">249.90</span>
+          <span class="period">/month</span>
+        </div>
+        <p class="plan-description">For teams and organizations</p>
+        <div class="card-features">
+          <ul>
+            <li>Unlimited Service Searches Worldwide</li>
+            <li>Advanced filters (Country, City, Category)</li>
+            <li>Priority Search Results</li>
+            <li>Save Favorite Services</li>
+            <li>24/7 Emergency Support</li>
+            <li>Real-time Updates & Availability</li>
+          </ul>
+        </div>
+        <div class="plan-btn">
+          <button class="card-btn">Choose Plan</button>
+          <div class="activated-plan"></div>
+        </div>
       </div>
-      <div class="cta-buttons">
-        <button class="cta-btn primary" onclick="managePlan()">Manage Plan</button>
-        <button class="cta-btn secondary" onclick="cancelPlan()">Cancel Subscription</button>
-      </div>
-    </section>
-  </main>
-<!-- =========================
+    </div>
+    <div class="Plan-manage">
+      <h2>Cancel Your Plan</h2>
+      <p>Change your plan or cancel anytime. No hidden fees.</p>
+      <button id="cancel-plan-btn">Cancel</button>
+    </div>
+  </div>
+  <!-- =========================
        Footer
-  ========================== -->
+  ========================== -->  
   <div class="footer-background">
     <footer>
       <div class="footer-left">
