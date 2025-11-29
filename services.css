@@ -1,0 +1,182 @@
+/* =========================================================
+    SERVICE PAGE
+    ========================================================= */
+.service-filters {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	padding: 30px;
+	margin: auto ;
+	margin-top: 30px ;
+	background: linear-gradient(145deg, #0c172b, #16223c);
+	border-radius: 20px;
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+	width: 90%;
+}
+.service-filters input,
+.service-filters select {
+	padding: 12px 18px;
+	border-radius: 12px;
+	border: 1px solid #2a3a5d;
+	background-color: #0c172b;
+	color: #eaf2ff;
+	font-size: 1rem;
+	outline: none;
+	transition: all 0.3s ease;
+}
+.service-filters input:focus,
+.service-filters select:focus {
+	border-color: #19bcdc;
+	box-shadow: 0 0 10px rgba(25, 188, 220, 0.4);
+}
+#searchInput {
+	width: 250px;
+	padding: 14px 18px;
+	border: 1px solid #19bcdc;
+	border-radius: 14px;
+	background-color: #0e223d;
+	color: #eaf2ff;
+	font-size: 1rem;
+	outline: none;
+	transition: all 0.25s ease;
+}
+#searchInput::placeholder {
+	color: #94a3b8;
+}
+#searchInput:focus {
+	border-color: #38e0ff;
+	box-shadow: 0 0 10px rgba(56, 224, 255, 0.4);
+}
+#sortSelect,#filter-category,#filter-city,#filter-country {
+	width: 230px;
+	padding: 14px 16px;
+	border: 1px solid #19bcdc;
+	border-radius: 14px;
+	background-color: #0e223d;
+	color: #eaf2ff;
+	font-size: 1rem;
+	outline: none;
+	cursor: pointer;
+	transition: all 0.25s ease;
+}
+#sortSelect:hover,#filter-category:hover,#filter-city:hover,#filter-country:hover {
+	border-color: #38e0ff;
+	box-shadow: 0 0 8px rgba(56, 224, 255, 0.4);
+}
+#sortSelect:focus,#filter-category:focus,#filter-city:focus,#filter-country:focus {
+	background-color: #122b47;
+}
+.locked {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+.clear-filters {
+	background: linear-gradient(145deg, #19bcdc, #0c172b);
+	color: #ffffff;
+	border: 1px solid #19bcdc;
+	border-radius: 12px;
+	padding: 12px 25px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 10px rgba(25, 188, 220, 0.3);
+}
+.clear-filters:hover {
+	background: linear-gradient(145deg, #0c172b, #19bcdc);
+	color: #0c172b;
+	box-shadow: 0 6px 15px rgba(25, 188, 220, 0.5);
+	transform: translateY(-2px);
+}
+
+.service-card {
+	display: flex;
+	align-items: flex-start;
+	background: linear-gradient(145deg, #0f223d, #0c172b);
+	border: 1px solid #19bcdc;
+	border-radius: 15px;
+	padding: 25px;
+	margin: 40px auto;
+	width: 90%;
+	max-width: 1200px;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+	gap: 25px;
+	transition: all 0.35s ease;
+	position: relative;
+	overflow: hidden;
+	flex-wrap: wrap;
+}
+.service-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 12px 25px rgba(25, 188, 220, 0.25);
+	border-color: #3b9dd9;
+}
+.service-card img {
+	width: 400px;
+	height: 250px;
+	margin: auto;
+	border-radius: 16px;
+	object-fit: cover;
+	box-shadow: 0 0 10px rgba(25, 188, 220, 0.3);
+	flex-shrink: 0;
+}
+.card-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 15px;
+	flex: 1;
+	color: #eaf2ff;
+	padding: 10px;
+}
+.card-content h2 {
+	font-size: 1.8rem;
+	color: #19bcdc;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+.card-content p {
+	font-size: 1rem;
+	color: #cbd5e1;
+	line-height: 1.5;
+}
+.card-content ul {
+	color: #a0b8d8;
+	font-size: 0.95rem;
+	margin: 3px 0;
+}
+.heart-icon {
+	cursor: pointer;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	transition: all 0.3s ease;
+}
+.heart-icon:hover {
+	transform: scale(1.1);
+}
+.heart-icon:hover svg {
+	stroke: #ff6b6b;
+}
+.favorite-card {
+	border: 2px solid #ff5f5f;
+	box-shadow: 0 0 15px rgba(255, 95, 95, 0.3);
+}
+.more-info-link{
+	color: rgb(0, 238, 255);
+}
+.more-info-link:hover{
+	text-decoration: underline;
+	color: rgb(8, 64, 185);
+}
+.no-results {
+	text-align: center;
+	padding: 40px 0;
+	font-size: 1.5rem;
+	color: #ffffff;
+	font-weight: 700;
+	opacity: 0;
+	animation: fadeIn 0.6s ease forwards;
+}
