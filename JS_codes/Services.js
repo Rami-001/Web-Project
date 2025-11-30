@@ -90,7 +90,7 @@ $(document).ready(function () {
   // ================================
   // Load JSON Data
   // ================================
-  $.getJSON('data.json', function (data) {
+  $.getJSON('../JS_codes/data.json', function (data) {
     services = data.services;
     citiesData = data.citiesData;
     // Initialize filters and render
@@ -133,9 +133,19 @@ $(document).ready(function () {
         typeof s.Schedule === "object"
           ? Object.entries(s.Schedule).map(([day, time]) => `${day}: ${time}`).join(", ")
           : s.Schedule;
+      
+      // Fix image path
+      let imageSrc = s.image;
+      if (imageSrc.includes('http')) {
+        // External URL - use as is
+      } else {
+        // Local image - add correct path
+        imageSrc = imageSrc.replace('imgs/', '../imgs/');
+      }
+      
       let $card = $(`
         <div class="service-card ${isFavorite ? "favorite-card" : ""}">
-          <img src="${s.image}" alt="${s.name}">
+          <img src="${imageSrc}" alt="${s.name}">
           <div class="card-content">
             <h2>${s.name}</h2>
             <span class="heart-icon ${isFavorite ? "favorited" : ""}" data-servicename="${s.name}">

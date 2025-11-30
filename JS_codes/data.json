@@ -1,4 +1,26 @@
 {
+  "avatars": [
+    {"id": 1, "seed": "Avatar_001"}, {"id": 2, "seed": "Avatar_002"}, {"id": 3, "seed": "Avatar_003"}, {"id": 4, "seed": "Avatar_004"}, {"id": 5, "seed": "Avatar_005"},
+    {"id": 6, "seed": "Avatar_006"}, {"id": 7, "seed": "Avatar_007"}, {"id": 8, "seed": "Avatar_008"}, {"id": 9, "seed": "Avatar_009"}, {"id": 10, "seed": "Avatar_010"},
+    {"id": 11, "seed": "Avatar_011"}, {"id": 12, "seed": "Avatar_012"}, {"id": 13, "seed": "Avatar_013"}, {"id": 14, "seed": "Avatar_014"}, {"id": 15, "seed": "Avatar_015"},
+    {"id": 16, "seed": "Avatar_016"}, {"id": 17, "seed": "Avatar_017"}, {"id": 18, "seed": "Avatar_018"}, {"id": 19, "seed": "Avatar_019"}, {"id": 20, "seed": "Avatar_020"},
+    {"id": 21, "seed": "Avatar_021"}, {"id": 22, "seed": "Avatar_022"}, {"id": 23, "seed": "Avatar_023"}, {"id": 24, "seed": "Avatar_024"}, {"id": 25, "seed": "Avatar_025"},
+    {"id": 26, "seed": "Avatar_026"}, {"id": 27, "seed": "Avatar_027"}, {"id": 28, "seed": "Avatar_028"}, {"id": 29, "seed": "Avatar_029"}, {"id": 30, "seed": "Avatar_030"},
+    {"id": 31, "seed": "Avatar_031"}, {"id": 32, "seed": "Avatar_032"}, {"id": 33, "seed": "Avatar_033"}, {"id": 34, "seed": "Avatar_034"}, {"id": 35, "seed": "Avatar_035"},
+    {"id": 36, "seed": "Avatar_036"}, {"id": 37, "seed": "Avatar_037"}, {"id": 38, "seed": "Avatar_038"}, {"id": 39, "seed": "Avatar_039"}, {"id": 40, "seed": "Avatar_040"},
+    {"id": 41, "seed": "Avatar_041"}, {"id": 42, "seed": "Avatar_042"}, {"id": 43, "seed": "Avatar_043"}, {"id": 44, "seed": "Avatar_044"}, {"id": 45, "seed": "Avatar_045"},
+    {"id": 46, "seed": "Avatar_046"}, {"id": 47, "seed": "Avatar_047"}, {"id": 48, "seed": "Avatar_048"}, {"id": 49, "seed": "Avatar_049"}, {"id": 50, "seed": "Avatar_050"},
+    {"id": 51, "seed": "Avatar_051"}, {"id": 52, "seed": "Avatar_052"}, {"id": 53, "seed": "Avatar_053"}, {"id": 54, "seed": "Avatar_054"}, {"id": 55, "seed": "Avatar_055"},
+    {"id": 56, "seed": "Avatar_056"}, {"id": 57, "seed": "Avatar_057"}, {"id": 58, "seed": "Avatar_058"}, {"id": 59, "seed": "Avatar_059"}, {"id": 60, "seed": "Avatar_060"},
+    {"id": 61, "seed": "Avatar_061"}, {"id": 62, "seed": "Avatar_062"}, {"id": 63, "seed": "Avatar_063"}, {"id": 64, "seed": "Avatar_064"}, {"id": 65, "seed": "Avatar_065"},
+    {"id": 66, "seed": "Avatar_066"}, {"id": 67, "seed": "Avatar_067"}, {"id": 68, "seed": "Avatar_068"}, {"id": 69, "seed": "Avatar_069"}, {"id": 70, "seed": "Avatar_070"},
+    {"id": 71, "seed": "Avatar_071"}, {"id": 72, "seed": "Avatar_072"}, {"id": 73, "seed": "Avatar_073"}, {"id": 74, "seed": "Avatar_074"}, {"id": 75, "seed": "Avatar_075"},
+    {"id": 76, "seed": "Avatar_076"}, {"id": 77, "seed": "Avatar_077"}, {"id": 78, "seed": "Avatar_078"}, {"id": 79, "seed": "Avatar_079"}, {"id": 80, "seed": "Avatar_080"},
+    {"id": 81, "seed": "Avatar_081"}, {"id": 82, "seed": "Avatar_082"}, {"id": 83, "seed": "Avatar_083"}, {"id": 84, "seed": "Avatar_084"}, {"id": 85, "seed": "Avatar_085"},
+    {"id": 86, "seed": "Avatar_086"}, {"id": 87, "seed": "Avatar_087"}, {"id": 88, "seed": "Avatar_088"}, {"id": 89, "seed": "Avatar_089"}, {"id": 90, "seed": "Avatar_090"},
+    {"id": 91, "seed": "Avatar_091"}, {"id": 92, "seed": "Avatar_092"}, {"id": 93, "seed": "Avatar_093"}, {"id": 94, "seed": "Avatar_094"}, {"id": 95, "seed": "Avatar_095"},
+    {"id": 96, "seed": "Avatar_096"}, {"id": 97, "seed": "Avatar_097"}, {"id": 98, "seed": "Avatar_098"}, {"id": 99, "seed": "Avatar_099"}, {"id": 100, "seed": "Avatar_100"}
+  ],
   "citiesData": {
     "Lebanon": ["Beirut", "Jounieh", "Byblos", "Tripoli", "Saida", "Tyre", "Zahle", "Baalbek", "Nabatieh", "Aley", "Batroun", "Bcharre", "Chouf", "Damour", "Dbayeh", "Deir el Qamar", "Hamra", "Hazmieh", "Jbeil", "Jdeideh", "Jezzine", "Kfarhabou", "Marjayoun", "Mechref", "Metn", "Mkalles", "Ras Beirut", "Rashaya", "Sour", "Zgharta", "Zouk Mosbeh"],
     "France": ["Paris", "Marseille", "Lyon", "Toulouse", "Nice", "Nantes", "Strasbourg", "Montpellier", "Bordeaux", "Lille"],

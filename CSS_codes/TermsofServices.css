@@ -1,19 +1,20 @@
 /* =========================================================
-    PRIVACY POLICY PAGE
+    TERMS OF SERVICE PAGE
     ========================================================= */
-.policy-main {
+
+.terms-main {
 	flex: 1 0 auto;
 	padding-top: var(--header-h, 64px);
 }
 
-.policy-content {
+.terms-content {
 	width: min(900px, 96%);
 	margin: 0 auto;
 	padding: 60px 14px;
 	color: #d4e4f7;
 }
 
-.policy-content h1 {
+.terms-content h1 {
 	font-size: clamp(2.2rem, 4vw, 3rem);
 	font-weight: 900;
 	color: #ffffff;
@@ -26,7 +27,7 @@
 	-webkit-text-fill-color: transparent;
 }
 
-.policy-content h2 {
+.terms-content h2 {
 	font-size: 1.5rem;
 	font-weight: 800;
 	color: #ffffff;
@@ -37,7 +38,7 @@
 	letter-spacing: -0.3px;
 }
 
-.policy-content h3 {
+.terms-content h3 {
 	font-size: 1.2rem;
 	font-weight: 700;
 	color: #e9f2ff;
@@ -46,7 +47,7 @@
 	letter-spacing: -0.2px;
 }
 
-.policy-content p {
+.terms-content p {
 	font-size: 0.95rem;
 	line-height: 1.7;
 	color: #b5c5e0;
@@ -54,12 +55,12 @@
 	font-weight: 500;
 }
 
-.policy-content ul {
+.terms-content ul {
 	margin: 16px 0 24px 0;
 	padding-left: 0;
 }
 
-.policy-content li {
+.terms-content li {
 	list-style: none;
 	margin-bottom: 12px;
 	padding-left: 28px;
@@ -70,7 +71,7 @@
 	font-weight: 500;
 }
 
-.policy-content li::before {
+.terms-content li::before {
 	content: "→";
 	position: absolute;
 	left: 0;

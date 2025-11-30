@@ -61,23 +61,28 @@ $(document).ready(function() {
 				return;
 			}
 
-			// Create new user account
-			let newUser = {
-				name: name,
-				email: email,
-				password: password,
-				createdAt: new Date().toISOString(),
-				avatarIndex: 0
-			};
+			// Load avatars and assign random one
+			$.getJSON('../JS_codes/data.json', function(data) {
+				let avatarList = data.avatars || [];
+				let randomAvatarIndex = Math.floor(Math.random() * avatarList.length);
 
-			localStorage.setItem('gc_user_' + email, JSON.stringify(newUser));
+				let newUser = {
+					name: name,
+					email: email,
+					password: password,
+					createdAt: new Date().toISOString(),
+					avatarIndex: randomAvatarIndex
+				};
 
-			msgEl.text('Account created successfully! Redirecting to login...');
-			msgEl.removeClass('error').addClass('success');
+				localStorage.setItem('gc_user_' + email, JSON.stringify(newUser));
 
-			setTimeout(() => {
-				window.location.href = 'login.html';
-			}, 1500);
+				msgEl.text('Account created successfully! Redirecting to login...');
+				msgEl.removeClass('error').addClass('success');
+
+				setTimeout(() => {
+					window.location.href = 'login.html';
+				}, 1500);
+			});
 		});
 	}
 
@@ -90,14 +95,12 @@ $(document).ready(function() {
 			let password = $('#login-password').val().trim();
 			let msgEl = $('#login-msg');
 
-			// Validate inputs
 			if (!email || !password) {
 				msgEl.text('Please fill in all fields.');
 				msgEl.removeClass('success').addClass('error');
 				return;
 			}
 
-			// Get stored user
 			let storedUser = localStorage.getItem('gc_user_' + email);
 			
 			if (!storedUser) {
@@ -108,19 +111,21 @@ $(document).ready(function() {
 
 			let user = JSON.parse(storedUser);
 
-			// Compare passwords
 			if (user.password !== password) {
 				msgEl.text('Incorrect password.');
 				msgEl.removeClass('success').addClass('error');
 				return;
 			}
 
-			// Login success
-			localStorage.setItem('gc_current_user', JSON.stringify({
+			// Store full user data including avatar
+			let sessionUser = {
 				email: user.email,
 				name: user.name,
+				avatarIndex: user.avatarIndex || 0,
 				loginTime: new Date().toISOString()
-			}));
+			};
+
+			localStorage.setItem('gc_current_user', JSON.stringify(sessionUser));
 
 			msgEl.text('Login successful! Redirecting...');
 			msgEl.removeClass('error').addClass('success');
@@ -164,3 +169,7 @@ $(document).ready(function() {
 		}
 	}
 });
+
+// Update any image references to use correct path:
+// Change: src="imgs/..."
+// To: src="../imgs/..."

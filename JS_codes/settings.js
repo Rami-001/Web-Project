@@ -1,10 +1,13 @@
 // Settings page handler - client-side only, fully functional
 
 document.addEventListener('DOMContentLoaded', function() {
+	console.log('Settings.js loaded');
+	
 	let currentUser = localStorage.getItem('gc_current_user');
 	
 	// Redirect if not logged in
 	if (!currentUser) {
+		console.log('No current user, redirecting to login');
 		window.location.href = 'login.html';
 		return;
 	}
@@ -13,117 +16,125 @@ document.addEventListener('DOMContentLoaded', function() {
 	let storedUser = JSON.parse(localStorage.getItem('gc_user_' + user.email));
 
 	if (!storedUser) {
+		console.log('No stored user found, redirecting to login');
 		window.location.href = 'login.html';
 		return;
 	}
 
-	// Array of 100 avatar identifiers
-	let avatarList = generateAvatarList();
-	
-	// Initialize current avatar index
-	if (storedUser.avatarIndex === undefined) {
-		storedUser.avatarIndex = 0;
-		localStorage.setItem('gc_user_' + storedUser.email, JSON.stringify(storedUser));
-	}
+	console.log('User loaded:', storedUser.name);
 
-	// Initialize plan if not exists
-	if (!storedUser.plan) {
-		storedUser.plan = 'Starter';
-		localStorage.setItem('gc_user_' + storedUser.email, JSON.stringify(storedUser));
-	}
+	let avatarList = [];
 
-	// Load profile data
-	loadProfileData(user, storedUser, avatarList);
+	// Load avatars from JSON
+	fetch('../JS_codes/data.json')
+		.then(response => response.json())
+		.then(data => {
+			avatarList = data.avatars || [];
+			console.log('Avatars loaded:', avatarList.length);
+			
+			// Initialize avatar index if needed
+			if (storedUser.avatarIndex === undefined) {
+				storedUser.avatarIndex = Math.floor(Math.random() * avatarList.length);
+				localStorage.setItem('gc_user_' + storedUser.email, JSON.stringify(storedUser));
+			}
 
-	// Setup event listeners
-	setupUpdateNameBtn(user, storedUser, avatarList);
-	setupUpdatePasswordBtn(user, storedUser);
-	setupDeleteAccountBtn(user, storedUser);
-	setupThemeToggle();
-	setupAvatarCycler(storedUser, avatarList);
-
-	// ========== GENERATE 100 AVATARS ==========
-	function generateAvatarList() {
-		let avatars = [];
-		for (let i = 1; i <= 100; i++) {
-			avatars.push('avatar_' + i);
-		}
-		return avatars;
-	}
+			// Load all UI elements
+			loadProfileData(user, storedUser, avatarList);
+			setupUpdateNameBtn(user, storedUser, avatarList);
+			setupUpdatePasswordBtn(user, storedUser);
+			setupDeleteAccountBtn(user, storedUser);
+			setupThemeToggle();
+			setupAvatarCycler(storedUser, avatarList);
+		})
+		.catch(error => console.error('Error loading data.json:', error));
 
 	// ========== LOAD PROFILE DATA ==========
 	function loadProfileData(userSession, userStored, avatars) {
+		console.log('Loading profile data...');
+		
 		let profileName = document.getElementById('profile-name');
 		let profileEmail = document.getElementById('profile-email');
-		let settingsAvatar = document.getElementById('settings-avatar');
+		let profileAvatar = document.getElementById('profile-avatar');
 		let settingsEmail = document.getElementById('settings-email');
 		let settingsName = document.getElementById('settings-name');
 		let navAvatar = document.getElementById('nav-avatar');
 
-		if (profileName) profileName.textContent = userStored.name;
-		if (profileEmail) profileEmail.textContent = userStored.email;
-		
-		let currentAvatarId = avatars[userStored.avatarIndex];
-		if (settingsAvatar) {
-			settingsAvatar.src = 'https://robohash.org/' + encodeURIComponent(currentAvatarId) + '?size=80x80&set=set1';
-			settingsAvatar.alt = 'Avatar for ' + userStored.name;
+		// Set profile display name
+		if (profileName) {
+			profileName.textContent = userStored.name;
+			console.log('Profile name set to:', userStored.name);
 		}
 		
+		if (profileEmail) {
+			profileEmail.textContent = userStored.email;
+		}
+		
+		// Get avatar
+		let avatarIndex = userStored.avatarIndex || 0;
+		let avatarSeed = avatars[avatarIndex]?.seed || 'Avatar_001';
+		let avatarUrl = 'https://robohash.org/' + encodeURIComponent(avatarSeed) + '?size=80x80&set=set1';
+		
+		if (profileAvatar) {
+			profileAvatar.src = avatarUrl;
+			profileAvatar.alt = 'Avatar for ' + userStored.name;
+			console.log('Profile avatar set to:', avatarUrl);
+		}
+		
+		// Update nav avatar too
 		if (navAvatar) {
-			navAvatar.src = 'https://robohash.org/' + encodeURIComponent(currentAvatarId) + '?size=32x32&set=set1';
+			navAvatar.src = 'https://robohash.org/' + encodeURIComponent(avatarSeed) + '?size=32x32&set=set1';
 			navAvatar.alt = 'Avatar for ' + userStored.name;
 		}
 		
+		// Set form inputs
 		if (settingsEmail) settingsEmail.value = userStored.email;
 		if (settingsName) settingsName.value = userStored.name;
 	}
 
 	// ========== AVATAR CYCLER ==========
 	function setupAvatarCycler(userStored, avatars) {
-		let editAvatarBtn = document.getElementById('edit-avatar-btn');
-		let settingsAvatar = document.getElementById('settings-avatar');
+		let editAvatarBtn = document.querySelector('.avatar-edit-btn');
+		let profileAvatar = document.getElementById('profile-avatar');
 		let navAvatar = document.getElementById('nav-avatar');
 
-		if (editAvatarBtn && settingsAvatar) {
+		if (editAvatarBtn && profileAvatar && avatars.length > 0) {
 			editAvatarBtn.addEventListener('click', function(e) {
 				e.preventDefault();
+				console.log('Avatar edit button clicked');
 				
-				// Move to next avatar (cycle through 100)
+				// Move to next avatar
 				userStored.avatarIndex = (userStored.avatarIndex + 1) % avatars.length;
 				
 				// Fade out
-				settingsAvatar.style.transition = 'opacity 0.3s ease';
-				settingsAvatar.style.opacity = '0.3';
+				profileAvatar.style.transition = 'opacity 0.3s ease';
+				profileAvatar.style.opacity = '0.3';
 				
 				// Update after fade
 				setTimeout(function() {
-					let newAvatarId = avatars[userStored.avatarIndex];
-					let newAvatarUrl = 'https://robohash.org/' + encodeURIComponent(newAvatarId) + '?size=80x80&set=set1';
+					let avatarSeed = avatars[userStored.avatarIndex].seed;
+					let newAvatarUrl = 'https://robohash.org/' + encodeURIComponent(avatarSeed) + '?size=80x80&set=set1';
 					
-					// Update settings avatar
-					settingsAvatar.src = newAvatarUrl;
+					profileAvatar.src = newAvatarUrl;
+					console.log('Avatar updated to:', avatarSeed);
 					
-					// Update nav avatar too
 					if (navAvatar) {
-						navAvatar.src = 'https://robohash.org/' + encodeURIComponent(newAvatarId) + '?size=32x32&set=set1';
+						navAvatar.src = 'https://robohash.org/' + encodeURIComponent(avatarSeed) + '?size=32x32&set=set1';
 					}
-
-					// SYNC AVATAR GLOBALLY
-					let allAvatars = document.querySelectorAll('[data-avatar-sync="true"]');
-					allAvatars.forEach(avatar => {
-						avatar.src = 'https://robohash.org/' + encodeURIComponent(newAvatarId) + '?size=32x32&set=set1';
-					});
 					
-					// Fade in
-					settingsAvatar.style.opacity = '1';
+					profileAvatar.style.opacity = '1';
 				}, 150);
 				
 				// Save to localStorage
 				localStorage.setItem('gc_user_' + userStored.email, JSON.stringify(userStored));
-
-				// Broadcast to other tabs/windows
-				window.dispatchEvent(new CustomEvent('avatarChanged', { 
-					detail: { avatar: avatars[userStored.avatarIndex], email: userStored.email }
+				
+				// Broadcast change to other pages
+				window.dispatchEvent(new CustomEvent('profileUpdated', {
+					detail: { 
+						email: userStored.email,
+						name: userStored.name,
+						avatarIndex: userStored.avatarIndex,
+						avatarSeed: avatars[userStored.avatarIndex].seed
+					}
 				}));
 			});
 		}
@@ -132,12 +143,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	// ========== UPDATE NAME ==========
 	function setupUpdateNameBtn(userSession, userStored, avatars) {
 		let btn = document.getElementById('update-name-btn');
-		let msgEl = document.getElementById('name-msg');
+		let msgEl = document.getElementById('profile-msg');
 		let nameInput = document.getElementById('settings-name');
+		let profileName = document.getElementById('profile-name');
 
 		if (btn) {
 			btn.addEventListener('click', function(e) {
 				e.preventDefault();
+				console.log('Update name button clicked');
 				
 				let newName = nameInput.value.trim();
 
@@ -153,21 +166,37 @@ document.addEventListener('DOMContentLoaded', function() {
 					return;
 				}
 
-				// Update name in stored user
+				// Update stored user
 				userStored.name = newName;
-				// IMPORTANT: Preserve avatarIndex and plan when updating
 				localStorage.setItem('gc_user_' + userStored.email, JSON.stringify(userStored));
 
 				// Update current session
 				userSession.name = newName;
 				localStorage.setItem('gc_current_user', JSON.stringify(userSession));
 
+				// Update display name immediately
+				if (profileName) {
+					profileName.textContent = newName;
+				}
+
 				msgEl.textContent = 'Name updated successfully!';
 				msgEl.className = 'settings-msg success';
 
+				console.log('Name updated to:', newName);
+
+				// Broadcast update to all pages
+				let avatarSeed = avatars[userStored.avatarIndex]?.seed || 'Avatar_001';
+				window.dispatchEvent(new CustomEvent('profileUpdated', {
+					detail: {
+						email: userStored.email,
+						name: newName,
+						avatarIndex: userStored.avatarIndex,
+						avatarSeed: avatarSeed
+					}
+				}));
+
 				setTimeout(() => {
 					msgEl.textContent = '';
-					location.reload();
 				}, 1500);
 			});
 		}
@@ -175,15 +204,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// ========== UPDATE PASSWORD ==========
 	function setupUpdatePasswordBtn(userSession, userStored) {
-		let btn = document.getElementById('update-pwd-btn');
-		let msgEl = document.getElementById('pwd-msg');
-		let oldPwd = document.getElementById('settings-old-pwd');
-		let newPwd = document.getElementById('settings-new-pwd');
-		let confirmPwd = document.getElementById('settings-confirm-pwd');
+		let btn = document.getElementById('update-password-btn');
+		let msgEl = document.getElementById('password-msg');
+		let oldPwd = document.getElementById('current-password');
+		let newPwd = document.getElementById('new-password');
+		let confirmPwd = document.getElementById('confirm-password');
 
 		if (btn) {
 			btn.addEventListener('click', function(e) {
 				e.preventDefault();
+				console.log('Update password button clicked');
 				
 				let oldPassword = oldPwd.value.trim();
 				let newPassword = newPwd.value.trim();
@@ -234,6 +264,8 @@ document.addEventListener('DOMContentLoaded', function() {
 				newPwd.value = '';
 				confirmPwd.value = '';
 
+				console.log('Password updated');
+
 				setTimeout(() => {
 					msgEl.textContent = '';
 				}, 2000);
@@ -244,11 +276,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	// ========== DELETE ACCOUNT ==========
 	function setupDeleteAccountBtn(userSession, userStored) {
 		let btn = document.getElementById('delete-account-btn');
-		let msgEl = document.getElementById('delete-msg');
+		let msgEl = document.getElementById('danger-msg');
 
 		if (btn) {
 			btn.addEventListener('click', function(e) {
 				e.preventDefault();
+				console.log('Delete account button clicked');
 				
 				let confirmed = window.confirm(
 					'Are you absolutely sure? This action cannot be undone.\n\nAll your data will be permanently deleted.'
@@ -275,6 +308,8 @@ document.addEventListener('DOMContentLoaded', function() {
 				msgEl.textContent = 'Account deleted permanently. Redirecting...';
 				msgEl.className = 'settings-msg success';
 
+				console.log('Account deleted');
+
 				setTimeout(() => {
 					window.location.href = 'index.html';
 				}, 1500);
@@ -284,57 +319,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// ========== THEME TOGGLE ==========
 	function setupThemeToggle() {
-		let darkBtn = document.getElementById('dark-mode-btn');
-		let lightBtn = document.getElementById('light-mode-btn');
+		let themeSelect = document.getElementById('theme-select');
+		let msgEl = document.getElementById('preferences-msg');
 
-		if (darkBtn && lightBtn) {
+		if (themeSelect) {
 			let savedTheme = localStorage.getItem('gc_dark_mode');
 			let isDark = savedTheme !== 'false';
-			
-			updateThemeButtons(isDark);
-			applyTheme(isDark);
+			themeSelect.value = isDark ? 'dark' : 'light';
 
-			darkBtn.addEventListener('click', function(e) {
-				e.preventDefault();
-				localStorage.setItem('gc_dark_mode', 'true');
-				updateThemeButtons(true);
-				applyTheme(true);
-				showThemeMessage('Dark mode enabled');
+			themeSelect.addEventListener('change', function() {
+				let isDarkMode = this.value === 'dark';
+				localStorage.setItem('gc_dark_mode', isDarkMode ? 'true' : 'false');
+				applyTheme(isDarkMode);
+				
+				msgEl.textContent = isDarkMode ? 'Dark mode enabled' : 'Light mode enabled';
+				msgEl.className = 'settings-msg success';
+				
+				console.log('Theme changed to:', isDarkMode ? 'dark' : 'light');
+				
+				// Broadcast to other pages
+				window.dispatchEvent(new CustomEvent('themeChanged', {
+					detail: { isDark: isDarkMode }
+				}));
+				
+				setTimeout(() => {
+					msgEl.textContent = '';
+				}, 2000);
 			});
-
-			lightBtn.addEventListener('click', function(e) {
-				e.preventDefault();
-				localStorage.setItem('gc_dark_mode', 'false');
-				updateThemeButtons(false);
-				applyTheme(false);
-				showThemeMessage('Light mode enabled');
-			});
-		}
-	}
-
-	function updateThemeButtons(isDark) {
-		let darkBtn = document.getElementById('dark-mode-btn');
-		let lightBtn = document.getElementById('light-mode-btn');
-
-		if (darkBtn && lightBtn) {
-			if (isDark) {
-				darkBtn.classList.add('active');
-				lightBtn.classList.remove('active');
-			} else {
-				darkBtn.classList.remove('active');
-				lightBtn.classList.add('active');
-			}
-		}
-	}
-
-	function showThemeMessage(message) {
-		let themeMsg = document.getElementById('theme-msg');
-		if (themeMsg) {
-			themeMsg.textContent = message;
-			themeMsg.className = 'settings-msg success';
-			setTimeout(() => {
-				themeMsg.textContent = '';
-			}, 2000);
 		}
 	}
 
@@ -346,17 +357,24 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	}
 
-	// ========== LISTEN FOR AVATAR CHANGES FROM OTHER TABS ==========
-	window.addEventListener('avatarChanged', function(e) {
-		let navAvatar = document.getElementById('nav-avatar');
-		if (navAvatar && e.detail.email === user.email) {
-			navAvatar.src = 'https://robohash.org/' + encodeURIComponent(e.detail.avatar) + '?size=32x32&set=set1';
-		}
-	});
-
-	// ========== LOAD THEME ON PAGE LOAD ==========
+	// Apply theme on load
 	let savedTheme = localStorage.getItem('gc_dark_mode');
 	let isDark = savedTheme !== 'false';
 	applyTheme(isDark);
-	updateThemeButtons(isDark);
+
+	// Listen for profile updates from other tabs/windows
+	window.addEventListener('profileUpdated', function(e) {
+		console.log('Profile updated event received:', e.detail.name);
+		let profileName = document.getElementById('profile-name');
+		let profileAvatar = document.getElementById('profile-avatar');
+		
+		if (profileName && e.detail.name) {
+			profileName.textContent = e.detail.name;
+		}
+		
+		if (profileAvatar && e.detail.avatarSeed) {
+			let avatarUrl = 'https://robohash.org/' + encodeURIComponent(e.detail.avatarSeed) + '?size=80x80&set=set1';
+			profileAvatar.src = avatarUrl;
+		}
+	});
 });

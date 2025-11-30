@@ -114,4 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Your plan has been canceled.");
     });
   }
+
+  // Update any image references to use correct path:
+  // Change: src="imgs/..."
+  // To: src="../imgs/..."
 });
