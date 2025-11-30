@@ -1,0 +1,413 @@
+/* =========================================================
+    PLANS PAGE
+    ========================================================= */
+.Plan-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.Plan-header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
+  margin: 40px 0;
+  padding: 40px 20px;
+  border-radius: 20px;
+  background: rgba(30, 41, 59, 0.6);
+}
+.Plan-header h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  background: linear-gradient(100deg, #13c5fc 35%, #8b5cf6 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 10px;
+}
+.Plan-header p {
+  font-size: 1.2rem;
+  color: #e2e8f0;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.pricing-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+.toggle-label {
+  font-weight: 700;
+  color: #f1f5f9;
+}
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #2a3a5d;
+  transition: 0.3s;
+  border-radius: 34px;
+  border: 2px solid #3a4a6d;
+}
+.toggle-switch .slider::before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 2px;
+  background: #d4e4f7;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+.toggle-switch input:checked + .slider {
+  background: #3b9dd9;
+  border-color: #3b9dd9;
+}
+.toggle-switch input:checked + .slider::before {
+  transform: translateX(28px);
+}
+.savings-badge {
+  background: #10b981;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-left: 10px;
+}
+.Plan-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 40px 0;
+  flex-wrap: wrap;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #1e293b;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 2px solid transparent;
+  width: 400px;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-color: #61ffea;
+}
+.card.popular {
+  border-color: #60a5fa;
+  transform: scale(1.05);
+}
+.card.popular:hover {
+  transform: scale(1.05) translateY(-8px);
+  box-shadow: 0 20px 40px rgba(96, 165, 250, 0.3);
+}
+.card-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #334155;
+  width: 100%;
+}
+.card-header h2 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #f1f5f9;
+  margin-bottom: 15px;
+}
+.price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 10px;
+  font-size: inherit;
+  text-align: center;
+  padding: 0;
+  width: 100%;
+}
+.currency {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+.amount {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #58b4ff;
+}
+.period {
+  font-size: 1rem;
+  color: #94a3b8;
+}
+.plan-description {
+  color: #94a3b8;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 2px solid #334155;
+  width: 100%;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.card-features {
+  width: 100%;
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+.card-features ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.card-features ul li {
+  padding: 12px 0;
+  color: #e2e8f0;
+  font-weight: 500;
+  border-bottom: 1px solid #334155;
+  transition: all 0.15s ease;
+  position: relative;
+  padding-left: 25px;
+}
+.card-features ul li:last-child {
+  border-bottom: none;
+}
+.card-features ul li:before {
+  content: "✓";
+  color: #10b981;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+.plan-btn {
+  margin: 0;
+  width: 100%;
+}
+.card-btn {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #60a5fa;
+  border-radius: 12px;
+  background: transparent;
+  color: #60a5fa;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.card-btn:hover {
+  background: #60a5fa;
+  color: #0f172a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(96, 165, 250, 0.3);
+}
+.card.popular {
+  border-color: #60a5fa;
+  transform: scale(1.05);
+  position: relative;
+  padding-top: 60px;
+}
+.card.popular:hover {
+  transform: scale(1.05) translateY(-8px);
+  box-shadow: 0 20px 40px rgba(96, 165, 250, 0.3);
+  border-color: #60a5fa;
+}
+.popular-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.card.popular .card-btn {
+  background: linear-gradient(100deg, #13c5fc 5%, #8b5cf6 60%);
+  color: #0f172a;
+  border: none;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+.card.popular .card-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(96, 165, 250, 0.4);
+}
+.card.popular .price {
+  margin-top: 10px;
+}
+.card.popular .amount {
+  color: rgb(18, 247, 255);
+}
+.card.popular .plan-description {
+  color: #e2e8f0;
+  font-weight: 700;
+}
+.amount.yearly {
+  display: none;
+}
+.Plan-manage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+  background-color: #0e223d;
+  padding: 30px;
+  margin: 40px auto;
+  border-radius: 20px;
+  text-align: center;
+}
+.Plan-manage h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+.Plan-manage p {
+  color: #94a3b8;
+  max-width: 500px;
+}
+.cancel-btn, #cancel-plan-btn{
+  padding: 12px 30px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  background: #ef4444 !important;
+  color: white !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.cancel-btn:hover,#cancel-plan-btn:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+}
+/* Modal Overlay */
+.plan-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+/* Modal Content */
+.plan-modal {
+    background: #0f223d;
+    color: #ffffff;
+    padding: 30px 25px;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s ease;
+}
+.plan-modal h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+.plan-modal p {
+    font-size: 1rem;
+    margin: 10px 0;
+}
+/* Modal Buttons */
+.modal-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.modal-actions button {
+    padding: 10px 18px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.modal-actions .confirm-btn {
+    background: #19bcdc;
+    color: #0f223d;
+}
+.modal-actions .confirm-btn:hover {
+    background: #0fa0c7;
+}
+.modal-actions .cancel-btn {
+    background: #ffffff;
+    color: #0f223d;
+}
+.modal-actions .cancel-btn:hover {
+    background: #e0e0e0;
+}
+/* Payment Loading */
+.payment-loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #0f223d;
+    color: #19bcdc;
+    padding: 25px 30px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    z-index: 10000;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+/* Active Plan Card */
+.card.activated-plan {
+    border: 2px solid #19bcdc;
+    box-shadow: 0 6px 20px rgba(0, 188, 220, 0.4);
+}
+.card .plan-status {
+    color: #19bcdc;
+    font-weight: 700;
+    margin-top: 8px;
+    font-size: 0.95rem;
+}
+.activated-plan {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #19bcdc;
+    text-align: center;
+}
