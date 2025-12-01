@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plans • Global Compass</title>
+  <link rel="icon" type="image/png" sizes="256x256" href="../imgs/logo.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../CSS_codes/global.css" />
+  <link rel="stylesheet" href="../CSS_codes/Plans.css" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="main-header">
+    <nav class="nav-bar">
+      <div class="logo-container">
+        <img id="nav-logo" src="../imgs/logo.png" alt="Logo" />
+        <span class="logo-text">Global Compass</span>
+      </div>
+      <ul id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li class="dropdown"><a href="Services.html">Services</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+        <li><a href="Subscription.html">Plans</a></li>
+      </ul>
+      <div class="right-rail">
+        <div class="Login-Signup">
+          <a class="login" href="login.html">Login</a>
+          <a class="Signup" href="signup.html">Sign up</a>
+        </div>
+        <div id="welcome-user" class="welcome-inline">Welcome, <span id="user-name"></span>!</div>
+        <div class="profile-dropdown">
+          <img id="nav-avatar" src="../imgs/profile.svg" alt="Profile" />
+          <div class="profile-menu">
+            <a href="settings.html"><img class="profile-icon" src="../imgs/setting.svg" alt="Settings" />Settings</a>
+            <a href="#" id="logout-link"><img class="profile-icon" src="../imgs/logout.svg" alt="Logout" />Logout</a>
+          </div>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation"><span class="bar"></span><span
+            class="bar"></span><span class="bar"></span></button>
+      </div>
+    </nav>
+  </header>
+  <!-- =========================
+       SERVICES DROPDOWN
+  ========================== -->
+  <div class="dropdown-content">
+    <div class="Service-column">
+      <h4>Health &amp; Safety</h4>
+      <a data-id="1" href="Services.html?id=1">Hospital</a>
+      <a data-id="2" href="Services.html?id=2">Pharmacy</a>
+      <a data-id="3" href="Services.html?id=3">Police Station</a>
+      <a data-id="11" href="Services.html?id=11">Medical Volunteers</a>
+    </div>
+    <div class="Service-column">
+      <h4>Finance</h4>
+      <a data-id="4" href="Services.html?id=4">Bank</a>
+      <a data-id="5" href="Services.html?id=5">ATM</a>
+      <a data-id="6" href="Services.html?id=6">Currency Exchanger</a>
+      <a data-id="10" href="Services.html?id=10">Money Transfer</a>
+    </div>
+    <div class="Service-column">
+      <h4>Sustenance &amp; Lodging</h4>
+      <a data-id="7" href="Services.html?id=7">Restaurant</a>
+      <a data-id="8" href="Services.html?id=8">Coffee Shop</a>
+      <a data-id="9" href="Services.html?id=9">Hotel</a>
+    </div>
+  </div>
+  <!-- =========================
+       Page Contents
+  ========================== -->
+  <div class="Plan-container">
+    <div class="Plan-header">
+      <h1>Choose Your Plan</h1>
+      <p>Get unlimited access to critical services worldwide</p>
+      <div class="pricing-toggle">
+        <span class="toggle-label">Monthly</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="billing-toggle">
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label">Yearly</span>
+        <span class="savings-badge">Save 17%</span>
+      </div>
+    </div>
+    <div class="Plan-cards" id="Plan-cards">
+      <div class="card">
+        <div class="card-header">
+          <h2>Basic</h2>
+        </div>
+        <div class="price">
+          <span class="currency">$</span>
+          <span class="amount monthly">4.99</span>
+          <span class="amount yearly" style="display:none">49.90</span>
+          <span class="period">/month</span>
+        </div>
+        <p class="plan-description">Perfect for casual travelers</p>
+        <div class="card-features">
+          <ul>
+            <li>Basic service search in 50+ cities</li>
+            <li>Access to essential categories</li>
+            <li>Standard search filters</li>
+            <li>Community support</li>
+          </ul>
+        </div>
+        <div class="plan-btn">
+          <button class="card-btn">Choose Plan</button>
+          <div class="activated-plan"></div>
+        </div>
+      </div>
+      <div class="card popular">
+        <div class="popular-badge">MOST POPULAR</div>
+        <div class="card-header">
+          <h2>Enterprise</h2>
+        </div>
+        <div class="price">
+          <span class="currency">$</span>
+          <span class="amount monthly">24.99</span>
+          <span class="amount yearly" style="display:none">249.90</span>
+          <span class="period">/month</span>
+        </div>
+        <p class="plan-description">For teams and organizations</p>
+        <div class="card-features">
+          <ul>
+            <li>Unlimited Service Searches Worldwide</li>
+            <li>Advanced filters (City, Category)</li>
+            <li>Priority Search Results</li>
+            <li>Save Favorite Services</li>
+            <li>24/7 Emergency Support</li>
+          </ul>
+        </div>
+        <div class="plan-btn">
+          <button class="card-btn">Choose Plan</button>
+          <div class="activated-plan"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="faq-title">
+    <h2>FAQs</h2>
+  </div>
+  <div class="faq-container">
+    <div class="faq">
+      <h3>Can I cancel my subscription anytime?</h3>
+      <p>Yes, you can cancel your subscription at any time. Your access will continue until the end of your billing
+        period.</p>
+    </div>
+    <div class="faq">
+      <h3>Is there a free trial?</h3>
+      <p>Yes! The Adventurer plan comes with a 7-day free trial. No credit card required to start.</p>
+    </div>
+    <div class="faq">
+      <h3>What payment methods do you accept?</h3>
+      <p>We accept all major credit cards, PayPal, and bank transfers for annual plans.</p>
+    </div>
+    <div class="faq">
+      <h3>Can I upgrade or downgrade my plan?</h3>
+      <p>Absolutely! You can change your plan at any time. Prorated charges/credits will apply.</p>
+    </div>
+    <div class="faq">
+      <h3>Do you offer student discounts?</h3>
+      <p>Yes, we offer 50% off for students. Contact our support team with your student ID for verification.</p>
+    </div>
+    <div class="faq">
+      <h3>Is my payment information secure?</h3>
+      <p>We use bank-level encryption and never store your payment details on our servers.</p>
+    </div>
+  </div>
+  <div class="Plan-manage">
+    <h2>Ready to Start Your Journey?</h2>
+    <p>Join thousands of travelers who trust Global Compass for their adventures</p>
+    <div class="manage-btn">
+      <a href="#Plan-cards" class="choose-plan">Choose Your Plan Now</a>
+      <button id="cancel-plan-btn" style="display: none;">Cancel</button>
+    </div>
+  </div>
+  <!-- =========================
+       Footer
+  ========================== -->
+  <div class="footer-background">
+    <footer>
+      <div class="footer-left">
+        <img id="footer-logo" src="../imgs/logo.png" alt="Logo" />
+        <span class="footer-brand">Global Compass</span>
+      </div>
+      <div class="footer-links">
+        <a href="Privacypolicy.html">Privacy Policy</a>
+        <a href="termsofservices.html">Terms of Service</a>
+        <a href="Subscription.html">Plans</a>
+      </div>
+      <div id="copy-right">&copy; 2025 Global Compass. All rights reserved.</div>
+    </footer>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../JS_codes/script.js"></script>
+  <script type="module" src="../JS_codes/auth.js"></script>
+  <script src="../JS_codes/Subscription.js"></script>
+</body>
+
+</html>

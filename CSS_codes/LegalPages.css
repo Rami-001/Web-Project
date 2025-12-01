@@ -1,0 +1,131 @@
+/* =========================================================
+    LEGAL PAGES (Privacy Policy & Terms of Service)
+    ========================================================= */
+
+.legal-main {
+	flex: 1 0 auto;
+	padding-top: var(--header-h, 64px);
+}
+
+.legal-content {
+	width: min(850px, 92%);
+	margin: 0 auto;
+	padding: 80px 20px;
+	color: #d4e4f7;
+	font-size: 1rem;
+	line-height: 1.8;
+}
+
+.legal-content h1 {
+	font-size: clamp(2.5rem, 5vw, 3.2rem);
+	font-weight: 900;
+	color: #ffffff;
+	margin-bottom: 60px;
+	letter-spacing: -1px;
+	text-align: center;
+	text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.legal-content .last-updated {
+	display: none;
+}
+
+.legal-content section {
+	margin-bottom: 50px;
+	background: rgba(10, 20, 40, 0.6);
+	padding: 30px;
+	border-radius: 8px;
+	backdrop-filter: blur(8px);
+}
+
+.legal-content section:last-child {
+	margin-bottom: 0;
+}
+
+.legal-content h2 {
+	font-size: 1.4rem;
+	font-weight: 800;
+	color: #e9f2ff;
+	margin-top: 0;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid rgba(59, 157, 217, 0.5);
+	letter-spacing: -0.5px;
+}
+
+.legal-content h3 {
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: #d4e4f7;
+	margin-top: 28px;
+	margin-bottom: 14px;
+	letter-spacing: -0.3px;
+}
+
+.legal-content p {
+	margin-bottom: 18px;
+	color: #c5d5e8;
+	font-weight: 500;
+}
+
+.legal-content p strong {
+	color: #e9f2ff;
+	font-weight: 700;
+}
+
+.legal-content ul {
+	margin: 18px 0 24px 0;
+	padding-left: 0;
+	list-style: none;
+}
+
+.legal-content li {
+	margin-bottom: 14px;
+	padding-left: 24px;
+	position: relative;
+	color: #b5c5e0;
+	line-height: 1.7;
+	font-weight: 500;
+}
+
+.legal-content li::before {
+	content: "•";
+	position: absolute;
+	left: 4px;
+	color: #3b9dd9;
+	font-weight: 900;
+	font-size: 1.2rem;
+}
+
+.legal-content li strong {
+	color: #e9f2ff;
+	font-weight: 700;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+	.legal-content {
+		padding: 60px 16px;
+	}
+
+	.legal-content h1 {
+		font-size: 2rem;
+		margin-bottom: 40px;
+	}
+
+	.legal-content h2 {
+		font-size: 1.2rem;
+		margin-bottom: 16px;
+	}
+
+	.legal-content h3 {
+		font-size: 1rem;
+		margin-top: 20px;
+		margin-bottom: 12px;
+	}
+
+	.legal-content section {
+		margin-bottom: 40px;
+		padding: 20px;
+	}
+}

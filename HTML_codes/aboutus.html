@@ -4,13 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About Us • Global Compass</title>
-
-  <!-- Fonts -->
+  <link rel="icon" type="image/png" sizes="256x256" href="../imgs/logo.png">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../CSS_codes/global.css" />
+  <link rel="stylesheet" href="../CSS_codes/Aboutus.css" />
 </head>
 <body>
   <!-- =========================
@@ -20,7 +18,7 @@
     <nav class="nav-bar">
       <!-- Brand (left) -->
       <div class="logo-container">
-        <img id="nav-logo" src="imgs/logo.png" alt="Logo" />
+        <img id="nav-logo" src="../imgs/logo.png" alt="Logo" />
         <span class="logo-text">Global Compass</span>
       </div>
 
@@ -95,14 +93,14 @@
         </div>
 
         <div class="profile-dropdown">
-          <img id="nav-avatar" src="imgs/profile.svg" alt="Profile icon" />
+          <img id="nav-avatar" src="../imgs/profile.svg" alt="Profile icon" />
           <div class="profile-menu">
             <a href="settings.html">
-              <img class="profile-icon" src="imgs/setting.svg" alt="Settings icon" />
+              <img class="profile-icon" src="../imgs/setting.svg" alt="Settings icon" />
               Settings
             </a>
             <a href="#" id="logout-link">
-              <img class="profile-icon" src="imgs/logout.svg" alt="Logout icon" />
+              <img class="profile-icon" src="../imgs/logout.svg" alt="Logout icon" />
               Logout
             </a>
           </div>
@@ -121,26 +119,27 @@
   <!-- =========================
        SERVICES DROPDOWN
   ========================== -->
-  <div class="dropdown-content">
+ <div class="dropdown-content">
     <div class="Service-column">
       <h4>Health &amp; Safety</h4>
-      <a href="#">Hospital</a>
-      <a href="#">Pharmacy</a>
-      <a href="#">Police Station</a>
+      <a data-id="1" href="Services.html?id=1">Hospital</a>
+      <a data-id="2" href="Services.html?id=2">Pharmacy</a>
+      <a data-id="3" href="Services.html?id=3">Police Station</a>
+      <a data-id="11" href="Services.html?id=11">Medical Volunteers</a>
     </div>
-
     <div class="Service-column">
       <h4>Finance</h4>
-      <a href="#">Bank</a>
-      <a href="#">ATM</a>
-      <a href="#">Money Exchanger</a>
+      <a data-id="4" href="Services.html?id=4">Bank</a>
+      <a data-id="5" href="Services.html?id=5">ATM</a>
+      <a data-id="6" href="Services.html?id=6">Currency Exchanger</a>
+      <a data-id="10" href="Services.html?id=10">Money Transfer</a>
     </div>
-
+  
     <div class="Service-column">
       <h4>Sustenance &amp; Lodging</h4>
-      <a href="#">Restaurant</a>
-      <a href="#">Coffee Shop</a>
-      <a href="#">Hotel</a>
+      <a data-id="7" href="Services.html?id=7">Restaurant</a>
+      <a data-id="8" href="Services.html?id=8">Coffee Shop</a>
+      <a data-id="9" href="Services.html?id=9">Hotel</a>
     </div>
   </div>
 
@@ -148,102 +147,65 @@
        ABOUT PAGE CONTENT
   ========================== -->
   <main class="about-main">
-    <!-- Simple hero -->
+    <!-- Hero -->
     <section class="about-hero">
       <div class="container">
-        <p class="about-kicker">About Global Compass</p>
-        <h1>Your essential guide to critical services abroad.</h1>
+        <h1>About Global Compass</h1>
         <p class="about-lead">
-          Global Compass helps you quickly find hospitals, banks, police stations,
-          pharmacies, and other must-have services so you can focus on the trip,
-          not the logistics.
+          Find critical services abroad—hospitals, banks, pharmacies, police stations—in seconds.
         </p>
       </div>
     </section>
 
-    <!-- What we do / What makes us different -->
-    <section class="about-section">
-      <div class="container about-two-col">
-        <article class="about-card">
-          <h2>What we do</h2>
-          <ul class="about-list">
-            <li>Keep the directory focused on essential, high-stakes services.</li>
-            <li>Organize everything into clear categories you recognize while traveling.</li>
-            <li>Highlight details that matter abroad: type, area, and how to reach it.</li>
-            <li>Make it easy to scan on a phone when you’re on the move.</li>
-          </ul>
-        </article>
-
-        <article class="about-card">
-          <h2>What makes us different</h2>
-          <ul class="about-list">
-            <li>No endless map of pins or generic tourist listings.</li>
-            <li>Safety-critical places are never buried under ads or noise.</li>
-            <li>Language-light, icon-friendly layout for international use.</li>
-            <li>Designed to grow into shared tools for trips and teams.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- How it fits into a trip -->
+    <!-- What we do -->
     <section class="about-section">
       <div class="container">
-        <h2 class="about-heading">How Global Compass fits into your trip</h2>
-        <ol class="about-steps">
-          <li>
-            <strong>Before you go:</strong> Check the availability of hospitals,
-            banks, and police stations near where you plan to stay.
-          </li>
-          <li>
-            <strong>On arrival:</strong> Pick a category and see the most relevant
-            options in seconds.
-          </li>
-          <li>
-            <strong>During the trip:</strong> Keep key services in mind for changes
-            of plan or emergencies.
-          </li>
-          <li>
-            <strong>Afterward:</strong> Reuse your knowledge for future trips or
-            share it with people traveling to the same city.
-          </li>
-        </ol>
+        <h2>What we do</h2>
+        <p class="about-desc">
+          Global Compass keeps essential travel services organized, searchable, and always at hand. No clutter. No ads. Just what you need.
+        </p>
+        <ul class="about-list">
+          <li>Find hospitals, banks, pharmacies, and police stations instantly</li>
+          <li>Simple categories designed for travelers</li>
+          <li>Location-based results you can trust</li>
+        </ul>
       </div>
     </section>
 
-    <!-- Roadmap -->
+    <!-- How it works -->
     <section class="about-section">
-      <div class="container about-two-col">
-        <article class="about-card">
-          <h2>What’s next</h2>
-          <ul class="about-list">
-            <li>Deeper coverage for more cities and neighborhoods.</li>
-            <li>Richer context around each service, tailored to travelers.</li>
-            <li>Saved “trusted places” you can carry across trips.</li>
-          </ul>
-        </article>
-
-        <article class="about-card">
-          <h2>Future direction</h2>
-          <ul class="about-list">
-            <li>Shared views for families, friends, and teams on the same route.</li>
-            <li>Smarter suggestions based on region, time of day, and need.</li>
-            <li>Offline-friendly experiences for weak or unstable connections.</li>
-          </ul>
-        </article>
+      <div class="container">
+        <h2>How it works</h2>
+        <div class="about-steps-grid">
+          <div class="step">
+            <span class="step-number">1</span>
+            <h3>Select a city</h3>
+            <p>Choose your destination</p>
+          </div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <h3>Pick a category</h3>
+            <p>Health, finance, food & lodging</p>
+          </div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <h3>Find what you need</h3>
+            <p>See results in seconds</p>
+          </div>
+          <div class="step">
+            <span class="step-number">4</span>
+            <h3>Save favorites</h3>
+            <p>Keep trusted places for future trips</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- CTA -->
-    <section class="about-section">
+    <section class="about-section about-cta-section">
       <div class="container about-cta">
-        <div>
-          <h2>Explore the service directory</h2>
-          <p>
-            Browse categories and see how Global Compass can support your next destination.
-          </p>
-        </div>
-        <a class="about-cta-btn" href="Services.html">Open services catalog</a>
+        <h2>Ready to explore?</h2>
+        <a class="about-cta-btn" href="Services.html">Browse services</a>
       </div>
     </section>
   </main>
@@ -254,7 +216,7 @@
   <div class="footer-background">
     <footer>
       <div class="footer-left">
-        <img id="footer-logo" src="imgs/logo.png" alt="Logo" />
+        <img id="footer-logo" src="../imgs/logo.png" alt="Logo" />
         <span class="footer-brand">Global Compass</span>
       </div>
 
@@ -297,7 +259,7 @@
        SCRIPTS
   ========================== -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="script.js"></script>
-  <script type="module" src="auth.js"></script>
+  <script src="../JS_codes/script.js"></script>
+  <script type="module" src="../JS_codes/auth.js"></script>
 </body>
 </html>
