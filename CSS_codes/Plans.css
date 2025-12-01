@@ -276,29 +276,6 @@
 .amount.yearly {
   display: none;
 }
-.Plan-manage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  max-width: 600px;
-  background-color: #0e223d;
-  padding: 30px;
-  margin: 40px auto;
-  border-radius: 20px;
-  text-align: center;
-}
-.Plan-manage h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #f1f5f9;
-}
-.Plan-manage p {
-  color: #94a3b8;
-  max-width: 500px;
-}
 .cancel-btn, #cancel-plan-btn{
   padding: 12px 30px;
   border: none;
@@ -410,4 +387,156 @@
     font-weight: 600;
     color: #19bcdc;
     text-align: center;
+}
+.Plan-manage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 800px;
+  background-color: #0e223d;
+  padding: 30px;
+  margin: auto;
+  margin-bottom: 40px;
+  margin-top: 30px;
+  border-radius: 20px;
+  text-align: center;
+}
+.Plan-manage h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+.Plan-manage p {
+  color: #94a3b8;
+}
+.faq-title h2{
+  font-size: 3rem;
+  text-align: center;
+  margin: 50px;
+  font-weight: 700;
+}
+.manage-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+.choose-plan{
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(100deg, #3b9dd9 0%, #26c6a0 100%);
+  cursor: pointer;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.choose-plan:hover{
+  transform: translateY(-2px);
+	box-shadow: 0 16px 32px rgba(59,157,217,.4);
+	background: linear-gradient(100deg, #2e7fa8 0%, #1f9f88 100%);
+}
+.faq-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1500px;
+  margin: auto;
+  margin-bottom: 30px;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+.faq{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #0e223d;
+  border:2px solid  #0fa0c7;
+  padding: 40px;
+  width: 400px;
+  min-height: 230px;
+  border-radius: 20px;
+  flex-wrap: wrap;
+}
+.faq:hover{
+  transform:  translateY(-6px);
+  box-shadow: 0 12px 25px rgba(25, 188, 220, 0.25);
+}
+.faq h3{
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.faq p{
+  color: #475569;
+  line-height: 1.6;
+  font-weight: 700;
+}
+/* =========================================================
+    RESPONSIVE (MERGED + CLEANED)
+    ========================================================= */
+/* ---------- 960px ---------- */
+@media (max-width: 960px) {
+ 
+
+}
+/* ---------- 900px ---------- */
+@media (max-width: 900px) {
+
+}
+/* ---------- 768px ---------- */
+@media (max-width: 768px) {
+       .nav-bar { grid-template-columns: auto auto auto; }
+    .nav-toggle { display: block; }
+    #nav-links {
+        position: fixed;
+        inset: var(--header-h) 0 auto 0;
+        background: #0d1a31;
+        border-top: 1px solid #1a254a;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        transform: translateY(-120%);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform .22s, opacity .16s, visibility 0s linear .22s;
+        z-index: 1200;
+    }
+    .nav-bar.nav-open #nav-links {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    .dropdown-content,
+    .dropdown-content.visible {
+        position: fixed;
+        top: var(--header-h, 64px);
+        left: 0;
+        right: 0;
+        height: calc(100vh - var(--header-h, 64px));
+        overflow-y: auto !important;
+        padding: 16px 12px 60px;
+        border-radius: 0;
+        background: linear-gradient(180deg, #0e1a31, #0b162a);
+        z-index: 1200;
+    }
+    .Login-Signup, .welcome-inline, .profile-dropdown {
+        display: none !important;
+    }
+    footer { flex-direction: column; text-align: center; gap: 10px; }
+    .about-two-col { grid-template-columns: 1fr; }
+    .about-steps { grid-template-columns: 1fr; }
+    .Bigbox { padding: 36px 14px; }
+    .group1, .group2 { gap: 24px; }
+	.images .image img {
+    width: 800px; 
+    height: 400px;
+	transition: all 0.3s ease;
+}
+.Plan-manage{
+  width: 80%;
+}
 }

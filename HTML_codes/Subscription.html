@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,6 +12,7 @@
   <link rel="stylesheet" href="../CSS_codes/Plans.css" />
   <link rel="stylesheet" href="../CSS_codes/Lightmode.css" />
 </head>
+
 <body>
   <!-- HEADER -->
   <header class="main-header">
@@ -39,7 +41,8 @@
             <a href="#" id="logout-link"><img class="profile-icon" src="../imgs/logout.svg" alt="Logout" />Logout</a>
           </div>
         </div>
-        <button class="nav-toggle" aria-label="Toggle navigation"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+        <button class="nav-toggle" aria-label="Toggle navigation"><span class="bar"></span><span
+            class="bar"></span><span class="bar"></span></button>
       </div>
     </nav>
   </header>
@@ -85,7 +88,7 @@
         <span class="savings-badge">Save 17%</span>
       </div>
     </div>
-    <div class="Plan-cards">
+    <div class="Plan-cards" id="Plan-cards">
       <div class="card">
         <div class="card-header">
           <h2>Basic</h2>
@@ -137,15 +140,48 @@
         </div>
       </div>
     </div>
-    <div class="Plan-manage">
-      <h2>Cancel Your Plan</h2>
-      <p>Change your plan or cancel anytime. No hidden fees.</p>
-      <button id="cancel-plan-btn">Cancel</button>
+  </div>
+  <div class="faq-title">
+    <h2>FAQs</h2>
+  </div>
+  <div class="faq-container">
+    <div class="faq">
+      <h3>Can I cancel my subscription anytime?</h3>
+      <p>Yes, you can cancel your subscription at any time. Your access will continue until the end of your billing
+        period.</p>
+    </div>
+    <div class="faq">
+      <h3>Is there a free trial?</h3>
+      <p>Yes! The Adventurer plan comes with a 7-day free trial. No credit card required to start.</p>
+    </div>
+    <div class="faq">
+      <h3>What payment methods do you accept?</h3>
+      <p>We accept all major credit cards, PayPal, and bank transfers for annual plans.</p>
+    </div>
+    <div class="faq">
+      <h3>Can I upgrade or downgrade my plan?</h3>
+      <p>Absolutely! You can change your plan at any time. Prorated charges/credits will apply.</p>
+    </div>
+    <div class="faq">
+      <h3>Do you offer student discounts?</h3>
+      <p>Yes, we offer 50% off for students. Contact our support team with your student ID for verification.</p>
+    </div>
+    <div class="faq">
+      <h3>Is my payment information secure?</h3>
+      <p>We use bank-level encryption and never store your payment details on our servers.</p>
     </div>
   </div>
-  <!-- =========================
-       Footer
-  ========================== -->  
+  <div class="Plan-manage">
+    <h2>Ready to Start Your Journey?</h2>
+    <p>Join thousands of travelers who trust Global Compass for their adventures</p>
+    <div class="manage-btn">
+      <a href="#Plan-cards" class="choose-plan">Choose Your Plan Now</a>
+      <button id="cancel-plan-btn" style="display: none;">Cancel</button>
+    </div>
+  </div>
+    <!-- =========================
+       FOOTER
+  ========================== -->
   <div class="footer-background">
     <footer>
       <div class="footer-left">
@@ -157,7 +193,9 @@
         <a href="termsofservices.html">Terms of Service</a>
         <a href="Subscription.html">Plans</a>
       </div>
-      <div id="copy-right">&copy; 2025 Global Compass. All rights reserved.</div>
+      <div id="copy-right">
+        &copy; 2025 Global Compass. All rights reserved.
+      </div>
     </footer>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
