@@ -1,70 +1,48 @@
 document.addEventListener("DOMContentLoaded", () => {
   let billingToggle = document.getElementById("billing-toggle");
   let planContainer = document.querySelector(".Plan-cards");
-
-  // Highlight current plan
-  function updateSelectedPlan() {
-    let currentPlan = (
-      localStorage.getItem("userPlan") || "basic"
-    ).toLowerCase();
-
+  let cancelPlanBtn = document.getElementById("cancel-plan-btn");
+  // ----------------------------
+  // Show/hide Cancel Subscription button
+  // ----------------------------
+  function updateCancelButtonVisibility() {
+    if (!cancelPlanBtn) return;
+    let hasSubscription = localStorage.getItem("userPlan") !== null;
+    cancelPlanBtn.style.display = hasSubscription ? "block" : "none";
+  }
+  // ----------------------------
+  // Update "This plan is Activated" text for each card
+  // ----------------------------
+  function updateActivatedText() {
+    let currentPlan = (localStorage.getItem("userPlan") || "").toLowerCase();
     document.querySelectorAll(".card").forEach((card) => {
-      card.classList.remove("activated-plan");
-
-      // Clear previous chosen-text
-      let chosenDiv = card.querySelector(".activated-plan");
-      if (chosenDiv) chosenDiv.textContent = "";
-
-      let planName = card.querySelector("h2")?.textContent.trim();
-      if (planName?.toLowerCase() === currentPlan) {
+      let planName = card.querySelector("h2")?.textContent.trim().toLowerCase();
+      let activatedText = card.querySelector(".activated-plan"); // inside this card
+      if (!activatedText) return;
+      if (currentPlan && planName === currentPlan) {
+        activatedText.style.display = "block";
+        activatedText.textContent = "This plan is Activated!!";
         card.classList.add("activated-plan");
-
-        // Show "This plan is chosen" under button
-        if (chosenDiv) chosenDiv.textContent = "This plan is Activated";
+      } else {
+        activatedText.style.display = "none";
+        activatedText.textContent = "";
+        card.classList.remove("activated-plan");
       }
     });
   }
-  updateSelectedPlan();
-
-  // Billing toggle
-  if (billingToggle) {
-    billingToggle.addEventListener("change", () => {
-      let isYearly = billingToggle.checked;
-      document
-        .querySelectorAll(".amount.monthly")
-        .forEach((m) => (m.style.display = isYearly ? "none" : "inline"));
-      document
-        .querySelectorAll(".amount.yearly")
-        .forEach((y) => (y.style.display = isYearly ? "inline" : "none"));
-    });
-  }
-
-  // Event delegation for plan buttons
-  planContainer.addEventListener("click", (e) => {
-    let btn = e.target.closest(".card-btn");
-    if (!btn) return;
-
-    let card = btn.closest(".card");
-    if (!card) return;
-
-    let planName = card.querySelector("h2")?.textContent.trim();
-    if (!planName) return;
-
-    let planKey = planName.toLowerCase();
-    let isYearly = billingToggle?.checked || false;
-
-    showPlanModal(planName, planKey, isYearly);
-  });
-
+  // ----------------------------
+  // Save plan to localStorage
+  // ----------------------------
   function savePlan(planKey) {
     localStorage.setItem("userPlan", planKey);
-    updateSelectedPlan();
+    updateActivatedText();
   }
-
+  // ----------------------------
+  // Show Plan Modal
+  // ----------------------------
   function showPlanModal(planName, planKey, isYearly) {
     let modal = document.createElement("div");
     modal.className = "plan-modal-overlay";
-
     modal.innerHTML = `
       <div class="plan-modal">
           <h3>Great Choice! 🎉</h3>
@@ -75,47 +53,67 @@ document.addEventListener("DOMContentLoaded", () => {
               <button class="cancel-btn">Cancel</button>
           </div>
       </div>
-  `;
-
+    `;
     document.body.appendChild(modal);
-
-    // Cancel button closes modal
+    // Cancel modal
     modal.querySelector(".cancel-btn").onclick = () => modal.remove();
     modal.addEventListener("click", (e) => {
       if (e.target === modal) modal.remove();
     });
-
-    // Confirm button: save plan AND update UI immediately
+    // Confirm modal
     modal.querySelector(".confirm-btn").onclick = () => {
-      savePlan(planKey); // <--- updates localStorage AND shows activated text
+      savePlan(planKey);               // save plan & update text
+      updateActivatedText();           // show activated text immediately
+      updateCancelButtonVisibility();  // show cancel button
       modal.remove();
-
-      // Optional: proceed to payment if you have a payment function
+      // Optional: payment processing
       if (typeof processPayment === "function") {
         processPayment(planName, planKey);
       }
     };
   }
-
-  let cancelPlanBtn = document.getElementById("cancel-plan-btn");
-
+  // ----------------------------
+  // Billing Toggle
+  // ----------------------------
+  if (billingToggle) {
+    billingToggle.addEventListener("change", () => {
+      let isYearly = billingToggle.checked;
+      document.querySelectorAll(".amount.monthly")
+        .forEach(m => m.style.display = isYearly ? "none" : "inline");
+      document.querySelectorAll(".amount.yearly")
+        .forEach(y => y.style.display = isYearly ? "inline" : "none");
+    });
+  }
+  // ----------------------------
+  // Plan Buttons Click (Event Delegation)
+  // ----------------------------
+  if (planContainer) {
+    planContainer.addEventListener("click", (e) => {
+      let btn = e.target.closest(".card-btn");
+      if (!btn) return;
+      let card = btn.closest(".card");
+      if (!card) return;
+      let planName = card.querySelector("h2")?.textContent.trim();
+      if (!planName) return;
+      let planKey = planName.toLowerCase();
+      let isYearly = billingToggle?.checked || false;
+      showPlanModal(planName, planKey, isYearly);
+    });
+  }
+  // ----------------------------
+  // Cancel Plan Button
+  // ----------------------------
   if (cancelPlanBtn) {
     cancelPlanBtn.addEventListener("click", () => {
-      // Remove saved plan from localStorage
       localStorage.removeItem("userPlan");
-
-      // Reset UI: remove active-plan class and chosen-text
-      document.querySelectorAll(".card").forEach((card) => {
-        card.classList.remove("active-plan");
-        let chosenDiv = card.querySelector(".activated-plan");
-        if (chosenDiv) chosenDiv.textContent = "";
-      });
-
+      updateActivatedText();           // hide activated text
+      updateCancelButtonVisibility();  // hide cancel button
       alert("Your plan has been canceled.");
     });
   }
-
-  // Update any image references to use correct path:
-  // Change: src="imgs/..."
-  // To: src="../imgs/..."
+  // ----------------------------
+  // Initialize on Page Load
+  // ----------------------------
+  updateActivatedText();
+  updateCancelButtonVisibility();
 });

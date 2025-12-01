@@ -276,29 +276,6 @@
 .amount.yearly {
   display: none;
 }
-.Plan-manage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  max-width: 600px;
-  background-color: #0e223d;
-  padding: 30px;
-  margin: 40px auto;
-  border-radius: 20px;
-  text-align: center;
-}
-.Plan-manage h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #f1f5f9;
-}
-.Plan-manage p {
-  color: #94a3b8;
-  max-width: 500px;
-}
 .cancel-btn, #cancel-plan-btn{
   padding: 12px 30px;
   border: none;
@@ -410,4 +387,90 @@
     font-weight: 600;
     color: #19bcdc;
     text-align: center;
+}
+.Plan-manage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 800px;
+  background-color: #0e223d;
+  padding: 30px;
+  margin: auto;
+  margin-bottom: 40px;
+  margin-top: 30px;
+  border-radius: 20px;
+  text-align: center;
+}
+.Plan-manage h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+.Plan-manage p {
+  color: #94a3b8;
+}
+.faq-title h2{
+  font-size: 3rem;
+  text-align: center;
+  margin: 50px;
+  font-weight: 700;
+}
+.manage-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+.choose-plan{
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(100deg, #3b9dd9 0%, #26c6a0 100%);
+  cursor: pointer;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.choose-plan:hover{
+  transform: translateY(-2px);
+	box-shadow: 0 16px 32px rgba(59,157,217,.4);
+	background: linear-gradient(100deg, #2e7fa8 0%, #1f9f88 100%);
+}
+.faq-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1500px;
+  margin: auto;
+  margin-bottom: 30px;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+.faq{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #0e223d;
+  border:2px solid  #0fa0c7;
+  padding: 40px;
+  width: 400px;
+  min-height: 230px;
+  border-radius: 20px;
+  flex-wrap: wrap;
+}
+.faq:hover{
+  transform:  translateY(-6px);
+  box-shadow: 0 12px 25px rgba(25, 188, 220, 0.25);
+}
+.faq h3{
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.faq p{
+  color: #475569;
+  line-height: 1.6;
+  font-weight: 700;
 }
