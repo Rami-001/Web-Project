@@ -1,15 +1,14 @@
-// ========== APPLY DARK MODE ON PAGE LOAD ==========
+// ========== APPLY SAVED THEME ON PAGE LOAD ==========
 function applyGlobalTheme() {
-	let savedTheme = localStorage.getItem('gc_dark_mode');
-	let isDark = savedTheme !== 'false';
-	
-	if (isDark) {
-		document.body.classList.remove('light-mode');
-	} else {
+	let savedTheme = localStorage.getItem('gc_theme_mode') || 'dark';
+	if (savedTheme === 'light') {
 		document.body.classList.add('light-mode');
+	} else {
+		document.body.classList.remove('light-mode');
 	}
 }
 
+// Apply theme immediately before DOM ready
 applyGlobalTheme();
 
 $(document).ready(function () {
@@ -156,6 +155,18 @@ $(document).ready(function () {
             }, 500);
         }
     });
+
+	// Listen for theme changes
+	window.addEventListener('themeChanged', function(e) {
+		applyGlobalTheme();
+	});
+
+	// Listen for storage changes from other tabs
+	window.addEventListener('storage', function(e) {
+		if (e.key === 'gc_theme_mode') {
+			applyGlobalTheme();
+		}
+	});
 });
 
 // ========== GLOBAL AUTH & PROFILE SYNC ==========
@@ -312,15 +323,6 @@ window.addEventListener('storage', function(e) {
 		applyGlobalTheme();
 	}
 });
-
-// Update any image references to use correct path:
-// Change: src="imgs/..."
-// To: src="../imgs/..."
-//
-// Example locations to update:
-// document.getElementById('nav-logo').src = "../imgs/logo.png";
-// document.getElementById('nav-avatar').src = "../imgs/profile.svg";
-// etc.
 
 
 
