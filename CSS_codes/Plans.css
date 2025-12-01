@@ -474,3 +474,69 @@
   line-height: 1.6;
   font-weight: 700;
 }
+/* =========================================================
+    RESPONSIVE (MERGED + CLEANED)
+    ========================================================= */
+/* ---------- 960px ---------- */
+@media (max-width: 960px) {
+ 
+
+}
+/* ---------- 900px ---------- */
+@media (max-width: 900px) {
+
+}
+/* ---------- 768px ---------- */
+@media (max-width: 768px) {
+       .nav-bar { grid-template-columns: auto auto auto; }
+    .nav-toggle { display: block; }
+    #nav-links {
+        position: fixed;
+        inset: var(--header-h) 0 auto 0;
+        background: #0d1a31;
+        border-top: 1px solid #1a254a;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        transform: translateY(-120%);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform .22s, opacity .16s, visibility 0s linear .22s;
+        z-index: 1200;
+    }
+    .nav-bar.nav-open #nav-links {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    .dropdown-content,
+    .dropdown-content.visible {
+        position: fixed;
+        top: var(--header-h, 64px);
+        left: 0;
+        right: 0;
+        height: calc(100vh - var(--header-h, 64px));
+        overflow-y: auto !important;
+        padding: 16px 12px 60px;
+        border-radius: 0;
+        background: linear-gradient(180deg, #0e1a31, #0b162a);
+        z-index: 1200;
+    }
+    .Login-Signup, .welcome-inline, .profile-dropdown {
+        display: none !important;
+    }
+    footer { flex-direction: column; text-align: center; gap: 10px; }
+    .about-two-col { grid-template-columns: 1fr; }
+    .about-steps { grid-template-columns: 1fr; }
+    .Bigbox { padding: 36px 14px; }
+    .group1, .group2 { gap: 24px; }
+	.images .image img {
+    width: 800px; 
+    height: 400px;
+	transition: all 0.3s ease;
+}
+.Plan-manage{
+  width: 80%;
+}
+}
