@@ -1,6 +1,7 @@
 /* =========================================================
     SETTINGS PAGE
     ========================================================= */
+
 .settings-main {
 	flex: 1 0 auto;
 	padding-top: var(--header-h, 64px);
@@ -308,8 +309,29 @@
 	line-height: 1.5;
 	margin: 8px 0 0 0;
 }
+/* Animate the settings card to shrink a bit */
+@keyframes settingsShrink {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.9); /* make it smaller; change to 0.85 if you want more */
+  }
+}
+
+/* Apply only on small screens */
+@media (max-width: 800px) {
+  .settings-card {
+    width: 100%;
+    max-width: 100%;
+    animation: settingsShrink 0.3s ease-out forwards;
+    transform-origin: top center; /* so it shrinks toward the middle/top */
+    margin-inline: auto; /* keep it centered */
+  }
+}
+
 @media (max-width: 768px) {
-    .nav-bar { grid-template-columns: auto auto auto; }
+    .nav-bar { grid-template-columns: auto  auto; }
     .nav-toggle { display: block; }
     #nav-links {
         position: fixed;

@@ -3,7 +3,7 @@
     ========================================================= */
 
 /* Light mode root variables */
-body.light-mode {
+/* body.light-mode {
 	--gc-sky: #0066cc;
 	--gc-ocean: #0080d0;
 	--gc-mint: #009966;
@@ -17,7 +17,7 @@ body.light-mode {
 	--gc-glow: 0 12px 32px rgba(0, 102, 204, 0.08);
 	--gc-shadow-1: 0 6px 20px rgba(0, 0, 0, 0.08);
 	--gc-shadow-2: 0 16px 40px rgba(0, 0, 0, 0.1);
-}
+} */
 
 /* Background overlay - VERY LIGHT, preserves image */
 body.light-mode::after {
@@ -42,9 +42,13 @@ body.light-mode .logo-text {
 	background-clip: text;
 	color: transparent;
 }
+body.light-mode #nav-links  {
+	background-color: #ffffff;
+
+}
 
 body.light-mode #nav-links > li > a {
-	color: #2c3e50;
+	color: #000000;
 	transition: color 0.12s, background 0.12s;
 }
 
@@ -312,23 +316,18 @@ body.light-mode .card-content ul {
 	font-weight: 600;
 }
 
-/* Plans page in light mode */
-body.light-mode .Plan-header {
-	background: rgba(255, 255, 255, 0.8);
-	backdrop-filter: blur(8px);
-}
 
 body.light-mode .Plan-header h1 {
 	color: #ffffff;
 }
 
 body.light-mode .Plan-header p {
-	color: #000000;
+	color: #ffffff;
 	font-weight: 700;
 }
 
 body.light-mode .toggle-label {
-	color: #000000;
+	color: #ffffff;
 	font-weight: 700;
 }
 
@@ -487,16 +486,11 @@ body.light-mode .settings-hero p {
 	color: #4a5568;
 }
 
-/* About page in light mode */
-body.light-mode .about-hero {
-	background: linear-gradient(135deg, rgba(0, 102, 204, 0.08) 0%, rgba(112, 48, 160, 0.06) 100%);
-	border-bottom-color: rgba(0, 102, 204, 0.1);
-	backdrop-filter: blur(6px);
-}
+/* .about-hero h1 {
+  color: #1D4ED8;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+} */
 
-body.light-mode .about-hero h1 {
-	color: #ffffff;
-}
 
 body.light-mode .about-lead {
 	color: #4a5568;
@@ -506,9 +500,6 @@ body.light-mode .about-section {
 	background: transparent;
 }
 
-body.light-mode .about-section h2 {
-	color: #0066cc;
-}
 
 body.light-mode .about-desc {
 	color: #2c3e50;
@@ -518,10 +509,6 @@ body.light-mode .about-desc {
 body.light-mode .about-list li {
 	color: #2c3e50;
 	font-weight: 600;
-}
-
-body.light-mode .about-list li::before {
-	color: #009966;
 }
 
 body.light-mode .step {
@@ -547,11 +534,29 @@ body.light-mode .about-cta-section {
 	background: linear-gradient(135deg, rgba(0, 102, 204, 0.08) 0%, rgba(112, 48, 160, 0.06) 100%);
 	border-top-color: rgba(0, 102, 204, 0.1);
 	border-bottom-color: rgba(0, 102, 204, 0.1);
-	backdrop-filter: blur(6px);
+	
 }
+body.light-mode .pwhite
+{
+	color:#ffffff !important;
 
+}
+body.light-mode .h2white
+{
+background: linear-gradient(135deg, #f8fafc 0%, #f8fafc 50%, #f8fafc 100%) !important;
+		-webkit-background-clip: text !important;
+	background-clip: text !important;
+	-webkit-text-fill-color: transparent !important;
+		color: #ffffff !important;
+
+
+}
+.images .image:hover h2 {
+	text-shadow: 0 6px 12px rgba(227, 217, 217, 0.345);
+	font-size: 2.95rem;
+}
 body.light-mode .about-cta h2 {
-	color: #0066cc;
+	color: #ffffff#0066cc;
 }
 
 body.light-mode .about-cta-btn {
@@ -568,7 +573,6 @@ body.light-mode .about-cta-btn:hover {
 body.light-mode .contact-hero {
 	background: linear-gradient(135deg, rgba(0, 102, 204, 0.08) 0%, rgba(112, 48, 160, 0.06) 100%);
 	border-bottom-color: rgba(0, 102, 204, 0.1);
-	backdrop-filter: blur(6px);
 }
 
 body.light-mode .contact-hero h1 {
@@ -687,8 +691,10 @@ body.light-mode .image h2 {
 }
 
 body.light-mode .info-section {
-	background: linear-gradient(135deg, #f0f9ff 0%, #f5f3ff 100%);
-	border-top: 1px solid rgba(0, 102, 204, 0.2);
+	background: #ffffff;
+    border: 1px solid #19bcdc;
+	border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 102, 204, 0.12);
 }
 
 body.light-mode .content h2 {
@@ -705,9 +711,12 @@ body.light-mode .stat-num {
 	color: #0066cc;
 	font-weight: 800;
 }
+body.light-mode .stat-num:hover{
+	color: #718096;
+}
 
 body.light-mode .stat-label {
-	color: #2c3e50;
+	color: #000000;
 	font-weight: 600;
 }
 
@@ -752,3 +761,5 @@ body.light-mode .Box a:hover {
 	border-color: #0052a3;
 	color: #0052a3;
 }
+
+

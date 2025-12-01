@@ -413,6 +413,7 @@
   color: #94a3b8;
 }
 .faq-title h2{
+  color: #ffffff;
   font-size: 3rem;
   text-align: center;
   margin: 50px;
@@ -466,11 +467,12 @@
   box-shadow: 0 12px 25px rgba(25, 188, 220, 0.25);
 }
 .faq h3{
+color: white;
     font-size: 1.2rem;
     font-weight: 800;
 }
 .faq p{
-  color: #475569;
+  color: #c5cfdd;
   line-height: 1.6;
   font-weight: 700;
 }
@@ -488,7 +490,7 @@
 }
 /* ---------- 768px ---------- */
 @media (max-width: 768px) {
-       .nav-bar { grid-template-columns: auto auto auto; }
+       .nav-bar { grid-template-columns: auto  auto; }
     .nav-toggle { display: block; }
     #nav-links {
         position: fixed;

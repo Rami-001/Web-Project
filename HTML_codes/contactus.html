@@ -26,6 +26,7 @@
         <li class="dropdown"><a href="Services.html">Services</a></li>
         <li><a href="contactus.html">Contact Us</a></li>
         <li><a href="Subscription.html">Plans</a></li>
+        <li><a href="settings.html">Settings</a></li>
       </ul>
 
       <div class="right-rail">
@@ -74,14 +75,14 @@
   <main class="contact-page">
     <section class="contact-hero">
       <h1>Contact Us</h1>
-      <p>Questions, feedback, or partnership ideas? We'd love to hear from you.</p>
+      <p class="pwhite">Questions, feedback, or partnership ideas? We'd love to hear from you.</p>
     </section>
 
     <div class="contact-wrapper">
       <!-- Left: Info cards -->
       <div class="contact-info-section">
         <h2>Get in touch</h2>
-        <p>Reach out through any channel</p>
+        <p class="pwhite">Reach out through any channel</p>
 
         <div class="info-card">
           <div class="info-icon">
@@ -136,31 +137,31 @@
 
       <!-- Right: Contact form -->
       <div class="contact-form-section">
-        <div class="contact-form">
+        <div class="contact-form" id="Light-mode">
           <h2>Send us a message</h2>
           <p>We'll get back to you as soon as possible</p>
 
-          <div class="field">
+          <div class="field" class="Light-mode">
             <label for="c-name">Full name</label>
             <input id="c-name" class="field-input" type="text" placeholder="Jane Doe" required />
           </div>
 
-          <div class="field">
+          <div class="field" class="Light-mode">
             <label for="c-email">Email</label>
             <input id="c-email" class="field-input" type="email" placeholder="jane@example.com" required />
           </div>
 
           <div class="field">
-            <label for="c-subject">Subject</label>
+            <label for="c-subject" class="Light-mode">Subject</label>
             <input id="c-subject" class="field-input" type="text" placeholder="How can we help?" required />
           </div>
 
           <div class="field">
-            <label for="c-message">Message</label>
+            <label for="c-message" class="Light-mode">Message</label>
             <textarea id="c-message" class="field-textarea" placeholder="Write your message..." required></textarea>
           </div>
 
-          <div class="contact-actions">
+          <div class="contact-actions" class="Light-mode">
             <button id="contact-submit-btn" class="contact-btn" type="button">Send message</button>
           </div>
           
