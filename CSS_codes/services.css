@@ -367,7 +367,7 @@
 	.about-steps-grid{
 		gap: 60px;
 	}
-}
+} 
 /* ---------- 768px ---------- */
 @media (max-width: 768px) {
     .home-cta-stats { grid-template-columns: 1fr; }
