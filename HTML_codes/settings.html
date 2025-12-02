@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- =========================================================
+       META & DOCUMENT INFO
+       ========================================================= -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Settings • Global Compass</title>
   <link rel="icon" type="image/png" sizes="256x256" href="../imgs/logo.png">
+
+  <!-- =========================================================
+       FONTS & STYLESHEETS
+       ========================================================= -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../CSS_codes/global.css" />
@@ -12,7 +19,9 @@
   <link rel="stylesheet" href="../CSS_codes/Lightmode.css" />
 </head>
 <body>
-  <!-- HEADER -->
+  <!-- =========================================================
+       HEADER / NAVBAR
+       ========================================================= -->
   <header class="main-header">
     <nav class="nav-bar">
       <div class="logo-container">
@@ -48,15 +57,21 @@
     </nav>
   </header>
 
-  <!-- MAIN CONTENT -->
+  <!-- =========================================================
+       SETTINGS HERO
+       ========================================================= -->
   <main class="settings-main">
     <section class="settings-hero">
       <h1>Settings</h1>
       <p class="pwhite">Manage your account preferences and profile</p>
     </section>
 
+    <!-- =========================================================
+         SETTINGS GRID - ALL PANELS
+         ========================================================= -->
     <div class="settings-grid">
-      <!-- Profile Settings -->
+      
+      <!-- PROFILE SETTINGS CARD -->
       <div class="settings-card">
         <h2>Profile Settings</h2>
         
@@ -94,7 +109,7 @@
         <p id="profile-msg" class="settings-msg"></p>
       </div>
 
-      <!-- Password Settings -->
+      <!-- PASSWORD SECURITY CARD -->
       <div class="settings-card">
         <h2>Password & Security</h2>
         
@@ -119,7 +134,7 @@
         <p id="password-msg" class="settings-msg"></p>
       </div>
 
-      <!-- Preferences -->
+      <!-- PREFERENCES CARD -->
       <div class="settings-card">
         <h2>Preferences</h2>
         
@@ -136,7 +151,7 @@
         <p id="preferences-msg" class="settings-msg"></p>
       </div>
 
-      <!-- Danger Zone -->
+      <!-- DANGER ZONE CARD -->
       <div class="settings-card danger-zone">
         <h2>Danger Zone</h2>
         
@@ -151,9 +166,9 @@
     </div>
   </main>
 
-    <!-- =========================
+  <!-- =========================================================
        FOOTER
-  ========================== -->
+       ========================================================= -->
   <div class="footer-background">
     <footer>
       <div class="footer-left">
@@ -170,6 +185,10 @@
       </div>
     </footer>
   </div>
+
+  <!-- =========================================================
+       SCRIPTS
+       ========================================================= -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../JS_codes/script.js"></script>
   <script type="module" src="../JS_codes/auth.js"></script>
