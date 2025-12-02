@@ -13,6 +13,8 @@ body.light-mode {
 	--gc-muted: #4a5568;
 	--gc-card: #ffffff;
 	--gc-line: #e2e8f0;
+	--accent-teal: #06b6d4;
+	--hover-bg: #f1f5f9;
 	--gc-ring: rgba(0, 102, 204, 0.12);
 	--gc-glow: 0 12px 32px rgba(0, 102, 204, 0.08);
 	--gc-shadow-1: 0 6px 20px rgba(0, 0, 0, 0.08);
@@ -133,7 +135,7 @@ body.light-mode .Box {
 }
 
 body.light-mode .Box:hover {
-	border-color: #0066cc;
+	border: 2px solid #22d3ee;
 	box-shadow: 0 8px 20px rgba(0, 102, 204, 0.15);
 }
 
@@ -152,9 +154,10 @@ body.light-mode .Box a {
 }
 
 body.light-mode .Box a:hover {
-	background: #e6f0ff;
-	border-color: #0066cc;
-	color: #0052a3;
+	transform: translateX(8px);
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.09);
+  border-left-color: var(--accent-teal);
 }
 
 /* Auth forms in light mode */
@@ -861,3 +864,6 @@ body.light-mode .settings-card.danger-zone .settings-label {
 	color: #d32f2f;
 	font-weight: 700;
 }
+
+
+
