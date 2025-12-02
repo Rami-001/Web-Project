@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- =========================================================
+       META & DOCUMENT INFO
+       ========================================================= -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About Us • Global Compass</title>
   <link rel="icon" type="image/png" sizes="256x256" href="../imgs/logo.png">
+
+  <!-- =========================================================
+       FONTS & STYLESHEETS
+       ========================================================= -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../CSS_codes/global.css" />
@@ -12,9 +19,9 @@
   <link rel="stylesheet" href="../CSS_codes/Lightmode.css" />
 </head>
 <body>
-  <!-- =========================
+  <!-- =========================================================
        HEADER / NAVBAR
-  ========================== -->
+       ========================================================= -->
   <header class="main-header">
     <nav class="nav-bar">
       <!-- Brand (left) -->
@@ -31,6 +38,9 @@
         <li><a href="contactus.html">Contact Us</a></li>
         <li><a href="Subscription.html">Plans</a></li>
         <li id="mobile-settings"><a href="settings.html">Settings</a></li>
+        <li id="mobile-login"><a href="login.html">Login</a></li>
+        <li id="mobile-register"><a href="signup.html">Register</a></li>
+        <li id="mobile-logout"><a href="#" class="logout-link">Logout</a></li>
       </ul>
 
       <!-- Right rail (this MUST match index.html) -->
@@ -47,7 +57,7 @@
         </div>
 
         <div class="profile-dropdown">
-          <img id="nav-avatar" src="../imgs/profile.svg" alt="Profile icon" />
+          <img id="nav-avatar" alt="Profile icon" />
           <div class="profile-menu">
             <a href="settings.html">
               <img class="profile-icon" src="../imgs/setting.svg" alt="Settings icon" />
@@ -70,10 +80,10 @@
     </nav>
   </header>
 
-  <!-- =========================
+  <!-- =========================================================
        SERVICES DROPDOWN
-  ========================== -->
- <div class="dropdown-content">
+       ========================================================= -->
+  <div class="dropdown-content">
     <div class="Service-column">
       <h4>Health &amp; Safety</h4>
       <a data-id="1" href="Services.html?id=1">Hospital</a>
@@ -97,21 +107,20 @@
     </div>
   </div>
 
-  <!-- =========================
+  <!-- =========================================================
        ABOUT PAGE CONTENT
-  ========================== -->
+       ========================================================= -->
   <main class="about-main">
-    <!-- Hero -->
+    
+    <!-- HERO SECTION -->
     <section class="about-hero">
       <div class="container">
         <h1 class="creamywhite">About Global Compass</h1>
-        <p class="about-lead pwhite">
-          Find critical services abroad in seconds!
-        </p>
+        <p class="about-lead pwhite">Find critical services abroad in seconds!</p>
       </div>
     </section>
 
-    <!-- What we do -->
+    <!-- WHAT WE DO SECTION -->
     <section class="about-section">
       <div class="container">
         <h2 class="creamywhite">What we do</h2>
@@ -126,7 +135,7 @@
       </div>
     </section>
 
-    <!-- How it works -->
+    <!-- HOW IT WORKS SECTION -->
     <section class="about-section">
       <div class="container">
         <h2 class="creamywhite">How it works</h2>
@@ -155,7 +164,7 @@
       </div>
     </section>
 
-    <!-- CTA -->
+    <!-- CTA SECTION -->
     <section class="about-section about-cta-section">
       <div class="container about-cta">
         <h2 class="creamywhite">Ready to explore?</h2>
@@ -164,9 +173,9 @@
     </section>
   </main>
 
-    <!-- =========================
+  <!-- =========================================================
        FOOTER
-  ========================== -->
+       ========================================================= -->
   <div class="footer-background">
     <footer>
       <div class="footer-left">
@@ -184,9 +193,9 @@
     </footer>
   </div>
 
-  <!-- =========================
+  <!-- =========================================================
        SCRIPTS
-  ========================== -->
+       ========================================================= -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../JS_codes/script.js"></script>
   <script type="module" src="../JS_codes/auth.js"></script>
