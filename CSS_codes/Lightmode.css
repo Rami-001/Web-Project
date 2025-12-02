@@ -3,7 +3,7 @@
     ========================================================= */
 
 /* Light mode root variables */
-/* body.light-mode {
+body.light-mode {
 	--gc-sky: #0066cc;
 	--gc-ocean: #0080d0;
 	--gc-mint: #009966;
@@ -17,7 +17,7 @@
 	--gc-glow: 0 12px 32px rgba(0, 102, 204, 0.08);
 	--gc-shadow-1: 0 6px 20px rgba(0, 0, 0, 0.08);
 	--gc-shadow-2: 0 16px 40px rgba(0, 0, 0, 0.1);
-} */
+}
 
 /* Background overlay - VERY LIGHT, preserves image */
 body.light-mode::after {
@@ -211,12 +211,13 @@ body.light-mode .auth-switch a:hover {
 /* Settings page in light mode */
 body.light-mode .settings-card {
 	background: #ffffff;
-	border-color: rgba(0, 102, 204, 0.2);
-	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+	border: 1px solid rgba(0, 102, 204, 0.15);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 body.light-mode .settings-card h2 {
 	color: #0066cc;
+	font-weight: 800;
 }
 
 body.light-mode .settings-label {
@@ -281,16 +282,18 @@ body.light-mode #searchInput::placeholder {
 }
 
 body.light-mode .clear-filters {
-	background: linear-gradient(145deg, #0066cc, #ffffff);
+	background: #0066cc;
 	color: #ffffff;
 	border-color: #0066cc;
 	box-shadow: 0 4px 10px rgba(0, 102, 204, 0.15);
+	font-weight: 700;
 }
 
 body.light-mode .clear-filters:hover {
-	background: linear-gradient(145deg, #ffffff, #0066cc);
-	color: #0066cc;
+	background: #0052a3;
+	border-color: #0052a3;
 	box-shadow: 0 6px 15px rgba(0, 102, 204, 0.25);
+	transform: translateY(-2px);
 }
 
 /* Service cards in light mode */
@@ -316,18 +319,23 @@ body.light-mode .card-content ul {
 	font-weight: 600;
 }
 
+/* Plans page in light mode */
+body.light-mode .Plan-header {
+	background: rgba(255, 255, 255, 0.8);
+	backdrop-filter: blur(8px);
+}
 
 body.light-mode .Plan-header h1 {
-	color: #ffffff;
+	color: #0052a3;
 }
 
 body.light-mode .Plan-header p {
-	color: #ffffff;
+	color: #000000;
 	font-weight: 700;
 }
 
 body.light-mode .toggle-label {
-	color: #ffffff;
+	color: #000000;
 	font-weight: 700;
 }
 
@@ -486,11 +494,10 @@ body.light-mode .settings-hero p {
 	color: #4a5568;
 }
 
-/* .about-hero h1 {
-  color: #1D4ED8;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-} */
 
+body.light-mode .about-hero h1 {
+	color: #ffffff;
+}
 
 body.light-mode .about-lead {
 	color: #4a5568;
@@ -499,7 +506,6 @@ body.light-mode .about-lead {
 body.light-mode .about-section {
 	background: transparent;
 }
-
 
 body.light-mode .about-desc {
 	color: #2c3e50;
@@ -510,6 +516,8 @@ body.light-mode .about-list li {
 	color: #2c3e50;
 	font-weight: 600;
 }
+
+
 
 body.light-mode .step {
 	background: #ffffff;
@@ -555,9 +563,6 @@ background: linear-gradient(135deg, #f8fafc 0%, #f8fafc 50%, #f8fafc 100%) !impo
 	text-shadow: 0 6px 12px rgba(227, 217, 217, 0.345);
 	font-size: 2.95rem;
 }
-body.light-mode .about-cta h2 {
-	color: #ffffff#0066cc;
-}
 
 body.light-mode .about-cta-btn {
 	background: linear-gradient(100deg, #0066cc 0%, #009966 100%);
@@ -572,7 +577,6 @@ body.light-mode .about-cta-btn:hover {
 /* Contact page in light mode */
 body.light-mode .contact-hero {
 	background: linear-gradient(135deg, rgba(0, 102, 204, 0.08) 0%, rgba(112, 48, 160, 0.06) 100%);
-	border-bottom-color: rgba(0, 102, 204, 0.1);
 }
 
 body.light-mode .contact-hero h1 {
@@ -609,7 +613,7 @@ body.light-mode .info-card p {
 	color: #4a5568;
 }
 
-body.light-mode .info-card a {
+body.light-mode .info-card a:hover {
 	color: #0066cc;
 }
 
@@ -711,12 +715,9 @@ body.light-mode .stat-num {
 	color: #0066cc;
 	font-weight: 800;
 }
-body.light-mode .stat-num:hover{
-	color: #718096;
-}
 
 body.light-mode .stat-label {
-	color: #000000;
+	color: #2c3e50;
 	font-weight: 600;
 }
 
@@ -732,34 +733,132 @@ body.light-mode .browse-btn:hover {
 	transform: translateY(-2px);
 }
 
-/* Big box containers */
-body.light-mode .Box {
+/* Currency symbol styling in light mode */
+body.light-mode .currency {
+	color: #000000bb;
+	font-weight: 900;
+	font-size: 1.5rem;
+}
+
+/* FAQ styling in light mode */
+body.light-mode .faq {
 	background: #ffffff;
-	border-color: #0066cc;
-	box-shadow: 0 4px 16px rgba(0, 102, 204, 0.12);
+	border: 1px solid rgba(0, 102, 204, 0.15);
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-body.light-mode .Box:hover {
-	border-color: #0052a3;
-	box-shadow: 0 8px 24px rgba(0, 102, 204, 0.2);
-}
-
-body.light-mode .Box h2 {
+body.light-mode .faq h3 {
 	color: #0066cc;
 	font-weight: 800;
 }
 
-body.light-mode .Box a {
+body.light-mode .faq p {
+	color: #4a5568;
+	font-weight: 600;
+}
+
+/* Plan Manage styling in light mode */
+body.light-mode .Plan-manage {
+	background: #ffffff;
+	border: 1px solid rgba(0, 102, 204, 0.15);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .Plan-manage h2 {
+	color: #0066cc;
+	font-weight: 800;
+}
+
+body.light-mode .Plan-manage p {
+	color: #4a5568;
+	font-weight: 600;
+}
+
+body.light-mode .choose-plan {
+	background: linear-gradient(100deg, #0066cc 0%, #009966 100%);
+	color: #ffffff;
+	font-weight: 800;
+	box-shadow: 0 6px 16px rgba(0, 102, 204, 0.2);
+}
+
+body.light-mode .choose-plan:hover {
+	box-shadow: 0 8px 24px rgba(0, 102, 204, 0.3);
+	transform: translateY(-2px);
+}
+
+/* Plan Modal styling in light mode */
+body.light-mode .plan-modal-overlay {
+	background: rgba(0, 0, 0, 0.4);
+}
+
+body.light-mode .plan-modal {
+	background: #ffffff;
+	border: 1px solid rgba(0, 102, 204, 0.15);
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+	color: #1a1a2e;
+}
+
+body.light-mode .plan-modal h3 {
+	color: #0066cc;
+	font-weight: 800;
+}
+
+body.light-mode .plan-modal p {
+	color: #4a5568;
+	font-weight: 600;
+}
+
+body.light-mode .modal-actions .confirm-btn {
+	background: linear-gradient(100deg, #0066cc 0%, #009966 100%);
+	color: #ffffff;
+	font-weight: 800;
+	box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+}
+
+body.light-mode .modal-actions .confirm-btn:hover {
+	box-shadow: 0 6px 16px rgba(0, 102, 204, 0.3);
+	transform: translateY(-2px);
+}
+
+body.light-mode .modal-actions .cancel-btn {
 	background: #f0f7ff;
-	border-color: #0066cc;
+	border: 1px solid rgba(0, 102, 204, 0.25);
 	color: #0066cc;
 	font-weight: 700;
 }
 
-body.light-mode .Box a:hover {
+body.light-mode .modal-actions .cancel-btn:hover {
 	background: #e6f0ff;
-	border-color: #0052a3;
+	border-color: #0066cc;
 	color: #0052a3;
 }
 
+/* Contact form heading in light mode */
+body.light-mode .contact-form h2 {
+	color: #0066cc;
+}
+
+/* Field label styling in light mode */
+body.light-mode .field label {
+	color: #0066cc;
+	font-weight: 700;
+}
+
+/* Contact form paragraph styling in light mode */
+body.light-mode .contact-form > p {
+	color: #4a5568;
+	font-weight: 600;
+}
+
+/* Danger zone settings hint in light mode */
+body.light-mode .settings-card.danger-zone .settings-hint {
+	color: #4a5568;
+}
+
+/* Danger zone settings label in light mode */
+body.light-mode .settings-card.danger-zone .settings-label {
+	color: #d32f2f;
+	font-weight: 700;
+}
 

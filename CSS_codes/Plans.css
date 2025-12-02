@@ -266,11 +266,8 @@
 .card.popular .price {
   margin-top: 10px;
 }
-.card.popular .amount {
-  color: rgb(18, 247, 255);
-}
 .card.popular .plan-description {
-  color: #e2e8f0;
+ 
   font-weight: 700;
 }
 .amount.yearly {
