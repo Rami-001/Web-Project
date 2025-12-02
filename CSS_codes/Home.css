@@ -151,7 +151,7 @@
 	transition: all 0.3s ease;
 	cursor: pointer;
 }
-.Box li:hover {
+.Box a:hover {
 	transform: translateX(8px);
 	background: linear-gradient(
 		180deg,

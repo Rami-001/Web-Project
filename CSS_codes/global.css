@@ -66,10 +66,11 @@ main, section, .background, .Bigbox { flex: 1 0 auto; }
 }
 .nav-bar{
 	width:100%;
-
 	display:grid;
-	 grid-template-columns:auto auto auto;
-	align-items:center; column-gap:18px; padding:12px 20px;
+	grid-template-columns:auto auto auto;
+	align-items:center; 
+	column-gap:18px; 
+	padding:12px 20px;
 }
 .logo-container{
 	 display:flex; 
@@ -304,8 +305,18 @@ footer{
 	-webkit-background-clip:text; background-clip:text; color:transparent;
 }
 .footer-links{ display:flex; gap:50px; flex-wrap:wrap; justify-content:center; }
-.footer-links a{ display:flex; align-items:center; color:#9fb0c8; font-weight:600; 	}
-.footer-links a:hover{ color:#d4e4f7; }
+.footer-links a{ 
+	display:flex; 
+	align-items:center; 
+	color:#9fb0c8; 
+	font-weight:600; 
+	padding:8px 10px;	
+	border-radius:6px;
+}
+.footer-links a:hover{ 
+	color:#fff; 
+	background:rgba(56,189,248,.08);
+ }
 #copy-right{ color:#7f95b8; font-weight:600; white-space:nowrap; }
 .footer-links .nav-icon{ display:none; width:14px; height:14px; color:#3b9dd9; }
 @media (max-width:768px){ .footer-links .nav-icon{ display:inline-block; } }
