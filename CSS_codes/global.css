@@ -130,7 +130,7 @@ main, section, .background, .Bigbox { flex: 1 0 auto; }
 	font-weight:600; 
 	color:#c8d8f0; 
 	font-size:1rem;
-}
+} 
 .Login-Signup{ 
 	display:flex; 
 	align-items:center; 
@@ -285,8 +285,8 @@ main, section, .background, .Bigbox { flex: 1 0 auto; }
 /* =========================================================
     FOOTER
     ========================================================= */
-.footer-background{
-	margin-top:auto; width:100%;
+.footer-background{ 
+	width:100%;
 	background: linear-gradient(180deg, rgba(9,17,30,.8), rgba(9,17,30,.75));
 	border-top:1px solid rgba(26,37,74,.4); 
 }
@@ -294,7 +294,7 @@ footer{
 	display:flex;
 	justify-content:space-between; 
 	align-items:center;
-	padding: 20px; 
+	padding: 10px; 
 	flex-wrap:wrap;
 }
 .footer-left{ display:flex; align-items:center; gap:6px; }
@@ -375,10 +375,10 @@ footer{
 		opacity: 1;
 	}
 }
-
 /* =========================================================
     RESPONSIVE (MERGED + CLEANED)
     ========================================================= */
+
 /* ---------- 1200px ---------- */
 @media (max-width: 1200px) {
     .contact-wrapper {
@@ -388,6 +388,11 @@ footer{
 	.Box{
 		width: 400px;
 		height: 300px;
+	}
+	footer{
+	justify-content:space-between !important; 
+	flex-direction: row !important;
+	gap: 20px !important;
 	}
 }
 /* ---------- 960px ---------- */
@@ -430,11 +435,11 @@ footer{
     .Login-Signup, .welcome-inline, .profile-dropdown {
         display: none !important;
     }
-    footer { flex-direction: column; text-align: center; gap: 10px; }
-}
-/* ---------- 768px ---------- */
-@media (max-width: 768px) {
-    footer { padding: 12px 14px; }
+    footer{
+	justify-content:space-between !important; 
+	flex-direction: row !important;
+	gap: 0 !important;
+	}
 }
 /* ---------- 640px ---------- */
 @media (max-width: 640px) {
@@ -445,6 +450,17 @@ footer{
     .logo-text { font-size: 1rem; }
     #nav-links { gap: 8px; }
     .Box { flex: 1 1 100%; max-width: none; }
+	footer{
+		flex-direction: row !important;
+		align-items: center !important;
+		justify-content: center;
+		height: 100%;
+	}
+	.footer-links{
+		flex-direction: row;
+		align-items: center;
+		gap: 0;
+	}
 }
 #mobile-settings {
   display: none;
