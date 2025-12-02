@@ -1,70 +1,54 @@
-// Contact form handler (jQuery)
-$(document).ready(function() {
-  // Cache DOM elements
-  let $submitBtn    = $('#contact-submit-btn');
-  let $nameInput    = $('#c-name');
-  let $emailInput   = $('#c-email');
-  let $subjectInput = $('#c-subject');
-  let $messageInput = $('#c-message');
-  let $msgEl        = $('#contact-msg');
+// Contact form handler - Client-side only, no backend calls
+document.addEventListener('DOMContentLoaded', function() {
+	let form = document.getElementById('contact-form');
+	let msgEl = document.getElementById('contact-msg');
+	let mailtoFallback = document.getElementById('mailto-fallback');
 
-  // Handle contact form submission
-  if ($submitBtn.length) {
-    $submitBtn.on('click', function(e) {
-      e.preventDefault();
+	if (!form) return;
 
-      // Read and normalize input values
-      let name    = $nameInput.val().trim();
-      let email   = $emailInput.val().trim();
-      let subject = $subjectInput.val().trim();
-      let message = $messageInput.val().trim();
+	form.addEventListener('submit', function(e) {
+		e.preventDefault();
+		
+		// Get form values
+		let name = document.getElementById('c-name').value.trim();
+		let email = document.getElementById('c-email').value.trim();
+		let subject = document.getElementById('c-subject').value.trim();
+		let message = document.getElementById('c-message').value.trim();
 
-      // Reset status message
-      $msgEl.text('').removeClass('ok err');
+		// Validate
+		if (!name || !email || !subject || !message) {
+			msgEl.textContent = 'Please fill in all fields.';
+			msgEl.className = 'contact-msg err';
+			return;
+		}
 
-      // Basic validation: required fields
-      if (!name || !email || !subject || !message) {
-        $msgEl.text('Please fill in all fields.').addClass('err');
-        return;
-      }
+		// Email validation
+		let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!emailRegex.test(email)) {
+			msgEl.textContent = 'Please enter a valid email.';
+			msgEl.className = 'contact-msg err';
+			return;
+		}
 
-      // Basic validation: email format
-      let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        $msgEl.text('Please enter a valid email address.').addClass('err');
-        return;
-      }
+		// Create mailto link (fallback for no backend)
+		let mailtoLink = `mailto:support@globalcompass.example?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`)}`;
+		
+		// Show success
+		msgEl.textContent = 'Message ready to send! Redirecting to your email client...';
+		msgEl.className = 'contact-msg ok';
+		
+		// Set fallback link
+		mailtoFallback.href = mailtoLink;
+		
+		// Trigger email client after delay
+		setTimeout(() => {
+			window.location.href = mailtoLink;
+		}, 1500);
 
-      // Basic validation: minimum message length
-      if (message.length < 10) {
-        $msgEl.text('Message must be at least 10 characters long.').addClass('err');
-        return;
-      }
-
-      // Store message in localStorage
-      let contactData = {
-        name: name,
-        email: email,
-        subject: subject,
-        message: message,
-      };
-
-      let messages = JSON.parse(localStorage.getItem('gc_contact_messages') || '[]');
-      messages.push(contactData);
-      localStorage.setItem('gc_contact_messages', JSON.stringify(messages));
-
-      // Show success message and reset form
-      $msgEl.text('Message sent successfully! We\'ll get back to you soon.').addClass('ok');
-
-      $nameInput.val('');
-      $emailInput.val('');
-      $subjectInput.val('');
-      $messageInput.val('');
-
-      // Auto-clear status message
-      setTimeout(() => {
-        $msgEl.text('');
-      }, 3000);
-    });
-  }
+		// Reset form
+		setTimeout(() => {
+			form.reset();
+			msgEl.textContent = '';
+		}, 2000);
+	});
 });

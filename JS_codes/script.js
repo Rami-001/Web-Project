@@ -192,37 +192,21 @@ document.addEventListener('DOMContentLoaded', function() {
 		let userNameEl = document.getElementById('user-name');
 		let loginSignupDiv = document.querySelector('.Login-Signup');
 		let profileDropdown = document.querySelector('.profile-dropdown');
-		
-		// Hide desktop login/register, show profile dropdown
+
 		if (loginSignupDiv) loginSignupDiv.style.display = 'none';
 		if (profileDropdown) profileDropdown.style.display = 'flex';
 		if (userNameEl) userNameEl.textContent = userStored.name;
 		if (welcomeEl) welcomeEl.style.display = 'inline';
-		
-		// Hide mobile login/register, show only logout
-		let mobileLoginLinks = document.querySelectorAll('.mobile-auth');
-		mobileLoginLinks.forEach(link => {
-			let isLogout = link.querySelector('#logout-link-mobile');
-			link.style.display = isLogout ? 'list-item' : 'none';
-		});
 	}
 
 	function showLoggedOutUI() {
 		let welcomeEl = document.getElementById('welcome-user');
 		let loginSignupDiv = document.querySelector('.Login-Signup');
 		let profileDropdown = document.querySelector('.profile-dropdown');
-		
-		// Show desktop login/register, hide profile dropdown
+
 		if (loginSignupDiv) loginSignupDiv.style.display = 'flex';
 		if (profileDropdown) profileDropdown.style.display = 'none';
 		if (welcomeEl) welcomeEl.style.display = 'none';
-		
-		// Show mobile login/register, hide logout
-		let mobileLoginLinks = document.querySelectorAll('.mobile-auth');
-		mobileLoginLinks.forEach(link => {
-			let isLogout = link.querySelector('#logout-link-mobile');
-			link.style.display = isLogout ? 'none' : 'list-item';
-		});
 	}
 
 	function syncProfileData(userSession, userStored) {
@@ -245,31 +229,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	function setupLogout() {
-		// Desktop logout
 		let logoutLink = document.getElementById('logout-link');
 		if (logoutLink) {
 			logoutLink.addEventListener('click', function(e) {
 				e.preventDefault();
-				performLogout();
+				localStorage.removeItem('gc_current_user');
+				window.location.href = 'index.html';
 			});
 		}
-		
-		// Mobile logout
-		let logoutLinkMobile = document.getElementById('logout-link-mobile');
-		if (logoutLinkMobile) {
-			logoutLinkMobile.addEventListener('click', function(e) {
-				e.preventDefault();
-				performLogout();
-			});
-		}
-	}
-
-	function performLogout() {
-		localStorage.removeItem('gc_current_user');
-		// Close mobile menu if open
-		let navBar = document.querySelector('.nav-bar');
-		if (navBar) navBar.classList.remove('nav-open');
-		window.location.href = 'index.html';
 	}
 
 	function startContinuousSync(userSession, userStored) {
