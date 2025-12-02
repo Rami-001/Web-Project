@@ -345,7 +345,7 @@ footer {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 20px;
+	padding: 10px;
 	flex-wrap: wrap;
 }
 
@@ -551,7 +551,10 @@ footer {
 	#nav-links { gap: 8px; }
 	.Box { flex: 1 1 100%; max-width: none; }
 }
-
+@media (max-width: 430px) {
+	footer { flex-direction: column; text-align: center; }
+	.footer-links {gap: 0;}
+}
 /* =========================================================
     MOBILE MENU VISIBILITY TOGGLES
     ========================================================= */
