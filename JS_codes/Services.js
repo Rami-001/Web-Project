@@ -221,7 +221,7 @@ $(document).ready(function () {
   $(".clear-filters").on("click", function () {
     $("#searchInput").val("");
     $("#filter-category").val("All");
-    $("#filter-city").val("All");
+    $("#filter-city").val("");
     $("#sortSelect").val("");
     filter();
   });
@@ -256,12 +256,12 @@ $(document).ready(function () {
       $("#filter-country").val(savedCountry);
       updateCitiesByCountry(savedCountry);
     } else {
-      $("#filter-country").val("All");
+      $("#filter-country").val("");
       updateCitiesByCountry(null);
     }
     // Set defaults for other filters
     $("#filter-category").val($("#filter-category").val() || "All");
-    $("#filter-city").val("All");
+    $("#filter-city").val("");
     $("#sortSelect").val("");
     // Render based on URL id or just filter
     if (urlID) {
