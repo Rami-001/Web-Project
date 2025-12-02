@@ -582,3 +582,6 @@ footer {
 		display: none !important;
 	}
 }
+#preferences-msg{
+	color: green;
+}
