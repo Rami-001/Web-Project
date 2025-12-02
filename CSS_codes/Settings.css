@@ -2,60 +2,75 @@
     SETTINGS PAGE
     ========================================================= */
 
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	width: 100%;
+	overflow-x: hidden;
+}
+
 .settings-main {
 	flex: 1 0 auto;
 	padding-top: var(--header-h, 64px);
+	width: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
 }
 
 .settings-hero {
-	padding: 60px 14px 40px;
+	padding: 40px 16px;
 	text-align: center;
 	background: linear-gradient(135deg, rgba(59,157,217,.08) 0%, rgba(139,92,246,.06) 100%);
 	border-bottom: 1px solid rgba(59,157,217,.12);
+	width: 100%;
 }
 
 .settings-hero h1 {
-	font-size: clamp(2rem, 3.2vw, 2.8rem);
+	font-size: clamp(1.5rem, 5vw, 2.8rem);
 	font-weight: 800;
 	color: #ffffff;
-	margin-bottom: 8px;
+	margin: 0 0 8px 0;
 	letter-spacing: -0.5px;
 }
 
 .settings-hero p {
 	color: #8fa3c0;
 	font-weight: 600;
-	font-size: 1rem;
+	font-size: clamp(0.9rem, 2vw, 1rem);
+	margin: 0;
 }
 
 .settings-grid {
-	width: min(880px, 96%);
-	margin: 40px auto;
+	width: 100%;
+	max-width: 880px;
+	margin: 30px auto;
 	display: grid;
-	gap: 24px;
-	padding: 0 14px;
+	gap: 20px;
+	padding: 0 16px;
 	padding-bottom: 40px;
-	box-sizing: border-box;
 }
 
 .settings-card {
 	background: var(--gc-card);
 	border: 1px solid #1a254a;
 	border-radius: 12px;
-	padding: 28px;
+	padding: 20px;
 	box-shadow: 0 4px 14px rgba(0,0,0,.2);
-	box-sizing: border-box;
+	width: 100%;
 }
 
 .settings-card h2 {
-	font-size: 1.3rem;
+	font-size: clamp(1.1rem, 3vw, 1.3rem);
 	font-weight: 700;
 	color: #fff;
-	margin-bottom: 20px;
+	margin: 0 0 16px 0;
+	padding: 0;
 }
 
 .settings-card.danger-zone {
-	padding: 32px;
+	padding: 24px;
 	border: 1px solid rgba(239, 68, 68, 0.3);
 	background: linear-gradient(135deg, rgba(13, 24, 40, 0.8), rgba(20, 10, 15, 0.5));
 	border-left: 4px solid #dc2626;
@@ -63,17 +78,17 @@
 
 .settings-card.danger-zone h2 {
 	color: #dc2626;
-	font-size: 1.1rem;
+	font-size: clamp(1rem, 2.5vw, 1.1rem);
 	font-weight: 600;
 	letter-spacing: 0.3px;
 	text-transform: uppercase;
-	margin-bottom: 24px;
+	margin-bottom: 20px;
 }
 
 .settings-card.danger-zone .settings-section {
 	display: flex;
-	align-items: flex-start;
-	gap: 20px;
+	flex-direction: column;
+	gap: 12px;
 }
 
 .settings-card.danger-zone .settings-label {
@@ -85,15 +100,14 @@
 
 .settings-card.danger-zone .settings-hint {
 	color: #9fb0c8;
-	font-size: 0.9rem;
+	font-size: 0.85rem;
 	line-height: 1.5;
-	margin: 12px 0;
-	max-width: 400px;
+	margin: 8px 0;
 }
 
 .settings-section {
-	margin-bottom: 24px;
-	padding-bottom: 20px;
+	margin-bottom: 20px;
+	padding-bottom: 16px;
 	border-bottom: 1px solid #1a254a;
 }
 
@@ -105,30 +119,33 @@
 
 .profile-display {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	gap: 20px;
+	gap: 16px;
+	text-align: center;
 }
 
 .avatar-large {
-	width: 80px;
-	height: 80px;
+	width: 70px;
+	height: 70px;
 	border-radius: 50%;
 	border: 2px solid #3b9dd9;
 	object-fit: cover;
-	position: relative;
+	flex-shrink: 0;
 }
 
 .avatar-wrapper {
 	position: relative;
 	width: fit-content;
+	flex-shrink: 0;
 }
 
 .avatar-edit-btn {
 	position: absolute;
 	bottom: 0;
 	right: 0;
-	width: 36px;
-	height: 36px;
+	width: 32px;
+	height: 32px;
 	border-radius: 50%;
 	background: #3b9dd9;
 	border: 2px solid var(--gc-card);
@@ -140,6 +157,7 @@
 	transition: all 0.2s ease;
 	box-shadow: 0 4px 12px rgba(59,157,217,.3);
 	padding: 0;
+	flex-shrink: 0;
 }
 
 .avatar-edit-btn:hover {
@@ -153,52 +171,51 @@
 }
 
 .avatar-edit-btn svg {
-	width: 18px;
-	height: 18px;
+	width: 16px;
+	height: 16px;
 	stroke: currentColor;
 	stroke-width: 2;
 	fill: none;
 }
 
 .profile-name {
-	font-size: 1.2rem;
+	font-size: clamp(1rem, 2.5vw, 1.2rem);
 	font-weight: 700;
 	color: #ffffff;
-	margin: 0 0 4px 0;
+	margin: 0;
 }
 
 .profile-email {
-	font-size: 0.9rem;
+	font-size: clamp(0.8rem, 2vw, 0.9rem);
 	color: #8fa3c0;
 	font-weight: 600;
-	margin: 0;
+	margin: 4px 0 0 0;
 }
 
 .settings-label {
 	display: block;
 	font-weight: 700;
 	color: #b5c5e0;
-	font-size: 0.9rem;
-	margin-bottom: 10px;
+	font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+	margin-bottom: 8px;
 }
 
 .settings-row {
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
 	gap: 12px;
-	align-items: center;
 	margin-bottom: 12px;
 }
 
 .settings-input,
 .settings-select {
-	flex: 1 1 200px;
-	padding: 12px 14px;
+	width: 100%;
+	padding: 10px 12px;
 	border: 1px solid #2a3a5d;
 	border-radius: 8px;
 	background: #0c172b;
 	color: #d4e4f7;
-	font-size: 0.95rem;
+	font-size: clamp(0.85rem, 2vw, 0.95rem);
 	font-family: inherit;
 	transition: all 0.15s ease;
 	outline: none;
@@ -217,7 +234,8 @@
 }
 
 .settings-btn {
-	padding: 12px 24px;
+	width: 100%;
+	padding: 11px 18px;
 	border: none;
 	border-radius: 8px;
 	font-weight: 700;
@@ -226,7 +244,7 @@
 	background: #3b9dd9;
 	box-shadow: 0 6px 16px rgba(59,157,217,.2);
 	transition: all 0.12s ease;
-	font-size: 0.95rem;
+	font-size: clamp(0.8rem, 2vw, 0.95rem);
 	white-space: nowrap;
 	position: relative;
 	overflow: hidden;
@@ -269,8 +287,7 @@
 	background: #7f1d1d;
 	color: #fecaca;
 	border: 1px solid #dc2626;
-	padding: 12px 24px;
-	font-size: 0.9rem;
+	font-size: clamp(0.8rem, 2vw, 0.9rem);
 	font-weight: 600;
 	transition: all 0.2s ease;
 }
@@ -292,7 +309,7 @@
 	margin-top: 10px;
 	padding: 8px 12px;
 	border-radius: 6px;
-	font-size: 0.85rem;
+	font-size: clamp(0.75rem, 1.5vw, 0.85rem);
 }
 
 .settings-msg.success {
@@ -307,69 +324,126 @@
 
 .settings-hint {
 	color: #9fb0c8;
-	font-size: 0.9rem;
+	font-size: clamp(0.8rem, 1.5vw, 0.9rem);
 	line-height: 1.5;
 	margin: 8px 0 0 0;
 }
 
-@media (max-width: 800px) {
-  .settings-card {
-    width: 100%;
-    box-sizing: border-box;
-  }
+/* Tablet - 768px and up */
+@media (min-width: 768px) {
+	.settings-hero {
+		padding: 50px 20px;
+	}
+
+	.settings-hero h1 {
+		margin-bottom: 12px;
+	}
+
+	.settings-grid {
+		gap: 24px;
+		padding: 0 20px;
+		margin: 40px auto;
+	}
+
+	.settings-card {
+		padding: 28px;
+	}
+
+	.settings-card h2 {
+		margin-bottom: 20px;
+	}
+
+	.settings-card.danger-zone {
+		padding: 32px;
+	}
+
+	.settings-section {
+		margin-bottom: 24px;
+		padding-bottom: 20px;
+	}
+
+	.profile-display {
+		flex-direction: row;
+		text-align: left;
+		gap: 20px;
+	}
+
+	.avatar-large {
+		width: 80px;
+		height: 80px;
+	}
+
+	.avatar-edit-btn {
+		width: 36px;
+		height: 36px;
+	}
+
+	.avatar-edit-btn svg {
+		width: 18px;
+		height: 18px;
+	}
+
+	.settings-row {
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	.settings-input,
+	.settings-select {
+		flex: 1 1 200px;
+		min-width: 150px;
+	}
+
+	.settings-btn {
+		width: auto;
+		padding: 12px 24px;
+	}
 }
 
-@media (max-width: 768px) {
-    .nav-bar { grid-template-columns: auto  auto; }
-    .nav-toggle { display: block; }
-    #nav-links {
-        position: fixed;
-        inset: var(--header-h) 0 auto 0;
-        background: #0d1a31;
-        border-top: 1px solid #1a254a;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        transform: translateY(-120%);
-        opacity: 0;
-        visibility: hidden;
-        transition: transform .22s, opacity .16s, visibility 0s linear .22s;
-        z-index: 1200;
-    }
-    .nav-bar.nav-open #nav-links {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-    }
-    .dropdown-content,
-    .dropdown-content.visible {
-        position: fixed;
-        top: var(--header-h, 64px);
-        left: 0;
-        right: 0;
-        height: calc(100vh - var(--header-h, 64px));
-        overflow-y: auto !important;
-        padding: 16px 12px 60px;
-        border-radius: 0;
-        background: linear-gradient(180deg, #0e1a31, #0b162a);
-        z-index: 1200;
-    }
-    .Login-Signup, .welcome-inline, .profile-dropdown {
-        display: none !important;
-    }
-    footer { flex-direction: column; text-align: center; gap: 10px; }
-    .about-two-col { grid-template-columns: 1fr; }
-    .about-steps { grid-template-columns: 1fr; }
-    .Bigbox { padding: 36px 14px; }
-    .group1, .group2 { gap: 24px; }
-	.images .image img {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    aspect-ratio: 2/1;
-	transition: all 0.3s ease;
-    display: block;
-    margin: 0 auto;
+/* Desktop - 1024px and up */
+@media (min-width: 1024px) {
+	.settings-hero {
+		padding: 60px 14px 40px;
+	}
+
+	.settings-grid {
+		gap: 28px;
+		margin: 50px auto;
+	}
+
+	.settings-card {
+		padding: 32px;
+	}
+
+	.settings-input,
+	.settings-select {
+		flex: 1 1 250px;
+	}
 }
+
+/* Small mobile - max 480px */
+@media (max-width: 480px) {
+	.settings-hero {
+		padding: 30px 12px;
+	}
+
+	.settings-grid {
+		gap: 16px;
+		padding: 0 12px;
+		margin: 20px auto;
+	}
+
+	.settings-card {
+		padding: 16px;
+	}
+
+	.settings-btn {
+		padding: 10px 16px;
+	}
+
+	.avatar-large {
+		width: 60px;
+		height: 60px;
+	}
 }

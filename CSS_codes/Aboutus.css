@@ -596,3 +596,7 @@
 		margin: 24px auto;
 	}
 }
+#mobile-settings {
+  display: none;
+}
+

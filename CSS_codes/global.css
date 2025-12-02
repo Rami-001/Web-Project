@@ -446,3 +446,12 @@ footer{
     #nav-links { gap: 8px; }
     .Box { flex: 1 1 100%; max-width: none; }
 }
+#mobile-settings {
+  display: none;
+}
+
+@media (max-width: 950px) {
+  #mobile-settings {
+    display: list-item;
+  }
+}
