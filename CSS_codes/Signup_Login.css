@@ -46,3 +46,22 @@
 .auth-switch{ text-align:center; font-weight:600; color:#9fb0c8; margin-top:3px; font-size:.85rem; }
 .auth-switch a{ color:#3b9dd9; transition:color .12s; }
 .auth-switch a:hover{ color:#5babd6; }
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+	.auth-form {
+		width: 95%;
+		padding: 24px;
+	}
+}
+
+@media (max-width: 480px) {
+	.auth-form {
+		width: 100%;
+		padding: 20px;
+	}
+	.auth-btn {
+		padding: 9px 12px;
+		font-size: 0.85rem;
+	}
+}

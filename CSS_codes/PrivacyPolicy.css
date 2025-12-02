@@ -12,6 +12,7 @@
 	margin: 0 auto;
 	padding: 60px 14px;
 	color: #d4e4f7;
+	box-sizing: border-box;
 }
 
 .policy-content h1 {
