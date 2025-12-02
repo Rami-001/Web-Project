@@ -321,7 +321,7 @@ body.light-mode .card-content ul {
 	font-weight: 600;
 }
 body.light-mode .service-card img{
-	border: 2px solid black;
+	border: 3px solid #0066cc;
 }
 body.light-mode .favorite-card {
   border: 3px solid #ff5f5f;
