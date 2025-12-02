@@ -380,6 +380,26 @@
 /* =========================================================
     RESPONSIVE (MERGED + CLEANED)
     ========================================================= */
+		/* ---------- 1300px ---------- */
+/* @media (max-width: 1300px) {
+	.images .image img {
+    width: 1000px; 
+    height: 500px;
+	transition: all 0.3s ease;
+}
+	@keyframes slide {
+    0% { transform: translateX(0); }
+    12.5% { transform: translateX(-1050px); } 
+    25% { transform: translateX(-2100px); }
+    37.5% { transform: translateX(-3150px); }
+    50% { transform: translateX(-4200px); }
+    62.5% { transform: translateX(-5250px); }
+    75% { transform: translateX(-6300px); }
+	87.5% { transform: translateX(-7380px); }
+
+}
+    
+} */
 /* ---------- 1200px ---------- */
 @media (max-width: 1200px) {
     .contact-wrapper {
@@ -390,6 +410,7 @@
 		width: 400px;
 		height: 300px;
 	}
+	
 }
 /* ---------- 1100px ---------- */
 @media (max-width: 1100px) {
