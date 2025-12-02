@@ -248,8 +248,7 @@
         gap: 32px;
     }
 	.Box{
-		width: 90%;
-		max-width: 400px;
+		width: 400px;
 		height: 300px;
 	}
 }
@@ -257,41 +256,32 @@
 @media (max-width: 1100px) {
     .service-card {
 		flex-direction: column;
-        width: 90%;
-        max-width: 500px;
+        width: 80%;
         padding: 22px;
         gap: 20px;
-        margin: 0 auto;
     }
     .service-card img {
-        width: 100%;
-        max-width: 400px;
-        height: auto;
-        aspect-ratio: 16/9;
+        width: 400px;
+        height: 250px;
     }
 	.images .image img {
-    width: 100%;
-    max-width: 1000px;
-    height: auto;
-    aspect-ratio: 2/1;
+    width: 1000px; 
+    height: 500px;
 	transition: all 0.3s ease;
-    display: block;
-    margin: 0 auto;
 }
 	@keyframes slide {
     0% { transform: translateX(0); }
-    12.5% { transform: translateX(-100%); } 
-    25% { transform: translateX(-200%); }
-    37.5% { transform: translateX(-300%); }
-    50% { transform: translateX(-400%); }
-    62.5% { transform: translateX(-500%); }
-    75% { transform: translateX(-600%); }
-	87.5% { transform: translateX(-700%); }
+    12.5% { transform: translateX(-1050px); } 
+    25% { transform: translateX(-2100px); }
+    37.5% { transform: translateX(-3150px); }
+    50% { transform: translateX(-4200px); }
+    62.5% { transform: translateX(-5250px); }
+    75% { transform: translateX(-6300px); }
+	87.5% { transform: translateX(-7380px); }
 
 }
 .Box{
-		width: 90%;
-		max-width: 400px;
+		width: 400px;
 		height: 300px;
 	}
 }
@@ -341,28 +331,23 @@
     .Bigbox { padding: 36px 14px; }
     .group1, .group2 { gap: 24px; }
 	.images .image img {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    aspect-ratio: 2/1;
+    width: 800px; 
+    height: 400px;
 	transition: all 0.3s ease;
-    display: block;
-    margin: 0 auto;
 }
 	@keyframes slide {
-    0% { transform: translateX(0); }
-    12.5% { transform: translateX(-100%); } 
-    25% { transform: translateX(-200%); }
-    37.5% { transform: translateX(-300%); }
-    50% { transform: translateX(-400%); }
-    62.5% { transform: translateX(-500%); }
-    75% { transform: translateX(-600%); }
-	87.5% { transform: translateX(-700%); }
+    0% { transform: translateX(100px); }
+    12.5% { transform: translateX(-850px); } 
+    25% { transform: translateX(-1700px); }
+    37.5% { transform: translateX(-2550px); }
+    50% { transform: translateX(-3400px); }
+    62.5% { transform: translateX(-4250px); }
+    75% { transform: translateX(-5100px); }
+	87.5% { transform: translateX(-5950px); }
 
 }
 .Box{
-		width: 90%;
-		max-width: 350px;
+		width: 350px;
 		height: 300px;
 	}
 }
@@ -372,17 +357,16 @@
     .service-filters {
         flex-direction: column;
         gap: 12px;
-        width: 90%;
-        max-width: 400px;
+        width: 400px;
         padding: 16px 18px;
-		margin: 20px auto 0;
+		margin-top: 20px;
     }
     #searchInput,
     #sortSelect,
     #filter-category,
     #filter-city,
 	#filter-country {
-        width: 100%;
+        width: 230px;
         padding: 12px 14px;
         font-size: 0.95rem;
         border-radius: 10px;
@@ -390,57 +374,47 @@
     /* Service Cards */
     .service-card {
         flex-direction: column;
-        width: 90%;
-        max-width: 500px;
+        width: 80%;
         padding: 22px;
         gap: 20px;
-        margin: 0 auto;
     }
     .service-card img {
-        width: 100%;
-        max-width: 400px;
-        height: auto;
-        aspect-ratio: 16/9;
+        width: 400px;
+        height: 250px;
     }
     .card-content {
         width: 100%;
         text-align: center;
     }
 	.images .image img {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    aspect-ratio: 2/1;
+    width: 800px; 
+    height: 400px;
 	transition: all 0.3s ease;
-    display: block;
-    margin: 0 auto;
 }
 	@keyframes slide {
-    0% { transform: translateX(0); }
-    12.5% { transform: translateX(-100%); } 
-    25% { transform: translateX(-200%); }
-    37.5% { transform: translateX(-300%); }
-    50% { transform: translateX(-400%); }
-    62.5% { transform: translateX(-500%); }
-    75% { transform: translateX(-600%); }
-	87.5% { transform: translateX(-700%); }
+    0% { transform: translateX(100px); }
+    12.5% { transform: translateX(-850px); } 
+    25% { transform: translateX(-1700px); }
+    37.5% { transform: translateX(-2550px); }
+    50% { transform: translateX(-3400px); }
+    62.5% { transform: translateX(-4250px); }
+    75% { transform: translateX(-5100px); }
+	87.5% { transform: translateX(-5950px); }
 
 }
 	.Box{
-		width: 90%;
-		max-width: 350px;
+		width: 350px;
 		height: 300px;
 	}
 	.container{
 		max-width: 580px;
-        margin: 0 auto;
 	}
 	.step{
-		width: 100%;
-		min-height: 150px;
+		width: 300px;
+		height: 150px;
 	}
 	.about-steps-grid{
-		gap: 20px;
+		gap: 60px;
 	}
 }
 /* ---------- 768px ---------- */
@@ -451,40 +425,33 @@
 
     /* Make filters cleaner */
     .service-filters {
-        width: 90%;
-        max-width: 400px;
+        width: 400px;
         gap: 10px;
-        margin: 0 auto;
     }
 	.images .image img {
-    width: 100%;
-    max-width: 700px;
-    height: auto;
-    aspect-ratio: 2/1;
+    width: 700px; 
+    height: 300px;
 	transition: all 0.3s ease;
-    display: block;
-    margin: 0 auto;
 }
 	@keyframes slide {
-    0% { transform: translateX(0); }
-    12.5% { transform: translateX(-100%); } 
-    25% { transform: translateX(-200%); }
-    37.5% { transform: translateX(-300%); }
-    50% { transform: translateX(-400%); }
-    62.5% { transform: translateX(-500%); }
-    75% { transform: translateX(-600%); }
-	87.5% { transform: translateX(-700%); }
+    0% { transform: translateX(100px); }
+    12.5% { transform: translateX(-750px); } 
+    25% { transform: translateX(-1500px); }
+    37.5% { transform: translateX(-2250px); }
+    50% { transform: translateX(-3000px); }
+    62.5% { transform: translateX(-3750px); }
+    75% { transform: translateX(-4500px); }
+	87.5% { transform: translateX(-5250px); }
 
 }
 .Box{
-		width: 90%;
-		max-width: 350px;
+		width: 350px;
 		height: 300px;
 	}
 	.about-steps-grid{
-		max-width: 100%;
-		gap: 20px;
-        padding: 0 14px;
+		max-width: 700px;
+		gap: 60px;
+		
 	}
 }
 /* ---------- 640px ---------- */
@@ -496,14 +463,13 @@
     /* Service Cards */
     .service-card {
         flex-direction: column;
-        width: 100%;
-        padding: 22px 14px;
+        width: 80%;
+        padding: 22px;
         gap: 20px;
     }
     .service-card img {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 16/9;
+        width: 400px;
+        height: 250px;
     }
     .card-content h2 { font-size: 1.4rem; }
     .card-content p,
@@ -517,45 +483,35 @@
         padding: 10px 12px;
         font-size: 0.9rem;
         border-radius: 10px;
-        width: 100%;
     }
 	.images .image img {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    aspect-ratio: 2/1;
+    width: 600px; 
+    height: 300px;
 	transition: all 0.3s ease;
-    display: block;
-    margin: 0 auto;
 }
 	@keyframes slide {
-    0% { transform: translateX(0); }
-    12.5% { transform: translateX(-100%); } 
-    25% { transform: translateX(-200%); }
-    37.5% { transform: translateX(-300%); }
-    50% { transform: translateX(-400%); }
-    62.5% { transform: translateX(-500%); }
-    75% { transform: translateX(-600%); }
-	87.5% { transform: translateX(-700%); }
+    0% { transform: translateX(100px); }
+    12.5% { transform: translateX(-650px); } 
+    25% { transform: translateX(-1300px); }
+    37.5% { transform: translateX(-1950px); }
+    50% { transform: translateX(-2600px); }
+    62.5% { transform: translateX(-3250px); }
+    75% { transform: translateX(-3900px); }
+	87.5% { transform: translateX(-4550px); }
 
 }
 .Box{
-		width: 90%;
-		max-width: 350px;
-		height: auto;
-        aspect-ratio: 4/3;
+		width: 350px;
+		height: 300px;
 	}
 	.container{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	flex-direction: column;
-    max-width: 100%;
-    padding: 0 14px;
+	flex-direction: column;	
 	}
 	.about-steps-grid{
-		margin: 0;
-        gap: 20px;
+		margin-right: 50px;
 } }
 
 /* ---------- 480px ---------- */
@@ -563,34 +519,25 @@
     .logo-text { font-size: 1rem; }
     #nav-links { gap: 8px; }
     .Box { 
-		width: 100%;
-        max-width: 350px;
-		aspect-ratio: 4/3;
-        padding: 0 14px;
-        box-sizing: border-box;
+		max-width: 350px ;
+		max-height: 300px;
 	}
     .contact-form { padding: 18px; }
 	.service-filters {
-        width: 100%;
+        width: 300px;
         gap: 10px;
-		margin: 20px 14px 0;
-		padding: 0;
+		margin: auto;
+		margin-top: 20px;
     }
 	.stats{
 		text-align: center;
 	}
     /* Service Cards */
-    .service-card { 
-        flex-direction: column;
-        width: 100%;
-        padding: 22px 14px;
-        gap: 20px; 
-    }
-    .service-card img { 
-        width: 100%;
-        height: auto;
-        aspect-ratio: 16/9;
-    }
+    .service-card { flex-direction: column;
+        width: 80%;
+        padding: 22px;
+        gap: 20px; }
+    .service-card img { height: 180px; }
     .card-content h2 { font-size: 1.2rem; }
     .card-content p,
     .card-content ul { font-size: 0.85rem; }
@@ -603,42 +550,36 @@
         padding: 8px 10px;
         font-size: 0.85rem;
         border-radius: 8px;
-        width: 100%;
     }
     .clear-filters {
         padding: 10px 12px;
         width: 114px;
     }
 	.images .image img {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    aspect-ratio: 2/1;
+    width: 450px; 
+    height: 250px;
 	transition: all 0.3s ease;
-    display: block;
-    margin: 0 auto;
 }
 	@keyframes slide {
-    0% { transform: translateX(0); }
-    12.5% { transform: translateX(-100%); } 
-    25% { transform: translateX(-200%); }
-    37.5% { transform: translateX(-300%); }
-    50% { transform: translateX(-400%); }
-    62.5% { transform: translateX(-500%); }
-    75% { transform: translateX(-600%); }
-	87.5% { transform: translateX(-700%); }
+    0% { transform: translateX(100px); }
+    12.5% { transform: translateX(-500px); } 
+    25% { transform: translateX(-1000px); }
+    37.5% { transform: translateX(-1500px); }
+    50% { transform: translateX(-2000px); }
+    62.5% { transform: translateX(-2500px); }
+    75% { transform: translateX(-3000px); }
+	87.5% { transform: translateX(-3500px); }
 }
 .container{
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	width: 100%;
-    padding: 0 14px;
-    box-sizing: border-box;
+	max-width: 300px;
+
 	}
 	.step{
-		width: 100%;
-        min-height: 120px;
+		width: 200px;
+	margin-left: 25px;
 	}
 }

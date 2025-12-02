@@ -59,8 +59,6 @@
     width: 1200px; 
     height: 600px;
 	transition: all 0.3s ease;
-	max-width: 100%;
-	height: auto;
 }
 .image h2 {
 	text-align: center;
@@ -104,8 +102,7 @@
 }
 .Box {
 	position: relative;
-	width: 100%;
-	max-width: 450px;
+	width: 450px;
 	height: 300px;
 	background: var(--gc-card);
 	backdrop-filter: blur(10px);
@@ -119,7 +116,6 @@
 	overflow: hidden;
 	cursor: pointer;
 	flex-wrap: wrap;
-	box-sizing: border-box;
 }
 .Box:hover {
 	transform: translateY(-5px) scale(1.01);
@@ -389,10 +385,8 @@
         gap: 32px;
     }
 	.Box{
-		width: 100%;
-		max-width: 400px;
+		width: 400px;
 		height: 300px;
-		box-sizing: border-box;
 	}
 }
 /* ---------- 1100px ---------- */
@@ -408,12 +402,9 @@
         height: 250px;
     }
 	.images .image img {
-    width: 100%;
-    max-width: 1000px;
-    height: auto;
+    width: 1000px; 
+    height: 500px;
 	transition: all 0.3s ease;
-    display: block;
-    margin: 0 auto;
 }
 	@keyframes slide {
     0% { transform: translateX(0); }
@@ -427,10 +418,8 @@
 
 }
 .Box{
-		width: 100%;
-		max-width: 400px;
+		width: 400px;
 		height: 300px;
-		box-sizing: border-box;
 	}
 }
 /* ---------- 960px ---------- */
@@ -479,12 +468,9 @@
     .Bigbox { padding: 36px 14px; }
     .group1, .group2 { gap: 24px; }
 	.images .image img {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
+    width: 800px; 
+    height: 400px;
 	transition: all 0.3s ease;
-    display: block;
-    margin: 0 auto;
 }
 	@keyframes slide {
     0% { transform: translateX(100px); }
@@ -498,33 +484,31 @@
 
 }
 .Box{
-		width: 100%;
-		max-width: 350px;
+		width: 350px;
 		height: 300px;
-		box-sizing: border-box;
 	}
 }
 /* ---------- 900px ---------- */
 @media (max-width: 900px) {
+    /* Filters */
     .service-filters {
         flex-direction: column;
         gap: 12px;
-        width: 100%;
-        max-width: 400px;
+        width: 400px;
         padding: 16px 18px;
-		margin: 20px auto 0;
-        box-sizing: border-box;
+		margin-top: 20px;
     }
     #searchInput,
     #sortSelect,
     #filter-category,
     #filter-city,
 	#filter-country {
-        width: 100%;
+        width: 230px;
         padding: 12px 14px;
         font-size: 0.95rem;
         border-radius: 10px;
     }
+    /* Service Cards */
     .service-card {
         flex-direction: column;
         width: 80%;
@@ -540,12 +524,9 @@
         text-align: center;
     }
 	.images .image img {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
+    width: 800px; 
+    height: 400px;
 	transition: all 0.3s ease;
-    display: block;
-    margin: 0 auto;
 }
 	@keyframes slide {
     0% { transform: translateX(100px); }
@@ -559,10 +540,8 @@
 
 }
 .Box{
-		width: 100%;
-		max-width: 350px;
+		width: 350px;
 		height: 300px;
-		box-sizing: border-box;
 	}
 }
 /* ---------- 768px ---------- */
@@ -571,20 +550,15 @@
     footer { padding: 12px 14px; }
     .contact-form { padding: 24px; }
 
+    /* Make filters cleaner */
     .service-filters {
-        width: 100%;
-        max-width: 400px;
+        width: 400px;
         gap: 10px;
-        margin: 0 auto;
-        box-sizing: border-box;
     }
 	.images .image img {
-    width: 100%;
-    max-width: 700px;
-    height: auto;
+    width: 700px; 
+    height: 300px;
 	transition: all 0.3s ease;
-    display: block;
-    margin: 0 auto;
 }
 	@keyframes slide {
     0% { transform: translateX(100px); }
@@ -598,10 +572,8 @@
 
 }
 .Box{
-		width: 100%;
-		max-width: 350px;
+		width: 350px;
 		height: 300px;
-		box-sizing: border-box;
 	}
 }
 /* ---------- 640px ---------- */
@@ -610,20 +582,21 @@
     .Explore { width: 92%; }
     .contact-hero { padding: 36px 14px 20px; }
     .contact-wrapper { padding: 28px 14px; gap: 24px; }
+    /* Service Cards */
     .service-card {
         flex-direction: column;
-        width: 100%;
+        width: 80%;
         padding: 22px;
         gap: 20px;
-        box-sizing: border-box;
     }
     .service-card img {
-        width: 100%;
-        height: auto;
+        width: 400px;
+        height: 250px;
     }
     .card-content h2 { font-size: 1.4rem; }
     .card-content p,
     .card-content ul { font-size: 0.9rem; }
+    /* Filters */
     #searchInput,
     #sortSelect,
     #filter-category,
@@ -632,15 +605,11 @@
         padding: 10px 12px;
         font-size: 0.9rem;
         border-radius: 10px;
-        width: 100%;
     }
 	.images .image img {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
+    width: 600px; 
+    height: 300px;
 	transition: all 0.3s ease;
-    display: block;
-    margin: 0 auto;
 }
 	@keyframes slide {
     0% { transform: translateX(100px); }
@@ -654,47 +623,38 @@
 
 }
 .Box{
-		width: 100%;
-		max-width: 350px;
+		width: 350px;
 		height: 300px;
-		box-sizing: border-box;
 	}
-}
-
+} 
+/* ---------- 480px ---------- */
 @media (max-width: 480px) {
     .logo-text { font-size: 1rem; }
     #nav-links { gap: 8px; }
     .Box { 
-		width: 100%;
-		max-width: 300px;
-		height: 300px;
-        box-sizing: border-box;
+		max-width: 350px ;
+		max-height: 300px;
 	}
     .contact-form { padding: 18px; }
 	.service-filters {
-        width: 100%;
-        max-width: 300px;
+        width: 300px;
         gap: 10px;
-		margin: 20px auto 0;
-        box-sizing: border-box;
+		margin: auto;
+		margin-top: 20px;
     }
 	.stats{
 		text-align: center;
 	}
-    .service-card { 
-        flex-direction: column;
-        width: 100%;
+    /* Service Cards */
+    .service-card { flex-direction: column;
+        width: 80%;
         padding: 22px;
-        gap: 20px;
-        box-sizing: border-box;
-    }
-    .service-card img { 
-        width: 100%;
-        height: auto;
-    }
+        gap: 20px; }
+    .service-card img { height: 180px; }
     .card-content h2 { font-size: 1.2rem; }
     .card-content p,
     .card-content ul { font-size: 0.85rem; }
+    /* Filters */
     #searchInput,
     #sortSelect,
     #filter-category,
@@ -703,19 +663,15 @@
         padding: 8px 10px;
         font-size: 0.85rem;
         border-radius: 8px;
-        width: 100%;
     }
     .clear-filters {
         padding: 10px 12px;
         width: 114px;
     }
 	.images .image img {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
+    width: 450px; 
+    height: 250px;
 	transition: all 0.3s ease;
-    display: block;
-    margin: 0 auto;
 }
 	@keyframes slide {
     0% { transform: translateX(100px); }
