@@ -1,9 +1,10 @@
-
-
 $(document).ready(function() {
 	let loginForm = $('#login-form');
 	let signupForm = $('#signup-form');
 	let logoutLink = $('#logout-link');
+	let mobileLogoutLink = $('#mobile-logout');
+	let mobileLoginLink = $('#mobile-login');
+	let mobileRegisterLink = $('#mobile-register');
 	let navAvatar = $('#nav-avatar');
 	let welcomeUser = $('#welcome-user');
 	let loginSignupDiv = $('.Login-Signup');
@@ -141,6 +142,14 @@ $(document).ready(function() {
 			window.location.href = 'index.html';
 		});
 	}
+	
+	if (mobileLogoutLink.length) {
+		mobileLogoutLink.on('click', function(e) {
+			e.preventDefault();
+			localStorage.removeItem('gc_current_user');
+			window.location.href = 'index.html';
+		});
+	}
 
 	// ========== UPDATE UI ==========
 	function updateAuthUI() {
@@ -153,6 +162,9 @@ $(document).ready(function() {
 			loginSignupDiv.hide();
 			welcomeUser.show();
 			profileDropdown.css('display', 'flex');
+			mobileLoginLink.hide();
+			mobileRegisterLink.hide();
+			mobileLogoutLink.show();
 			userName.text(user.name);
 
 			// Set avatar using RoboHash
@@ -163,6 +175,9 @@ $(document).ready(function() {
 			loginSignupDiv.show();
 			welcomeUser.hide();
 			profileDropdown.hide();
+			mobileLoginLink.show();
+			mobileRegisterLink.show();
+			mobileLogoutLink.hide();
 		}
 	}
 });

@@ -142,7 +142,7 @@ body.light-mode .policy-content li strong {
 	color: #1a1a2e;
 	font-weight: 700;
 }@media (max-width: 768px) {
-    .nav-bar { grid-template-columns: auto auto auto; }
+    .nav-bar { grid-template-columns: auto auto; }
     .nav-toggle { display: block; }
     #nav-links {
         position: fixed;
