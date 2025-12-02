@@ -323,23 +323,24 @@ document.addEventListener('DOMContentLoaded', function() {
 		let msgEl = document.getElementById('preferences-msg');
 
 		if (themeSelect) {
-			let savedTheme = localStorage.getItem('gc_dark_mode');
-			let isDark = savedTheme !== 'false';
-			themeSelect.value = isDark ? 'dark' : 'light';
+			// Get saved theme (default to dark)
+			let savedTheme = localStorage.getItem('gc_theme_mode') || 'dark';
+			themeSelect.value = savedTheme;
+			applyTheme(savedTheme);
 
 			themeSelect.addEventListener('change', function() {
-				let isDarkMode = this.value === 'dark';
-				localStorage.setItem('gc_dark_mode', isDarkMode ? 'true' : 'false');
-				applyTheme(isDarkMode);
+				let selectedTheme = this.value;
+				localStorage.setItem('gc_theme_mode', selectedTheme);
+				applyTheme(selectedTheme);
 				
-				msgEl.textContent = isDarkMode ? 'Dark mode enabled' : 'Light mode enabled';
-				msgEl.className = 'settings-msg success';
+				msgEl.textContent = selectedTheme === 'light' ? 'Light mode enabled' : 'Dark mode enabled';
+				msgEl.className = 'settings-msg ok';
 				
-				console.log('Theme changed to:', isDarkMode ? 'dark' : 'light');
+				console.log('Theme changed to:', selectedTheme);
 				
 				// Broadcast to other pages
 				window.dispatchEvent(new CustomEvent('themeChanged', {
-					detail: { isDark: isDarkMode }
+					detail: { mode: selectedTheme }
 				}));
 				
 				setTimeout(() => {
@@ -349,18 +350,25 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	}
 
-	function applyTheme(isDark) {
-		if (isDark) {
-			document.body.classList.remove('light-mode');
-		} else {
+	function applyTheme(theme) {
+		if (theme === 'light') {
+			document.documentElement.classList.add('light-mode');
 			document.body.classList.add('light-mode');
+		} else {
+			document.documentElement.classList.remove('light-mode');
+			document.body.classList.remove('light-mode');
 		}
 	}
 
-	// Apply theme on load
-	let savedTheme = localStorage.getItem('gc_dark_mode');
-	let isDark = savedTheme !== 'false';
-	applyTheme(isDark);
+	// Apply saved theme on page load
+	let savedTheme = localStorage.getItem('gc_theme_mode') || 'dark';
+	applyTheme(savedTheme);
+
+	// Listen for theme changes from other tabs/windows
+	window.addEventListener('themeChanged', function(e) {
+		console.log('Theme changed event received:', e.detail.mode);
+		applyTheme(e.detail.mode);
+	});
 
 	// Listen for profile updates from other tabs/windows
 	window.addEventListener('profileUpdated', function(e) {

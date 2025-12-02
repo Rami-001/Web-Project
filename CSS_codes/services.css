@@ -54,8 +54,8 @@
 	padding: 14px 16px;
 	border: 1px solid #19bcdc;
 	border-radius: 14px;
-	background-color: #0e223d;
-	color: #eaf2ff;
+	/* background-color: #0e223d;
+	color: #eaf2ff; */
 	font-size: 1rem;
 	outline: none;
 	cursor: pointer;
@@ -65,9 +65,7 @@
 	border-color: #38e0ff;
 	box-shadow: 0 0 8px rgba(56, 224, 255, 0.4);
 }
-#sortSelect:focus,#filter-category:focus,#filter-city:focus,#filter-country:focus {
-	background-color: #122b47;
-}
+
 .locked {
   opacity: 0.5 !important;
   cursor: not-allowed !important;
@@ -229,7 +227,7 @@
 }
 /* ---------- 960px ---------- */
 @media (max-width: 960px) {
-    .nav-bar { grid-template-columns: auto auto auto; }
+    .nav-bar { grid-template-columns: auto  auto; }
     .nav-toggle { display: block; }
     #nav-links {
         position: fixed;

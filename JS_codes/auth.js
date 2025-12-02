@@ -1,4 +1,4 @@
-// auth.js - Pure jQuery Implementation
+
 
 $(document).ready(function() {
 	let loginForm = $('#login-form');
@@ -10,10 +10,7 @@ $(document).ready(function() {
 	let profileDropdown = $('.profile-dropdown');
 	let userName = $('#user-name');
 
-	// Initialize auth state on page load
 	updateAuthUI();
-
-	// ========== SIGNUP ==========
 	if (signupForm.length) {
 		signupForm.on('submit', function(e) {
 			e.preventDefault();
@@ -169,7 +166,3 @@ $(document).ready(function() {
 		}
 	}
 });
-
-// Update any image references to use correct path:
-// Change: src="imgs/..."
-// To: src="../imgs/..."

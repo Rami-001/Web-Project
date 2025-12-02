@@ -1,0 +1,765 @@
+/* =========================================================
+    LIGHT MODE THEME - BRIGHT WITH DARK TEXT
+    ========================================================= */
+
+/* Light mode root variables */
+/* body.light-mode {
+	--gc-sky: #0066cc;
+	--gc-ocean: #0080d0;
+	--gc-mint: #009966;
+	--gc-sand: #cc7a00;
+	--gc-berry: #7030a0;
+	--gc-text: #1a1a2e;
+	--gc-muted: #4a5568;
+	--gc-card: #ffffff;
+	--gc-line: #e2e8f0;
+	--gc-ring: rgba(0, 102, 204, 0.12);
+	--gc-glow: 0 12px 32px rgba(0, 102, 204, 0.08);
+	--gc-shadow-1: 0 6px 20px rgba(0, 0, 0, 0.08);
+	--gc-shadow-2: 0 16px 40px rgba(0, 0, 0, 0.1);
+} */
+
+/* Background overlay - VERY LIGHT, preserves image */
+body.light-mode::after {
+	background:
+		radial-gradient(1400px 900px at 18% 8%, rgba(255, 255, 255, 0.2), transparent 65%),
+		radial-gradient(1000px 1200px at 82% 12%, rgba(240, 248, 255, 0.15), transparent 70%),
+		linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.1) 100%) !important;
+	pointer-events: none;
+}
+
+/* Header in light mode */
+body.light-mode .main-header {
+	background: linear-gradient(180deg, #ffffff, #f8fafb) !important;
+	border-bottom-color: rgba(0, 102, 204, 0.15) !important;
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
+	backdrop-filter: blur(8px);
+}
+
+body.light-mode .logo-text {
+	background: linear-gradient(100deg, #0066cc 0%, #7030a0 85%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+body.light-mode #nav-links  {
+	background-color: #ffffff;
+
+}
+
+body.light-mode #nav-links > li > a {
+	color: #000000;
+	transition: color 0.12s, background 0.12s;
+}
+
+body.light-mode #nav-links > li > a:hover {
+	color: #0066cc;
+	background: rgba(0, 102, 204, 0.1);
+}
+
+body.light-mode .Login-Signup .login {
+	color: #0066cc;
+	border-color: #0066cc;
+	background: transparent;
+}
+
+body.light-mode .Login-Signup .login:hover {
+	background: rgba(0, 102, 204, 0.1);
+}
+
+body.light-mode .Login-Signup .Signup {
+	color: #ffffff;
+	background: #0066cc;
+}
+
+body.light-mode .Login-Signup .Signup:hover {
+	background: #0052a3;
+}
+
+/* Dropdown in light mode */
+body.light-mode .dropdown-content {
+	background: linear-gradient(180deg, #ffffff, #f8fafb);
+	border-color: rgba(0, 102, 204, 0.2);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10px);
+}
+
+body.light-mode .Service-column h4 {
+	color: #0066cc;
+	border-bottom-color: rgba(0, 102, 204, 0.3);
+}
+
+body.light-mode .Service-column a {
+	color: #2c3e50;
+	font-weight: 700;
+}
+
+body.light-mode .Service-column a:hover {
+	color: #0066cc;
+	font-weight: 800;
+}
+
+/* Footer in light mode */
+body.light-mode .footer-background {
+	background: linear-gradient(180deg, #ffffff, #f0f4f8);
+	border-top-color: rgba(0, 102, 204, 0.15);
+	backdrop-filter: blur(6px);
+}
+
+body.light-mode .footer-brand {
+	background: linear-gradient(100deg, #0066cc, #7030a0);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+body.light-mode .footer-links a {
+	color: #4a5568;
+}
+
+body.light-mode .footer-links a:hover {
+	color: #0066cc;
+}
+
+body.light-mode #copy-right {
+	color: #718096;
+}
+
+/* Cards and containers in light mode */
+body.light-mode .Box {
+	background: #ffffff;
+	border-color: rgba(0, 102, 204, 0.2);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .Box:hover {
+	border-color: #0066cc;
+	box-shadow: 0 8px 20px rgba(0, 102, 204, 0.15);
+}
+
+body.light-mode .Box h2 {
+	color: #0066cc;
+}
+
+body.light-mode .Box h2::after {
+	background: linear-gradient(90deg, transparent, rgba(0, 102, 204, 0.4), rgba(112, 48, 160, 0.3), transparent);
+}
+
+body.light-mode .Box a {
+	background: #f0f7ff;
+	border-color: rgba(0, 102, 204, 0.25);
+	color: #0066cc;
+}
+
+body.light-mode .Box a:hover {
+	background: #e6f0ff;
+	border-color: #0066cc;
+	color: #0052a3;
+}
+
+/* Auth forms in light mode */
+body.light-mode .auth-form {
+	background: #ffffff;
+	border-color: rgba(0, 102, 204, 0.2);
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(8px);
+}
+
+body.light-mode .auth-title {
+	color: #1a1a2e;
+}
+
+body.light-mode .auth-input {
+	border-color: #cbd5e1;
+	background-color: #f8fafc;
+	color: #1a1a2e;
+}
+
+body.light-mode .auth-input::placeholder {
+	color: #94a3b8;
+}
+
+body.light-mode .auth-input:focus {
+	border-color: #0066cc;
+	box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.12);
+	background-color: #ffffff;
+}
+
+body.light-mode .auth-btn {
+	background: #0066cc;
+	color: #ffffff;
+	box-shadow: 0 6px 16px rgba(0, 102, 204, 0.15);
+}
+
+body.light-mode .auth-btn:hover {
+	background: #0052a3;
+	box-shadow: 0 8px 20px rgba(0, 102, 204, 0.2);
+}
+
+body.light-mode .auth-switch {
+	color: #4a5568;
+}
+
+body.light-mode .auth-switch a {
+	color: #0066cc;
+}
+
+body.light-mode .auth-switch a:hover {
+	color: #0052a3;
+}
+
+/* Settings page in light mode */
+body.light-mode .settings-card {
+	background: #ffffff;
+	border-color: rgba(0, 102, 204, 0.2);
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .settings-card h2 {
+	color: #0066cc;
+}
+
+body.light-mode .settings-label {
+	color: #4a5568;
+}
+
+body.light-mode .settings-input,
+body.light-mode .settings-select {
+	border-color: #cbd5e1;
+	background-color: #f8fafc;
+	color: #1a1a2e;
+}
+
+body.light-mode .settings-input:focus,
+body.light-mode .settings-select:focus {
+	border-color: #0066cc;
+	box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.12);
+}
+
+body.light-mode .settings-btn {
+	background: #0066cc;
+	color: #ffffff;
+	box-shadow: 0 6px 16px rgba(0, 102, 204, 0.15);
+}
+
+body.light-mode .settings-btn:hover {
+	background: #0052a3;
+	box-shadow: 0 8px 20px rgba(0, 102, 204, 0.2);
+}
+
+/* Service filters */
+body.light-mode .service-filters {
+	background: linear-gradient(145deg, #ffffff, #f8fafc);
+	border-radius: 20px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	border: 1px solid rgba(0, 102, 204, 0.15);
+	backdrop-filter: blur(8px);
+}
+
+body.light-mode .service-filters input,
+body.light-mode .service-filters select {
+	border-color: rgba(0, 102, 204, 0.2);
+	background-color: #ffffff;
+	color: #1a1a2e;
+}
+
+body.light-mode .service-filters input:focus,
+body.light-mode .service-filters select:focus {
+	border-color: #0066cc;
+	box-shadow: 0 0 10px rgba(0, 102, 204, 0.15);
+	background-color: #f8fafc;
+}
+
+body.light-mode #searchInput {
+	border-color: #0066cc;
+	background-color: #ffffff;
+	color: #1a1a2e;
+}
+
+body.light-mode #searchInput::placeholder {
+	color: #94a3b8;
+}
+
+body.light-mode .clear-filters {
+	background: linear-gradient(145deg, #0066cc, #ffffff);
+	color: #ffffff;
+	border-color: #0066cc;
+	box-shadow: 0 4px 10px rgba(0, 102, 204, 0.15);
+}
+
+body.light-mode .clear-filters:hover {
+	background: linear-gradient(145deg, #ffffff, #0066cc);
+	color: #0066cc;
+	box-shadow: 0 6px 15px rgba(0, 102, 204, 0.25);
+}
+
+/* Service cards in light mode */
+body.light-mode .service-card {
+	background: #ffffff;
+	border: 2px solid #0066cc;
+	box-shadow: 0 6px 20px rgba(0, 102, 204, 0.15);
+}
+
+body.light-mode .service-card:hover {
+	border-color: #0052a3;
+	box-shadow: 0 10px 30px rgba(0, 102, 204, 0.25);
+}
+
+body.light-mode .card-content h2 {
+	color: #0066cc;
+	font-weight: 800;
+}
+
+body.light-mode .card-content p,
+body.light-mode .card-content ul {
+	color: #2c3e50;
+	font-weight: 600;
+}
+
+
+body.light-mode .Plan-header h1 {
+	color: #ffffff;
+}
+
+body.light-mode .Plan-header p {
+	color: #ffffff;
+	font-weight: 700;
+}
+
+body.light-mode .toggle-label {
+	color: #ffffff;
+	font-weight: 700;
+}
+
+body.light-mode .toggle-switch .slider {
+	background: #e2e8f0;
+	border-color: #cbd5e1;
+}
+
+body.light-mode .toggle-switch .slider::before {
+	background: #ffffff;
+}
+
+body.light-mode .toggle-switch input:checked + .slider {
+	background: #0066cc;
+	border-color: #0066cc;
+}
+
+body.light-mode .card {
+	background: #ffffff;
+	border: 2px solid #0066cc;
+	box-shadow: 0 8px 22px rgba(0, 102, 204, 0.12);
+}
+
+body.light-mode .card:hover {
+	border-color: #0052a3;
+	box-shadow: 0 16px 32px rgba(0, 102, 204, 0.2);
+}
+
+body.light-mode .card h2 {
+	color: #0066cc;
+	font-weight: 800;
+}
+
+body.light-mode .card-header {
+	border-bottom-color: rgba(0, 102, 204, 0.15);
+}
+
+body.light-mode .amount {
+	color: #0066cc;
+	font-weight: 800;
+}
+
+body.light-mode .plan-description {
+	color: #000000;
+	font-weight: 700;
+	border-bottom-color: rgba(0, 102, 204, 0.1);
+}
+
+body.light-mode .card-features ul li {
+	color: #000000;
+	font-weight: 700;
+	border-bottom-color: rgba(0, 102, 204, 0.08);
+}
+
+body.light-mode .card-btn {
+	border-color: #0066cc;
+	color: #0066cc;
+	background: transparent;
+	font-weight: 700;
+}
+
+body.light-mode .card-btn:hover {
+	background: rgba(0, 102, 204, 0.08);
+	color: #0052a3;
+}
+
+body.light-mode .card.popular .card-btn {
+	background: linear-gradient(100deg, #0066cc 5%, #7030a0 60%);
+	color: #ffffff;
+	border: none;
+}
+
+body.light-mode .savings-badge {
+	color: #000000;
+	font-weight: 700;
+}
+
+body.light-mode .popular-badge {
+	color: #ffffff;
+	background: linear-gradient(100deg, #0066cc 0%, #7030a0 100%);
+	font-weight: 800;
+}
+
+/* Legal pages in light mode */
+body.light-mode .legal-content,
+body.light-mode .policy-content {
+	color: #2c3e50;
+}
+
+body.light-mode .legal-content h1,
+body.light-mode .policy-content h1 {
+	color: #ffffff;
+}
+
+body.light-mode .legal-content h2,
+body.light-mode .policy-content h2 {
+	color: #0066cc;
+	border-bottom-color: rgba(0, 102, 204, 0.25);
+}
+
+body.light-mode .legal-content section,
+body.light-mode .policy-content section {
+	background: #ffffff;
+	border: 1px solid rgba(0, 102, 204, 0.15);
+	backdrop-filter: blur(6px);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+body.light-mode .legal-content p,
+body.light-mode .policy-content p {
+	color: #4a5568;
+}
+
+body.light-mode .legal-content li,
+body.light-mode .policy-content li {
+	color: #2c3e50;
+}
+
+/* Profile avatar in light mode */
+body.light-mode .avatar-large {
+	border-color: rgba(0, 102, 204, 0.3);
+	background: #ffffff;
+}
+
+body.light-mode .avatar-edit-btn {
+	background: #0066cc;
+	border-color: #ffffff;
+	color: #ffffff;
+	box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+}
+
+body.light-mode .avatar-edit-btn:hover {
+	background: #0052a3;
+	box-shadow: 0 6px 16px rgba(0, 102, 204, 0.3);
+}
+
+body.light-mode .profile-name {
+	color: #0066cc;
+}
+
+body.light-mode .profile-email {
+	color: #4a5568;
+}
+
+/* Settings hero section in light mode */
+body.light-mode .settings-hero {
+	background: linear-gradient(135deg, rgba(0, 102, 204, 0.08) 0%, rgba(112, 48, 160, 0.06) 100%);
+	border-bottom-color: rgba(0, 102, 204, 0.1);
+}
+
+body.light-mode .settings-hero h1 {
+	color: #ffffff;
+}
+
+body.light-mode .settings-hero p {
+	color: #4a5568;
+}
+
+/* .about-hero h1 {
+  color: #1D4ED8;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+} */
+
+
+body.light-mode .about-lead {
+	color: #4a5568;
+}
+
+body.light-mode .about-section {
+	background: transparent;
+}
+
+
+body.light-mode .about-desc {
+	color: #2c3e50;
+	font-weight: 600;
+}
+
+body.light-mode .about-list li {
+	color: #2c3e50;
+	font-weight: 600;
+}
+
+body.light-mode .step {
+	background: #ffffff;
+	border-color: rgba(0, 102, 204, 0.2);
+	box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .step:hover {
+	border-color: #0066cc;
+	box-shadow: 0 6px 18px rgba(0, 102, 204, 0.12);
+}
+
+body.light-mode .step h3 {
+	color: #0066cc;
+}
+
+body.light-mode .step p {
+	color: #4a5568;
+}
+
+body.light-mode .about-cta-section {
+	background: linear-gradient(135deg, rgba(0, 102, 204, 0.08) 0%, rgba(112, 48, 160, 0.06) 100%);
+	border-top-color: rgba(0, 102, 204, 0.1);
+	border-bottom-color: rgba(0, 102, 204, 0.1);
+	
+}
+body.light-mode .pwhite
+{
+	color:#ffffff !important;
+
+}
+body.light-mode .h2white
+{
+background: linear-gradient(135deg, #f8fafc 0%, #f8fafc 50%, #f8fafc 100%) !important;
+		-webkit-background-clip: text !important;
+	background-clip: text !important;
+	-webkit-text-fill-color: transparent !important;
+		color: #ffffff !important;
+
+
+}
+.images .image:hover h2 {
+	text-shadow: 0 6px 12px rgba(227, 217, 217, 0.345);
+	font-size: 2.95rem;
+}
+body.light-mode .about-cta h2 {
+	color: #ffffff#0066cc;
+}
+
+body.light-mode .about-cta-btn {
+	background: linear-gradient(100deg, #0066cc 0%, #009966 100%);
+	color: #ffffff;
+	box-shadow: 0 6px 18px rgba(0, 102, 204, 0.15);
+}
+
+body.light-mode .about-cta-btn:hover {
+	box-shadow: 0 10px 26px rgba(0, 102, 204, 0.2);
+}
+
+/* Contact page in light mode */
+body.light-mode .contact-hero {
+	background: linear-gradient(135deg, rgba(0, 102, 204, 0.08) 0%, rgba(112, 48, 160, 0.06) 100%);
+	border-bottom-color: rgba(0, 102, 204, 0.1);
+}
+
+body.light-mode .contact-hero h1 {
+	color: #ffffff;
+}
+
+body.light-mode .contact-hero p {
+	color: #4a5568;
+}
+
+body.light-mode .info-card {
+	background: #ffffff;
+	border-color: rgba(0, 102, 204, 0.2);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .info-card:hover {
+	border-color: #0066cc;
+	box-shadow: 0 4px 14px rgba(0, 102, 204, 0.1);
+}
+
+body.light-mode .info-icon {
+	background: rgba(0, 102, 204, 0.08);
+	color: #0066cc;
+	border-color: rgba(0, 102, 204, 0.2);
+}
+
+body.light-mode .info-card h3 {
+	color: #0066cc;
+}
+
+body.light-mode .info-card a,
+body.light-mode .info-card p {
+	color: #4a5568;
+}
+
+body.light-mode .info-card a {
+	color: #0066cc;
+}
+
+body.light-mode .contact-form {
+	background: #ffffff;
+	border-color: rgba(0, 102, 204, 0.2);
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .field-input,
+body.light-mode .field-textarea {
+	border-color: #cbd5e1;
+	background-color: #f8fafc;
+	color: #1a1a2e;
+}
+
+body.light-mode .field-input::placeholder,
+body.light-mode .field-textarea::placeholder {
+	color: #94a3b8;
+}
+
+body.light-mode .field-input:focus,
+body.light-mode .field-textarea:focus {
+	border-color: #0066cc;
+	box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+body.light-mode .contact-btn {
+	background: #0066cc;
+	color: #ffffff;
+	box-shadow: 0 6px 16px rgba(0, 102, 204, 0.15);
+}
+
+body.light-mode .contact-btn:hover {
+	background: #0052a3;
+	box-shadow: 0 8px 20px rgba(0, 102, 204, 0.2);
+}
+
+/* Welcome message in light mode */
+body.light-mode .welcome-inline {
+	color: #2c3e50;
+}
+
+/* Profile dropdown in light mode */
+body.light-mode .profile-dropdown > img {
+	border-color: rgba(0, 102, 204, 0.2);
+}
+
+body.light-mode .profile-dropdown:hover > img {
+	border-color: rgba(0, 102, 204, 0.35);
+}
+
+body.light-mode .profile-menu {
+	background: #ffffff;
+	border-color: rgba(0, 102, 204, 0.15);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(8px);
+}
+
+body.light-mode .profile-menu a {
+	color: #2c3e50;
+}
+
+body.light-mode .profile-menu a:hover {
+	background: rgba(0, 102, 204, 0.06);
+	color: #0066cc;
+}
+
+/* Home page elements */
+body.light-mode .background-content cite {
+	color: #ffffff !important;
+	font-weight: 900;
+	text-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .image h2 {
+	color: #0066cc;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .info-section {
+	background: #ffffff;
+    border: 1px solid #19bcdc;
+	border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 102, 204, 0.12);
+}
+
+body.light-mode .content h2 {
+	color: #0066cc;
+	font-weight: 800;
+}
+
+body.light-mode .content p {
+	color: #2c3e50;
+	font-weight: 600;
+}
+
+body.light-mode .stat-num {
+	color: #0066cc;
+	font-weight: 800;
+}
+body.light-mode .stat-num:hover{
+	color: #718096;
+}
+
+body.light-mode .stat-label {
+	color: #000000;
+	font-weight: 600;
+}
+
+body.light-mode .browse-btn {
+	background: linear-gradient(100deg, #0066cc 0%, #009966 100%);
+	color: #ffffff;
+	font-weight: 800;
+	box-shadow: 0 6px 16px rgba(0, 102, 204, 0.2);
+}
+
+body.light-mode .browse-btn:hover {
+	box-shadow: 0 8px 24px rgba(0, 102, 204, 0.3);
+	transform: translateY(-2px);
+}
+
+/* Big box containers */
+body.light-mode .Box {
+	background: #ffffff;
+	border-color: #0066cc;
+	box-shadow: 0 4px 16px rgba(0, 102, 204, 0.12);
+}
+
+body.light-mode .Box:hover {
+	border-color: #0052a3;
+	box-shadow: 0 8px 24px rgba(0, 102, 204, 0.2);
+}
+
+body.light-mode .Box h2 {
+	color: #0066cc;
+	font-weight: 800;
+}
+
+body.light-mode .Box a {
+	background: #f0f7ff;
+	border-color: #0066cc;
+	color: #0066cc;
+	font-weight: 700;
+}
+
+body.light-mode .Box a:hover {
+	background: #e6f0ff;
+	border-color: #0052a3;
+	color: #0052a3;
+}
+
+

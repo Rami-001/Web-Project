@@ -1,7 +1,9 @@
 /* =========================================================
     CONTACT PAGE
     ========================================================= */
-
+ html,body{
+	overflow-x: hidden !important;
+ }
 .contact-page { 
 	display: flex; 
 	flex-direction: column; 
@@ -25,7 +27,7 @@
 }
 
 .contact-hero p {
-	color: #8fa3c0;
+	color: #ffffff;
 	font-weight: 600;
 	font-size: 1rem;
 	max-width: 600px;
@@ -59,7 +61,7 @@
 }
 
 .contact-info-section > p {
-	color: #8fa3c0;
+	color: #ffffff;
 	font-weight: 600;
 	font-size: 0.9rem;
 	margin-bottom: 4px;
@@ -155,12 +157,11 @@
 	font-size: 1.4rem;
 	font-weight: 800;
 	color: #fff;
-	margin-bottom: 6px;
 	letter-spacing: -0.3px;
 }
 
 .contact-form > p {
-	color: #8fa3c0;
+	color: #0066CC;
 	font-weight: 600;
 	font-size: 0.9rem;
 	margin-bottom: 24px;
@@ -175,7 +176,7 @@
 
 .field label {
 	font-weight: 700;
-	color: #b5c5e0;
+	color: #0066CC;
 	font-size: 0.8rem;
 	text-transform: capitalize;
 	letter-spacing: 0.3px;
@@ -294,7 +295,7 @@
 }
 /* ---------- 960px ---------- */
 @media (max-width: 960px) {
-    .nav-bar { grid-template-columns: auto auto auto; }
+    .nav-bar { grid-template-columns: auto  auto; }
     .nav-toggle { display: block; }
     #nav-links {
         position: fixed;
