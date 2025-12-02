@@ -302,12 +302,11 @@ body.light-mode .clear-filters:hover {
 /* Service cards in light mode */
 body.light-mode .service-card {
 	background: #ffffff;
-	border: 2px solid #0066cc;
+	border: 3px solid #28dfff;
 	box-shadow: 0 6px 20px rgba(0, 102, 204, 0.15);
 }
 
 body.light-mode .service-card:hover {
-	border-color: #0052a3;
 	box-shadow: 0 10px 30px rgba(0, 102, 204, 0.25);
 }
 
@@ -321,7 +320,13 @@ body.light-mode .card-content ul {
 	color: #2c3e50;
 	font-weight: 600;
 }
-
+body.light-mode .service-card img{
+	border: 2px solid black;
+}
+body.light-mode .favorite-card {
+  border: 3px solid #ff5f5f;
+  box-shadow: 0 0 15px rgba(255, 95, 95, 0.3);
+}
 /* Plans page in light mode */
 body.light-mode .Plan-header {
 	background: rgba(255, 255, 255, 0.8);
@@ -750,6 +755,9 @@ body.light-mode .faq {
 	border-radius: 12px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
+body.light-mode .faq:hover {
+	border: 3px solid #0066cc;
+}
 
 body.light-mode .faq h3 {
 	color: #0066cc;
@@ -864,6 +872,3 @@ body.light-mode .settings-card.danger-zone .settings-label {
 	color: #d32f2f;
 	font-weight: 700;
 }
-
-
-

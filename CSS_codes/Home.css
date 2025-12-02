@@ -128,8 +128,10 @@
 	color: #fff;
 	letter-spacing: 0.2px;
 	margin-bottom: 16px;
-	position: relative;
 	padding-bottom: 14px;
+	border-bottom-width: 3px;         
+ 	border-bottom-style: solid;
+  	border-image: linear-gradient(100deg, #3b9dd9 25%, #8b5cf6 85%) 1;
 }
 .Box ul {
 	list-style: none;
