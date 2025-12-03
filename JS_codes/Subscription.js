@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // ========== CHECK IF USER IS LOGGED IN ==========
+  let currentUser = localStorage.getItem('gc_current_user');
+  if (!currentUser) {
+    // Redirect to login if not authenticated
+    window.location.href = 'login.html';
+    return;
+  }
+
   let billingToggle = document.getElementById("billing-toggle");
   let planContainer = document.querySelector(".Plan-cards");
   let cancelPlanBtn = document.getElementById("cancel-plan-btn");
