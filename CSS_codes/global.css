@@ -48,13 +48,16 @@ main, section, .background, .Bigbox { flex: 1 0 auto; }
     HEADER / NAVIGATION BAR
     ========================================================= */
 .main-header {
-	position: sticky;
+	position: fixed;
 	top: 0;
+	left: 0;
+	right: 0;
 	z-index: 1000;
 	backdrop-filter: blur(6px);
 	background: linear-gradient(180deg, rgba(10,19,35,.78), rgba(10,19,35,.63));
 	border-bottom: 1px solid rgba(26,37,74,.4);
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	width: 100%;
 }
 
 .nav-bar {
