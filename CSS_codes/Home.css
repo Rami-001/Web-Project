@@ -51,7 +51,7 @@
 .images {
   display: flex;
   gap: 50px;
-  animation: slide 25s linear infinite;
+  animation: slide 20s linear infinite;
   width: max-content;
 }
 .images .image {
@@ -79,10 +79,10 @@
 }
 @keyframes slide {
   from {
-    transform: translateX(200px);
+    transform: translateX(100px);
   }
   to {
-    transform: translateX(-85%);
+    transform: translateX(-80%);
   }
 }
 
@@ -379,39 +379,6 @@
 }
 /* ---------- 900px ---------- */
 @media (max-width: 900px) {
-  /* Filters */
-  .service-filters {
-    flex-direction: column;
-    gap: 12px;
-    width: 400px;
-    padding: 16px 18px;
-    margin-top: 20px;
-  }
-  #searchInput,
-  #sortSelect,
-  #filter-category,
-  #filter-city,
-  #filter-country {
-    width: 230px;
-    padding: 12px 14px;
-    font-size: 0.95rem;
-    border-radius: 10px;
-  }
-  /* Service Cards */
-  .service-card {
-    flex-direction: column;
-    width: 80%;
-    padding: 22px;
-    gap: 20px;
-  }
-  .service-card img {
-    width: 400px;
-    height: 250px;
-  }
-  .card-content {
-    width: 100%;
-    text-align: center;
-  }
   .images .image img {
     width: 800px;
     height: 400px;
@@ -420,17 +387,6 @@
   .Box {
     width: 350px;
     height: 300px;
-  }
-}
-@media (max-width: 800px) {
-  .info-section > * {
-    animation: infoShrink 0.3s ease-out forwards;
-    transform-origin: top center;
-  }
-  .stats {
-    animation: statsShrink 0.3s ease-out forwards;
-    transform-origin: top center;
-    width: 100%; /* !important only if something else is fighting it */
   }
 }
 /* ---------- 768px ---------- */
@@ -448,11 +404,6 @@
 	width: 90%;
   padding: 10px;
 }
-  /* Make filters cleaner */
-  .service-filters {
-    width: 400px;
-    gap: 10px;
-  }
   .images .image img {
     width: 700px;
     height: 300px;
@@ -477,34 +428,6 @@
   .contact-wrapper {
     padding: 28px 14px;
     gap: 24px;
-  }
-  /* Service Cards */
-  .service-card {
-    flex-direction: column;
-    width: 80%;
-    padding: 22px;
-    gap: 20px;
-  }
-  .service-card img {
-    width: 400px;
-    height: 250px;
-  }
-  .card-content h2 {
-    font-size: 1.4rem;
-  }
-  .card-content p,
-  .card-content ul {
-    font-size: 0.9rem;
-  }
-  /* Filters */
-  #searchInput,
-  #sortSelect,
-  #filter-category,
-  #filter-city,
-  #filter-country {
-    padding: 10px 12px;
-    font-size: 0.9rem;
-    border-radius: 10px;
   }
   .images .image img {
     width: 600px;
@@ -532,48 +455,8 @@
     max-width: 350px;
     max-height: 300px;
   }
-  .contact-form {
-    padding: 18px;
-  }
-  .service-filters {
-    width: 300px;
-    gap: 10px;
-    margin: auto;
-    margin-top: 20px;
-  }
   .stats {
     text-align: center;
-  }
-  /* Service Cards */
-  .service-card {
-    flex-direction: column;
-    width: 80%;
-    padding: 22px;
-    gap: 20px;
-  }
-  .service-card img {
-    height: 180px;
-  }
-  .card-content h2 {
-    font-size: 1.2rem;
-  }
-  .card-content p,
-  .card-content ul {
-    font-size: 0.85rem;
-  }
-  /* Filters */
-  #searchInput,
-  #sortSelect,
-  #filter-category,
-  #filter-city,
-  #filter-country {
-    padding: 8px 10px;
-    font-size: 0.85rem;
-    border-radius: 8px;
-  }
-  .clear-filters {
-    padding: 10px 12px;
-    width: 114px;
   }
   .images .image img {
     width: 450px;
@@ -602,134 +485,3 @@
 	height: auto;
  }
 }
-/* @media (max-width: 340px) {
-  .background {
-    min-height: 30vh;
-  }
-
-  .background-content {
-    padding: 30px 6px 15px;
-  }
-
-  .background-content cite {
-    font-size: clamp(1rem, 2.2vw, 1.2rem);
-    margin-bottom: 40px;
-    letter-spacing: 0;
-    word-spacing: 0;
-    line-height: 1.1;
-  }
-
-  .background-content img {
-    width: 40px;
-  }
-
-  .image-slider {
-    width: 98%;
-  }
-
-  .images {
-    width: calc(280px * 8 + 25px * 7);
-    gap: 25px;
-  }
-
-  .images .image img {
-    width: 280px;
-    height: auto;
-    max-height: 140px;
-  }
-
-  .image h2 {
-    font-size: 1rem;
-    margin-top: 2px;
-    letter-spacing: 0;
-  }
-
-  .images .image:hover h2 {
-    font-size: 1.1rem;
-  }
-
-  .Bigbox {
-    padding: 20px 0;
-    margin-top: 40px;
-  }
-
-  .group1 {
-    gap: 8px;
-    margin-bottom: 16px;
-    flex-direction: column;
-  }
-
-  .Box {
-    width: 98%;
-    max-width: 100%;
-    height: auto;
-    padding: 10px;
-    margin: 0 auto;
-  }
-
-  .Box h2 {
-    font-size: 0.85rem;
-    margin-bottom: 6px;
-    font-weight: 800;
-  }
-
-  .Box ul {
-    gap: 4px;
-  }
-
-  .Box a {
-    padding: 8px 10px;
-    font-size: 0.7rem;
-    font-weight: 700;
-  }
-
-  .info-section {
-    padding: 10px 6px;
-  }
-
-  .content {
-    width: 95%;
-  }
-
-  .content h2 {
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
-    margin-bottom: 8px;
-  }
-
-  .content p {
-    font-size: 0.8rem;
-    margin-bottom: 12px;
-  }
-
-  .stats {
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 12px;
-    max-width: 100%;
-  }
-
-  .stat-item {
-    gap: 2px;
-  }
-
-  .stat-num {
-    font-size: 1.2rem;
-    font-weight: 700;
-  }
-
-  .stat-item:hover .stat-num {
-    font-size: 1.5rem;
-    color: #4ade80;
-  }
-
-  .stat-label {
-    font-size: 0.7rem;
-    font-weight: 600;
-  }
-
-  .content .browse-btn {
-    padding: 6px 12px;
-    font-size: 0.75rem;
-    font-weight: 700;
-  }
-} */
