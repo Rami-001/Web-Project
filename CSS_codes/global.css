@@ -184,11 +184,9 @@ main, section, .background, .Bigbox { flex: 1 0 auto; }
 	color: #0a1324;
 	background: #3b9dd9;
 }
-
 .Login-Signup .Signup:hover {
 	background: #2e7fa8;
 }
-
 /* =========================================================
     PROFILE DROPDOWN
     ========================================================= */
@@ -198,7 +196,6 @@ main, section, .background, .Bigbox { flex: 1 0 auto; }
 	gap: 6px;
 	position: relative;
 }
-
 .profile-dropdown > img {
 	width: 32px;
 	height: 32px;
@@ -208,12 +205,10 @@ main, section, .background, .Bigbox { flex: 1 0 auto; }
 	transition: transform .12s;
 	border: 2px solid transparent;
 }
-
 .profile-dropdown:hover > img {
 	transform: scale(1.08);
 	border-color: rgba(59,157,217,.3);
 }
-
 .profile-menu {
 	position: absolute;
 	top: calc(100% + 6px);
@@ -230,14 +225,12 @@ main, section, .background, .Bigbox { flex: 1 0 auto; }
 	transform: translateY(2px);
 	transition: opacity .1s, transform .1s, visibility 0s linear .1s;
 }
-
 .profile-dropdown.open .profile-menu,
 .profile-dropdown:hover .profile-menu {
 	opacity: 1;
 	visibility: visible;
 	transform: translateY(0);
 }
-
 .profile-menu a {
 	display: flex;
 	align-items: center;
@@ -248,16 +241,13 @@ main, section, .background, .Bigbox { flex: 1 0 auto; }
 	font-weight: 600;
 	font-size: .85rem;
 }
-
 .profile-menu a:hover {
 	background: rgba(255,255,255,.05);
 }
-
 .profile-icon {
 	width: 18px;
 	height: 18px;
 }
-
 /* =========================================================
     MOBILE NAVIGATION TOGGLE
     ========================================================= */
@@ -268,7 +258,6 @@ main, section, .background, .Bigbox { flex: 1 0 auto; }
 	cursor: pointer;
 	padding: 4px;
 }
-
 .nav-toggle .bar {
 	display: block;
 	width: 20px;
@@ -276,7 +265,6 @@ main, section, .background, .Bigbox { flex: 1 0 auto; }
 	background: #c8d8f0;
 	margin: 4px 0;
 }
-
 /* =========================================================
     MEGA DROPDOWN MENU
     ========================================================= */
@@ -346,18 +334,15 @@ main, section, .background, .Bigbox { flex: 1 0 auto; }
 	background: linear-gradient(180deg, rgba(9,17,30,.8), rgba(9,17,30,.75));
 	border-top: 1px solid rgba(26,37,74,.4);
 }
-
 footer {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 	flex-wrap: wrap;
+	padding: 20px;
+	gap: 30px;
 }
-
-/* =========================================================
-    FOOTER BRANDING
-    ========================================================= */
 .footer-left {
 	display: flex;
 	align-items: center;
@@ -365,22 +350,17 @@ footer {
 }
 
 #footer-logo {
-	height: 30px;
+	height: 40px;
 	width: auto;
 }
-
 .footer-brand {
 	font-weight: 700;
-	font-size: 1rem;
+	font-size: large;
 	background: linear-gradient(100deg, #3b9dd9, #8b5cf6);
 	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;
 }
-
-/* =========================================================
-    FOOTER LINKS
-    ========================================================= */
 .footer-links {
 	display: flex;
 	gap: 50px;
@@ -393,32 +373,39 @@ footer {
 	align-items: center;
 	color: #9fb0c8;
 	font-weight: 600;
+	font-size: large;
 	padding: 8px 10px;
 	border-radius: 6px;
 }
-
 .footer-links a:hover {
 	color: #fff;
 	background: rgba(56,189,248,.08);
 }
-
 #copy-right {
 	color: #7f95b8;
 	font-weight: 600;
 	white-space: nowrap;
+	text-align: center;
 }
-
 .footer-links .nav-icon {
 	display: none;
 	width: 14px;
 	height: 14px;
 	color: #3b9dd9;
 }
-
-@media (max-width: 768px) {
-	.footer-links .nav-icon { display: inline-block; }
+.part1{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
 }
-
+.social-media{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	margin-right: 10px;
+}
 /* =========================================================
     ANIMATIONS & TRANSITIONS
     ========================================================= */
@@ -426,7 +413,6 @@ footer {
 	from { opacity: 0; }
 	to { opacity: 1; }
 }
-
 @keyframes slideIn {
 	from {
 		opacity: 0;
@@ -466,8 +452,9 @@ footer {
 }
 
 /* =========================================================
-    RESPONSIVE - TABLET (1200px)
+    RESPONSIVE 
     ========================================================= */
+	/* ---------- 1200px ---------- */
 @media (max-width: 1200px) {
 	.contact-wrapper {
 		grid-template-columns: 1fr;
@@ -478,10 +465,7 @@ footer {
 		height: 300px;
 	}
 }
-
-/* =========================================================
-    RESPONSIVE - MOBILE NAVIGATION (960px)
-    ========================================================= */
+/* ---------- 960px ---------- */
 @media (max-width: 960px) {
 	.nav-bar { grid-template-columns: auto auto; }
 	.nav-toggle { display: block; }
@@ -535,23 +519,16 @@ footer {
 	footer { flex-direction: column; text-align: center; gap: 10px; }
 }
 
-/* =========================================================
-    RESPONSIVE - SMALL TABLET (768px)
-    ========================================================= */
+/* ---------- 768px ---------- */
 @media (max-width: 768px) {
 	footer { padding: 12px 14px; }
+	.footer-links .nav-icon { display: inline-block; }
 }
-
-/* =========================================================
-    RESPONSIVE - MOBILE SMALL (640px)
-    ========================================================= */
+/* ---------- 640px ---------- */
 @media (max-width: 640px) {
 	.background-content { padding-top: 70px; }
 }
-
-/* =========================================================
-    RESPONSIVE - MOBILE EXTRA SMALL (480px)
-    ========================================================= */
+/* ---------- 480px ---------- */
 @media (max-width: 480px) {
 	.logo-text { font-size: 1rem; }
 	#nav-links { gap: 8px; }
@@ -565,7 +542,7 @@ footer {
     MOBILE MENU VISIBILITY TOGGLES
     ========================================================= */
 #mobile-settings { display: none; }
-
+/* ---------- 950px ---------- */
 @media (max-width: 950px) {
 	#mobile-settings { display: list-item; }
 }
@@ -575,7 +552,7 @@ footer {
 #mobile-logout {
 	display: none;
 }
-
+/* ---------- 950px ---------- */
 @media (max-width: 950px) {
 	#mobile-login,
 	#mobile-register,
@@ -583,7 +560,7 @@ footer {
 		display: list-item;
 	}
 }
-
+/* ---------- 951px ---------- */
 @media (min-width: 951px) {
 	#mobile-login,
 	#mobile-register,
@@ -595,9 +572,7 @@ footer {
 	color: green;
 }
 
-/* =========================================================
-    RESPONSIVE - EXTRA SMALL MOBILE (340px and less)
-    ========================================================= */
+/* ---------- 340px ---------- */
 @media (max-width: 340px) {
 	body { --header-h: 52px; }
 	
