@@ -601,7 +601,7 @@ footer {
 @media (max-width: 340px) {
 	body { --header-h: 52px; }
 	
-	.container { width: 94%; }
+	.info-section { width: 94%; }
 	
 	.nav-bar {
 		grid-template-columns: 1fr auto;

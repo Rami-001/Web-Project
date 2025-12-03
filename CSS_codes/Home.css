@@ -11,13 +11,14 @@
 }
 .background-content {
 	display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   z-index: 1;
   text-align: center;
   width: 100%;
 }
 .background-content cite {
-  display: inline-flex;
   max-width: 1000px;
   margin-top: 120px;
   color: #ffffff;
@@ -35,7 +36,6 @@
   border-radius: 50px;
   align-self: flex-end;
 }
-
 /* Image Slider */
 .image-slider {
   overflow: hidden;
@@ -184,20 +184,18 @@
   background: linear-gradient(135deg,rgba(59, 157, 217, 0.08) 0%,rgba(139, 92, 246, 0.06) 100%);
   border-top: 1px solid rgba(59, 157, 217, 0.15);
   transition: all 0.3s ease;
-}
-.content {
   width: min(var(--wrap), 60%);
   margin: 0 auto;
   text-align: center;
 }
-.content h2 {
+.info-section h2 {
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 16px;
   transition: all 0.3s ease;
 }
-.content p {
+.info-section p {
   font-size: 1rem;
   color: #d4e4f7;
   line-height: 1.6;
@@ -246,7 +244,7 @@
 .stat-item:hover .stat-label {
   color: #d4e4f7;
 }
-.content .browse-btn {
+.info-section .browse-btn {
   display: inline-block;
   padding: 12px 28px;
   background: linear-gradient(100deg, #3b9dd9 0%, #26c6a0 100%);
@@ -262,7 +260,7 @@
   position: relative;
   overflow: hidden;
 }
-.content .browse-btn:hover {
+.info-section .browse-btn:hover {
   transform: translateY(-4px) scale(1.02);
   background: linear-gradient(100deg, #2e7fa8 0%, #1f9f88 100%);
 }
