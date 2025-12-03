@@ -769,23 +769,6 @@ body.light-mode .faq p {
 	font-weight: 600;
 }
 
-/* Plan Manage styling in light mode */
-body.light-mode .Plan-manage {
-	background: #ffffff;
-	border: 1px solid rgba(0, 102, 204, 0.15);
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-}
-
-body.light-mode .Plan-manage h2 {
-	color: #0066cc;
-	font-weight: 800;
-}
-
-body.light-mode .Plan-manage p {
-	color: #4a5568;
-	font-weight: 600;
-}
-
 body.light-mode .choose-plan {
 	background: linear-gradient(100deg, #0066cc 0%, #009966 100%);
 	color: #ffffff;
