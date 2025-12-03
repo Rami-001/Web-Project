@@ -707,3 +707,149 @@
 	87.5% { transform: translateX(-3500px); }
 }
 }
+
+/* =========================================================
+    RESPONSIVE - EXTRA SMALL MOBILE (340px and less)
+    ========================================================= */
+@media (max-width: 340px) {
+	.background {
+		min-height: 30vh;
+	}
+
+	.background-content {
+		padding: 30px 6px 15px;
+	}
+
+	.background-content cite {
+		font-size: clamp(1rem, 2.2vw, 1.2rem);
+		margin-bottom: 40px;
+		letter-spacing: 0;
+		word-spacing: 0;
+		line-height: 1.1;
+	}
+
+	.background-content img {
+		width: 40px;
+	}
+
+	.image-slider {
+		width: 98%;
+	}
+
+	.images {
+		width: calc(280px * 8 + 25px * 7);
+		gap: 25px;
+	}
+
+	.images .image img {
+		width: 280px;
+		height: auto;
+		max-height: 140px;
+	}
+
+	.image h2 {
+		font-size: 1rem;
+		margin-top: 2px;
+		letter-spacing: 0;
+	}
+
+	.images .image:hover h2 {
+		font-size: 1.1rem;
+	}
+
+	@keyframes slide {
+		0% { transform: translateX(80px); }
+		12.5% { transform: translateX(-305px); }
+		25% { transform: translateX(-630px); }
+		37.5% { transform: translateX(-955px); }
+		50% { transform: translateX(-1280px); }
+		62.5% { transform: translateX(-1605px); }
+		75% { transform: translateX(-1930px); }
+		87.5% { transform: translateX(-2255px); }
+	}
+
+	.Bigbox {
+		padding: 20px 0;
+		margin-top: 40px;
+	}
+
+	.group1 {
+		gap: 8px;
+		margin-bottom: 16px;
+		flex-direction: column;
+	}
+
+	.Box {
+		width: 98%;
+		max-width: 100%;
+		height: auto;
+		padding: 10px;
+		margin: 0 auto;
+	}
+
+	.Box h2 {
+		font-size: 0.85rem;
+		margin-bottom: 6px;
+		font-weight: 800;
+	}
+
+	.Box ul {
+		gap: 4px;
+	}
+
+	.Box a {
+		padding: 8px 10px;
+		font-size: 0.7rem;
+		font-weight: 700;
+	}
+
+	.info-section {
+		padding: 10px 6px;
+	}
+
+	.content {
+		width: 95%;
+	}
+
+	.content h2 {
+		font-size: clamp(0.95rem, 2vw, 1.1rem);
+		margin-bottom: 8px;
+	}
+
+	.content p {
+		font-size: 0.8rem;
+		margin-bottom: 12px;
+	}
+
+	.stats {
+		flex-direction: column;
+		gap: 8px;
+		margin-bottom: 12px;
+		max-width: 100%;
+	}
+
+	.stat-item {
+		gap: 2px;
+	}
+
+	.stat-num {
+		font-size: 1.2rem;
+		font-weight: 700;
+	}
+
+	.stat-item:hover .stat-num {
+		font-size: 1.5rem;
+		color: #4ade80;
+	}
+
+	.stat-label {
+		font-size: 0.7rem;
+		font-weight: 600;
+	}
+
+	.content .browse-btn {
+		padding: 6px 12px;
+		font-size: 0.75rem;
+		font-weight: 700;
+	}
+}

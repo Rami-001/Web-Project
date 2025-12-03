@@ -229,3 +229,76 @@ body.light-mode .policy-content li strong {
 
 	footer { flex-direction: column; text-align: center; gap: 10px; }
 }
+
+/* =========================================================
+    RESPONSIVE - EXTRA SMALL MOBILE (340px and less)
+    ========================================================= */
+@media (max-width: 340px) {
+	.legal-main {
+		padding-top: 56px;
+	}
+
+	.legal-content {
+		width: 98%;
+		padding: 12px 4px;
+	}
+
+	.legal-content h1 {
+		font-size: clamp(0.95rem, 2vw, 1.15rem);
+		margin-bottom: 8px;
+		letter-spacing: 0;
+		text-shadow: none;
+	}
+
+	.legal-content section {
+		padding: 8px 6px;
+		margin-bottom: 10px;
+		background: rgba(10, 20, 40, 0.3);
+	}
+
+	.legal-content h2 {
+		font-size: 0.85rem;
+		margin-top: 8px;
+		margin-bottom: 2px;
+		padding-bottom: 2px;
+		border-bottom: 1px solid rgba(59, 157, 217, 0.25);
+	}
+
+	.legal-content h3 {
+		font-size: 0.8rem;
+		margin-top: 4px;
+		margin-bottom: 1px;
+	}
+
+	.legal-content p {
+		font-size: 0.75rem;
+		margin-bottom: 3px;
+		line-height: 1.4;
+		font-weight: 400;
+	}
+
+	.legal-content ul {
+		margin: 3px 0 6px 0;
+	}
+
+	.legal-content li {
+		font-size: 0.75rem;
+		margin-bottom: 2px;
+		padding-left: 14px;
+		line-height: 1.3;
+		font-weight: 400;
+	}
+
+	.legal-content li::before {
+		font-size: 0.9rem;
+		left: 0;
+	}
+
+	.legal-content p strong {
+		font-weight: 600;
+	}
+
+	.legal-content li strong {
+		font-weight: 600;
+	}
+}

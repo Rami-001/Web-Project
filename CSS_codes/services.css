@@ -679,3 +679,94 @@
   margin-left: 25px;
 }
 }
+
+/* =========================================================
+    RESPONSIVE - EXTRA SMALL MOBILE (340px and less)
+    ========================================================= */
+@media (max-width: 340px) {
+	.service-filters {
+		width: 98%;
+		gap: 6px;
+		padding: 8px 6px;
+		margin: 10px auto 0;
+		flex-direction: column;
+	}
+
+	#searchInput,
+	#sortSelect,
+	#filter-category,
+	#filter-city,
+	#filter-country {
+		width: 100%;
+		padding: 6px 7px;
+		font-size: 0.75rem;
+		border-radius: 4px;
+	}
+
+	.clear-filters {
+		width: 100%;
+		padding: 6px 8px;
+		font-size: 0.75rem;
+		border-radius: 4px;
+	}
+
+	.service-card {
+		width: 98%;
+		padding: 10px;
+		gap: 8px;
+		margin: 12px auto;
+		flex-direction: column;
+		border-radius: 8px;
+	}
+
+	.service-card img {
+		width: 100%;
+		height: auto;
+		max-height: 150px;
+		border-radius: 6px;
+		margin: 0;
+	}
+
+	.card-content {
+		padding: 0;
+		gap: 4px;
+	}
+
+	.card-content h2 {
+		font-size: 0.9rem;
+		color: #19bcdc;
+		margin-bottom: 2px;
+		font-weight: 700;
+	}
+
+	.card-content p {
+		font-size: 0.75rem;
+		color: #cbd5e1;
+		margin-bottom: 2px;
+		line-height: 1.2;
+	}
+
+	.card-content ul {
+		color: #a0b8d8;
+		font-size: 0.7rem;
+		margin: 0;
+	}
+
+	.heart-icon {
+		top: 4px;
+		right: 4px;
+		width: 18px;
+		height: 18px;
+	}
+
+	.heart-icon svg {
+		width: 16px;
+		height: 16px;
+	}
+
+	.no-results {
+		font-size: 0.95rem;
+		padding: 16px 6px;
+		font-weight: 600;
+	}
+}

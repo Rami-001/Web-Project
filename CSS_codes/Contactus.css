@@ -332,33 +332,165 @@
 
 /* Small phones */
 @media (max-width: 600px) {
-  .contact-hero {
-    padding: 40px 1rem 28px;
-  }
+	.contact-hero {
+		padding: 40px 1rem 28px;
+	}
 
-  .contact-hero h1 {
-    font-size: clamp(1.8rem, 6vw, 2.1rem);
-  }
+	.contact-hero h1 {
+		font-size: clamp(1.8rem, 6vw, 2.1rem);
+	}
 
-  .contact-wrapper {
-    padding: 32px 1rem 40px;
-  }
+	.contact-wrapper {
+		padding: 32px 1rem 40px;
+	}
 
-  .contact-form {
-    padding: 24px 18px;
-  }
+	.contact-form {
+		padding: 24px 18px;
+	}
 
-  .info-card {
-    padding: 12px;
-  }
+	.info-card {
+		padding: 12px;
+	}
 
-  .contact-actions {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+	.contact-actions {
+		flex-direction: column;
+		align-items: flex-start;
+	}
 
-  .contact-btn {
-    width: 100%;
-    text-align: center;
-  }
+	.contact-btn {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+/* =========================================================
+    RESPONSIVE - EXTRA SMALL MOBILE (340px and less)
+    ========================================================= */
+@media (max-width: 340px) {
+	.contact-page {
+		min-height: calc(100vh - 56px);
+	}
+
+	.contact-hero {
+		padding: 12px 6px 8px;
+	}
+
+	.contact-hero h1 {
+		font-size: clamp(1rem, 2.5vw, 1.2rem);
+		margin-bottom: 4px;
+	}
+
+	.contact-hero p {
+		font-size: 0.75rem;
+	}
+
+	.contact-wrapper {
+		padding: 12px 6px 16px;
+		gap: 12px;
+		grid-template-columns: 1fr;
+	}
+
+	.contact-info-section {
+		width: 100%;
+		align-items: flex-start;
+	}
+
+	.contact-info-section h2 {
+		font-size: 0.85rem;
+		margin-bottom: 0;
+	}
+
+	.contact-info-section > p {
+		font-size: 0.7rem;
+		margin-bottom: 2px;
+	}
+
+	.info-card {
+		padding: 8px;
+		gap: 6px;
+		max-width: 100%;
+	}
+
+	.info-icon {
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
+	}
+
+	.info-icon svg {
+		width: 12px;
+		height: 12px;
+	}
+
+	.info-card h3 {
+		font-size: 0.75rem;
+	}
+
+	.info-card a,
+	.info-card p {
+		font-size: 0.7rem;
+		line-height: 1.1;
+	}
+
+	.contact-form-section {
+		width: 100%;
+		align-items: stretch;
+	}
+
+	.contact-form {
+		padding: 10px 8px;
+		max-width: 100%;
+	}
+
+	.contact-form h2 {
+		font-size: 0.85rem;
+	}
+
+	.contact-form > p {
+		font-size: 0.75rem;
+		margin-bottom: 8px;
+	}
+
+	.field {
+		gap: 3px;
+		margin-bottom: 6px;
+	}
+
+	.field label {
+		font-size: 0.7rem;
+	}
+
+	.field-input,
+	.field-textarea {
+		padding: 6px 7px;
+		font-size: 0.75rem;
+	}
+
+	.field-input::placeholder,
+	.field-textarea::placeholder {
+		font-size: 0.7rem;
+	}
+
+	.field-textarea {
+		min-height: 80px;
+	}
+
+	.contact-actions {
+		flex-direction: column;
+		gap: 4px;
+		margin-top: 6px;
+		width: 100%;
+	}
+
+	.contact-btn {
+		width: 100%;
+		padding: 6px 8px;
+		font-size: 0.7rem;
+	}
+
+	.contact-msg {
+		font-size: 0.7rem;
+		padding: 3px 6px;
+		margin-top: 3px;
+	}
 }
