@@ -321,7 +321,7 @@ body.light-mode .card-content ul {
 	font-weight: 600;
 }
 body.light-mode .service-card img{
-	border: 3px solid #0066cc;
+	border-bottom: 1px solid black;
 }
 body.light-mode .favorite-card {
   border: 3px solid #ff5f5f;
@@ -592,43 +592,67 @@ body.light-mode .contact-hero h1 {
 }
 
 body.light-mode .contact-hero p {
-	color: #4a5568;
+	color: #ffffff;
+}
+
+body.light-mode .contact-info-section h2 {
+	color: #fcfdff;
+}
+
+body.light-mode .contact-info-section > p {
+	color: #ffffff;
 }
 
 body.light-mode .info-card {
 	background: #ffffff;
 	border-color: rgba(0, 102, 204, 0.2);
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 4px 14px rgba(0, 102, 204, 0.1);
+}
+
+body.light-mode .info-card::before {
+	background: linear-gradient(135deg, rgba(0, 102, 204, 0.04) 0%, transparent 100%);
 }
 
 body.light-mode .info-card:hover {
 	border-color: #0066cc;
-	box-shadow: 0 4px 14px rgba(0, 102, 204, 0.1);
+	box-shadow: 0 12px 32px rgba(0, 102, 204, 0.2);
 }
 
 body.light-mode .info-icon {
 	background: rgba(0, 102, 204, 0.08);
 	color: #0066cc;
-	border-color: rgba(0, 102, 204, 0.2);
+	border-color: rgba(0, 102, 204, 0.25);
 }
 
 body.light-mode .info-card h3 {
 	color: #0066cc;
 }
 
-body.light-mode .info-card a,
 body.light-mode .info-card p {
 	color: #4a5568;
 }
+ 
 
 body.light-mode .info-card a:hover {
-	color: #0066cc;
+	color: #0052a3;
 }
 
 body.light-mode .contact-form {
 	background: #ffffff;
 	border-color: rgba(0, 102, 204, 0.2);
-	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+	box-shadow: 0 4px 14px rgba(0, 102, 204, 0.1);
+}
+
+body.light-mode .contact-form h2 {
+	color: #0066cc;
+}
+
+body.light-mode .contact-form > p {
+	color: #4a5568;
+}
+
+body.light-mode .field label {
+	color: #0066cc;
 }
 
 body.light-mode .field-input,
@@ -647,6 +671,7 @@ body.light-mode .field-input:focus,
 body.light-mode .field-textarea:focus {
 	border-color: #0066cc;
 	box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+	background-color: #ffffff;
 }
 
 body.light-mode .contact-btn {
@@ -656,7 +681,7 @@ body.light-mode .contact-btn {
 }
 
 body.light-mode .contact-btn:hover {
-	background: #0052a3;
+	color: #ffffff !important;
 	box-shadow: 0 8px 20px rgba(0, 102, 204, 0.2);
 }
 
@@ -709,12 +734,12 @@ body.light-mode .info-section {
     box-shadow: 0 4px 16px rgba(0, 102, 204, 0.12);
 }
 
-body.light-mode .content h2 {
+body.light-mode .info-section h2 {
 	color: #0066cc;
 	font-weight: 800;
 }
 
-body.light-mode .content p {
+body.light-mode .info-section p {
 	color: #2c3e50;
 	font-weight: 600;
 }
@@ -741,22 +766,26 @@ body.light-mode .browse-btn:hover {
 	transform: translateY(-2px);
 }
 
-/* Currency symbol styling in light mode */
-body.light-mode .currency {
-	color: #000000bb;
-	font-weight: 900;
-	font-size: 1.5rem;
+body.light-mode .contact-msg.err {
+	color: #dc2626;
+	background: rgba(220, 38, 38, 0.1);
 }
 
 /* FAQ styling in light mode */
+body.light-mode .faq-title {
+	background: linear-gradient(135deg, rgba(0, 102, 204, 0.08) 0%, rgba(112, 48, 160, 0.06) 100%);
+}
+
+
 body.light-mode .faq {
 	background: #ffffff;
 	border: 1px solid rgba(0, 102, 204, 0.15);
-	border-radius: 12px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
+
 body.light-mode .faq:hover {
-	border: 3px solid #0066cc;
+	border-color: #0066cc;
+	box-shadow: 0 4px 14px rgba(0, 102, 204, 0.1);
 }
 
 body.light-mode .faq h3 {
@@ -768,46 +797,15 @@ body.light-mode .faq p {
 	color: #4a5568;
 	font-weight: 600;
 }
-
-/* Plan Manage styling in light mode */
-body.light-mode .Plan-manage {
-	background: #ffffff;
-	border: 1px solid rgba(0, 102, 204, 0.15);
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-}
-
-body.light-mode .Plan-manage h2 {
-	color: #0066cc;
-	font-weight: 800;
-}
-
-body.light-mode .Plan-manage p {
-	color: #4a5568;
-	font-weight: 600;
-}
-
-body.light-mode .choose-plan {
-	background: linear-gradient(100deg, #0066cc 0%, #009966 100%);
-	color: #ffffff;
-	font-weight: 800;
-	box-shadow: 0 6px 16px rgba(0, 102, 204, 0.2);
-}
-
-body.light-mode .choose-plan:hover {
-	box-shadow: 0 8px 24px rgba(0, 102, 204, 0.3);
-	transform: translateY(-2px);
-}
-
-/* Plan Modal styling in light mode */
 body.light-mode .plan-modal-overlay {
-	background: rgba(0, 0, 0, 0.4);
+	background: rgba(0, 0, 0, 0.5);
 }
 
 body.light-mode .plan-modal {
 	background: #ffffff;
-	border: 1px solid rgba(0, 102, 204, 0.15);
-	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
 	color: #1a1a2e;
+	border: 1px solid rgba(0, 102, 204, 0.15);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 body.light-mode .plan-modal h3 {
@@ -821,54 +819,30 @@ body.light-mode .plan-modal p {
 }
 
 body.light-mode .modal-actions .confirm-btn {
-	background: linear-gradient(100deg, #0066cc 0%, #009966 100%);
+	background: #0066cc;
 	color: #ffffff;
-	font-weight: 800;
-	box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
 }
 
 body.light-mode .modal-actions .confirm-btn:hover {
+	background: #0052a3;
 	box-shadow: 0 6px 16px rgba(0, 102, 204, 0.3);
-	transform: translateY(-2px);
 }
 
 body.light-mode .modal-actions .cancel-btn {
-	background: #f0f7ff;
-	border: 1px solid rgba(0, 102, 204, 0.25);
+	background: #f1f5f9;
 	color: #0066cc;
-	font-weight: 700;
+	border: 1px solid rgba(0, 102, 204, 0.2);
 }
 
 body.light-mode .modal-actions .cancel-btn:hover {
-	background: #e6f0ff;
-	border-color: #0066cc;
+	background: #e2e8f0;
 	color: #0052a3;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-/* Contact form heading in light mode */
-body.light-mode .contact-form h2 {
+body.light-mode .payment-loading {
+	background: #ffffff;
 	color: #0066cc;
-}
-
-/* Field label styling in light mode */
-body.light-mode .field label {
-	color: #0066cc;
-	font-weight: 700;
-}
-
-/* Contact form paragraph styling in light mode */
-body.light-mode .contact-form > p {
-	color: #4a5568;
-	font-weight: 600;
-}
-
-/* Danger zone settings hint in light mode */
-body.light-mode .settings-card.danger-zone .settings-hint {
-	color: #4a5568;
-}
-
-/* Danger zone settings label in light mode */
-body.light-mode .settings-card.danger-zone .settings-label {
-	color: #d32f2f;
-	font-weight: 700;
+	border: 1px solid rgba(0, 102, 204, 0.2);
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
 }

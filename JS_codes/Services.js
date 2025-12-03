@@ -142,14 +142,13 @@ $(document).ready(function () {
         // Local image - add correct path
         imageSrc = imageSrc.replace('imgs/', '../imgs/');
       }
-      
       let $card = $(`
         <div class="service-card ${isFavorite ? "favorite-card" : ""}">
           <img src="${imageSrc}" alt="${s.name}">
           <div class="card-content">
             <h2>${s.name}</h2>
             <span class="heart-icon ${isFavorite ? "favorited" : ""}" data-servicename="${s.name}">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="${isFavorite ? "#ff6b6b" : "none"}" stroke="${isFavorite ? "#ff6b6b" : "#ccc"}" stroke-width="2">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="${isFavorite ? "#ff6b6b" : "black"}" stroke="${isFavorite ? "#ff6b6b" : "black"}" stroke-width="2">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
               </svg>
             </span>
