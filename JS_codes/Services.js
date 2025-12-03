@@ -153,9 +153,9 @@ $(document).ready(function () {
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
               </svg>
             </span>
-            <ul><strong>Country:</strong> ${s.country}</ul>
-            <ul><strong>City:</strong> ${s.city}</ul>
-            <ul><strong>Schedule:</strong> ${scheduleText}</ul>
+            <p><strong>Country:</strong> ${s.country}</p>
+            <p><strong>City:</strong> ${s.city.join(", ")}</p>
+            <p><strong>Schedule:</strong> ${scheduleText}</p>
             <p>${s.description}</p>
             <p><strong>Contact:</strong> ${s.contact_information}</p>
             <p><a class="more-info-link" href="${s.more_info_on}" target="_blank">Visit</a></p>
@@ -221,7 +221,7 @@ $(document).ready(function () {
   $(".clear-filters").on("click", function () {
     $("#searchInput").val("");
     $("#filter-category").val("All");
-    $("#filter-city").val("All");
+    $("#filter-city").val("");
     $("#sortSelect").val("");
     filter();
   });
@@ -256,12 +256,12 @@ $(document).ready(function () {
       $("#filter-country").val(savedCountry);
       updateCitiesByCountry(savedCountry);
     } else {
-      $("#filter-country").val("All");
+      $("#filter-country").val("");
       updateCitiesByCountry(null);
     }
     // Set defaults for other filters
     $("#filter-category").val($("#filter-category").val() || "All");
-    $("#filter-city").val("All");
+    $("#filter-city").val("");
     $("#sortSelect").val("");
     // Render based on URL id or just filter
     if (urlID) {

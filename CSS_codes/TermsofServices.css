@@ -12,6 +12,7 @@
 	margin: 0 auto;
 	padding: 60px 14px;
 	color: #d4e4f7;
+	box-sizing: border-box;
 }
 
 .terms-content h1 {
@@ -79,4 +80,60 @@
 	color: #3b9dd9;
 	font-weight: 800;
 	font-size: 1.1rem;
+}
+
+/* =========================================================
+    RESPONSIVE - EXTRA SMALL MOBILE (340px and less)
+    ========================================================= */
+@media (max-width: 340px) {
+	.terms-main {
+		padding-top: 56px;
+	}
+
+	.terms-content {
+		width: 98%;
+		padding: 16px 6px;
+	}
+
+	.terms-content h1 {
+		font-size: clamp(1rem, 2.2vw, 1.2rem);
+		margin-bottom: 10px;
+		letter-spacing: 0;
+	}
+
+	.terms-content h2 {
+		font-size: 0.9rem;
+		margin-top: 10px;
+		margin-bottom: 4px;
+		padding-bottom: 2px;
+		font-weight: 700;
+	}
+
+	.terms-content h3 {
+		font-size: 0.8rem;
+		margin-top: 6px;
+		margin-bottom: 2px;
+	}
+
+	.terms-content p {
+		font-size: 0.75rem;
+		line-height: 1.4;
+		margin-bottom: 4px;
+	}
+
+	.terms-content ul {
+		margin: 4px 0 8px 0;
+	}
+
+	.terms-content li {
+		font-size: 0.75rem;
+		margin-bottom: 2px;
+		padding-left: 16px;
+		line-height: 1.3;
+	}
+
+	.terms-content li::before {
+		font-size: 0.85rem;
+		top: 0;
+	}
 }

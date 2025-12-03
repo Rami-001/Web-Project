@@ -1,11 +1,16 @@
 /* =========================================================
     LEGAL PAGES (Privacy Policy & Terms of Service)
+    MAIN CONTAINER
     ========================================================= */
 
 .legal-main {
 	flex: 1 0 auto;
 	padding-top: var(--header-h, 64px);
 }
+
+/* =========================================================
+    LEGAL CONTENT WRAPPER
+    ========================================================= */
 
 .legal-content {
 	width: min(850px, 92%);
@@ -15,6 +20,10 @@
 	font-size: 1rem;
 	line-height: 1.8;
 }
+
+/* =========================================================
+    LEGAL HEADINGS
+    ========================================================= */
 
 .legal-content h1 {
 	font-size: clamp(2.5rem, 5vw, 3.2rem);
@@ -30,6 +39,10 @@
 	display: none;
 }
 
+/* =========================================================
+    LEGAL SECTIONS
+    ========================================================= */
+
 .legal-content section {
 	margin-bottom: 50px;
 	background: rgba(10, 20, 40, 0.6);
@@ -42,10 +55,14 @@
 	margin-bottom: 0;
 }
 
+/* =========================================================
+    LEGAL SECTION HEADINGS (H2)
+    ========================================================= */
+
 .legal-content h2 {
 	font-size: 1.4rem;
 	font-weight: 800;
-	color: #e9f2ff;
+	color: #ffffff;
 	margin-top: 0;
 	margin-bottom: 20px;
 	padding-bottom: 10px;
@@ -53,25 +70,37 @@
 	letter-spacing: -0.5px;
 }
 
+/* =========================================================
+    LEGAL SUBSECTION HEADINGS (H3)
+    ========================================================= */
+
 .legal-content h3 {
 	font-size: 1.1rem;
 	font-weight: 700;
-	color: #d4e4f7;
+	color: #ffffff;
 	margin-top: 28px;
 	margin-bottom: 14px;
 	letter-spacing: -0.3px;
 }
 
+/* =========================================================
+    LEGAL PARAGRAPH TEXT
+    ========================================================= */
+
 .legal-content p {
 	margin-bottom: 18px;
-	color: #c5d5e8;
+	color: #3b9dd9;
 	font-weight: 500;
 }
 
 .legal-content p strong {
-	color: #e9f2ff;
+	color: #ffffff;
 	font-weight: 700;
 }
+
+/* =========================================================
+    LEGAL LIST ITEMS
+    ========================================================= */
 
 .legal-content ul {
 	margin: 18px 0 24px 0;
@@ -83,7 +112,7 @@
 	margin-bottom: 14px;
 	padding-left: 24px;
 	position: relative;
-	color: #b5c5e0;
+	color: #3b9dd9;
 	line-height: 1.7;
 	font-weight: 500;
 }
@@ -98,34 +127,178 @@
 }
 
 .legal-content li strong {
-	color: #e9f2ff;
+	color: #ffffff;
 	font-weight: 700;
 }
 
-/* Responsive adjustments */
-@media (max-width: 640px) {
+/* =========================================================
+    LIGHT MODE OVERRIDES - HEADINGS
+    ========================================================= */
+
+body.light-mode .legal-content h1,
+body.light-mode .policy-content h1 {
+	color: #0066cc;
+	text-shadow: none;
+}
+
+body.light-mode .legal-content h2,
+body.light-mode .policy-content h2 {
+	color: #0066cc;
+	border-bottom-color: rgba(0, 102, 204, 0.25);
+}
+
+body.light-mode .legal-content h3 {
+	color: #0066cc;
+}
+
+/* =========================================================
+    LIGHT MODE OVERRIDES - TEXT
+    ========================================================= */
+
+body.light-mode .legal-content p,
+body.light-mode .policy-content p {
+	color: #0066cc;
+	font-weight: 600;
+}
+
+body.light-mode .legal-content p strong,
+body.light-mode .policy-content p strong {
+	color: #1a1a2e;
+	font-weight: 700;
+}
+
+body.light-mode .legal-content li,
+body.light-mode .policy-content li {
+	color: #0066cc;
+	font-weight: 600;
+}
+
+body.light-mode .legal-content li strong,
+body.light-mode .policy-content li strong {
+	color: #1a1a2e;
+	font-weight: 700;
+}
+
+/* =========================================================
+    RESPONSIVE - MOBILE NAVIGATION (768px)
+    ========================================================= */
+
+@media (max-width: 768px) {
+	.nav-bar { grid-template-columns: auto auto; }
+	.nav-toggle { display: block; }
+
+	#nav-links {
+		position: fixed;
+		inset: var(--header-h) 0 auto 0;
+		background: #0d1a31;
+		border-top: 1px solid #1a254a;
+		padding: 10px;
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		transform: translateY(-120%);
+		opacity: 0;
+		visibility: hidden;
+		transition: transform .22s, opacity .16s, visibility 0s linear .22s;
+		z-index: 1200;
+	}
+
+	.nav-bar.nav-open #nav-links {
+		transform: translateY(0);
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.dropdown-content,
+	.dropdown-content.visible {
+		position: fixed;
+		top: var(--header-h, 64px);
+		left: 0;
+		right: 0;
+		height: calc(100vh - var(--header-h, 64px));
+		overflow-y: auto !important;
+		padding: 16px 12px 60px;
+		border-radius: 0;
+		background: linear-gradient(180deg, #0e1a31, #0b162a);
+		z-index: 1200;
+	}
+
+	.Login-Signup, .welcome-inline, .profile-dropdown {
+		display: none !important;
+	}
+
+	footer { flex-direction: column; text-align: center; gap: 10px; }
+}
+
+/* =========================================================
+    RESPONSIVE - EXTRA SMALL MOBILE (340px and less)
+    ========================================================= */
+@media (max-width: 340px) {
+	.legal-main {
+		padding-top: 56px;
+	}
+
 	.legal-content {
-		padding: 60px 16px;
+		width: 98%;
+		padding: 12px 4px;
 	}
 
 	.legal-content h1 {
-		font-size: 2rem;
-		margin-bottom: 40px;
-	}
-
-	.legal-content h2 {
-		font-size: 1.2rem;
-		margin-bottom: 16px;
-	}
-
-	.legal-content h3 {
-		font-size: 1rem;
-		margin-top: 20px;
-		margin-bottom: 12px;
+		font-size: clamp(0.95rem, 2vw, 1.15rem);
+		margin-bottom: 8px;
+		letter-spacing: 0;
+		text-shadow: none;
 	}
 
 	.legal-content section {
-		margin-bottom: 40px;
-		padding: 20px;
+		padding: 8px 6px;
+		margin-bottom: 10px;
+		background: rgba(10, 20, 40, 0.3);
+	}
+
+	.legal-content h2 {
+		font-size: 0.85rem;
+		margin-top: 8px;
+		margin-bottom: 2px;
+		padding-bottom: 2px;
+		border-bottom: 1px solid rgba(59, 157, 217, 0.25);
+	}
+
+	.legal-content h3 {
+		font-size: 0.8rem;
+		margin-top: 4px;
+		margin-bottom: 1px;
+	}
+
+	.legal-content p {
+		font-size: 0.75rem;
+		margin-bottom: 3px;
+		line-height: 1.4;
+		font-weight: 400;
+	}
+
+	.legal-content ul {
+		margin: 3px 0 6px 0;
+	}
+
+	.legal-content li {
+		font-size: 0.75rem;
+		margin-bottom: 2px;
+		padding-left: 14px;
+		line-height: 1.3;
+		font-weight: 400;
+	}
+
+	.legal-content li::before {
+		font-size: 0.9rem;
+		left: 0;
+	}
+
+	.legal-content p strong {
+		font-weight: 600;
+	}
+
+	.legal-content li strong {
+		font-weight: 600;
 	}
 }

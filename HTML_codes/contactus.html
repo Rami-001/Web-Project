@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- =========================================================
+       META & DOCUMENT INFO
+       ========================================================= -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact Us • Global Compass</title>
   <link rel="icon" type="image/png" sizes="256x256" href="../imgs/logo.png">
+
+  <!-- =========================================================
+       FONTS & STYLESHEETS
+       ========================================================= -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../CSS_codes/global.css" />
   <link rel="stylesheet" href="../CSS_codes/Contactus.css" />
+  <link rel="stylesheet" href="../CSS_codes/Lightmode.css" />
 </head>
 <body>
-  <!-- HEADER -->
+  <!-- =========================================================
+       HEADER / NAVBAR
+       ========================================================= -->
   <header class="main-header">
     <nav class="nav-bar">
       <div class="logo-container">
@@ -25,16 +35,20 @@
         <li class="dropdown"><a href="Services.html">Services</a></li>
         <li><a href="contactus.html">Contact Us</a></li>
         <li><a href="Subscription.html">Plans</a></li>
+        <li id="mobile-settings"><a href="settings.html">Settings</a></li>
+        <li id="mobile-login"><a href="login.html">Login</a></li>
+        <li id="mobile-register"><a href="signup.html">Register</a></li>
+        <li id="mobile-logout"><a href="#" class="logout-link">Logout</a></li>
       </ul>
 
       <div class="right-rail">
         <div class="Login-Signup">
           <a class="login" href="login.html">Login</a>
-          <a class="Signup" href="signup.html">Sign up</a>
+          <a class="Signup" href="signup.html">Register</a>
         </div>
         <div id="welcome-user" class="welcome-inline">Welcome, <span id="user-name"></span>!</div>
         <div class="profile-dropdown">
-          <img id="nav-avatar" src="../imgs/profile.svg" alt="Profile" />
+          <img id="nav-avatar"  alt="Profile" />
           <div class="profile-menu">
             <a href="settings.html"><img class="profile-icon" src="../imgs/setting.svg" alt="Settings" />Settings</a>
             <a href="#" id="logout-link"><img class="profile-icon" src="../imgs/logout.svg" alt="Logout" />Logout</a>
@@ -45,7 +59,9 @@
     </nav>
   </header>
 
-  <!-- SERVICES DROPDOWN -->
+  <!-- =========================================================
+       SERVICES DROPDOWN
+       ========================================================= -->
   <div class="dropdown-content">
     <div class="Service-column">
       <h4>Health &amp; Safety</h4>
@@ -69,18 +85,24 @@
     </div>
   </div>
 
-  <!-- MAIN CONTENT -->
+  <!-- =========================================================
+       CONTACT PAGE HERO
+       ========================================================= -->
   <main class="contact-page">
     <section class="contact-hero">
       <h1>Contact Us</h1>
-      <p>Questions, feedback, or partnership ideas? We'd love to hear from you.</p>
+      <p class="pwhite">Questions, feedback, or partnership ideas? We'd love to hear from you.</p>
     </section>
 
+    <!-- =========================================================
+         CONTACT INFO & FORM WRAPPER
+         ========================================================= -->
     <div class="contact-wrapper">
-      <!-- Left: Info cards -->
+      
+      <!-- INFO CARDS SECTION -->
       <div class="contact-info-section">
         <h2>Get in touch</h2>
-        <p>Reach out through any channel</p>
+        <p class="pwhite">Reach out through any channel</p>
 
         <div class="info-card">
           <div class="info-icon">
@@ -133,33 +155,33 @@
         </div>
       </div>
 
-      <!-- Right: Contact form -->
+      <!-- CONTACT FORM SECTION -->
       <div class="contact-form-section">
-        <div class="contact-form">
+        <div class="contact-form" id="Light-mode">
           <h2>Send us a message</h2>
           <p>We'll get back to you as soon as possible</p>
 
-          <div class="field">
+          <div class="field" class="Light-mode">
             <label for="c-name">Full name</label>
             <input id="c-name" class="field-input" type="text" placeholder="Jane Doe" required />
           </div>
 
-          <div class="field">
+          <div class="field" class="Light-mode">
             <label for="c-email">Email</label>
             <input id="c-email" class="field-input" type="email" placeholder="jane@example.com" required />
           </div>
 
           <div class="field">
-            <label for="c-subject">Subject</label>
+            <label for="c-subject" class="Light-mode">Subject</label>
             <input id="c-subject" class="field-input" type="text" placeholder="How can we help?" required />
           </div>
 
           <div class="field">
-            <label for="c-message">Message</label>
+            <label for="c-message" class="Light-mode">Message</label>
             <textarea id="c-message" class="field-textarea" placeholder="Write your message..." required></textarea>
           </div>
 
-          <div class="contact-actions">
+          <div class="contact-actions" class="Light-mode">
             <button id="contact-submit-btn" class="contact-btn" type="button">Send message</button>
           </div>
           
@@ -169,7 +191,9 @@
     </div>
   </main>
 
-  <!-- FOOTER -->
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
   <div class="footer-background">
     <footer>
       <div class="footer-left">
@@ -181,11 +205,15 @@
         <a href="termsofservices.html">Terms of Service</a>
         <a href="Subscription.html">Plans</a>
       </div>
-      <div id="copy-right">&copy; 2025 Global Compass. All rights reserved.</div>
+      <div id="copy-right">
+        &copy; 2025 Global Compass. All rights reserved.
+      </div>
     </footer>
   </div>
 
-  <!-- SCRIPTS -->
+  <!-- =========================================================
+       SCRIPTS
+       ========================================================= -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../JS_codes/script.js"></script>
   <script type="module" src="../JS_codes/auth.js"></script>

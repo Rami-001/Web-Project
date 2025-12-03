@@ -1,15 +1,14 @@
-// ========== APPLY DARK MODE ON PAGE LOAD ==========
+// ========== APPLY SAVED THEME ON PAGE LOAD ==========
 function applyGlobalTheme() {
-	let savedTheme = localStorage.getItem('gc_dark_mode');
-	let isDark = savedTheme !== 'false';
-	
-	if (isDark) {
-		document.body.classList.remove('light-mode');
-	} else {
+	let savedTheme = localStorage.getItem('gc_theme_mode') || 'dark';
+	if (savedTheme === 'light') {
 		document.body.classList.add('light-mode');
+	} else {
+		document.body.classList.remove('light-mode');
 	}
 }
 
+// Apply theme immediately before DOM ready
 applyGlobalTheme();
 
 $(document).ready(function () {
@@ -156,6 +155,18 @@ $(document).ready(function () {
             }, 500);
         }
     });
+
+	// Listen for theme changes
+	window.addEventListener('themeChanged', function(e) {
+		applyGlobalTheme();
+	});
+
+	// Listen for storage changes from other tabs
+	window.addEventListener('storage', function(e) {
+		if (e.key === 'gc_theme_mode') {
+			applyGlobalTheme();
+		}
+	});
 });
 
 // ========== GLOBAL AUTH & PROFILE SYNC ==========
@@ -181,21 +192,37 @@ document.addEventListener('DOMContentLoaded', function() {
 		let userNameEl = document.getElementById('user-name');
 		let loginSignupDiv = document.querySelector('.Login-Signup');
 		let profileDropdown = document.querySelector('.profile-dropdown');
-
+		
+		// Hide desktop login/register, show profile dropdown
 		if (loginSignupDiv) loginSignupDiv.style.display = 'none';
 		if (profileDropdown) profileDropdown.style.display = 'flex';
 		if (userNameEl) userNameEl.textContent = userStored.name;
 		if (welcomeEl) welcomeEl.style.display = 'inline';
+		
+		// Hide mobile login/register, show only logout
+		let mobileLoginLinks = document.querySelectorAll('.mobile-auth');
+		mobileLoginLinks.forEach(link => {
+			let isLogout = link.querySelector('#logout-link-mobile');
+			link.style.display = isLogout ? 'list-item' : 'none';
+		});
 	}
 
 	function showLoggedOutUI() {
 		let welcomeEl = document.getElementById('welcome-user');
 		let loginSignupDiv = document.querySelector('.Login-Signup');
 		let profileDropdown = document.querySelector('.profile-dropdown');
-
+		
+		// Show desktop login/register, hide profile dropdown
 		if (loginSignupDiv) loginSignupDiv.style.display = 'flex';
 		if (profileDropdown) profileDropdown.style.display = 'none';
 		if (welcomeEl) welcomeEl.style.display = 'none';
+		
+		// Show mobile login/register, hide logout
+		let mobileLoginLinks = document.querySelectorAll('.mobile-auth');
+		mobileLoginLinks.forEach(link => {
+			let isLogout = link.querySelector('#logout-link-mobile');
+			link.style.display = isLogout ? 'none' : 'list-item';
+		});
 	}
 
 	function syncProfileData(userSession, userStored) {
@@ -218,14 +245,31 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	function setupLogout() {
+		// Desktop logout
 		let logoutLink = document.getElementById('logout-link');
 		if (logoutLink) {
 			logoutLink.addEventListener('click', function(e) {
 				e.preventDefault();
-				localStorage.removeItem('gc_current_user');
-				window.location.href = 'index.html';
+				performLogout();
 			});
 		}
+		
+		// Mobile logout
+		let logoutLinkMobile = document.getElementById('logout-link-mobile');
+		if (logoutLinkMobile) {
+			logoutLinkMobile.addEventListener('click', function(e) {
+				e.preventDefault();
+				performLogout();
+			});
+		}
+	}
+
+	function performLogout() {
+		localStorage.removeItem('gc_current_user');
+		// Close mobile menu if open
+		let navBar = document.querySelector('.nav-bar');
+		if (navBar) navBar.classList.remove('nav-open');
+		window.location.href = 'index.html';
 	}
 
 	function startContinuousSync(userSession, userStored) {
@@ -312,15 +356,6 @@ window.addEventListener('storage', function(e) {
 		applyGlobalTheme();
 	}
 });
-
-// Update any image references to use correct path:
-// Change: src="imgs/..."
-// To: src="../imgs/..."
-//
-// Example locations to update:
-// document.getElementById('nav-logo').src = "../imgs/logo.png";
-// document.getElementById('nav-avatar').src = "../imgs/profile.svg";
-// etc.
 
 
 
