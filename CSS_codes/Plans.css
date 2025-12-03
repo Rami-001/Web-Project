@@ -277,11 +277,10 @@
 /* =========================================================
     PLAN BUTTON
     ========================================================= */
-.plan-btn {
+.plan-btn,.cancel-plan-btn {
 	margin: 0;
 	width: 100%;
 }
-
 .card-btn {
 	width: 100%;
 	padding: 15px;
@@ -294,14 +293,12 @@
 	cursor: pointer;
 	transition: all 0.3s ease;
 }
-
 .card-btn:hover {
 	background: #60a5fa;
 	color: #0f172a;
 	transform: translateY(-2px);
 	box-shadow: 0 8px 20px rgba(96, 165, 250, 0.3);
 }
-
 .card.popular .card-btn {
 	background: linear-gradient(100deg, #13c5fc 5%, #8b5cf6 60%);
 	color: #0f172a;
@@ -309,20 +306,16 @@
 	font-weight: 800;
 	font-size: 1.1rem;
 }
-
 .card.popular .card-btn:hover {
 	transform: translateY(-2px);
 	box-shadow: 0 10px 25px rgba(96, 165, 250, 0.4);
 }
-
 .card.popular .price {
 	margin-top: 10px;
 }
-
 .card.popular .plan-description {
 	font-weight: 700;
 }
-
 /* =========================================================
     PLAN STATUS
     ========================================================= */
@@ -340,64 +333,10 @@
 	text-align: center;
 }
 /* =========================================================
-    FAQ SECTION
-    ========================================================= */
-.faq-title h2 {
-	color: #ffffff;
-	font-size: 3rem;
-	text-align: center;
-	margin: 50px 0;
-	font-weight: 700;
-}
-
-.faq-container {
-	display: flex;
-	justify-content: center;
-	align-items: stretch;
-	max-width: 1500px;
-	margin: 0 auto 30px;
-	gap: 50px;
-	flex-wrap: wrap;
-	padding: 0 20px;
-	box-sizing: border-box;
-}
-
-.faq {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-	background-color: #0e223d;
-	border: 2px solid #0fa0c7;
-	padding: 40px;
-	width: clamp(280px, 90vw, 400px);
-	min-height: 230px;
-	border-radius: 20px;
-	box-sizing: border-box;
-	transition: all 0.25s ease;
-}
-
-.faq:hover {
-	transform: translateY(-6px);
-	box-shadow: 0 12px 25px rgba(25, 188, 220, 0.25);
-}
-
-.faq h3 {
-	color: #ffffff;
-	font-size: 1.2rem;
-	font-weight: 800;
-}
-
-.faq p {
-	color: #c5cfdd;
-	line-height: 1.6;
-	font-weight: 700;
-}
-
-/* =========================================================
     CANCEL BUTTONS
     ========================================================= */
 .cancel-btn,
-#cancel-plan-btn {
+.cancel-plan-btn {
 	padding: 12px 30px;
 	border: none;
 	border-radius: 12px;
@@ -410,7 +349,7 @@
 }
 
 .cancel-btn:hover,
-#cancel-plan-btn:hover {
+.cancel-plan-btn:hover {
 	background: #dc2626;
 	transform: translateY(-2px);
 	box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
@@ -507,27 +446,19 @@
 	z-index: 10000;
 	box-shadow: 0 6px 15px rgba(0,0,0,0.4);
 }
-
 @keyframes fadeIn {
 	from { opacity: 0; transform: scale(0.95); }
 	to   { opacity: 1; transform: scale(1); }
 }
-
 /* =========================================================
     RESPONSIVE 
     ========================================================= */
-	
 @media (max-width: 900px) {
 	.Plan-header {
 		margin: 30px 0;
 		padding: 30px 16px;
 	}
-	.faq-title h2 {
-		font-size: 2.3rem;
-		margin: 40px 0 30px;
-	}
 }
-
 /* =========================================================
     RESPONSIVE - MOBILE (600px)
     ========================================================= */
@@ -552,215 +483,9 @@
 	.card {
 		padding: 22px 18px;
 	}
-
-	.faq {
-		padding: 28px 20px;
-	}
 	.cancel-btn,
-	#cancel-plan-btn {
+	.cancel-plan-btn {
 		width: 100%;
 		text-align: center;
-	}
-}
-
-/* 340px
-@media (max-width: 340px) {
-	.Plan-container {
-		padding: 0 6px;
-	}
-
-	.Plan-header {
-		margin: 8px 0;
-		padding: 10px 6px;
-		gap: 8px;
-	}
-
-	.Plan-header h1 {
-		font-size: clamp(1.1rem, 3.5vw, 1.4rem);
-		margin-bottom: 2px;
-	}
-
-	.Plan-header p {
-		font-size: 0.8rem;
-		margin-bottom: 8px;
-	}
-
-	.pricing-toggle {
-		flex-direction: column;
-		gap: 6px;
-		margin-top: 4px;
-	}
-
-	.toggle-label {
-		font-size: 0.8rem;
-	}
-
-	.toggle-switch {
-		width: 42px;
-		height: 22px;
-	}
-
-	.toggle-switch .slider::before {
-		height: 18px;
-		width: 18px;
-		left: 2px;
-		bottom: 1px;
-	}
-
-	.toggle-switch input:checked + .slider::before {
-		transform: translateX(20px);
-	}
-
-	.savings-badge {
-		display: none;
-	}
-
-	.Plan-cards {
-		gap: 6px;
-		padding: 6px 4px;
-	}
-
-	.card {
-		width: 100%;
-		padding: 10px;
-		border-radius: 10px;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-	}
-
-	.card.popular {
-		padding-top: 24px;
-	}
-
-	.popular-badge {
-		padding: 3px 0;
-		font-size: 0.7rem;
-		border-top-left-radius: 10px;
-		border-top-right-radius: 10px;
-	}
-
-	.card-header {
-		margin-bottom: 8px;
-		padding-bottom: 6px;
-		border-bottom: 1px solid #334155;
-	}
-
-	.card-header h2 {
-		font-size: 0.85rem;
-		margin-bottom: 4px;
-		font-weight: 800;
-	}
-
-	.price {
-		gap: 2px;
-		margin-bottom: 4px;
-	}
-
-	.currency {
-		font-size: 0.9rem;
-	}
-
-	.amount {
-		font-size: 1.5rem;
-	}
-
-	.period {
-		font-size: 0.7rem;
-	}
-
-	.plan-description {
-		font-size: 0.75rem;
-		padding-bottom: 4px;
-		margin-bottom: 6px;
-	}
-
-	.card-features ul li {
-		padding: 4px 0;
-		padding-left: 12px;
-		font-size: 0.7rem;
-		border-bottom: 1px solid #2a4a5d;
-	}
-
-	.card-features ul li::before {
-		font-size: 0.9rem;
-	}
-
-	.card-btn {
-		padding: 6px 8px;
-		font-size: 0.7rem;
-		border-radius: 4px;
-	}
-
-	.card.popular .card-btn {
-		font-size: 0.75rem;
-		padding: 7px 8px;
-	}
-	.plan-status {
-		font-size: 0.7rem;
-		margin-top: 2px;
-	}
-	.faq-title h2 {
-		font-size: 1.2rem;
-		margin: 10px 0 8px;
-	}
-	.faq-container {
-		gap: 8px;
-		padding: 0 4px;
-		margin-bottom: 8px;
-	}
-	.faq {
-		width: 100%;
-		min-height: 140px;
-		padding: 10px;
-		gap: 6px;
-		border-radius: 8px;
-	}
-	.faq h3 {
-		font-size: 0.8rem;
-		font-weight: 700;
-	}
-	.faq p {
-		font-size: 0.75rem;
-		line-height: 1.3;
-	}
-
-	.cancel-btn,
-	#cancel-plan-btn {
-		padding: 6px 10px;
-		font-size: 0.75rem;
-	}
-
-	.plan-modal {
-		width: 98%;
-		padding: 10px 8px;
-		border-radius: 8px;
-	}
-
-	.plan-modal h3 {
-		font-size: 0.9rem;
-		margin-bottom: 6px;
-	}
-
-	.plan-modal p {
-		font-size: 0.75rem;
-		margin: 3px 0;
-	}
-
-	.modal-actions {
-		gap: 4px;
-		margin-top: 8px;
-		flex-direction: column;
-	}
-
-	.modal-actions button {
-		padding: 5px 8px;
-		font-size: 0.7rem;
-		border-radius: 4px;
-		width: 100%;
-	}
-
-	.payment-loading {
-		padding: 10px 14px;
-		font-size: 0.85rem;
-		border-radius: 6px;
 	}
 }
