@@ -282,7 +282,7 @@ main, section, .background, .Bigbox { flex: 1 0 auto; }
     ========================================================= */
 .dropdown-content {
 	width: min(var(--wrap), 96%);
-	margin: 10px auto 0;
+	margin: 100px auto 0;
 	background: linear-gradient(180deg, #0e1a31, #0b162a);
 	border: 1px solid var(--gc-line);
 	border-radius: 16px;
@@ -601,7 +601,7 @@ footer {
 @media (max-width: 340px) {
 	body { --header-h: 52px; }
 	
-	.container { width: 94%; }
+	.info-section { width: 94%; }
 	
 	.nav-bar {
 		grid-template-columns: 1fr auto;

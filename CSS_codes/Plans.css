@@ -339,62 +339,6 @@
 	color: #19bcdc;
 	text-align: center;
 }
-
-/* =========================================================
-    PLAN MANAGEMENT SECTION
-    ========================================================= */
-.Plan-manage {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	gap: 24px;
-	width: 100%;
-	max-width: 800px;
-	background-color: #0e223d;
-	padding: 30px;
-	margin: 30px auto 40px;
-	border-radius: 20px;
-	text-align: center;
-	box-sizing: border-box;
-}
-
-.Plan-manage h2 {
-	font-size: 1.8rem;
-	font-weight: 700;
-	color: #f1f5f9;
-}
-
-.Plan-manage p {
-	color: #94a3b8;
-}
-
-.manage-btn {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 40px;
-	flex-wrap: wrap;
-}
-
-.choose-plan {
-	padding: 15px 30px;
-	border: none;
-	border-radius: 12px;
-	background: linear-gradient(100deg, #3b9dd9 0%, #26c6a0 100%);
-	cursor: pointer;
-	color: white;
-	font-weight: 700;
-	font-size: 1rem;
-	transition: all 0.3s ease;
-}
-
-.choose-plan:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 16px 32px rgba(59,157,217,.4);
-	background: linear-gradient(100deg, #2e7fa8 0%, #1f9f88 100%);
-}
-
 /* =========================================================
     FAQ SECTION
     ========================================================= */
@@ -577,13 +521,6 @@
 		margin: 30px 0;
 		padding: 30px 16px;
 	}
-
-	.Plan-manage {
-		max-width: 100%;
-		width: 100%;
-		margin-inline: auto;
-	}
-
 	.faq-title h2 {
 		font-size: 2.3rem;
 		margin: 40px 0 30px;
@@ -618,17 +555,6 @@
 	.faq {
 		padding: 28px 20px;
 	}
-
-	.Plan-manage {
-		padding: 24px 16px;
-	}
-
-	.manage-btn {
-		flex-direction: column;
-		gap: 16px;
-	}
-
-	.choose-plan,
 	.cancel-btn,
 	#cancel-plan-btn {
 		width: 100%;
@@ -769,46 +695,19 @@
 		font-size: 0.75rem;
 		padding: 7px 8px;
 	}
-
 	.plan-status {
 		font-size: 0.7rem;
 		margin-top: 2px;
 	}
-
-	.Plan-manage {
-		padding: 10px 6px;
-		margin: 10px auto 12px;
-		max-width: 100%;
-	}
-
-	.Plan-manage h2 {
-		font-size: 0.95rem;
-	}
-
-	.Plan-manage p {
-		font-size: 0.75rem;
-	}
-
-	.manage-btn {
-		gap: 6px;
-	}
-
-	.choose-plan {
-		padding: 6px 10px;
-		font-size: 0.75rem;
-	}
-
 	.faq-title h2 {
 		font-size: 1.2rem;
 		margin: 10px 0 8px;
 	}
-
 	.faq-container {
 		gap: 8px;
 		padding: 0 4px;
 		margin-bottom: 8px;
 	}
-
 	.faq {
 		width: 100%;
 		min-height: 140px;
@@ -816,12 +715,10 @@
 		gap: 6px;
 		border-radius: 8px;
 	}
-
 	.faq h3 {
 		font-size: 0.8rem;
 		font-weight: 700;
 	}
-
 	.faq p {
 		font-size: 0.75rem;
 		line-height: 1.3;

@@ -86,108 +86,93 @@
   </div>
 
   <!-- =========================================================
-       CONTACT PAGE HERO
+       CONTACT PAGE
        ========================================================= -->
   <main class="contact-page">
+    
+    <!-- HERO SECTION -->
     <section class="contact-hero">
-      <h1>Contact Us</h1>
-      <p class="pwhite">Questions, feedback, or partnership ideas? We'd love to hear from you.</p>
+      <h1>Get in touch</h1>
+      <p>Want to get in touch? We'd love to hear from you. Here's how you can reach us.</p>
     </section>
 
-    <!-- =========================================================
-         CONTACT INFO & FORM WRAPPER
-         ========================================================= -->
+    <!-- MAIN WRAPPER -->
     <div class="contact-wrapper">
       
-      <!-- INFO CARDS SECTION -->
-      <div class="contact-info-section">
-        <h2>Get in touch</h2>
-        <p class="pwhite">Reach out through any channel</p>
+      <!-- PRIMARY CONTACT METHODS -->
+      <section class="contact-info-section">
+        <h2>Contact Us</h2>
+        <p>Choose your preferred way to reach us</p>
 
-        <div class="info-card">
-          <div class="info-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
+        <div class="info-cards-grid">
+          
+          <!-- Sales Card -->
+          <div class="info-card">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </div>
+            <div class="info-card-content">
+              <h3>Talk to Sales</h3>
+              <p>Interested in Global Compass? Just pick up the phone to chat with a member of our sales team.</p>
+              <a href="tel:+96178864064">+961 78 864 064</a>
+              <a class="contact-btn" href="https://wa.me/96178864064" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+            </div>
           </div>
-          <div class="info-card-content">
-            <h3>Email</h3>
-            <a href="mailto:support@globalcompass.example">support@globalcompass.example</a>
-          </div>
-        </div>
 
-        <div class="info-card">
-          <div class="info-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
-            </svg>
+          <!-- Support Card -->
+          <div class="info-card">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+              </svg>
+            </div>
+            <div class="info-card-content">
+              <h3>Contact Support</h3>
+              <p>Sometimes you need a little help from your friends. Or a Global Compass support rep. We're here for you.</p>
+              <a href="mailto:support@globalcompass.example">support@globalcompass.example</a>
+              <button class="contact-btn" onclick="document.querySelector('.contact-form').scrollIntoView({behavior:'smooth'})">Send Message</button>
+            </div>
           </div>
-          <div class="info-card-content">
-            <h3>Phone</h3>
-            <a href="https://wa.me/96178864064" target="_blank">+961 78 864 064</a>
-          </div>
-        </div>
 
-        <div class="info-card">
-          <div class="info-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-          </div>
-          <div class="info-card-content">
-            <h3>Office</h3>
-            <p>Lebanon,beirut</p>
-          </div>
         </div>
-
-        <div class="info-card">
-          <div class="info-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12 6 12 12 16 14"/>
-            </svg>
-          </div>
-          <div class="info-card-content">
-            <h3>Hours</h3>
-            <p>Mon - Fri: 9am - 6pm<br />Sat - Sun: 10am - 4pm</p>
-          </div>
-        </div>
-      </div>
+      </section>
 
       <!-- CONTACT FORM SECTION -->
-      <div class="contact-form-section">
-        <div class="contact-form" id="Light-mode">
+      <section class="contact-form-section">
+        <div class="contact-form">
           <h2>Send us a message</h2>
           <p>We'll get back to you as soon as possible</p>
 
-          <div class="field" class="Light-mode">
+          <div class="field">
             <label for="c-name">Full name</label>
             <input id="c-name" class="field-input" type="text" placeholder="Jane Doe" required />
           </div>
 
-          <div class="field" class="Light-mode">
+          <div class="field">
             <label for="c-email">Email</label>
             <input id="c-email" class="field-input" type="email" placeholder="jane@example.com" required />
           </div>
 
           <div class="field">
-            <label for="c-subject" class="Light-mode">Subject</label>
+            <label for="c-subject">Subject</label>
             <input id="c-subject" class="field-input" type="text" placeholder="How can we help?" required />
           </div>
 
           <div class="field">
-            <label for="c-message" class="Light-mode">Message</label>
+            <label for="c-message">Message</label>
             <textarea id="c-message" class="field-textarea" placeholder="Write your message..." required></textarea>
           </div>
 
-          <div class="contact-actions" class="Light-mode">
+          <div class="contact-actions">
             <button id="contact-submit-btn" class="contact-btn" type="button">Send message</button>
           </div>
           
           <p id="contact-msg" class="contact-msg" role="alert" aria-live="polite"></p>
         </div>
-      </div>
+      </section>
+
     </div>
   </main>
 
