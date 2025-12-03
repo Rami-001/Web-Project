@@ -381,16 +381,19 @@
 	box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 	animation: fadeIn 0.3s ease;
 	box-sizing: border-box;
+	border: 1px solid #1a254a;
 }
 
 .plan-modal h3 {
 	font-size: 1.6rem;
 	margin-bottom: 15px;
+	font-weight: 800;
 }
 
 .plan-modal p {
 	font-size: 1rem;
 	margin: 10px 0;
+	font-weight: 600;
 }
 
 .modal-actions {
@@ -418,16 +421,18 @@
 
 .modal-actions .confirm-btn:hover {
 	background: #0fa0c7;
+	transform: translateY(-2px);
+	box-shadow: 0 6px 16px rgba(25, 188, 220, 0.3);
 }
 
 .modal-actions .cancel-btn {
-	background: #ffffff !important;
-	color: #0f223d !important;
+	background: #334155;
+	color: #e2e8f0;
 	box-shadow: none;
 }
 
 .modal-actions .cancel-btn:hover {
-	background: #e0e0e0 !important;
+	background: #475569;
 	transform: translateY(-2px);
 	box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
@@ -446,6 +451,7 @@
 	z-index: 10000;
 	box-shadow: 0 6px 15px rgba(0,0,0,0.4);
 }
+
 @keyframes fadeIn {
 	from { opacity: 0; transform: scale(0.95); }
 	to   { opacity: 1; transform: scale(1); }

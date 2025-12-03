@@ -797,3 +797,52 @@ body.light-mode .faq p {
 	color: #4a5568;
 	font-weight: 600;
 }
+body.light-mode .plan-modal-overlay {
+	background: rgba(0, 0, 0, 0.5);
+}
+
+body.light-mode .plan-modal {
+	background: #ffffff;
+	color: #1a1a2e;
+	border: 1px solid rgba(0, 102, 204, 0.15);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode .plan-modal h3 {
+	color: #0066cc;
+	font-weight: 800;
+}
+
+body.light-mode .plan-modal p {
+	color: #4a5568;
+	font-weight: 600;
+}
+
+body.light-mode .modal-actions .confirm-btn {
+	background: #0066cc;
+	color: #ffffff;
+}
+
+body.light-mode .modal-actions .confirm-btn:hover {
+	background: #0052a3;
+	box-shadow: 0 6px 16px rgba(0, 102, 204, 0.3);
+}
+
+body.light-mode .modal-actions .cancel-btn {
+	background: #f1f5f9;
+	color: #0066cc;
+	border: 1px solid rgba(0, 102, 204, 0.2);
+}
+
+body.light-mode .modal-actions .cancel-btn:hover {
+	background: #e2e8f0;
+	color: #0052a3;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .payment-loading {
+	background: #ffffff;
+	color: #0066cc;
+	border: 1px solid rgba(0, 102, 204, 0.2);
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
