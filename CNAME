@@ -1,1 +1,4 @@
-www.global-compass.com
+Type: CNAME
+Name: @
+Target: www.global-compass.com
+Proxy: OFF (DNS Only)
