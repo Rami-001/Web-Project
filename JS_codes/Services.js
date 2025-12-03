@@ -142,7 +142,6 @@ $(document).ready(function () {
         // Local image - add correct path
         imageSrc = imageSrc.replace('imgs/', '../imgs/');
       }
-      
       let $card = $(`
         <div class="service-card ${isFavorite ? "favorite-card" : ""}">
           <img src="${imageSrc}" alt="${s.name}">
