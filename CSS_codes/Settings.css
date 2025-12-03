@@ -447,3 +447,103 @@ html, body {
 		height: 60px;
 	}
 }
+
+/* =========================================================
+    RESPONSIVE - EXTRA SMALL MOBILE (340px and less)
+    ========================================================= */
+@media (max-width: 340px) {
+	.settings-main {
+		padding-top: 56px;
+	}
+
+	.settings-hero {
+		padding: 12px 6px;
+	}
+
+	.settings-hero h1 {
+		font-size: clamp(0.95rem, 2.8vw, 1.1rem);
+		margin-bottom: 2px;
+	}
+
+	.settings-hero p {
+		font-size: 0.75rem;
+	}
+
+	.settings-grid {
+		gap: 8px;
+		padding: 0 6px;
+		margin: 10px auto;
+		padding-bottom: 10px;
+	}
+
+	.settings-card {
+		padding: 10px;
+	}
+
+	.settings-card h2 {
+		font-size: 0.85rem;
+		margin-bottom: 8px;
+		font-weight: 600;
+	}
+
+	.settings-card.danger-zone {
+		padding: 10px;
+	}
+
+	.profile-display {
+		flex-direction: column;
+		gap: 8px;
+		align-items: center;
+	}
+
+	.avatar-large {
+		width: 45px;
+		height: 45px;
+	}
+
+	.avatar-edit-btn {
+		width: 22px;
+		height: 22px;
+	}
+
+	.avatar-edit-btn svg {
+		width: 10px;
+		height: 10px;
+	}
+
+	.profile-name {
+		font-size: 0.8rem;
+	}
+
+	.profile-email {
+		font-size: 0.7rem;
+	}
+
+	.settings-label {
+		font-size: 0.7rem;
+		margin-bottom: 2px;
+	}
+
+	.settings-input,
+	.settings-select {
+		padding: 6px 7px;
+		font-size: 0.75rem;
+	}
+
+	.settings-btn {
+		padding: 6px 8px;
+		font-size: 0.7rem;
+		width: 100%;
+	}
+
+	.settings-msg {
+		font-size: 0.65rem;
+		padding: 3px 6px;
+		margin-top: 4px;
+	}
+
+	.settings-hint {
+		font-size: 0.7rem;
+		margin-top: 2px;
+	}
+}

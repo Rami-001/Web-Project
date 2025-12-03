@@ -180,3 +180,53 @@
 		font-size: 0.85rem;
 	}
 }
+
+/* =========================================================
+    RESPONSIVE - EXTRA SMALL MOBILE (340px and less)
+    ========================================================= */
+@media (max-width: 340px) {
+	.auth-page {
+		min-height: 45vh;
+		padding: 16px 6px;
+	}
+
+	.auth-form {
+		width: 100%;
+		padding: 12px 10px;
+		gap: 10px;
+	}
+
+	.auth-title {
+		font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+		margin-bottom: 2px;
+	}
+
+	.auth-input {
+		padding: 8px 8px;
+		font-size: 0.75rem;
+	}
+
+	.auth-input::placeholder {
+		font-size: 0.7rem;
+	}
+
+	.auth-btn {
+		padding: 7px 8px;
+		font-size: 0.75rem;
+		border-radius: 4px;
+	}
+
+	.auth-msg {
+		font-size: 0.7rem;
+		min-height: 0.8rem;
+	}
+
+	.auth-switch {
+		font-size: 0.7rem;
+		margin-top: 0;
+	}
+
+	.auth-switch a {
+		font-weight: 600;
+	}
+}

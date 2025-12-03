@@ -596,7 +596,85 @@
 		margin: 24px auto;
 	}
 }
-#mobile-settings {
-  display: none;
+
+/* =========================================================
+    RESPONSIVE - EXTRA SMALL MOBILE (340px and less)
+    ========================================================= */
+@media (max-width: 340px) {
+	.about-main {
+		padding-top: 56px;
+	}
+
+	.about-hero {
+		padding: 12px 6px 8px;
+	}
+
+	.about-hero h1 {
+		font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+		margin-bottom: 6px;
+	}
+
+	.about-lead {
+		font-size: 0.8rem;
+		line-height: 1.4;
+	}
+
+	.about-section {
+		padding: 20px 6px;
+	}
+
+	.about-section h2 {
+		font-size: 0.95rem;
+		margin-bottom: 8px;
+	}
+
+	.about-desc {
+		font-size: 0.8rem;
+		line-height: 1.4;
+		margin-bottom: 10px;
+	}
+
+	.about-list {
+		gap: 6px;
+	}
+
+	.about-list li {
+		font-size: 0.8rem;
+		padding-left: 18px;
+		line-height: 1.3;
+	}
+
+	.about-steps-grid {
+		gap: 8px;
+		margin-top: 10px;
+	}
+
+	.step {
+		padding: 10px 8px;
+		gap: 4px;
+	}
+
+	.step-number {
+		width: 30px;
+		height: 30px;
+		font-size: 0.95rem;
+	}
+
+	.step h3 {
+		font-size: 0.8rem;
+	}
+
+	.step p {
+		font-size: 0.75rem;
+	}
+
+	.about-cta h2 {
+		font-size: 1.1rem;
+	}
+
+	.about-cta-btn {
+		padding: 8px 14px;
+		font-size: 0.75rem;
+	}
 }
 
