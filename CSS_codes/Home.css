@@ -10,6 +10,7 @@
   width: 100%;
 }
 .background-content {
+	display: flex;
   position: relative;
   z-index: 1;
   text-align: center;
@@ -180,31 +181,9 @@
 .info-section {
   padding-top: 2rem;
   padding-bottom: 2rem;
-
-  background: linear-gradient(
-    135deg,
-    rgba(59, 157, 217, 0.08) 0%,
-    rgba(139, 92, 246, 0.06) 100%
-  );
+  background: linear-gradient(135deg,rgba(59, 157, 217, 0.08) 0%,rgba(139, 92, 246, 0.06) 100%);
   border-top: 1px solid rgba(59, 157, 217, 0.15);
   transition: all 0.3s ease;
-}
-@keyframes infoShrink {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0.85); /* smaller size */
-  }
-}
-
-@keyframes statsShrink {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0.5);
-  }
 }
 .content {
   width: min(var(--wrap), 60%);
@@ -315,32 +294,6 @@
     height: 500px;
     transition: all 0.3s ease;
   }
-  @keyframes slide {
-    0% {
-      transform: translateX(0);
-    }
-    12.5% {
-      transform: translateX(-1050px);
-    }
-    25% {
-      transform: translateX(-2100px);
-    }
-    37.5% {
-      transform: translateX(-3150px);
-    }
-    50% {
-      transform: translateX(-4200px);
-    }
-    62.5% {
-      transform: translateX(-5250px);
-    }
-    75% {
-      transform: translateX(-6300px);
-    }
-    87.5% {
-      transform: translateX(-7380px);
-    }
-  }
   .Box {
     width: 400px;
     height: 300px;
@@ -415,32 +368,6 @@
     height: 400px;
     transition: all 0.3s ease;
   }
-  @keyframes slide {
-    0% {
-      transform: translateX(100px);
-    }
-    12.5% {
-      transform: translateX(-850px);
-    }
-    25% {
-      transform: translateX(-1700px);
-    }
-    37.5% {
-      transform: translateX(-2550px);
-    }
-    50% {
-      transform: translateX(-3400px);
-    }
-    62.5% {
-      transform: translateX(-4250px);
-    }
-    75% {
-      transform: translateX(-5100px);
-    }
-    87.5% {
-      transform: translateX(-5950px);
-    }
-  }
   .Box {
     width: 350px;
     height: 300px;
@@ -486,32 +413,6 @@
     height: 400px;
     transition: all 0.3s ease;
   }
-  @keyframes slide {
-    0% {
-      transform: translateX(100px);
-    }
-    12.5% {
-      transform: translateX(-850px);
-    }
-    25% {
-      transform: translateX(-1700px);
-    }
-    37.5% {
-      transform: translateX(-2550px);
-    }
-    50% {
-      transform: translateX(-3400px);
-    }
-    62.5% {
-      transform: translateX(-4250px);
-    }
-    75% {
-      transform: translateX(-5100px);
-    }
-    87.5% {
-      transform: translateX(-5950px);
-    }
-  }
   .Box {
     width: 350px;
     height: 300px;
@@ -549,32 +450,6 @@
     width: 700px;
     height: 300px;
     transition: all 0.3s ease;
-  }
-  @keyframes slide {
-    0% {
-      transform: translateX(100px);
-    }
-    12.5% {
-      transform: translateX(-750px);
-    }
-    25% {
-      transform: translateX(-1500px);
-    }
-    37.5% {
-      transform: translateX(-2250px);
-    }
-    50% {
-      transform: translateX(-3000px);
-    }
-    62.5% {
-      transform: translateX(-3750px);
-    }
-    75% {
-      transform: translateX(-4500px);
-    }
-    87.5% {
-      transform: translateX(-5250px);
-    }
   }
   .Box {
     width: 350px;
@@ -628,32 +503,6 @@
     width: 600px;
     height: 300px;
     transition: all 0.3s ease;
-  }
-  @keyframes slide {
-    0% {
-      transform: translateX(100px);
-    }
-    12.5% {
-      transform: translateX(-650px);
-    }
-    25% {
-      transform: translateX(-1300px);
-    }
-    37.5% {
-      transform: translateX(-1950px);
-    }
-    50% {
-      transform: translateX(-2600px);
-    }
-    62.5% {
-      transform: translateX(-3250px);
-    }
-    75% {
-      transform: translateX(-3900px);
-    }
-    87.5% {
-      transform: translateX(-4550px);
-    }
   }
   .Box {
     width: 350px;
@@ -720,38 +569,32 @@
     height: 250px;
     transition: all 0.3s ease;
   }
-  @keyframes slide {
-    0% {
-      transform: translateX(100px);
-    }
-    12.5% {
-      transform: translateX(-500px);
-    }
-    25% {
-      transform: translateX(-1000px);
-    }
-    37.5% {
-      transform: translateX(-1500px);
-    }
-    50% {
-      transform: translateX(-2000px);
-    }
-    62.5% {
-      transform: translateX(-2500px);
-    }
-    75% {
-      transform: translateX(-3000px);
-    }
-    87.5% {
-      transform: translateX(-3500px);
-    }
-  }
 }
 
 /* =========================================================
     RESPONSIVE - EXTRA SMALL MOBILE (340px and less)
     ========================================================= */
-@media (max-width: 340px) {
+ @media (max-width: 340px) {
+.info-section{
+	width: 90%;
+}
+.images .image img {
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+ }
+ .image h2{
+	font-size: 1.5rem;
+ }
+ .background img{
+	width: 60px;
+	height: auto;
+ }
+ .background-content {
+	flex-direction: column;
+ }
+}
+/* @media (max-width: 340px) {
   .background {
     min-height: 30vh;
   }
@@ -795,33 +638,6 @@
 
   .images .image:hover h2 {
     font-size: 1.1rem;
-  }
-
-  @keyframes slide {
-    0% {
-      transform: translateX(80px);
-    }
-    12.5% {
-      transform: translateX(-305px);
-    }
-    25% {
-      transform: translateX(-630px);
-    }
-    37.5% {
-      transform: translateX(-955px);
-    }
-    50% {
-      transform: translateX(-1280px);
-    }
-    62.5% {
-      transform: translateX(-1605px);
-    }
-    75% {
-      transform: translateX(-1930px);
-    }
-    87.5% {
-      transform: translateX(-2255px);
-    }
   }
 
   .Bigbox {
@@ -908,4 +724,4 @@
     font-size: 0.75rem;
     font-weight: 700;
   }
-}
+} */
