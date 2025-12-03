@@ -30,6 +30,7 @@
 }
 
 .contact-hero p {
+  color: #ffffff;
   font-style: italic;
   font-weight: 600;
   font-size: 1.1rem;
@@ -71,6 +72,7 @@
 }
 
 .contact-info-section > p {
+  color: #ffffff;
 font-style: italic;
   font-weight: 600;
   font-size: 1rem;
