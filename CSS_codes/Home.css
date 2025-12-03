@@ -41,12 +41,10 @@
 /* Image Slider */
 .image-slider {
   overflow: hidden;
-  margin-top: 120px;
   position: relative;
   width: 100%;
   backdrop-filter: blur(15px);
-  padding-top: 60px;
-  padding-bottom: 20px;
+  padding-top: 40px;
 }
 .images {
   display: flex;
@@ -272,10 +270,6 @@
 }
 /* ---------- 1200px ---------- */
 @media (max-width: 1200px) {
-  .contact-wrapper {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
   .Box {
     width: 400px;
     height: 300px;
@@ -393,12 +387,6 @@
 @media (max-width: 768px) {
   .home-cta-stats {
     grid-template-columns: 1fr;
-  }
-  footer {
-    padding: 12px 14px;
-  }
-  .contact-form {
-    padding: 24px;
   }
 .info-section{
 	width: 90%;
