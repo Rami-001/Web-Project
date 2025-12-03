@@ -120,7 +120,7 @@
   flex-wrap: wrap;
 }
 .service-card:hover {
-  transform: translateY(-6px);
+  transform: scale(1.05) translateY(-6px);
   box-shadow: 0 12px 25px rgba(25, 188, 220, 0.25);
   border-color: #3b9dd9;
 }
