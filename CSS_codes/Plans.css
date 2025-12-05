@@ -3,8 +3,7 @@
     ========================================================= */
 .Plan-container {
 	max-width: 1200px;
-	margin: 0 auto;
-	padding: 0 20px;
+	margin:auto;
 }
 
 .Plan-header {
@@ -112,11 +111,10 @@
 	display: flex;
 	justify-content: center;
 	align-items: stretch;
-	gap: clamp(20px, 5vw, 50px);
-	padding: clamp(20px, 4vw, 40px) clamp(10px, 3vw, 20px);
 	flex-wrap: wrap;
 	width: 100%;
-	box-sizing: border-box;
+	gap: 50px;
+	margin-bottom: 50px;
 }
 
 .card {
@@ -129,7 +127,7 @@
 	transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 	border: 2px solid transparent;
 	width: clamp(280px, 90vw, 400px);
-	box-sizing: border-box;
+	margin-bottom: 50px;
 }
 
 .card:hover {
@@ -464,17 +462,17 @@
 		padding: 30px 16px;
 	}
 }
+@media (max-width: 960px) {
+	.Plan-header{
+		margin-top: 100px;
+	}
+}
 /* =========================================================
     RESPONSIVE - MOBILE (600px)
     ========================================================= */
 @media (max-width: 600px) {
 	.Plan-container {
 		padding: 0 14px;
-	}
-
-	.Plan-header {
-		margin: 24px 0;
-		padding: 24px 14px;
 	}
 
 	.Plan-header h1 {

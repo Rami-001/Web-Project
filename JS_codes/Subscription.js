@@ -5,18 +5,24 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "login.html";
     return;
   }
-  let billingToggle = document.getElementById("billing-toggle");
+
+  const billingToggle = document.getElementById("billing-toggle");
   let planContainer = document.querySelector(".Plan-cards");
 
-  // ========== UPDATE ACTIVATED TEXT & BUTTONS ==========
+  // ----------------------------
+  // Update "This plan is Activated" + buttons for each card
+  // ----------------------------
   function updateActivatedText() {
     let currentPlan = (localStorage.getItem("userPlan") || "").toLowerCase();
+
     document.querySelectorAll(".card").forEach((card) => {
       let planName = card.querySelector("h2").textContent.trim().toLowerCase();
       let chooseBtn = card.querySelector(".choose-plan-btn");
       let cancelBtn = card.querySelector(".cancel-plan-btn");
       let activatedText = card.querySelector(".activated-plan");
+
       if (!chooseBtn || !cancelBtn || !activatedText) return;
+
       if (currentPlan && planName === currentPlan) {
         activatedText.style.display = "block";
         activatedText.textContent = "This plan is Activated!!";
@@ -31,13 +37,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ========== SAVE PLAN TO STORAGE ==========
+  // ----------------------------
+  // Save plan to localStorage
+  // ----------------------------
   function savePlan(planKey) {
     localStorage.setItem("userPlan", planKey);
     updateActivatedText();
   }
 
-  // ========== SHOW PLAN MODAL ==========
+  // ----------------------------
+  // Show Plan Modal
+  // ----------------------------
   function showPlanModal(planName, planKey, isYearly) {
     let modal = document.createElement("div");
     modal.className = "plan-modal-overlay";
@@ -52,15 +62,20 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
       </div>
     `;
+
     document.body.appendChild(modal);
+
     // Prevent clicks inside modal from closing it
     modal.querySelector(".plan-modal").addEventListener("click", (e) => {
       e.stopPropagation();
     });
+
     // Close when clicking outside modal
     modal.addEventListener("click", () => modal.remove());
+
     // Close when pressing Cancel in modal
     modal.querySelector(".cancel-btn").onclick = () => modal.remove();
+
     // Confirm purchase → save plan AND CLOSE POPUP
     modal.querySelector(".confirm-btn").onclick = () => {
       savePlan(planKey);
@@ -68,7 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // ========== BILLING TOGGLE ==========
+  // ----------------------------
+  // Billing Toggle
+  // ----------------------------
   if (billingToggle) {
     billingToggle.addEventListener("change", () => {
       let isYearly = billingToggle.checked;
@@ -81,7 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ========== PLAN BUTTONS CLICK HANDLER ==========
+  // ----------------------------
+  // Plan Buttons Click (Event Delegation)
+  // ----------------------------
   if (planContainer) {
     planContainer.addEventListener("click", (e) => {
       // If user clicks a cancel-plan button → cancel immediately
@@ -91,14 +110,18 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Your plan has been canceled.");
         return; // STOP → important!!
       }
+
       // Handle only "Choose Plan" button
       let btn = e.target.closest(".choose-plan-btn");
       if (!btn) return;
+
       let card = btn.closest(".card");
       if (!card) return;
+
       let planName = card.querySelector("h2").textContent.trim();
       let planKey = planName.toLowerCase();
       let isYearly = billingToggle?.checked || false;
+
       showPlanModal(planName, planKey, isYearly);
     });
   }

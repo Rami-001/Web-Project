@@ -1,361 +1,243 @@
-// ========== APPLY SAVED THEME ON PAGE LOAD ==========
+// =====================================================
+// APPLY SAVED THEME BEFORE DOM READY
+// =====================================================
 function applyGlobalTheme() {
 	let savedTheme = localStorage.getItem('gc_theme_mode') || 'dark';
-	if (savedTheme === 'light') {
-		document.body.classList.add('light-mode');
-	} else {
-		document.body.classList.remove('light-mode');
-	}
+	document.body.classList.toggle('light-mode', savedTheme === 'light');
 }
-
-// Apply theme immediately before DOM ready
 applyGlobalTheme();
 
+
+// =====================================================
+// MAIN NAVBAR SYSTEM
+// =====================================================
 $(document).ready(function () {
-    // =========================
-    // NAVBAR TOGGLE
-    // =========================
-    let $header = $('.nav-bar');
-    let $toggle = $('.nav-toggle');
-    let $linksPanel = $('#nav-links');
-    
-    if ($toggle.length && $header.length && $linksPanel.length) {
-        let closeMenu = () => {
-            $header.removeClass('nav-open');
-            $('body').css('overflow', '');
-            $toggle.attr('aria-expanded', 'false');
-        };
-        let openMenu = () => {
-            $header.addClass('nav-open');
-            $('body').css('overflow', 'hidden');
-            $toggle.attr('aria-expanded', 'true');
-        };
 
-        $toggle.on('click', function () {
-            $header.hasClass('nav-open') ? closeMenu() : openMenu();
-        });
+	// ========= MOBILE BREAKPOINT =========
+	const MOBILE_WIDTH = 960;
+	let isMobile = window.innerWidth <= MOBILE_WIDTH;
 
-        $(document).on('keydown', function (e) {
-            if (e.key === 'Escape' && $header.hasClass('nav-open')) {
-                closeMenu();
-            }
-        });
-
-        $(document).on('click', function (e) {
-            if ($header.hasClass('nav-open') && !$header.has(e.target).length && !$toggle.is(e.target)) {
-                closeMenu();
-            }
-        });
-
-        let mq = window.matchMedia('(min-width: 961px)');
-        mq.addEventListener('change', ev => {
-            if (ev.matches) closeMenu();
-        });
-    }
-
-    // =========================
-    // DROPDOWN
-    // =========================
-    let $servicesLink = $('.dropdown a');
-    let $dropdownMenu = $('.dropdown-content');
-
-    if ($servicesLink.length && $dropdownMenu.length) {
-        let hideTimeout;
-        let isMobile = $(window).width() <= 960;
-        
-        $(window).on('resize', function () {
-            isMobile = $(this).width() <= 960;
-        });
-
-        $servicesLink.on('mouseenter', function () {
-            if (!isMobile) {
-                clearTimeout(hideTimeout);
-                $dropdownMenu.addClass('visible');
-            }
-        });
-
-        $servicesLink.on('mouseleave', function () {
-            if (!isMobile) {
-                hideTimeout = setTimeout(() => {
-                    $dropdownMenu.removeClass('visible');
-                }, 500);
-            }
-        });
-
-        $dropdownMenu.on('mouseenter', function () {
-            if (!isMobile) {
-                clearTimeout(hideTimeout);
-                $dropdownMenu.addClass('visible');
-            }
-        });
-
-        $dropdownMenu.on('mouseleave', function () {
-            if (!isMobile) {
-                hideTimeout = setTimeout(() => {
-                    $dropdownMenu.removeClass('visible');
-                }, 500);
-            }
-        });
-
-        let dropdownOpenedOnce = false;
-        $servicesLink.on('click', function (e) {
-            if (!$dropdownMenu.hasClass('visible')) {
-                e.preventDefault();
-                $dropdownMenu.addClass('visible');
-                dropdownOpenedOnce = true;
-                return;
-            }
-            if (dropdownOpenedOnce) {
-                window.location.href = 'Services.html';
-            }
-        });
-
-        $(document).on('click', function (e) {
-            if (!$servicesLink.is(e.target) && !$dropdownMenu.has(e.target).length) {
-                $dropdownMenu.removeClass('visible');
-                dropdownOpenedOnce = false;
-            }
-        });
-
-        $(document).on('keydown', function (e) {
-            if (e.key === 'Escape') {
-                $dropdownMenu.removeClass('visible');
-                dropdownOpenedOnce = false;
-            }
-        });
-    }
-
-    // =========================
-    // PROFILE DROPDOWN
-    // =========================
-    let $profileDropdown = $('.profile-dropdown');
-    if ($profileDropdown.length) {
-        let $profileImg = $profileDropdown.find('img');
-        $profileImg.on('click', function () {
-            $profileDropdown.toggleClass('open');
-        });
-
-        $(document).on('click', function (e) {
-            if (!$profileDropdown.has(e.target).length) {
-                $profileDropdown.removeClass('open');
-            }
-        });
-    }
-
-    // =========================
-    // SMOOTH SCROLL
-    // =========================
-    $('a[href^="#"]').on('click', function (e) {
-        let href = $(this).attr('href');
-        if (href !== '#' && $(href).length) {
-            e.preventDefault();
-            let target = $(href);
-            $('html, body').animate({
-                scrollTop: target.offset().top
-            }, 500);
-        }
-    });
-
-	// Listen for theme changes
-	window.addEventListener('themeChanged', function(e) {
-		applyGlobalTheme();
+	$(window).on('resize', () => {
+		isMobile = window.innerWidth <= MOBILE_WIDTH;
+		updateServicesBehavior();
 	});
 
-	// Listen for storage changes from other tabs
-	window.addEventListener('storage', function(e) {
-		if (e.key === 'gc_theme_mode') {
-			applyGlobalTheme();
+
+	// =====================================================
+	// NAVBAR TOGGLE (BURGER MENU)
+	// =====================================================
+	const $navBar = $('.nav-bar');
+	const $navToggle = $('.nav-toggle');
+
+	function openMenu() {
+		$navBar.addClass('nav-open');
+		$('body').css('overflow', 'hidden');
+	}
+	function closeMenu() {
+		$navBar.removeClass('nav-open');
+		$('body').css('overflow', '');
+	}
+
+	$navToggle.on('click', () => {
+		$navBar.hasClass('nav-open') ? closeMenu() : openMenu();
+	});
+
+	// Close when clicking outside
+	$(document).on('click', (e) => {
+		if ($navBar.hasClass('nav-open') && !$navBar.has(e.target).length && !$navToggle.is(e.target)) {
+			closeMenu();
 		}
 	});
+
+	// Close when switching to desktop
+	window.matchMedia('(min-width: 960px)').addEventListener('change', ev => {
+		if (ev.matches) closeMenu();
+	});
+
+
+	// =====================================================
+	// SERVICES DROPDOWN SYSTEM
+	// =====================================================
+	const $servicesLink = $('.dropdown > a');
+	const $servicesDropdown = $('.dropdown-content');
+	let servicesOpenedOnce = false;
+
+	// --- DESKTOP MODE ---
+	function enableDesktopServices() {
+		$servicesLink.off();
+		$servicesDropdown.off();
+		$servicesDropdown.removeClass('visible');
+		servicesOpenedOnce = false;
+
+		// Hover open
+		$servicesLink.on('mouseenter', () => $servicesDropdown.addClass('visible'));
+		$servicesDropdown.on('mouseenter', () => $servicesDropdown.addClass('visible'));
+
+		// Hover close
+		$servicesLink.on('mouseleave', () => setTimeout(() => $servicesDropdown.removeClass('visible'), 300));
+		$servicesDropdown.on('mouseleave', () => setTimeout(() => $servicesDropdown.removeClass('visible'), 300));
+
+		// Desktop 2-click rule
+		$servicesLink.on('click', function (e) {
+			if (!$servicesDropdown.hasClass('visible')) {
+				e.preventDefault();
+				$servicesDropdown.addClass('visible');
+				servicesOpenedOnce = true;
+				return;
+			}
+			if (servicesOpenedOnce) {
+				window.location.href = 'Services.html';
+			}
+		});
+
+		// Click outside closes dropdown
+		$(document).on('click', (e) => {
+			if (!$servicesLink.is(e.target) && !$servicesDropdown.has(e.target).length) {
+				$servicesDropdown.removeClass('visible');
+				servicesOpenedOnce = false;
+			}
+		});
+	}
+
+	// --- MOBILE MODE ---
+	function enableMobileServices() {
+		$servicesLink.off();
+		$servicesDropdown.removeClass('visible');
+
+		// Direct navigation on first click
+		$servicesLink.on('click', function () {
+			window.location.href = 'Services.html';
+		});
+	}
+
+	// --- SWITCH BEHAVIOR ---
+	function updateServicesBehavior() {
+		isMobile ? enableMobileServices() : enableDesktopServices();
+	}
+	updateServicesBehavior();
+
+
+	// =====================================================
+	// PROFILE DROPDOWN (DESKTOP ONLY)
+	// =====================================================
+	let $profileDropdown = $('.profile-dropdown');
+
+	if ($profileDropdown.length) {
+		let $img = $profileDropdown.find('img');
+		$img.on('click', () => $profileDropdown.toggleClass('open'));
+
+		$(document).on('click', (e) => {
+			if (!$profileDropdown.has(e.target).length) {
+				$profileDropdown.removeClass('open');
+			}
+		});
+	}
+
+
+	// =====================================================
+	// SMOOTH SCROLL
+	// =====================================================
+	$('a[href^="#"]').on('click', function (e) {
+		let href = $(this).attr('href');
+		if (href !== '#' && $(href).length) {
+			e.preventDefault();
+			$('html, body').animate({ scrollTop: $(href).offset().top }, 500);
+		}
+	});
+
+
+	// Theme updates across tabs
+	window.addEventListener('storage', function (e) {
+		if (e.key === 'gc_theme_mode') applyGlobalTheme();
+	});
+
 });
 
-// ========== GLOBAL AUTH & PROFILE SYNC ==========
-document.addEventListener('DOMContentLoaded', function() {
+
+// =====================================================
+// AUTH SYSTEM (LOGIN/LOGOUT + SYNC + PROFILE)
+// =====================================================
+document.addEventListener('DOMContentLoaded', function () {
+
 	let currentUser = localStorage.getItem('gc_current_user');
-	
+
 	if (currentUser) {
-		let user = JSON.parse(currentUser);
-		let storedUser = JSON.parse(localStorage.getItem('gc_user_' + user.email));
+		let sessionUser = JSON.parse(currentUser);
+		let storedUser = JSON.parse(localStorage.getItem('gc_user_' + sessionUser.email));
 
 		if (storedUser) {
-			showLoggedInUI(user, storedUser);
+			showLoggedInUI(storedUser);
 			setupLogout();
-			syncProfileData(user, storedUser);
-			startContinuousSync(user, storedUser);
+			updateProfileAvatar(storedUser);
+			syncProfileName(storedUser);
 		}
 	} else {
 		showLoggedOutUI();
 	}
 
-	function showLoggedInUI(userSession, userStored) {
-		let welcomeEl = document.getElementById('welcome-user');
-		let userNameEl = document.getElementById('user-name');
-		let loginSignupDiv = document.querySelector('.Login-Signup');
-		let profileDropdown = document.querySelector('.profile-dropdown');
-		
-		// Hide desktop login/register, show profile dropdown
-		if (loginSignupDiv) loginSignupDiv.style.display = 'none';
-		if (profileDropdown) profileDropdown.style.display = 'flex';
-		if (userNameEl) userNameEl.textContent = userStored.name;
-		if (welcomeEl) welcomeEl.style.display = 'inline';
-		
-		// Hide mobile login/register, show only logout
-		let mobileLoginLinks = document.querySelectorAll('.mobile-auth');
-		mobileLoginLinks.forEach(link => {
-			let isLogout = link.querySelector('#logout-link-mobile');
-			link.style.display = isLogout ? 'list-item' : 'none';
-		});
+
+	// =====================================================
+	// UI UPDATES
+	// =====================================================
+	function showLoggedInUI(user) {
+		document.querySelector('.Login-Signup')?.style.setProperty('display', 'none');
+		document.querySelector('.profile-dropdown')?.style.setProperty('display', 'flex');
+		document.getElementById('user-name').textContent = user.name;
+
+		// Show all mobile menu items
+		let mobileItems = document.querySelectorAll('.mobile-auth');
+		mobileItems.forEach(item => item.style.display = 'list-item');
 	}
 
 	function showLoggedOutUI() {
-		let welcomeEl = document.getElementById('welcome-user');
-		let loginSignupDiv = document.querySelector('.Login-Signup');
-		let profileDropdown = document.querySelector('.profile-dropdown');
-		
-		// Show desktop login/register, hide profile dropdown
-		if (loginSignupDiv) loginSignupDiv.style.display = 'flex';
-		if (profileDropdown) profileDropdown.style.display = 'none';
-		if (welcomeEl) welcomeEl.style.display = 'none';
-		
-		// Show mobile login/register, hide logout
-		let mobileLoginLinks = document.querySelectorAll('.mobile-auth');
-		mobileLoginLinks.forEach(link => {
-			let isLogout = link.querySelector('#logout-link-mobile');
-			link.style.display = isLogout ? 'none' : 'list-item';
+		document.querySelector('.Login-Signup')?.style.setProperty('display', 'flex');
+		document.querySelector('.profile-dropdown')?.style.setProperty('display', 'none');
+
+		let mobileItems = document.querySelectorAll('.mobile-auth');
+		mobileItems.forEach(item => {
+			let isLogout = item.querySelector('#logout-link-mobile');
+			item.style.display = isLogout ? 'none' : 'list-item';
 		});
 	}
 
-	function syncProfileData(userSession, userStored) {
-		$.getJSON('../JS_codes/data.json', function(data) {
-			let avatarList = data.avatars || [];
-			let avatarIndex = userStored.avatarIndex || 0;
-			let avatarSeed = avatarList[avatarIndex]?.seed || 'Avatar_001';
-			let avatarUrl = 'https://robohash.org/' + encodeURIComponent(avatarSeed) + '?size=32x32&set=set1';
 
-			let navAvatar = document.getElementById('nav-avatar');
-			if (navAvatar) {
-				navAvatar.src = avatarUrl;
-			}
-
-			let userNameEl = document.getElementById('user-name');
-			if (userNameEl) {
-				userNameEl.textContent = userStored.name;
-			}
-		});
-	}
-
+	// =====================================================
+	// LOGOUT SYSTEM
+	// =====================================================
 	function setupLogout() {
-		// Desktop logout
-		let logoutLink = document.getElementById('logout-link');
-		if (logoutLink) {
-			logoutLink.addEventListener('click', function(e) {
-				e.preventDefault();
-				performLogout();
-			});
-		}
-		
-		// Mobile logout
-		let logoutLinkMobile = document.getElementById('logout-link-mobile');
-		if (logoutLinkMobile) {
-			logoutLinkMobile.addEventListener('click', function(e) {
-				e.preventDefault();
-				performLogout();
-			});
-		}
+		document.getElementById('logout-link')?.addEventListener('click', logout);
+		document.getElementById('logout-link-mobile')?.addEventListener('click', logout);
 	}
 
-	function performLogout() {
+	function logout() {
 		localStorage.removeItem('gc_current_user');
-		// Close mobile menu if open
-		let navBar = document.querySelector('.nav-bar');
-		if (navBar) navBar.classList.remove('nav-open');
+		document.querySelector('.nav-bar')?.classList.remove('nav-open');
 		window.location.href = 'index.html';
 	}
 
-	function startContinuousSync(userSession, userStored) {
-		setInterval(function() {
-			let currentUser = localStorage.getItem('gc_current_user');
-			if (!currentUser) return;
 
-			let user = JSON.parse(currentUser);
-			let storedUser = JSON.parse(localStorage.getItem('gc_user_' + user.email));
-
-			if (!storedUser) return;
-
-			let userNameEl = document.getElementById('user-name');
-			if (userNameEl && userNameEl.textContent !== storedUser.name) {
-				userNameEl.textContent = storedUser.name;
-			}
-		}, 100);
+	// =====================================================
+	// PROFILE AVATAR SYNC
+	// =====================================================
+	function updateProfileAvatar(user) {
+		$.getJSON('../JS_codes/data.json', function (data) {
+			let avatarSeed = data.avatars[user.avatarIndex]?.seed || 'Avatar_001';
+			let url = `https://robohash.org/${encodeURIComponent(avatarSeed)}?size=32x32&set=set1`;
+			document.getElementById('nav-avatar').src = url;
+		});
 	}
 
-	// ========== LISTEN FOR PROFILE UPDATES ==========
-	window.addEventListener('profileUpdated', function(e) {
-		console.log('Profile updated:', e.detail.name);
-		let currentUser = localStorage.getItem('gc_current_user');
-		if (!currentUser) return;
-
-		let user = JSON.parse(currentUser);
-		if (e.detail.email === user.email) {
-			let navAvatar = document.getElementById('nav-avatar');
-			let userNameEl = document.getElementById('user-name');
-
-			if (navAvatar && e.detail.avatarSeed) {
-				let avatarUrl = 'https://robohash.org/' + encodeURIComponent(e.detail.avatarSeed) + '?size=32x32&set=set1';
-				navAvatar.src = avatarUrl;
+	// =====================================================
+	// AUTO-SYNC PROFILE NAME
+	// =====================================================
+	function syncProfileName(user) {
+		setInterval(() => {
+			let stored = JSON.parse(localStorage.getItem('gc_user_' + user.email));
+			if (stored && stored.name !== user.name) {
+				document.getElementById('user-name').textContent = stored.name;
+				user.name = stored.name;
 			}
-
-			if (userNameEl && e.detail.name) {
-				userNameEl.textContent = e.detail.name;
-			}
-
-			// Update session storage
-			user.name = e.detail.name;
-			user.avatarIndex = e.detail.avatarIndex;
-			localStorage.setItem('gc_current_user', JSON.stringify(user));
-		}
-	});
-
-	window.addEventListener('storage', function(e) {
-		if (e.key && e.key.startsWith('gc_user_')) {
-			let currentUser = localStorage.getItem('gc_current_user');
-			if (currentUser) {
-				let user = JSON.parse(currentUser);
-				let storedUser = JSON.parse(e.newValue);
-
-				if (storedUser && storedUser.email === user.email) {
-					$.getJSON('../JS_codes/data.json', function(data) {
-						let avatarList = data.avatars || [];
-						let avatarIndex = storedUser.avatarIndex || 0;
-						let avatarSeed = avatarList[avatarIndex]?.seed || 'Avatar_001';
-						let avatarUrl = 'https://robohash.org/' + encodeURIComponent(avatarSeed) + '?size=32x32&set=set1';
-
-						let navAvatar = document.getElementById('nav-avatar');
-						if (navAvatar) {
-							navAvatar.src = avatarUrl;
-						}
-
-						let userNameEl = document.getElementById('user-name');
-						if (userNameEl) {
-							userNameEl.textContent = storedUser.name;
-						}
-					});
-				}
-			}
-		}
-
-		if (e.key === 'gc_dark_mode') {
-			applyGlobalTheme();
-		}
-	});
-});
-
-// ========== THEME LISTENER ==========
-window.addEventListener('storage', function(e) {
-	if (e.key === 'gc_dark_mode') {
-		applyGlobalTheme();
+		}, 120);
 	}
+
 });
-
-
-

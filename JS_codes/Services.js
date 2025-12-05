@@ -142,13 +142,14 @@ $(document).ready(function () {
         // Local image - add correct path
         imageSrc = imageSrc.replace('imgs/', '../imgs/');
       }
+      
       let $card = $(`
         <div class="service-card ${isFavorite ? "favorite-card" : ""}">
           <img src="${imageSrc}" alt="${s.name}">
           <div class="card-content">
             <h2>${s.name}</h2>
             <span class="heart-icon ${isFavorite ? "favorited" : ""}" data-servicename="${s.name}">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="${isFavorite ? "#ff6b6b" : "black"}" stroke="${isFavorite ? "#ff6b6b" : "black"}" stroke-width="2">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="${isFavorite ? "#ff6b6b" : "none"}" stroke="${isFavorite ? "#ff6b6b" : "#ccc"}" stroke-width="2">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
               </svg>
             </span>
@@ -161,7 +162,6 @@ $(document).ready(function () {
           </div>
         </div>
       `);
-
       $container.append($card);
     });
     $(".heart-icon").off("click").on("click", function () {
@@ -189,41 +189,56 @@ $(document).ready(function () {
   // ================================
   // Filtering
   // ================================
-  function filter() {
+function filter() {
     let allServices = load();
     let searchValue = $("#searchInput").val().toLowerCase();
     let sortValue = $("#sortSelect").val() || "";
     let categoryValue = $("#filter-category").val();
     let cityValue = $("#filter-city").val();
     let countryValue = $("#filter-country").val();
+    let filterservice = $("#filter-service").val();
     let favIds = JSON.parse(localStorage.getItem("favIds")) || [];
-    let filtered = allServices.filter((s) => s.name.toLowerCase().includes(searchValue));
+    let filtered = allServices.filter((s) =>
+        s.name.toLowerCase().includes(searchValue)
+    );
     if (categoryValue && categoryValue !== "All")
-      filtered = filtered.filter((s) => s.category === categoryValue);
+        filtered = filtered.filter((s) => s.category === categoryValue);
     if (countryValue && countryValue !== "All")
-      filtered = filtered.filter((s) => s.country.toLowerCase().includes(countryValue.toLowerCase()));
+        filtered = filtered.filter((s) =>
+            s.country.toLowerCase().includes(countryValue.toLowerCase())
+        );
+    if (filterservice && filterservice !== "All")
+        filtered = filtered.filter((s) =>
+  s.name.toLowerCase().includes(filterservice.toLowerCase())
+);
     if (cityValue && cityValue !== "All") {
-      filtered = filtered.filter((s) => {
-        if (Array.isArray(s.city)) return s.city.some((c) => c.toLowerCase().startsWith(cityValue.toLowerCase()));
-        return s.city.toLowerCase().includes(cityValue.toLowerCase());
-      });
+        filtered = filtered.filter((s) => {
+            if (Array.isArray(s.city))
+                return s.city.some((c) =>
+                    c.toLowerCase().startsWith(cityValue.toLowerCase())
+                );
+            return s.city.toLowerCase().includes(cityValue.toLowerCase());
+        });
     }
-    if (sortValue === "name-asc") filtered.sort((a, b) => a.name.localeCompare(b.name));
-    else if (sortValue === "name-desc") filtered.sort((a, b) => b.name.localeCompare(a.name));
-    else if (sortValue === "fav-services") filtered = filtered.filter((s) => favIds.includes(s.name));
-
+    if (sortValue === "name-asc")
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+    else if (sortValue === "name-desc")
+        filtered.sort((a, b) => b.name.localeCompare(a.name));
+    else if (sortValue === "fav-services")
+        filtered = filtered.filter((s) => favIds.includes(s.name));
     render(filtered);
-  }
-  $("#searchInput").on("input", filter);
-  $("#sortSelect").on("change", filter);
-  $("#filter-category, #filter-country, #filter-city").on("change input", filter);
-  $(".clear-filters").on("click", function () {
+}
+$("#searchInput").on("input", filter);
+$("#sortSelect").on("change", filter);
+$("#filter-category, #filter-country, #filter-city, #filter-service").on("change input", filter);
+$(".clear-filters").on("click", function () {
     $("#searchInput").val("");
     $("#filter-category").val("All");
     $("#filter-city").val("");
+    $("#filter-service").val("All");
     $("#sortSelect").val("");
     filter();
-  });
+});
   // ================================
   // Dynamic City Filter
   // ================================
