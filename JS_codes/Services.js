@@ -189,41 +189,56 @@ $(document).ready(function () {
   // ================================
   // Filtering
   // ================================
-  function filter() {
+function filter() {
     let allServices = load();
     let searchValue = $("#searchInput").val().toLowerCase();
     let sortValue = $("#sortSelect").val() || "";
     let categoryValue = $("#filter-category").val();
     let cityValue = $("#filter-city").val();
     let countryValue = $("#filter-country").val();
+    let filterservice = $("#filter-service").val();
     let favIds = JSON.parse(localStorage.getItem("favIds")) || [];
-    let filtered = allServices.filter((s) => s.name.toLowerCase().includes(searchValue));
+    let filtered = allServices.filter((s) =>
+        s.name.toLowerCase().includes(searchValue)
+    );
     if (categoryValue && categoryValue !== "All")
-      filtered = filtered.filter((s) => s.category === categoryValue);
+        filtered = filtered.filter((s) => s.category === categoryValue);
     if (countryValue && countryValue !== "All")
-      filtered = filtered.filter((s) => s.country.toLowerCase().includes(countryValue.toLowerCase()));
+        filtered = filtered.filter((s) =>
+            s.country.toLowerCase().includes(countryValue.toLowerCase())
+        );
+    if (filterservice && filterservice !== "All")
+        filtered = filtered.filter((s) =>
+  s.name.toLowerCase().includes(filterservice.toLowerCase())
+);
     if (cityValue && cityValue !== "All") {
-      filtered = filtered.filter((s) => {
-        if (Array.isArray(s.city)) return s.city.some((c) => c.toLowerCase().startsWith(cityValue.toLowerCase()));
-        return s.city.toLowerCase().includes(cityValue.toLowerCase());
-      });
+        filtered = filtered.filter((s) => {
+            if (Array.isArray(s.city))
+                return s.city.some((c) =>
+                    c.toLowerCase().startsWith(cityValue.toLowerCase())
+                );
+            return s.city.toLowerCase().includes(cityValue.toLowerCase());
+        });
     }
-    if (sortValue === "name-asc") filtered.sort((a, b) => a.name.localeCompare(b.name));
-    else if (sortValue === "name-desc") filtered.sort((a, b) => b.name.localeCompare(a.name));
-    else if (sortValue === "fav-services") filtered = filtered.filter((s) => favIds.includes(s.name));
-
+    if (sortValue === "name-asc")
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+    else if (sortValue === "name-desc")
+        filtered.sort((a, b) => b.name.localeCompare(a.name));
+    else if (sortValue === "fav-services")
+        filtered = filtered.filter((s) => favIds.includes(s.name));
     render(filtered);
-  }
-  $("#searchInput").on("input", filter);
-  $("#sortSelect").on("change", filter);
-  $("#filter-category, #filter-country, #filter-city").on("change input", filter);
-  $(".clear-filters").on("click", function () {
+}
+$("#searchInput").on("input", filter);
+$("#sortSelect").on("change", filter);
+$("#filter-category, #filter-country, #filter-city, #filter-service").on("change input", filter);
+$(".clear-filters").on("click", function () {
     $("#searchInput").val("");
     $("#filter-category").val("All");
     $("#filter-city").val("");
+    $("#filter-service").val("All");
     $("#sortSelect").val("");
     filter();
-  });
+});
   // ================================
   // Dynamic City Filter
   // ================================
