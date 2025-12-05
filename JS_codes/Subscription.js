@@ -7,9 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   let billingToggle = document.getElementById("billing-toggle");
   let planContainer = document.querySelector(".Plan-cards");
-  // ----------------------------
-  // Update "This plan is Activated" + buttons for each card
-  // ----------------------------
+
+  // ========== UPDATE ACTIVATED TEXT & BUTTONS ==========
   function updateActivatedText() {
     let currentPlan = (localStorage.getItem("userPlan") || "").toLowerCase();
     document.querySelectorAll(".card").forEach((card) => {
@@ -31,16 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-  // ----------------------------
-  // Save plan to localStorage
-  // ----------------------------
+
+  // ========== SAVE PLAN TO STORAGE ==========
   function savePlan(planKey) {
     localStorage.setItem("userPlan", planKey);
     updateActivatedText();
   }
-  // ----------------------------
-  // Show Plan Modal
-  // ----------------------------
+
+  // ========== SHOW PLAN MODAL ==========
   function showPlanModal(planName, planKey, isYearly) {
     let modal = document.createElement("div");
     modal.className = "plan-modal-overlay";
@@ -70,9 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
       modal.remove(); // closes popup
     };
   }
-  // ----------------------------
-  // Billing Toggle
-  // ----------------------------
+
+  // ========== BILLING TOGGLE ==========
   if (billingToggle) {
     billingToggle.addEventListener("change", () => {
       let isYearly = billingToggle.checked;
@@ -84,9 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .forEach((y) => (y.style.display = isYearly ? "inline" : "none"));
     });
   }
-  // ----------------------------
-  // Plan Buttons Click (Event Delegation)
-  // ----------------------------
+
+  // ========== PLAN BUTTONS CLICK HANDLER ==========
   if (planContainer) {
     planContainer.addEventListener("click", (e) => {
       // If user clicks a cancel-plan button → cancel immediately
@@ -107,8 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       showPlanModal(planName, planKey, isYearly);
     });
   }
-  // ----------------------------
-  // Initialize on Page Load
-  // ----------------------------
+
+  // ========== INITIALIZE ON PAGE LOAD ==========
   updateActivatedText();
 });

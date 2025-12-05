@@ -457,14 +457,14 @@ footer {
 /* =========================================================
     RESPONSIVE 
     ========================================================= */
-	/* ---------- 1200px ---------- */
+
 @media (max-width: 1200px) {
 	.Box {
 		width: 400px;
 		height: 300px;
 	}
 }
-/* ---------- 960px ---------- */
+
 @media (max-width: 960px) {
 	.nav-bar { grid-template-columns: auto auto; }
 	.nav-toggle { display: block; }
@@ -515,35 +515,36 @@ footer {
 	}
 }
 
-/* ---------- 768px ---------- */
 @media (max-width: 768px) {
-.part1{
-	flex-direction: column;
-	gap: 10px;
+	.part1{
+		flex-direction: column;
+		gap: 10px;
+	}
+	.social-media{
+		gap: 40px;
+	}
+	footer{
+		gap: 20px !important;
+	}
 }
-.social-media{
-	gap: 40px;
-}
-footer{
-	gap: 20px !important;
-}
-}
-/* ---------- 640px ---------- */
+
 @media (max-width: 640px) {
 	.background-content { padding-top: 70px; }
 }
-/* ---------- 480px ---------- */
+
 @media (max-width: 480px) {
 	.footer-links{
 		gap: 0;
 	}
 	.Box { flex: 1 1 100%; max-width: none; }
 }
+
 /* =========================================================
     MOBILE MENU VISIBILITY TOGGLES
     ========================================================= */
+
 #mobile-settings { display: none; }
-/* ---------- 950px ---------- */
+
 @media (max-width: 950px) {
 	#mobile-settings { display: list-item; }
 }
@@ -553,7 +554,7 @@ footer{
 #mobile-logout {
 	display: none;
 }
-/* ---------- 950px ---------- */
+
 @media (max-width: 950px) {
 	#mobile-login,
 	#mobile-register,
@@ -561,7 +562,7 @@ footer{
 		display: list-item;
 	}
 }
-/* ---------- 951px ---------- */
+
 @media (min-width: 951px) {
 	#mobile-login,
 	#mobile-register,
@@ -569,15 +570,13 @@ footer{
 		display: none !important;
 	}
 }
+
 #preferences-msg{
 	color: green;
 }
 
-/* ---------- 340px ---------- */
 @media (max-width: 340px) {
 	body { --header-h: 52px; }
-	
-	.info-section { width: 94%; }
 	
 	.nav-bar {
 		grid-template-columns: 1fr auto;
@@ -624,6 +623,4 @@ footer{
 	}
 	.footer-links a { padding: 4px 6px; font-size: 0.75rem; }
 	#copy-right { font-size: 0.7rem; }
-	
-	.background-content { padding-top: 52px; }
 }

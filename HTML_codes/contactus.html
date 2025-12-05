@@ -132,7 +132,7 @@
               <h3>Contact Support</h3>
               <p>Sometimes you need a little help from your friends. Or a Global Compass support rep. We're here for you.</p>
               <a href="mailto:support@globalcompass.example">support@globalcompass.example</a>
-              <button class="contact-btn" onclick="document.querySelector('.contact-form').scrollIntoView({behavior:'smooth'})">Send Message</button>
+              <button id="contact-submit-btn" class="contact-btn">Chat with an assistant</button>
             </div>
           </div>
 
@@ -166,14 +166,29 @@
           </div>
 
           <div class="contact-actions">
-            <button id="contact-submit-btn" class="contact-btn" type="button">Send message</button>
+            <button class="contact-btn" type="button">Send Message</button>
           </div>
           
           <p id="contact-msg" class="contact-msg" role="alert" aria-live="polite"></p>
         </div>
       </section>
 
-    </div>
+      <!-- CHAT ASSISTANT MODAL -->
+      <div id="chat-modal" class="chat-modal-overlay">
+        <div class="chat-modal">
+          <button class="chat-modal-close" aria-label="Close modal">&times;</button>
+          <div class="chat-modal-content">
+            <div class="chat-modal-icon">⚠️</div>
+            <h3>Chat Assistant</h3>
+            <p class="chat-modal-title">This feature is currently unavailable</p>
+            <p class="chat-modal-message">Our AI-powered chat assistant will be available in future updates. We're working hard to bring you real-time support soon!</p>
+            <p class="chat-modal-message">In the meantime, please use the contact form to send us a message, and we'll get back to you as soon as possible.</p>
+            <button class="chat-modal-btn">Got it</button>
+          </div>
+        </div>
+      </div>
+
+
   </main>
 
   <!-- =========================================================

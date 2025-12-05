@@ -9,7 +9,6 @@
 .about-hero { 
 	padding: 60px 14px 40px; 
 	text-align: center;
-	/* background: linear-gradient(135deg, rgba(59,157,217,.08) 0%, rgba(139,92,246,.06) 100%); */
 	border-bottom: 1px solid rgba(59,157,217,.12);
 }
 
@@ -90,7 +89,6 @@
 	font-size: 1rem;
 }
 
-/* How it works - 4 step grid */
 .about-steps-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -220,7 +218,7 @@
 /* =========================================================
     RESPONSIVE
     ========================================================= */
-/* ---------- 960px ---------- */
+
 @media (max-width: 960px) {
     .nav-bar { grid-template-columns: auto  auto; }
     .nav-toggle { display: block; }
@@ -262,18 +260,17 @@
     }
     footer { flex-direction: column; text-align: center; gap: 10px; }
 }
-/* ---------- 900px ---------- */
+
 @media (max-width: 900px) {
 }
-/* ---------- 768px ---------- */
+
 @media (max-width: 768px) {
     footer { padding: 12px 14px; }
 }
-/* ---------- 640px ---------- */
+
 @media (max-width: 640px) {
 }
 
-/* ---------- 480px ---------- */
 @media (max-width: 480px) {
     .logo-text { font-size: 1rem; }
     #nav-links { gap: 8px; }

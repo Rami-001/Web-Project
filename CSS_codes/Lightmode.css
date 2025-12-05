@@ -492,33 +492,16 @@ body.light-mode .settings-hero h1 {
 	color: #ffffff;
 }
 
-body.light-mode .settings-hero p {
-	color: #4a5568;
-}
 
 
 body.light-mode .about-hero h1 {
 	color: #ffffff;
 }
 
-body.light-mode .about-lead {
-	color: #4a5568;
-}
 
 body.light-mode .about-section {
 	background: transparent;
 }
-
-body.light-mode .about-desc {
-	color: #2c3e50;
-	font-weight: 600;
-}
-
-body.light-mode .about-list li {
-	color: #2c3e50;
-	font-weight: 600;
-}
-
 
 
 body.light-mode .step {
@@ -611,6 +594,11 @@ body.light-mode .info-card p {
 	color: #4a5568;
 }
  
+
+body.light-mode .info-card a {
+	
+	font-weight: 700;
+}
 
 body.light-mode .info-card a:hover {
 	color: #0052a3;
@@ -824,4 +812,41 @@ body.light-mode .payment-loading {
 	color: #0066cc;
 	border: 1px solid rgba(0, 102, 204, 0.2);
 	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* Light mode overrides for chat modal */
+body.light-mode .chat-modal {
+	background: #ffffff;
+	border-color: rgba(0, 102, 204, 0.2);
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode .chat-modal-close {
+	color: #4a5568;
+}
+
+body.light-mode .chat-modal-close:hover {
+	color: #0066cc;
+}
+
+body.light-mode .chat-modal h3 {
+	color: #0066cc;
+}
+
+body.light-mode .chat-modal-title {
+	color: #0066cc;
+}
+
+body.light-mode .chat-modal-message {
+	color: #4a5568;
+}
+
+body.light-mode .chat-modal-btn {
+	background: linear-gradient(135deg, #0066cc 0%, #009966 100%);
+	box-shadow: 0 6px 16px rgba(0, 102, 204, 0.15);
+	color: #ffffff;
+}
+
+body.light-mode .chat-modal-btn:hover {
+	box-shadow: 0 8px 24px rgba(0, 102, 204, 0.25);
 }
