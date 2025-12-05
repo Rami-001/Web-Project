@@ -6,8 +6,8 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  padding: 30px;
+  gap: 15px;
+  padding: 25px;
   margin: auto;
   margin-top: 30px;
   background: linear-gradient(145deg, #0c172b, #16223c);
@@ -16,7 +16,7 @@
   width: 90%;
 }
 .service-filters input,
-.service-filters select {
+.service-filters select{
   padding: 12px 18px;
   border-radius: 12px;
   border: 1px solid #2a3a5d;
@@ -52,7 +52,8 @@
 #sortSelect,
 #filter-category,
 #filter-city,
-#filter-country {
+#filter-country,
+#filter-service  {
   width: 230px;
   padding: 14px 16px;
   border: 1px solid #19bcdc;
@@ -67,7 +68,8 @@
 #sortSelect:hover,
 #filter-category:hover,
 #filter-city:hover,
-#filter-country:hover {
+#filter-country:hover,
+#filter-service:hover {
   border-color: #38e0ff;
   box-shadow: 0 0 8px rgba(56, 224, 255, 0.4);
 }
@@ -202,7 +204,7 @@
 	#sortSelect,
 	#filter-category,
 	#filter-city,
-	#filter-country,
+	#filter-country,#filter-service,
   .clear-filters {
 		width: 250px;
 	}
