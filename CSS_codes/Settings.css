@@ -2,15 +2,6 @@
     SETTINGS PAGE
     ========================================================= */
 
-* {
-	box-sizing: border-box;
-}
-
-html, body {
-	width: 100%;
-	overflow-x: hidden;
-}
-
 .settings-main {
 	flex: 1 0 auto;
 	padding-top: var(--header-h, 64px);
