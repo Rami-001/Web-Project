@@ -45,6 +45,7 @@
   width: 100%;
   backdrop-filter: blur(15px);
   padding-top: 40px;
+  margin-top: 40px;
 }
 .images {
   display: flex;
