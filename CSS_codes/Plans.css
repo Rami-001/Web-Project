@@ -3,7 +3,7 @@
     ========================================================= */
 .Plan-container {
 	max-width: 1200px;
-	margin: 50px auto;
+	margin:auto;
 }
 
 .Plan-header {
@@ -461,6 +461,11 @@
 	.Plan-header {
 		margin: 30px 0;
 		padding: 30px 16px;
+	}
+}
+@media (max-width: 960px) {
+	.Plan-container{
+		margin-top: 100px;
 	}
 }
 /* =========================================================

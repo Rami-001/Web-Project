@@ -421,6 +421,12 @@
 /* =========================================================
     RESPONSIVE - EXTRA SMALL MOBILE (340px and less)
     ========================================================= */
+@media(max-width: 960px){
+  .image-slider{
+    margin-top: 100px;
+  }
+  
+}
  @media (max-width: 340px) {
 .info-section{
 	width: 90%;
