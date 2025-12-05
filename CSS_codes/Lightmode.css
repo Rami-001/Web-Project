@@ -428,37 +428,31 @@ body.light-mode .popular-badge {
 }
 
 /* Legal pages in light mode */
-body.light-mode .legal-content,
-body.light-mode .policy-content {
+body.light-mode .legal-content {
 	color: #2c3e50;
 }
 
-body.light-mode .legal-content h1,
-body.light-mode .policy-content h1 {
+body.light-mode .legal-content h1 {
 	color: #ffffff;
 }
 
-body.light-mode .legal-content h2,
-body.light-mode .policy-content h2 {
+body.light-mode .legal-content h2 {
 	color: #0066cc;
 	border-bottom-color: rgba(0, 102, 204, 0.25);
 }
 
-body.light-mode .legal-content section,
-body.light-mode .policy-content section {
+body.light-mode .legal-content section {
 	background: #ffffff;
 	border: 1px solid rgba(0, 102, 204, 0.15);
 	backdrop-filter: blur(6px);
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-body.light-mode .legal-content p,
-body.light-mode .policy-content p {
+body.light-mode .legal-content p {
 	color: #4a5568;
 }
 
-body.light-mode .legal-content li,
-body.light-mode .policy-content li {
+body.light-mode .legal-content li {
 	color: #2c3e50;
 }
 
@@ -551,21 +545,6 @@ body.light-mode .about-cta-section {
 	border-top-color: rgba(0, 102, 204, 0.1);
 	border-bottom-color: rgba(0, 102, 204, 0.1);
 	
-}
-body.light-mode .pwhite
-{
-	color:#ffffff !important;
-
-}
-body.light-mode .h2white
-{
-background: linear-gradient(135deg, #f8fafc 0%, #f8fafc 50%, #f8fafc 100%) !important;
-		-webkit-background-clip: text !important;
-	background-clip: text !important;
-	-webkit-text-fill-color: transparent !important;
-		color: #ffffff !important;
-
-
 }
 .images .image:hover h2 {
 	text-shadow: 0 6px 12px rgba(227, 217, 217, 0.345);

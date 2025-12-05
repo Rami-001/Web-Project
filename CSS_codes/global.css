@@ -43,6 +43,34 @@ main, section, .background, .Bigbox { flex: 1 0 auto; }
 	--gc-line: #1a254a;
 	--wrap: 1200px;
 	
+	/* Typography */
+	--font-light: 600;
+	--font-semibold: 700;
+	--font-bold: 800;
+	--font-black: 900;
+	--letter-spacing-tight: -0.8px;
+	--letter-spacing-normal: -0.3px;
+	
+	/* Border Radius */
+	--radius-sm: 8px;
+	--radius-md: 10px;
+	--radius-lg: 12px;
+	--radius-xl: 20px;
+	--radius-round: 50px;
+	
+	/* Transitions & Animations */
+	--transition-fast: 0.18s;
+	--transition-base: 0.22s;
+	--transition-standard: 0.3s;
+	--transition-slow: 0.25s;
+	--easing-smooth: cubic-bezier(0.34, 1.56, 0.64, 1);
+	
+	/* Shadows */
+	--shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+	--shadow-md: 0 4px 14px rgba(0, 0, 0, 0.2);
+	--shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.3);
+	--shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.4);
+	--gc-shadow-1: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .container { width: min(var(--wrap), 94%); margin-inline: auto; }
@@ -412,53 +440,25 @@ footer {
 	from { opacity: 0; }
 	to { opacity: 1; }
 }
-@keyframes slideIn {
-	from {
-		opacity: 0;
-		transform: translateY(10px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
 
-@keyframes zoomIn {
-	from {
-		opacity: 0;
-		transform: scale(0.9);
-	}
-	to {
-		opacity: 1;
-		transform: scale(1);
-	}
-}
-
-@keyframes spin {
-	from { transform: rotate(0deg); }
-	to { transform: rotate(360deg); }
-}
-
-@keyframes bounce {
-	0%, 100% { transform: translateY(0); }
-	50% { transform: translateY(-10px); }
-}
-
-@keyframes flash {
-	0% { opacity: 1; }
-	50% { opacity: 0.5; }
-	100% { opacity: 1; }
-}
+/* =========================================================
+    UTILITY CLASSES
+    ========================================================= */
+.text-center { text-align: center; }
+.font-light { font-weight: var(--font-light); }
+.font-semibold { font-weight: var(--font-semibold); }
+.font-bold { font-weight: var(--font-bold); }
+.font-black { font-weight: var(--font-black); }
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-xl { border-radius: var(--radius-xl); }
 
 /* =========================================================
     RESPONSIVE 
     ========================================================= */
 	/* ---------- 1200px ---------- */
 @media (max-width: 1200px) {
-	.contact-wrapper {
-		grid-template-columns: 1fr;
-		gap: 32px;
-	}
 	.Box {
 		width: 400px;
 		height: 300px;
