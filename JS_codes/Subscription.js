@@ -125,8 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
       showPlanModal(planName, planKey, isYearly);
     });
   }
-  // ----------------------------
-  // Initialize on Page Load
-  // ----------------------------
+
+  // ========== INITIALIZE ON PAGE LOAD ==========
   updateActivatedText();
 });

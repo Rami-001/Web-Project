@@ -142,17 +142,17 @@
 }
 .card-content h2 {
   font-size: 1.8rem;
-  color: #19bcdc;
+  color: #38bce0;
   font-weight: 700;
   margin-bottom: 10px;
 }
 .card-content p {
   font-size: 1rem;
-  color: #cbd5e1;
+  color: #a0b8d8;
   line-height: 1.5;
 }
 .card-content ul {
-  color: #a0b8d8;
+  color: #8fa3c0;
   font-size: 0.95rem;
   margin: 3px 0;
 }
@@ -192,14 +192,14 @@
 /* =========================================================
     RESPONSIVE 
     ========================================================= */
-/* ---------- 960px ---------- */
+
 @media (max-width: 960px) {
   .service-filters {
 		margin-top: 80px;
 	}
 }
-/* ---------- 768px ---------- */
- @media (max-width: 768px) {
+
+@media (max-width: 768px) {
   #searchInput,
 	#sortSelect,
 	#filter-category,
@@ -209,20 +209,20 @@
 		width: 250px;
 	}
 }
-/* ---------- 640px ---------- */
- @media (max-width: 640px) {
+
+@media (max-width: 640px) {
   .service-filters {
 		width: 75%;
 	}
 }
-/* ---------- 480px ---------- */
+
 @media (max-width: 480px) {
   .service-card{
     width: 80%;
   }
-} 
-/* ---------- 340px ---------- */
- @media (max-width: 340px) {
+}
+
+@media (max-width: 340px) {
   .service-card{
     width: 90%;
   }

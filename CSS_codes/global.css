@@ -587,7 +587,6 @@ footer {
     .Box { flex: 1 1 100%; max-width: none; }
 }
 
-/* ---------- 340px ---------- */
 @media (max-width: 340px) {
     body { --header-h: 52px; }
 
