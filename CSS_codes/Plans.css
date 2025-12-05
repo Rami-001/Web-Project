@@ -464,9 +464,9 @@
 	}
 }
 @media (max-width: 960px) {
-	.Plan-container{
-		margin-top: 150px;
-	}
+	.Plan-header{
+		margin-top: 100px;
+}
 }
 /* =========================================================
     RESPONSIVE - MOBILE (600px)
@@ -474,11 +474,6 @@
 @media (max-width: 600px) {
 	.Plan-container {
 		padding: 0 14px;
-	}
-
-	.Plan-header {
-		margin: 24px 0;
-		padding: 24px 14px;
 	}
 
 	.Plan-header h1 {
