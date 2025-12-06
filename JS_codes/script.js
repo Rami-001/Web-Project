@@ -7,7 +7,6 @@ function applyGlobalTheme() {
 }
 applyGlobalTheme();
 
-
 // =====================================================
 // MAIN NAVBAR SYSTEM
 // =====================================================
@@ -220,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	// PROFILE AVATAR SYNC
 	// =====================================================
 	function updateProfileAvatar(user) {
-		$.getJSON('../JS_codes/data.json', function (data) {
+		$.getJSON("../JS_codes/data.json", function (data) {
 			let avatarSeed = data.avatars[user.avatarIndex]?.seed || 'Avatar_001';
 			let url = `https://robohash.org/${encodeURIComponent(avatarSeed)}?size=32x32&set=set1`;
 			document.getElementById('nav-avatar').src = url;
@@ -240,4 +239,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		}, 120);
 	}
 
+});
+
+$.getJSON("../JS_codes/data.json", function(data) {
+    console.log(data);
 });

@@ -6,10 +6,10 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 15px;
-  padding: 25px;
+  gap: var(--gap-lg);
+  padding: var(--space-2xl);
   margin: auto;
-  margin-top: 30px;
+  margin-top: var(--space-2xl);
   background: linear-gradient(145deg, #0c172b, #16223c);
   border-radius: 10px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
@@ -17,7 +17,7 @@
 }
 .service-filters input,
 .service-filters select{
-  padding: 12px 18px;
+  padding: var(--space-md) var(--space-lg);
   border-radius: 12px;
   border: 1px solid #2a3a5d;
   background-color: #0c172b;
@@ -33,7 +33,7 @@
 }
 #searchInput {
   width: 250px;
-  padding: 14px 18px;
+  padding: var(--space-lg) var(--space-lg);
   border: 1px solid #19bcdc;
   border-radius: 14px;
   background-color: #0e223d;
@@ -55,11 +55,9 @@
 #filter-country,
 #filter-service  {
   width: 230px;
-  padding: 14px 16px;
+  padding: var(--space-lg) var(--space-lg);
   border: 1px solid #19bcdc;
   border-radius: 14px;
-  /* background-color: #0e223d;
-	color: #eaf2ff; */
   font-size: 1rem;
   outline: none;
   cursor: pointer;
@@ -83,7 +81,7 @@
   color: #ffffff;
   border: 1px solid #19bcdc;
   border-radius: 12px;
-  padding: 12px 25px;
+  padding: var(--space-md) var(--space-2xl);
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;

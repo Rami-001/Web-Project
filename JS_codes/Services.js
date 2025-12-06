@@ -84,13 +84,14 @@ document.addEventListener("DOMContentLoaded", function () {
 //  id:9 ==> Hotel
 //  id:10 ==>Money Transfer
 //  id:11 ==> Medical Volunteers
+
 $(document).ready(function () {
   let services = [];
   let citiesData = {};
   // ================================
   // Load JSON Data
   // ================================
-  $.getJSON('../JS_codes/data.json', function (data) {
+  $.getJSON("../JS_codes/data.json", function (data) {
     services = data.services;
     citiesData = data.citiesData;
     // Initialize filters and render

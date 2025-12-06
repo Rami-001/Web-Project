@@ -60,7 +60,7 @@ $(document).ready(function() {
 			}
 
 			// Load avatars and assign random one
-			$.getJSON('../JS_codes/data.json', function(data) {
+			$.getJSON("../JS_codes/data.json", function(data) {
 				let avatarList = data.avatars || [];
 				let randomAvatarIndex = Math.floor(Math.random() * avatarList.length);
 

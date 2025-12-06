@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	let avatarList = [];
 
 	// Load avatars from JSON
-	fetch('../JS_codes/data.json')
+	fetch("../JS_codes/data.json")
 		.then(response => response.json())
 		.then(data => {
 			avatarList = data.avatars || [];
