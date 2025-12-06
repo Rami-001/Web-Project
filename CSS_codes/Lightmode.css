@@ -596,10 +596,12 @@ body.light-mode .info-card p {
  
 
 body.light-mode .info-card a {
-	
+	color: #0066cc;
 	font-weight: 700;
 }
-
+#whatsapp-contactus {
+	color: #ffffff;
+}
 body.light-mode .info-card a:hover {
 	color: #0052a3;
 }
