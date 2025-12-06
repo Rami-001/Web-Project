@@ -85,20 +85,13 @@ document.addEventListener("DOMContentLoaded", function () {
 //  id:10 ==>Money Transfer
 //  id:11 ==> Medical Volunteers
 
-// =====================================================
-// HELPER: GET CORRECT DATA.JSON PATH
-// =====================================================
-function getDataJsonPath() {
-	return document.location.pathname.includes('/HTML_codes/') ? '../JS_codes/data.json' : 'JS_codes/data.json';
-}
-
 $(document).ready(function () {
   let services = [];
   let citiesData = {};
   // ================================
   // Load JSON Data
   // ================================
-  $.getJSON(getDataJsonPath(), function (data) {
+  $.getJSON("../JS_codes/data.json", function (data) {
     services = data.services;
     citiesData = data.citiesData;
     // Initialize filters and render

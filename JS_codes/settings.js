@@ -25,15 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	let avatarList = [];
 
-	// =====================================================
-	// HELPER: GET CORRECT DATA.JSON PATH
-	// =====================================================
-	function getDataJsonPath() {
-		return document.location.pathname.includes('/HTML_codes/') ? '../JS_codes/data.json' : 'JS_codes/data.json';
-	}
-
 	// Load avatars from JSON
-	fetch(getDataJsonPath())
+	fetch("../JS_codes/data.json")
 		.then(response => response.json())
 		.then(data => {
 			avatarList = data.avatars || [];
