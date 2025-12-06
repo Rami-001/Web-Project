@@ -13,7 +13,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 36px 14px;
+	padding: var(--space-2xl) var(--space-md);
 }
 
 /* =========================================================
@@ -26,11 +26,11 @@
 	backdrop-filter: blur(6px);
 	border: 1px solid #1a254a;
 	border-radius: 12px;
-	padding: 28px;
+	padding: var(--space-2xl);
 	box-shadow: 0 6px 24px rgba(0,0,0,.3);
 	display: flex;
 	flex-direction: column;
-	gap: 14px;
+	gap: var(--gap-lg);
 }
 
 /* =========================================================
@@ -42,7 +42,7 @@
 	color: #fff;
 	font-weight: 700;
 	font-size: clamp(1.4rem, 2vw, 1.9rem);
-	margin-bottom: 6px;
+	margin-bottom: var(--space-sm);
 }
 
 /* =========================================================
@@ -51,7 +51,7 @@
 
 .auth-input {
 	width: 100%;
-	padding: 10px 12px;
+	padding: var(--space-md) var(--space-md);
 	border: 1px solid #2a3a5d;
 	border-radius: 8px;
 	background: #0c172b;
@@ -75,7 +75,7 @@
     ========================================================= */
 
 .auth-btn {
-	padding: 10px 14px;
+	padding: var(--space-md) var(--space-lg);
 	border: none;
 	border-radius: 6px;
 	cursor: pointer;

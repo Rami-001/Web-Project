@@ -44,8 +44,8 @@
   position: relative;
   width: 100%;
   backdrop-filter: blur(15px);
-  padding-top: 40px;
-  margin-top: 40px;
+  padding-top: var(--space-4xl);
+  margin-top: var(--space-4xl);
 }
 .images {
   display: flex;
