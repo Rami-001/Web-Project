@@ -15,7 +15,7 @@
 .legal-content {
 	width: min(850px, 92%);
 	margin: 0 auto;
-	padding: 80px 20px;
+	padding: var(--space-9xl) var(--space-xl);
 	color: #d4e4f7;
 	font-size: 1rem;
 	line-height: 1.8;
@@ -29,7 +29,7 @@
 	font-size: clamp(2.5rem, 5vw, 3.2rem);
 	font-weight: 900;
 	color: #ffffff;
-	margin-bottom: 60px;
+	margin-bottom: var(--space-7xl);
 	letter-spacing: -1px;
 	text-align: center;
 	text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -44,10 +44,11 @@
     ========================================================= */
 
 .legal-content section {
-	margin-bottom: 50px;
+	margin-bottom: var(--gap-7xl);
 	background: rgba(10, 20, 40, 0.6);
-	padding: 30px;
+	padding: var(--space-2xl);
 	border-radius: 8px;
+
 	backdrop-filter: blur(8px);
 }
 
