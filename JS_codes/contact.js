@@ -38,15 +38,16 @@ $(document).ready(function () {
     }
   });
 
-  let $submitBtn = $('.contact-btn[type="button"]');
+  let $sendMessageBtn = document.querySelector('.contact-form .contact-btn[type="button"]');
   let $nameInput = $('#c-name');
   let $emailInput = $('#c-email');
   let $subjectInput = $('#c-subject');
   let $messageInput = $('#c-message');
   let $msgEl = $('#contact-msg');
 
-  if ($submitBtn.length > 1) {
-    $submitBtn.eq(1).on('click', function (e) {
+  // Handle Send Message button click
+  if ($sendMessageBtn) {
+    $sendMessageBtn.addEventListener('click', function (e) {
       e.preventDefault();
 
       let name = $nameInput.val().trim();
@@ -72,27 +73,32 @@ $(document).ready(function () {
         return;
       }
 
-      let contactData = {
-        name: name,
-        email: email,
-        subject: subject,
-        message: message,
-      };
+      try {
+        let contactData = {
+          name: name,
+          email: email,
+          subject: subject,
+          message: message,
+        };
 
-      let messages = JSON.parse(localStorage.getItem('gc_contact_messages') || '[]');
-      messages.push(contactData);
-      localStorage.setItem('gc_contact_messages', JSON.stringify(messages));
+        let messages = JSON.parse(localStorage.getItem('gc_contact_messages') || '[]');
+        messages.push(contactData);
+        localStorage.setItem('gc_contact_messages', JSON.stringify(messages));
 
-      $msgEl.text('Message sent successfully! We\'ll get back to you soon.').addClass('contact-msg ok');
+        $msgEl.text('Message sent successfully! We\'ll get back to you soon.').addClass('contact-msg ok');
 
-      $nameInput.val('');
-      $emailInput.val('');
-      $subjectInput.val('');
-      $messageInput.val('');
+        $nameInput.val('');
+        $emailInput.val('');
+        $subjectInput.val('');
+        $messageInput.val('');
 
-      setTimeout(function () {
-        $msgEl.text('');
-      }, 3000);
+        setTimeout(function () {
+          $msgEl.text('');
+        }, 3000);
+      } catch (error) {
+        $msgEl.text('An error occurred while sending your message. Please try again.').addClass('contact-msg err');
+        console.error('Contact form error:', error);
+      }
     });
   }
 
