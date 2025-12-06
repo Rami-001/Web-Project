@@ -11,6 +11,13 @@ $(document).ready(function() {
 	let profileDropdown = $('.profile-dropdown');
 	let userName = $('#user-name');
 
+	// =====================================================
+	// HELPER: GET CORRECT DATA.JSON PATH
+	// =====================================================
+	function getDataJsonPath() {
+		return document.location.pathname.includes('/HTML_codes/') ? '../JS_codes/data.json' : 'JS_codes/data.json';
+	}
+
 	updateAuthUI();
 	if (signupForm.length) {
 		signupForm.on('submit', function(e) {
@@ -60,7 +67,7 @@ $(document).ready(function() {
 			}
 
 			// Load avatars and assign random one
-			$.getJSON('../JS_codes/data.json', function(data) {
+			$.getJSON(getDataJsonPath(), function(data) {
 				let avatarList = data.avatars || [];
 				let randomAvatarIndex = Math.floor(Math.random() * avatarList.length);
 
