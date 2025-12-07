@@ -124,7 +124,9 @@ $(document).ready(function () {
     let $container = $("#services-by-category");
     $container.empty();
     if (!list || list.length === 0) {
-      $container.html(`<div class="no-results"><p>🔍 No matching services found.</p></div>`);
+      $container.html(
+        `<div class="no-results"><p>🔍 No matching services found.</p></div>`
+      );
       return;
     }
     let favIds = JSON.parse(localStorage.getItem("favIds")) || [];
@@ -132,79 +134,101 @@ $(document).ready(function () {
       let isFavorite = favIds.includes(s.name);
       let scheduleText =
         typeof s.Schedule === "object"
-          ? Object.entries(s.Schedule).map(([day, time]) => `${day}: ${time}`).join(", ")
+          ? Object.entries(s.Schedule)
+              .map(([day, time]) => `${day}: ${time}`)
+              .join(", ")
           : s.Schedule;
-      
+
       // Fix image path
       let imageSrc = s.image;
-      if (imageSrc.includes('http')) {
+      if (imageSrc.includes("http")) {
         // External URL - use as is
       } else {
         // Local image - add correct path
-        imageSrc = imageSrc.replace('imgs/', '../imgs/');
+        imageSrc = imageSrc.replace("imgs/", "../imgs/");
       }
-      
       let $card = $(`
-        <div class="service-card ${isFavorite ? "favorite-card" : ""}">
-          <img src="${imageSrc}" alt="${s.name}">
-          <div class="card-content">
-            <h2>${s.name}</h2>
-            <span class="heart-icon ${isFavorite ? "favorited" : ""}" data-servicename="${s.name}">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="${isFavorite ? "#ff6b6b" : "none"}" stroke="${isFavorite ? "#ff6b6b" : "#ccc"}" stroke-width="2">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-              </svg>
-            </span>
-            <p><strong>Country:</strong> ${s.country}</p>
-            <p><strong>City:</strong> ${s.city.join(", ")}</p>
-            <p><strong>Schedule:</strong> ${scheduleText}</p>
-            <p class="description" data-full="${s.description}">${s.description}</p>
-            <button class="read-more-btn" style="display: none;">Read More</button>
-            <p><strong>Contact:</strong> ${s.contact_information}</p>
-            <p><a class="more-info-link" href="${s.more_info_on}" target="_blank">Visit</a></p>
-          </div>
-        </div>
-      `);
+  <div class="service-card ${isFavorite ? "favorite-card" : ""}">
+    <img src="${imageSrc}" alt="${s.name}">
+    <div class="card-content">
+      <h2>${s.name}</h2>
+      <span class="heart-icon ${isFavorite ? "favorited" : ""}" data-servicename="${s.name}">
+      </span>
+      <p><strong>Country:</strong> ${s.country}</p>
+      <p><strong>City:</strong> ${s.city.join(", ")}</p>
+      <p><strong>Schedule:</strong> ${scheduleText}</p>
+      <p class="description" data-full="${s.description}">
+        ${s.description}
+      </p>
+      <!-- HIDDEN: extra details shown only when expanded -->
+      <div class="extra-content" style="display:none;">
+        <p><strong>Contact:</strong> ${s.contact_information}</p>
+        <p>
+          <a class="more-info-link" href="${
+            s.more_info_on
+          }" target="_blank">Visit</a>
+        </p>
+      </div>
+      <button class="read-more-btn" style="display:none;">Read More</button>
+    </div>
+  </div>
+`);
       $container.append($card);
     });
-    $(".heart-icon").off("click").on("click", function () {
-      let serviceName = $(this).data("servicename");
-      toggleFavorite(serviceName);
-    });
-
+    $(".heart-icon")
+      .off("click")
+      .on("click", function () {
+        let serviceName = $(this).data("servicename");
+        toggleFavorite(serviceName);
+      });
     // Handle Read More button
-    $(".read-more-btn").off("click").on("click", function () {
-      let $btn = $(this);
-      let $description = $btn.prev(".description");
-      let fullText = $description.data("full");
+    $(".read-more-btn")
+      .off("click")
+      .on("click", function () {
+        let $btn = $(this);
+        let $cardContent = $btn.closest(".card-content");
+        let $desc = $cardContent.find(".description");
+        let $extra = $cardContent.find(".extra-content");
+        let full = $desc.data("full");
+        let isExpanded = $btn.data("expanded") === true;
+        if (!isExpanded) {
+          // EXPAND
+          $desc
+            .css({
+              display: "block",
+              "-webkit-line-clamp": "unset",
+              overflow: "visible",
+              textOverflow: "unset",
+            })
+            .text(full);
+          $extra.slideDown(200);
+          $btn.text("Read Less");
+          $btn.data("expanded", true);
+        } else {
+          // COLLAPSE
+          $desc
+            .css({
+              display: "-webkit-box",
+              "-webkit-line-clamp": "2",
+              "-webkit-box-orient": "vertical",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            })
+            .text(full);
 
-      if ($btn.text() === "Read More") {
-        $description.text(fullText);
-        $description.css({
-          display: "block",
-          "-webkit-line-clamp": "unset",
-          overflow: "visible",
-          textOverflow: "unset"
-        });
-        $btn.text("Read Less");
-      } else {
-        $description.text(fullText);
-        $description.css({
-          display: "-webkit-box",
-          "-webkit-line-clamp": "2",
-          "-webkit-box-orient": "vertical",
-          overflow: "hidden",
-          textOverflow: "ellipsis"
-        });
-        $btn.text("Read More");
-      }
-    });
-
+          $extra.slideUp(200);
+          $btn.text("Read More");
+          $btn.data("expanded", false);
+        }
+      });
     // Check if description text overflows (more than 2 lines)
     setTimeout(() => {
-      $(".description").each(function () {
-        let $desc = $(this);
-        let $btn = $desc.next(".read-more-btn");
-        if (this.scrollHeight > this.clientHeight) {
+      $(".card-content").each(function () {
+        let $content = $(this);
+        let $desc = $content.find(".description");
+        let $btn = $content.find(".read-more-btn");
+
+        if ($desc[0].scrollHeight > $desc[0].clientHeight + 1) {
           $btn.show();
         }
       });
@@ -212,7 +236,6 @@ $(document).ready(function () {
   }
   // ================================
   // Favorites
-
   // ================================
   function toggleFavorite(serviceName) {
     if (getUserPlan() === "basic") {
@@ -231,7 +254,7 @@ $(document).ready(function () {
   // ================================
   // Filtering
   // ================================
-function filter() {
+  function filter() {
     let allServices = load();
     let searchValue = $("#searchInput").val().toLowerCase();
     let sortValue = $("#sortSelect").val() || "";
@@ -241,46 +264,49 @@ function filter() {
     let filterservice = $("#filter-service").val();
     let favIds = JSON.parse(localStorage.getItem("favIds")) || [];
     let filtered = allServices.filter((s) =>
-        s.name.toLowerCase().includes(searchValue)
+      s.name.toLowerCase().includes(searchValue)
     );
     if (categoryValue && categoryValue !== "All")
-        filtered = filtered.filter((s) => s.category === categoryValue);
+      filtered = filtered.filter((s) => s.category === categoryValue);
     if (countryValue && countryValue !== "All")
-        filtered = filtered.filter((s) =>
-            s.country.toLowerCase().includes(countryValue.toLowerCase())
-        );
+      filtered = filtered.filter((s) =>
+        s.country.toLowerCase().includes(countryValue.toLowerCase())
+      );
     if (filterservice && filterservice !== "All")
-        filtered = filtered.filter((s) =>
-  s.name.toLowerCase().includes(filterservice.toLowerCase())
-);
+      filtered = filtered.filter((s) =>
+        s.name.toLowerCase().includes(filterservice.toLowerCase())
+      );
     if (cityValue && cityValue !== "All") {
-        filtered = filtered.filter((s) => {
-            if (Array.isArray(s.city))
-                return s.city.some((c) =>
-                    c.toLowerCase().startsWith(cityValue.toLowerCase())
-                );
-            return s.city.toLowerCase().includes(cityValue.toLowerCase());
-        });
+      filtered = filtered.filter((s) => {
+        if (Array.isArray(s.city))
+          return s.city.some((c) =>
+            c.toLowerCase().startsWith(cityValue.toLowerCase())
+          );
+        return s.city.toLowerCase().includes(cityValue.toLowerCase());
+      });
     }
     if (sortValue === "name-asc")
-        filtered.sort((a, b) => a.name.localeCompare(b.name));
+      filtered.sort((a, b) => a.name.localeCompare(b.name));
     else if (sortValue === "name-desc")
-        filtered.sort((a, b) => b.name.localeCompare(a.name));
+      filtered.sort((a, b) => b.name.localeCompare(a.name));
     else if (sortValue === "fav-services")
-        filtered = filtered.filter((s) => favIds.includes(s.name));
+      filtered = filtered.filter((s) => favIds.includes(s.name));
     render(filtered);
-}
-$("#searchInput").on("input", filter);
-$("#sortSelect").on("change", filter);
-$("#filter-category, #filter-country, #filter-city, #filter-service").on("change input", filter);
-$(".clear-filters").on("click", function () {
+  }
+  $("#searchInput").on("input", filter);
+  $("#sortSelect").on("change", filter);
+  $("#filter-category, #filter-country, #filter-city, #filter-service").on(
+    "change input",
+    filter
+  );
+  $(".clear-filters").on("click", function () {
     $("#searchInput").val("");
     $("#filter-category").val("All");
     $("#filter-city").val("");
     $("#filter-service").val("All");
     $("#sortSelect").val("");
     filter();
-});
+  });
   // ================================
   // Dynamic City Filter
   // ================================
@@ -289,10 +315,13 @@ $(".clear-filters").on("click", function () {
     let $cityDatalist = $("#cities");
     $cityDatalist.empty();
     $cityInput.val("");
-    let citiesToShow = selectedCountry && selectedCountry !== ""
-      ? citiesData[selectedCountry] || []
-      : Object.values(citiesData).flat();
-    citiesToShow.sort().forEach((city) => $cityDatalist.append(`<option value="${city}">`));
+    let citiesToShow =
+      selectedCountry && selectedCountry !== ""
+        ? citiesData[selectedCountry] || []
+        : Object.values(citiesData).flat();
+    citiesToShow
+      .sort()
+      .forEach((city) => $cityDatalist.append(`<option value="${city}">`));
   }
   // ================================
   // Initialization
@@ -322,7 +351,10 @@ $(".clear-filters").on("click", function () {
     // Render based on URL id or just filter
     if (urlID) {
       let filteredServices = load().filter((s) => s.id === urlID);
-      if (urlCountry) filteredServices = filteredServices.filter((s) => s.country.toLowerCase() === urlCountry.toLowerCase());
+      if (urlCountry)
+        filteredServices = filteredServices.filter(
+          (s) => s.country.toLowerCase() === urlCountry.toLowerCase()
+        );
       render(filteredServices);
     } else {
       filter();
