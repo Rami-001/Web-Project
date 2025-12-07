@@ -25,7 +25,7 @@ $(document).ready(function () {
   });
 
   // Close modal when overlay is clicked (outside the modal)
-  $chatModal.on('click', function (e) {
+  $chatModal.on('click', function (e) { 
     if (e.target === this) {
       $chatModal.removeClass('active');
     }

@@ -1,10 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   // ========== CHECK IF USER IS LOGGED IN ==========
   let currentUser = localStorage.getItem("gc_current_user");
-  if (!currentUser) {
-    window.location.href = "login.html";
-    return;
-  }
+  const isLoggedIn = currentUser !== null;
 
   const billingToggle = document.getElementById("billing-toggle");
   let planContainer = document.querySelector(".Plan-cards");
@@ -13,7 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Update "This plan is Activated" + buttons for each card
   // ----------------------------
   function updateActivatedText() {
-    let currentPlan = (localStorage.getItem("userPlan") || "").toLowerCase();
+    // If not logged in, no plan should be activated
+    let currentPlan = isLoggedIn ? (localStorage.getItem("userPlan") || "").toLowerCase() : "";
 
     document.querySelectorAll(".card").forEach((card) => {
       let planName = card.querySelector("h2").textContent.trim().toLowerCase();
@@ -43,6 +41,37 @@ document.addEventListener("DOMContentLoaded", () => {
   function savePlan(planKey) {
     localStorage.setItem("userPlan", planKey);
     updateActivatedText();
+  }
+
+  // ----------------------------
+  // Show Login Required Modal
+  // ----------------------------
+  function showLoginRequiredModal() {
+    let modal = document.createElement("div");
+    modal.className = "plan-modal-overlay";
+    modal.innerHTML = `
+      <div class="plan-modal">
+          <h3>Login Required</h3>
+          <p>You must be logged in to choose a plan.</p>
+          <div class="modal-actions">
+              <a href="login.html" class="confirm-btn">Go to Login</a>
+              <button class="cancel-btn">Cancel</button>
+          </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Prevent clicks inside modal from closing it
+    modal.querySelector(".plan-modal").addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+
+    // Close when clicking outside modal
+    modal.addEventListener("click", () => modal.remove());
+
+    // Close when pressing Cancel in modal
+    modal.querySelector(".cancel-btn").onclick = () => modal.remove();
   }
 
   // ----------------------------
@@ -105,6 +134,11 @@ document.addEventListener("DOMContentLoaded", () => {
     planContainer.addEventListener("click", (e) => {
       // If user clicks a cancel-plan button → cancel immediately
       if (e.target.closest(".cancel-plan-btn")) {
+        // Only allow cancellation if user is logged in
+        if (!isLoggedIn) {
+          showLoginRequiredModal();
+          return;
+        }
         localStorage.removeItem("userPlan");
         updateActivatedText();
         alert("Your plan has been canceled.");
@@ -114,6 +148,12 @@ document.addEventListener("DOMContentLoaded", () => {
       // Handle only "Choose Plan" button
       let btn = e.target.closest(".choose-plan-btn");
       if (!btn) return;
+
+      // Check if user is logged in
+      if (!isLoggedIn) {
+        showLoginRequiredModal();
+        return;
+      }
 
       let card = btn.closest(".card");
       if (!card) return;

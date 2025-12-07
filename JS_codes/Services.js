@@ -157,7 +157,8 @@ $(document).ready(function () {
             <p><strong>Country:</strong> ${s.country}</p>
             <p><strong>City:</strong> ${s.city.join(", ")}</p>
             <p><strong>Schedule:</strong> ${scheduleText}</p>
-            <p>${s.description}</p>
+            <p class="description" data-full="${s.description}">${s.description}</p>
+            <button class="read-more-btn" style="display: none;">Read More</button>
             <p><strong>Contact:</strong> ${s.contact_information}</p>
             <p><a class="more-info-link" href="${s.more_info_on}" target="_blank">Visit</a></p>
           </div>
@@ -169,9 +170,49 @@ $(document).ready(function () {
       let serviceName = $(this).data("servicename");
       toggleFavorite(serviceName);
     });
+
+    // Handle Read More button
+    $(".read-more-btn").off("click").on("click", function () {
+      let $btn = $(this);
+      let $description = $btn.prev(".description");
+      let fullText = $description.data("full");
+
+      if ($btn.text() === "Read More") {
+        $description.text(fullText);
+        $description.css({
+          display: "block",
+          "-webkit-line-clamp": "unset",
+          overflow: "visible",
+          textOverflow: "unset"
+        });
+        $btn.text("Read Less");
+      } else {
+        $description.text(fullText);
+        $description.css({
+          display: "-webkit-box",
+          "-webkit-line-clamp": "2",
+          "-webkit-box-orient": "vertical",
+          overflow: "hidden",
+          textOverflow: "ellipsis"
+        });
+        $btn.text("Read More");
+      }
+    });
+
+    // Check if description text overflows (more than 2 lines)
+    setTimeout(() => {
+      $(".description").each(function () {
+        let $desc = $(this);
+        let $btn = $desc.next(".read-more-btn");
+        if (this.scrollHeight > this.clientHeight) {
+          $btn.show();
+        }
+      });
+    }, 100);
   }
   // ================================
   // Favorites
+
   // ================================
   function toggleFavorite(serviceName) {
     if (getUserPlan() === "basic") {
