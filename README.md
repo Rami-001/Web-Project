@@ -1,74 +1,70 @@
 Global Compass 
-A complete web-based platform that helps users discover services around the world such as hospitals, hotels, restaurants, embassies, emergency services, and more.
-Filtered by country, city, and category with powerful search capabilities and responsive design.
+Full web-based application assisting clients to find worldwide services like hospitals, hotels, restaurants, embassies, emergency services etc.. 
+Filtered by country, city, and category.
 
-Live Demo  
- Website Link: https://rami-001.github.io/Web-Project/
- Repository: https://github.com/Rami-001/Web-Project
+Live Demo
+Website Repository: https://rami-001.github.io/Web-Project/ Website Link: https://rami-001.github.io/Web-Project/ Repository: https://github.com/Rami-001/Web-Project/
 
 Features
 
-User Authentication  
-Login, Signup, and Logout system  
-User accounts stored in LocalStorage  
-Profile dropdown  
-Syncs user profile across pages and tabs  
-Custom avatars supported (via RoboHash API)  
+User Authentication
+Signup System, Logout System, and Login System.
+LocalStorage User accounts.
+Profile dropdown
+Correlates the user profile between pages and tabs.
+Custom avatars were supported (through RoboHash API).
 
-Theme Management  
-Light & Dark mode  
-Theme unified across pages 
-Theme auto-updates across browser tabs  
+Theme Management
+Light & Dark mode
+Theme unified on pages 
+Theme auto-updates on browser tabs.
 
-Smart Service Search 
+Smart Service Search
 
 Filter by:
-  - Country  
-  - City  
-  - Category
-    
-Keywords search input  
-Sorting services (A-Z, Z-A, etc.)   
 
-Favorite Services  
-Users can save favorite services  
-Favorite list stored per user  
-Heart icons change dynamically  
+Country
+City
+Category
+Keywords search input
+Sorting services (A-Z, Z-A, etc.)
 
-Service Details UI  
-Clean service cards  
-Responsive layout  
+Favorite Services
+Favorite services can be saved by users.
+Favorite list  saved by any user.
+
+
+Service Details UI
+Clear service cards
+Responsive layout
 Service details include:
-  - Name  
-  - Location  
-  - Schedule  
-  - Description  
-  - Emergency info  
-  - Contact info  
-Visit link redirects to the service website  
+Name
+Location
+Description
+Emergency info
+Contact info
+Visit link takes user to the service web site.
 
-Subscription Plans  
-Basic Plan  
-Enterprise Plan  
-Monthly & Yearly toggle  
-Modal popup confirmation  
-Activated plan indicator  
-Cancel subscription system  
-Stored securely in LocalStorage  
+Subscription Plans
+Basic Plan
+Enterprise Plan
+Monthly & Yearly option
+Modal popup confirmation
+Activated plan indicator
+Cancel subscription system
 
-Fully Responsive Design  
-Custom CSS for breakpoints  
-Works on 340px screens  
-Optimized card layout for mobile  
 
-Navigation System  
-Mobile menu toggle  
-Dropdown menu for services  
-Profile dropdown menu  
-Smooth scrolling for internal links  
+Fully Responsive Design
+Custom CSS for breakpoints
+Mobile card optimized layout.
 
-Technologies Used: HTML5, CSS3, JavaScript (Vanilla + jQuery), JSON Data File  
+Navigation System
+Mobile menu toggle
+Dropdown menu for services
+Profile dropdown menu
 
-External APIs: RoboHash (avatars)
+Technologies Applied: HTML5, CSS3, JavaScript (vanilla + jQuery), Data file in form of JSON.
+
+Outsourced APIs: RoboHash (avatars)
 
 Hosting on GitHub Pages
