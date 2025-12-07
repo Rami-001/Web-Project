@@ -30,7 +30,7 @@ Filter by:
 Keywords search input  
 Sorting services (A-Z, Z-A, etc.)   
 
-[?] Favorite Services  
+Favorite Services  
 Users can save favorite services  
 Favorite list stored per user  
 Heart icons change dynamically  
@@ -67,17 +67,8 @@ Dropdown menu for services
 Profile dropdown menu  
 Smooth scrolling for internal links  
 
-Technologies Used
-HTML5  
-CSS3  
-JavaScript (Vanilla + jQuery)
+Technologies Used: HTML5, CSS3, JavaScript (Vanilla + jQuery), JSON Data File  
 
-Data Storage
-Local Storage  
-JSON Data File  
+External APIs: RoboHash (avatars)
 
-External APIs
-RoboHash (avatars)
-
-Hosting
-GitHub Pages
+Hosting on GitHub Pages
