@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   // ========== CHECK IF USER IS LOGGED IN ==========
   let currentUser = localStorage.getItem("gc_current_user");
-  const isLoggedIn = currentUser !== null;
+  let isLoggedIn = currentUser !== null;
 
-  const billingToggle = document.getElementById("billing-toggle");
+  let billingToggle = document.getElementById("billing-toggle");
   let planContainer = document.querySelector(".Plan-cards");
 
   // ----------------------------

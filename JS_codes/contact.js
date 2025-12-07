@@ -1,5 +1,4 @@
 
-
 $(document).ready(function () {
   let $chatModal = $('#chat-modal');
   let $chatBtn = $('#contact-submit-btn');

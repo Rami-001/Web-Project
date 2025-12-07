@@ -1,4 +1,4 @@
-// Settings page handler - client-side only, fully functional
+
 
 document.addEventListener('DOMContentLoaded', function() {
 	console.log('Settings.js loaded');

@@ -13,7 +13,7 @@ applyGlobalTheme();
 $(document).ready(function () {
 
 	// ========= MOBILE BREAKPOINT =========
-	const MOBILE_WIDTH = 960;
+	let MOBILE_WIDTH = 960;
 	let isMobile = window.innerWidth <= MOBILE_WIDTH;
 
 	$(window).on('resize', () => {
@@ -25,8 +25,8 @@ $(document).ready(function () {
 	// =====================================================
 	// NAVBAR TOGGLE (BURGER MENU)
 	// =====================================================
-	const $navBar = $('.nav-bar');
-	const $navToggle = $('.nav-toggle');
+	let $navBar = $('.nav-bar');
+	let $navToggle = $('.nav-toggle');
 
 	function openMenu() {
 		$navBar.addClass('nav-open');
@@ -57,8 +57,8 @@ $(document).ready(function () {
 	// =====================================================
 	// SERVICES DROPDOWN SYSTEM
 	// =====================================================
-	const $servicesLink = $('.dropdown > a');
-	const $servicesDropdown = $('.dropdown-content');
+	let $servicesLink = $('.dropdown > a');
+	let $servicesDropdown = $('.dropdown-content');
 	let servicesOpenedOnce = false;
 
 	// --- DESKTOP MODE ---
