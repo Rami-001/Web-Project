@@ -1,304 +1,234 @@
-document.addEventListener("DOMContentLoaded", function () {
-  let servicesLink = document.querySelector(".dropdown a");
-  let dropdownMenu = document.querySelector(".dropdown-content");
-  if (!servicesLink || !dropdownMenu) return;
-  let hideTimeout;
-  let isMobile = window.innerWidth <= 960;
-  // Detect screen size changes
-  window.addEventListener("resize", () => {
-    isMobile = window.innerWidth <= 960;
-  });
-  // Hover to show (desktop)
-  servicesLink.addEventListener("mouseenter", () => {
-    if (!isMobile) {
-      clearTimeout(hideTimeout);
-      dropdownMenu.classList.add("visible");
-    }
-  });
-  // Hover out to hide (desktop)
-  servicesLink.addEventListener("mouseleave", () => {
-    if (!isMobile) {
-      hideTimeout = setTimeout(
-        () => dropdownMenu.classList.remove("visible"),
-        500
-      );
-    }
-  });
-  // Keep open while hovering dropdown (desktop)
-  dropdownMenu.addEventListener("mouseenter", () => {
-    if (!isMobile) {
-      clearTimeout(hideTimeout);
-      dropdownMenu.classList.add("visible");
-    }
-  });
-  // Hide when leaving dropdown (desktop)
-  dropdownMenu.addEventListener("mouseleave", () => {
-    if (!isMobile) {
-      hideTimeout = setTimeout(
-        () => dropdownMenu.classList.remove("visible"),
-        500
-      );
-    }
-  });
-  // Toggle dropdown on click (mobile) and go to page on second click
-  let dropdownOpenedOnce = false;
-  servicesLink.addEventListener("click", (e) => {
-    // If dropdown not visible → show it
-    if (!dropdownMenu.classList.contains("visible")) {
-      e.preventDefault();
-      dropdownMenu.classList.add("visible");
-      dropdownOpenedOnce = true;
-      return;
-    }
-    // If dropdown already visible → navigate
-    if (dropdownOpenedOnce) {
-      window.location.href = "services.html"; // <-- Change this to your real Services page
-    }
-  });
-  // Close dropdown when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!servicesLink.contains(e.target) && !dropdownMenu.contains(e.target)) {
-      dropdownMenu.classList.remove("visible");
-      dropdownOpenedOnce = false;
-    }
-  });
-  // Close dropdown with Escape key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      dropdownMenu.classList.remove("visible");
-      dropdownOpenedOnce = false;
-    }
-  });
-});
-// ================================
-// Sample services data
-// ================================
-// id:1 ==> hospital
-// id:2 ==> Pharmacy
-// id:3 ==> Police Station
-// id:4 ==> Bank
-// id:5 ==> ATM
-// id:6 ==> Money Exchanger
-// id:7 ==> Resturant
-// id:8 ==> Coffe Shop
-//  id:9 ==> Hotel
-//  id:10 ==>Money Transfer
-//  id:11 ==> Medical Volunteers
-
 $(document).ready(function () {
   let services = [];
   let citiesData = {};
-  // ================================
+
   // Load JSON Data
-  // ================================
   $.getJSON("../JS_codes/data.json", function (data) {
     services = data.services;
     citiesData = data.citiesData;
-    // Initialize filters and render
     initApp();
   });
-  // ================================
-  // Utility Functions
-  // ================================
+
+  // Utilities
   function load() {
     let raw = localStorage.getItem("services");
     return raw ? JSON.parse(raw) : services;
   }
-  function save(services) {
-    localStorage.setItem("services", JSON.stringify(services));
-  }
+
   function getUserPlan() {
     return (localStorage.getItem("userPlan") || "basic").toLowerCase();
   }
+
   function applyPlanRestrictions() {
     let isBasic = getUserPlan() === "basic";
-    let $filterCity = $("#filter-city");
-    let $filterCategory = $("#filter-category");
-    $filterCity.prop("disabled", isBasic).toggleClass("locked", isBasic);
-    $filterCategory.prop("disabled", isBasic).toggleClass("locked", isBasic);
+    $("#filter-city, #filter-category")
+      .prop("disabled", isBasic)
+      .toggleClass("locked", isBasic);
   }
-  // ================================
-  // Render Services
-  // ================================
+
+  // -------------------------------
+  // RENDER SERVICES
+  // -------------------------------
   function render(list = load()) {
     let $container = $("#services-by-category");
     $container.empty();
+
     if (!list || list.length === 0) {
       $container.html(
         `<div class="no-results"><p>🔍 No matching services found.</p></div>`
       );
       return;
     }
+
     let favIds = JSON.parse(localStorage.getItem("favIds")) || [];
+
     $.each(list, function (_, s) {
       let isFavorite = favIds.includes(s.name);
-      let scheduleText =
-        typeof s.Schedule === "object"
-          ? Object.entries(s.Schedule)
-              .map(([day, time]) => `${day}: ${time}`)
-              .join(", ")
-          : s.Schedule;
+      let scheduleText = typeof s.Schedule === "object"
+        ? Object.entries(s.Schedule)
+            .map(([day, time]) => `${day}: ${time}`)
+            .join(", ")
+        : s.Schedule;
 
-      // Fix image path
-      let imageSrc = s.image;
-      if (imageSrc.includes("http")) {
-        // External URL - use as is
-      } else {
-        // Local image - add correct path
-        imageSrc = imageSrc.replace("imgs/", "../imgs/");
-      }
+      let imageSrc = s.image.includes("http")
+        ? s.image
+        : s.image.replace("imgs/", "../imgs/");
+
+      // *************** FIXED CARD HTML ***************
       let $card = $(`
-  <div class="service-card ${isFavorite ? "favorite-card" : ""}">
-    <img src="${imageSrc}" alt="${s.name}">
-    <div class="card-content">
-      <h2>${s.name}</h2>
-      <span class="heart-icon ${isFavorite ? "favorited" : ""}" data-servicename="${s.name}">
-      </span>
-      <p><strong>Country:</strong> ${s.country}</p>
-      <p><strong>City:</strong> ${s.city.join(", ")}</p>
-      <p><strong>Schedule:</strong> ${scheduleText}</p>
-      <p class="description" data-full="${s.description}">
-        ${s.description}
-      </p>
-      <!-- HIDDEN: extra details shown only when expanded -->
-      <div class="extra-content" style="display:none;">
-        <p><strong>Contact:</strong> ${s.contact_information}</p>
-        <p>
-          <a class="more-info-link" href="${
-            s.more_info_on
-          }" target="_blank">Visit</a>
-        </p>
-      </div>
-      <button class="read-more-btn" style="display:none;">Read More</button>
-    </div>
-  </div>
-`);
+        <div class="service-card ${isFavorite ? "favorite-card" : ""}">
+          <img src="${imageSrc}" alt="${s.name}">
+          <div class="card-content">
+            
+            <h2>${s.name}</h2>
+
+            <span class="heart-icon ${isFavorite ? "favorited" : ""}"
+                  data-servicename="${s.name}"></span>
+
+            <p><strong>Country:</strong> ${s.country}</p>
+            <p><strong>City:</strong> ${s.city.join(", ")}</p>
+            <p><strong>Schedule:</strong> ${scheduleText}</p>
+
+            <p class="description" data-full="${s.description}">
+              ${s.description}
+            </p>
+
+            <div class="extra-content" style="display:none;">
+              <p><strong>Contact:</strong> ${s.contact_information}</p>
+              <p>
+                <a class="more-info-link" href="${s.more_info_on}" target="_blank">
+                  Visit
+                </a>
+              </p>
+            </div>
+
+            <button class="read-more-btn" style="display:none;">Read More</button>
+
+          </div>
+        </div>
+      `);
+
       $container.append($card);
     });
-    $(".heart-icon")
-      .off("click")
-      .on("click", function () {
-        let serviceName = $(this).data("servicename");
-        toggleFavorite(serviceName);
-      });
-    // Handle Read More button
-    $(".read-more-btn")
-      .off("click")
-      .on("click", function () {
-        let $btn = $(this);
-        let $cardContent = $btn.closest(".card-content");
-        let $desc = $cardContent.find(".description");
-        let $extra = $cardContent.find(".extra-content");
-        let full = $desc.data("full");
-        let isExpanded = $btn.data("expanded") === true;
-        if (!isExpanded) {
-          // EXPAND
-          $desc
-            .css({
-              display: "block",
-              "-webkit-line-clamp": "unset",
-              overflow: "visible",
-              textOverflow: "unset",
-            })
-            .text(full);
-          $extra.slideDown(200);
-          $btn.text("Read Less");
-          $btn.data("expanded", true);
-        } else {
-          // COLLAPSE
-          $desc
-            .css({
-              display: "-webkit-box",
-              "-webkit-line-clamp": "2",
-              "-webkit-box-orient": "vertical",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            })
-            .text(full);
 
-          $extra.slideUp(200);
-          $btn.text("Read More");
-          $btn.data("expanded", false);
-        }
-      });
-    // Check if description text overflows (more than 2 lines)
+    // Heart behavior
+    $(".heart-icon").off("click").on("click", function () {
+      toggleFavorite($(this).data("servicename"));
+    });
+
+    // READ MORE / LESS LOGIC
+    $(".read-more-btn").off("click").on("click", function () {
+      let $btn = $(this);
+      let $content = $btn.closest(".card-content");
+      let $desc = $content.find(".description");
+      let $extra = $content.find(".extra-content");
+
+      let fullText = $desc.data("full");
+
+      let expanded = $btn.data("expanded") === true;
+
+      if (!expanded) {
+        // EXPAND
+        $desc.css({
+          display: "block",
+          "-webkit-line-clamp": "unset",
+          overflow: "visible",
+          textOverflow: "unset",
+        }).text(fullText);
+
+        $extra.slideDown(200);
+        $btn.text("Read Less");
+        $btn.data("expanded", true);
+      } else {
+        // COLLAPSE
+        $desc.css({
+          display: "-webkit-box",
+          "-webkit-line-clamp": "2",
+          "-webkit-box-orient": "vertical",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }).text(fullText);
+
+        $extra.slideUp(200);
+        $btn.text("Read More");
+        $btn.data("expanded", false);
+      }
+    });
+
+    // *************** ALWAYS SHOW BUTTON IF EXTRA CONTENT EXISTS ***************
     setTimeout(() => {
       $(".card-content").each(function () {
         let $content = $(this);
-        let $desc = $content.find(".description");
+        let $extra = $content.find(".extra-content");
         let $btn = $content.find(".read-more-btn");
 
-        if ($desc[0].scrollHeight > $desc[0].clientHeight + 1) {
+        // If there is contact/visit → show Read More
+        if ($extra.text().trim().length > 0) {
           $btn.show();
         }
       });
     }, 100);
   }
-  // ================================
-  // Favorites
-  // ================================
-  function toggleFavorite(serviceName) {
+
+  // -------------------------------
+  // FAVORITES
+  // -------------------------------
+  function toggleFavorite(name) {
     if (getUserPlan() === "basic") {
       alert("Favorites are only available for higher-tier plans.");
       return;
     }
+
     let favIds = JSON.parse(localStorage.getItem("favIds")) || [];
-    if (favIds.includes(serviceName)) {
-      favIds = favIds.filter((n) => n !== serviceName);
+
+    if (favIds.includes(name)) {
+      favIds = favIds.filter((n) => n !== name);
     } else {
-      favIds.push(serviceName);
+      favIds.push(name);
     }
+
     localStorage.setItem("favIds", JSON.stringify(favIds));
     filter();
   }
-  // ================================
-  // Filtering
-  // ================================
+
+  // -------------------------------
+  // FILTERING
+  // -------------------------------
   function filter() {
-    let allServices = load();
-    let searchValue = $("#searchInput").val().toLowerCase();
-    let sortValue = $("#sortSelect").val() || "";
-    let categoryValue = $("#filter-category").val();
-    let cityValue = $("#filter-city").val();
-    let countryValue = $("#filter-country").val();
-    let filterservice = $("#filter-service").val();
+    let all = load();
+    let search = $("#searchInput").val().toLowerCase();
+    let sort = $("#sortSelect").val();
+    let category = $("#filter-category").val();
+    let city = $("#filter-city").val();
+    let country = $("#filter-country").val();
+    let service = $("#filter-service").val();
+
     let favIds = JSON.parse(localStorage.getItem("favIds")) || [];
-    let filtered = allServices.filter((s) =>
-      s.name.toLowerCase().includes(searchValue)
+
+    let result = all.filter((s) =>
+      s.name.toLowerCase().includes(search)
     );
-    if (categoryValue && categoryValue !== "All")
-      filtered = filtered.filter((s) => s.category === categoryValue);
-    if (countryValue && countryValue !== "All")
-      filtered = filtered.filter((s) =>
-        s.country.toLowerCase().includes(countryValue.toLowerCase())
+
+    if (category && category !== "All")
+      result = result.filter((s) => s.category === category);
+
+    if (country && country !== "All")
+      result = result.filter((s) =>
+        s.country.toLowerCase().includes(country.toLowerCase())
       );
-    if (filterservice && filterservice !== "All")
-      filtered = filtered.filter((s) =>
-        s.name.toLowerCase().includes(filterservice.toLowerCase())
+
+    if (service && service !== "All")
+      result = result.filter((s) =>
+        s.name.toLowerCase().includes(service.toLowerCase())
       );
-    if (cityValue && cityValue !== "All") {
-      filtered = filtered.filter((s) => {
+
+    if (city && city !== "All") {
+      result = result.filter((s) => {
         if (Array.isArray(s.city))
           return s.city.some((c) =>
-            c.toLowerCase().startsWith(cityValue.toLowerCase())
+            c.toLowerCase().startsWith(city.toLowerCase())
           );
-        return s.city.toLowerCase().includes(cityValue.toLowerCase());
+        return s.city.toLowerCase().includes(city.toLowerCase());
       });
     }
-    if (sortValue === "name-asc")
-      filtered.sort((a, b) => a.name.localeCompare(b.name));
-    else if (sortValue === "name-desc")
-      filtered.sort((a, b) => b.name.localeCompare(a.name));
-    else if (sortValue === "fav-services")
-      filtered = filtered.filter((s) => favIds.includes(s.name));
-    render(filtered);
+
+    if (sort === "name-asc")
+      result.sort((a, b) => a.name.localeCompare(b.name));
+
+    if (sort === "name-desc")
+      result.sort((a, b) => b.name.localeCompare(a.name));
+
+    if (sort === "fav-services")
+      result = result.filter((s) => favIds.includes(s.name));
+
+    render(result);
   }
+
   $("#searchInput").on("input", filter);
   $("#sortSelect").on("change", filter);
-  $("#filter-category, #filter-country, #filter-city, #filter-service").on(
-    "change input",
-    filter
-  );
+  $("#filter-category, #filter-country, #filter-city, #filter-service")
+    .on("change input", filter);
+
   $(".clear-filters").on("click", function () {
     $("#searchInput").val("");
     $("#filter-category").val("All");
@@ -307,63 +237,68 @@ $(document).ready(function () {
     $("#sortSelect").val("");
     filter();
   });
-  // ================================
-  // Dynamic City Filter
-  // ================================
-  function updateCitiesByCountry(selectedCountry) {
-    let $cityInput = $("#filter-city");
-    let $cityDatalist = $("#cities");
-    $cityDatalist.empty();
-    $cityInput.val("");
-    let citiesToShow =
-      selectedCountry && selectedCountry !== ""
-        ? citiesData[selectedCountry] || []
+
+  // -------------------------------
+  // CITY FILTER
+  // -------------------------------
+  function updateCitiesByCountry(selected) {
+    let $d = $("#cities");
+    $d.empty();
+    $("#filter-city").val("");
+
+    let cities =
+      selected && selected !== ""
+        ? citiesData[selected] || []
         : Object.values(citiesData).flat();
-    citiesToShow
-      .sort()
-      .forEach((city) => $cityDatalist.append(`<option value="${city}">`));
+
+    cities.sort().forEach((c) =>
+      $d.append(`<option value="${c}">`)
+    );
   }
-  // ================================
-  // Initialization
-  // ================================
+
+  // -------------------------------
+  // INIT
+  // -------------------------------
   function initApp() {
     applyPlanRestrictions();
-    let urlParams = new URLSearchParams(window.location.search);
-    let urlID = urlParams.get("id") ? parseInt(urlParams.get("id")) : null;
-    let urlCategory = urlParams.get("category");
-    let urlCountry = urlParams.get("country");
-    let savedCountry = localStorage.getItem("selectedCountry") || "";
-    if (urlCategory) $("#filter-category").val(urlCategory);
-    if (urlCountry) {
-      $("#filter-country").val(urlCountry);
-      updateCitiesByCountry(urlCountry);
-    } else if (savedCountry) {
-      $("#filter-country").val(savedCountry);
-      updateCitiesByCountry(savedCountry);
+
+    let url = new URLSearchParams(window.location.search);
+    let id = url.get("id") ? parseInt(url.get("id")) : null;
+    let cat = url.get("category");
+    let ctry = url.get("country");
+    let saved = localStorage.getItem("selectedCountry") || "";
+
+    if (cat) $("#filter-category").val(cat);
+
+    if (ctry) {
+      $("#filter-country").val(ctry);
+      updateCitiesByCountry(ctry);
+    } else if (saved) {
+      $("#filter-country").val(saved);
+      updateCitiesByCountry(saved);
     } else {
       $("#filter-country").val("");
       updateCitiesByCountry(null);
     }
-    // Set defaults for other filters
-    $("#filter-category").val($("#filter-category").val() || "All");
+
     $("#filter-city").val("");
     $("#sortSelect").val("");
-    // Render based on URL id or just filter
-    if (urlID) {
-      let filteredServices = load().filter((s) => s.id === urlID);
-      if (urlCountry)
-        filteredServices = filteredServices.filter(
-          (s) => s.country.toLowerCase() === urlCountry.toLowerCase()
+
+    if (id) {
+      let one = load().filter((s) => s.id === id);
+      if (ctry)
+        one = one.filter(
+          (s) => s.country.toLowerCase() === ctry.toLowerCase()
         );
-      render(filteredServices);
+      render(one);
     } else {
       filter();
     }
-    // Handle country change dynamically
+
     $("#filter-country").on("change input", function () {
-      let selectedCountry = $(this).val();
-      localStorage.setItem("selectedCountry", selectedCountry);
-      updateCitiesByCountry(selectedCountry);
+      let val = $(this).val();
+      localStorage.setItem("selectedCountry", val);
+      updateCitiesByCountry(val);
       filter();
     });
   }
