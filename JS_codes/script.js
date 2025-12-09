@@ -80,8 +80,12 @@ $(document).ready(function () {
 		$servicesLink.on('click', function (e) {
 			if ($servicesDropdown.hasClass('visible')) {
 				e.preventDefault();
-				let servicesPath = window.location.pathname.includes('HTML_codes') ? 'Services.html' : 'HTML_codes/Services.html';
-				window.location.href = servicesPath;
+				// Check if on GitHub Pages
+				if (window.location.hostname.includes('github.io')) {
+					window.location.href = '/Web-Project/HTML_codes/Services.html';
+				} else {
+					window.location.href = './HTML_codes/Services.html';
+				}
 			}
 		});
 
@@ -108,8 +112,12 @@ $(document).ready(function () {
 
 		// Direct navigation on first click
 		$servicesLink.on('click', function () {
-			let servicesPath = window.location.pathname.includes('HTML_codes') ? 'Services.html' : 'HTML_codes/Services.html';
-			window.location.href = servicesPath;
+			// Check if on GitHub Pages
+			if (window.location.hostname.includes('github.io')) {
+				window.location.href = '/Web-Project/HTML_codes/Services.html';
+			} else {
+				window.location.href = './HTML_codes/Services.html';
+			}
 		});
 	}
 
