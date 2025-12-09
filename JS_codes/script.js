@@ -181,6 +181,17 @@ document.addEventListener('DOMContentLoaded', function () {
 			setupLogout();
 			updateProfileAvatar(storedUser);
 			syncProfileName(storedUser);
+
+			// Listen for profile updates from other tabs/windows or same page (e.g., settings page)
+			window.addEventListener('profileUpdated', function(e) {
+				if (e.detail && e.detail.avatarSeed) {
+					let url = `https://robohash.org/${encodeURIComponent(e.detail.avatarSeed)}?size=32x32&set=set1`;
+					document.getElementById('nav-avatar').src = url;
+				}
+				if (e.detail && e.detail.name) {
+					document.getElementById('user-name').textContent = e.detail.name;
+				}
+			});
 		}
 	} else {
 		showLoggedOutUI();
