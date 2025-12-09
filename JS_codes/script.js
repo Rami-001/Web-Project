@@ -68,23 +68,18 @@ $(document).ready(function () {
 		$servicesDropdown.removeClass('visible');
 		servicesOpenedOnce = false;
 
-		// Hover open
-		$servicesLink.on('mouseenter', () => $servicesDropdown.addClass('visible'));
-		$servicesDropdown.on('mouseenter', () => $servicesDropdown.addClass('visible'));
+		// Hover open - dropdown opens and stays open
+		$servicesLink.on('mouseenter', () => {
+			$servicesDropdown.addClass('visible');
+		});
+		$servicesDropdown.on('mouseenter', () => {
+			$servicesDropdown.addClass('visible');
+		});
 
-		// Hover close
-		$servicesLink.on('mouseleave', () => setTimeout(() => $servicesDropdown.removeClass('visible'), 300));
-		$servicesDropdown.on('mouseleave', () => setTimeout(() => $servicesDropdown.removeClass('visible'), 300));
-
-		// Desktop 2-click rule
+		// Click on Services link while dropdown is open - navigate to Services page
 		$servicesLink.on('click', function (e) {
-			if (!$servicesDropdown.hasClass('visible')) {
+			if ($servicesDropdown.hasClass('visible')) {
 				e.preventDefault();
-				$servicesDropdown.addClass('visible');
-				servicesOpenedOnce = true;
-				return;
-			}
-			if (servicesOpenedOnce) {
 				window.location.href = 'Services.html';
 			}
 		});
@@ -93,8 +88,15 @@ $(document).ready(function () {
 		$(document).on('click', (e) => {
 			if (!$servicesLink.is(e.target) && !$servicesDropdown.has(e.target).length) {
 				$servicesDropdown.removeClass('visible');
-				servicesOpenedOnce = false;
 			}
+		});
+
+		// Service link clicks - close dropdown and navigate
+		$('.Service-column a').off('click').on('click', function (e) {
+			e.preventDefault();
+			$servicesDropdown.removeClass('visible');
+			let href = $(this).attr('href');
+			window.location.href = href;
 		});
 	}
 
