@@ -80,7 +80,8 @@ $(document).ready(function () {
 		$servicesLink.on('click', function (e) {
 			if ($servicesDropdown.hasClass('visible')) {
 				e.preventDefault();
-				window.location.href = 'Services.html';
+				let servicesPath = window.location.pathname.includes('HTML_codes') ? 'Services.html' : 'HTML_codes/Services.html';
+				window.location.href = servicesPath;
 			}
 		});
 
@@ -107,7 +108,8 @@ $(document).ready(function () {
 
 		// Direct navigation on first click
 		$servicesLink.on('click', function () {
-			window.location.href = 'Services.html';
+			let servicesPath = window.location.pathname.includes('HTML_codes') ? 'Services.html' : 'HTML_codes/Services.html';
+			window.location.href = servicesPath;
 		});
 	}
 
